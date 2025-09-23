@@ -1,0 +1,37 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[czech]{babel}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{../cfg}
+
+\begin{document}
+
+\title{\textbf{Domácí úkol 1}}
+\author{Jakub Adamec\\XP01TGR}
+
+\maketitle
+
+\textbf{1.1} Dokažte, nebo vyvraťte: \textit{Je dán neorientovaný graf $G$. Pak:}
+\begin{enumerate}[noitemsep]
+    \item \textit{Každy uzavřený sled v $G$ liché délky obsahuje alespoň jednu kružnici liché délky.}
+    \item \textit{Každý uzavřený sled v $G$ sudé délky obsahuje alespoň jednu kružnici.}
+\end{enumerate}
+Tj. buď jednotlivá tvrzení dokažte, nebo najděte protipříklad.
+
+\textbf{1.2} Ukažte, že pro každá dvě kladná přirozená čísla $n, m$ splňující
+\begin{equation}
+    m \leq \frac{n(n-1)}{2}
+\end{equation}
+existuje prostý neorientovaný graf bez smyček s $n$ vrcholy a $m$ hranami. (To znamená, že popíšete způsob, jak byste 
+takový graf zkonstruovali.)
+
+\textbf{1.3} Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček. Definujme jeho doplňovký graf $G^{dopl} = 
+(V, E^{dopl})$ takto: pro $u \not= v$ je
+\[
+    \bc{U, v} \in E^{dopl} \hspace{3mm} \text{ právě tehdy, když } \hspace{3mm} \bc{u, v} \not\in E.
+\]
+Existuje prostý neorientovaný graf $G$ bez smyček takový, že $G$ a $G^{dopl}$ jsou isomorfní (tj. liší se pouze 
+pojmenováním vrcholů)? Jestliže takový graf existuje, uveďte příklad takového grafu; jestliže takový graf neexistuje,
+zdůvodněte to.
+
+\end{document}
