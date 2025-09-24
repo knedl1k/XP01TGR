@@ -1,1 +1,210 @@
 \section{Neorientované grafy}
+
+\subsection{Základní pojmy a definice}
+Graf je soubor vrcholů, hran a vztahů incidence. Zapíšeme jako $G = (V, E, \eps)$, kde $V$ je neprázdná množina vrcholů, 
+$E$ množina hran a $\eps$ říká \enquote{co hrany představují}, respektive
+\begin{equation}
+    \eps: E \rightarrow \bc{\bc{u, v} \mid u, v \in V}.
+\end{equation}
+% TODO: wording
+
+Jestliže pro dvě hrany $e_1, e_2 \in E$ platí, že $\eps(e_1) = \eps(e_2)$, pak se hrany $e_1, e_2$ nazývají paralelní.
+Pokud graf nemá paralelní hrany, nazýváme jej \bb{prostý}. V takovém případě také stačí chápat graf jako dvojici 
+$G = (V,E)$, kde hrany jsou neprázdné maximálně dvouprvkové podmnožiny $V$.\label{prosty}
+
+Smyčkou nazveme takovou hranu, která je $e \in E$ a pro $\eps(e) = \bc{u,v}$ platí $u=v$. \label{smycka}
+
+\subsubsection{Základní typy grafů}
+Rozlišujeme 2 základní typy grafů, orientované a neorientované.
+\begin{enumerate}[(a)]
+    \item Orientovaný graf: $\eps: E \rightarrow \bc{(u,v) \mid u,v \in V}$; $u \in P_V(\eps), v \in K_V(\eps)$
+    \item Neorientovaný graf: $\eps: E \rightarrow \bc{(u,v) \mid u,v \in V}$; $u,v$ jsou krajní vrcholy $\eps$
+\end{enumerate}
+$\S \dots$ je množina všech \hyperref[prosty]{prostých} grafů bez smyček.
+
+\subsubsection{Sled, tah, cesta}\label{stc}
+\begin{enumerate}[(a)]
+    \item Sled $\rightarrow$ je taková posloupnost, která začíná a končí vrcholem a kde po každém vrcholu následuje 
+    hrana, tedy $v_1, e_1, v_2, e_2, \dots, v_k$
+    \item Tah $\rightarrow$ je sled, ve kterém se nesmí opakovat hrany.
+    \item Cesta $\rightarrow$ je sled, ve kterém se nesmí opakovat vrcholy, s výjimkou počátečeního, ve kterém cesta 
+    může končit.
+\end{enumerate}
+
+\subsubsection{Kružnice a cyklus}
+\bb{Kružnice} je uzavřená \underline{ne}orientovaná cesta v grafu, \bb{cyklus} uzavřená orientovaná cesta.
+
+Příklad kružnice:
+\begin{figure}[H]
+    \begin{tikzpicture}[scale=1]
+        \graph [layered layout, orient=north]{
+            1 -> [orient=45] 2 -> 3;
+            1 -> 3;
+        };
+    \end{tikzpicture}
+\end{figure}
+
+\newpage
+\subsubsection{Stupně vrcholů}
+Pokud $G = (V, E, \eps)$, pak
+\begin{itemize}
+    \item vstupní stupeň v $d^- (v) = \left\|\bc{e \mid K_V(e) = v}\right\|$
+    \item výstupní stupeň v $d^+ (v) = \left\| \bc{e \mid P_V(e)=V}\right\|$
+    \item stupeň v $d(v) = d^-(v) + d^+(v)$
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.32\textwidth}
+        Příklad
+        \begin{figure}[H]
+            \begin{tikzpicture}[scale=1]
+                \graph [layered layout, orient=north]{
+                    1 -> [orient=45] 2 -> 3;
+                    2 -> [in=120, out=60, looseness=6] 2;
+                    1 -> 3;
+                };
+            \end{tikzpicture}
+        \end{figure}
+        
+    \end{minipage}%
+    \hspace{-0.1\textwidth}
+    \begin{minipage}[c]{0.68\textwidth}
+        \begin{align*}
+            d^-(2) &= 2 \\
+            d^+(2) &= 3 \\
+            d(2) &= 5
+        \end{align*}
+    \end{minipage}
+\end{figure}
+Pro $G=(V,E)$ je pouze $d(v) = \left\|\bc{e \mid v \text{ je krajní vrchol } e, \text{ smyčku počítáme } 
+2\times}\right\|$.
+
+Z toho máme důsledek
+\begin{equation}
+    \sum_{v \in V} d(v) = 2 \|E\|
+\end{equation}
+Tedy každý graf má sudý počet vrcholů lichého stupně.
+
+\subsection{Skóre}
+Skóre grafu $\underset{\underset{\|V\|=d}{G=(V,E)}}{(G \in \S)}$ je $D = (d_1, d_2, \dots, d_n)$, kde $d_i$ je stupeň 
+vrcholu $v_i$.
+
+Mějme příklad skóre (1,1,1,2,2,3). Jak by mohl vypadat graf s takovým skóre?
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.25\textwidth}
+        \begin{figure}[H]
+            \begin{tikzpicture}[scale=1]
+                \graph [layered layout, orient=east]{
+                    "$x$" -> {
+                        "$y$",
+                        "$t$" -> "$u$" -> "$v$",
+                        "$z$"
+                    };
+                };
+
+            \end{tikzpicture}
+        \end{figure}
+    \end{minipage}%
+    \hspace{0\textwidth}
+    nebo
+    \hspace{0.05\textwidth}
+    \begin{minipage}[c]{0.25\textwidth}
+        \begin{figure}[H]
+            \begin{tikzpicture}
+                    \graph[layered layout, orient=east]{
+                    "$x$" -> {
+                        "$y$",
+                        "$t$" -> "$u$",
+                        "$z$" -> "$v$",
+                    };
+                };
+            \end{tikzpicture}
+        \end{figure}
+    \end{minipage}
+\end{figure}
+Jak vidíme, skóre jednoznačně neurčuje graf. Můžeme ze skóre ale říct, jestli je takové skóre validním skóre nějakého 
+grafu?
+
+\subsection{Hledání grafu ke skóre}
+
+\bb{Tvrzení.} Máme $D = (d_1, d_2, \dots, d_n)$, $d_1 \leq d_2 \leq \dots \leq d_n$. \\
+Pak $D$ je skóre některého grafu $G = (V,E)$ právě tehdy, když $D^\prime = (d_1^\prime, \dots, d_{n-1}^\prime)$ 
+definovaná tak, že
+\[
+    d_i = 
+    \begin{cases}
+        d_i &\text{ pokud } i < n-d_n, \\
+        d_i-1  &\text{ pokud } i \geq n-d_n.
+    \end{cases}
+\]
+je skóre nějakého $G^\prime \subseteq \S$.
+
+\bb{Důkaz.}\\
+\enquote{$\Leftarrow$}: Existuje $G^\prime$ pro $D^\prime$. $G$ vytvoříme tak, že k $G^\prime$ přidáme vrchol $v_n$ a 
+spojíme se všemi vrcholy $v_{n-d_n}, v_{n-d_1+1}, \dots, v_{n-1}$. Pak $G$ má skóre $D$.
+
+\enquote{$\Rightarrow$}: Máme $G$ s $D = (d_1, d_2, \dots, d_n)$, kde $d_1$ je stupeň $v_1$, $d_2$ je stupeň $v_2$ a tak 
+dále.
+
+Mějme $\G = \bc{G \mid G \text{ má } D} \not= \emptyset$.
+
+$\forall G \in \G$ mějme $j_G$, což bude největší index vrcholu, tak že $\bc{v_{j_G}, v_n} \not\in E$.
+% TODO: dodělat důkaz
+
+\subsection{Příklad hledání grafu pro skóre}
+Mějme $D = (1,1,2,3,3)$; $n=5, d_n=3$; $n-d_n=2$.
+
+$D_1 = (1,0,1,2)$ $\overset{\text{uspo.}}{\rightarrow} (0,1,1,2)$; $n_1=4, d_{n_1} = 2$; $n_1 - d_{n_1}=2$.
+
+$D_2 = (0, 0, 0)$ $\dots$ tento graf je určitě existuje, jedná se o diskrétní graf.
+
+Kresleme postupně, začněme u $D_2$.
+\begin{figure}[H]
+    \begin{tikzpicture}[scale=1]
+        \graph [layered layout, orient=east]{
+            "$x$";
+            "$y$";
+            "$z$";
+        };
+    \end{tikzpicture}
+\end{figure}
+Pak přidejme vrchol a hrany tak, aby skóre odpovídalo $D_1$.
+\begin{figure}[H]
+    \begin{tikzpicture}[scale=1]
+        \graph [layered layout, orient=north]{
+            "$y$";
+            "$t$" -- {
+                "$x$",
+                "$z$",
+            };
+        };
+    \end{tikzpicture}
+\end{figure}
+A nakonec tak, aby odpovídalo $D$.
+\begin{figure}[H]
+    \begin{tikzpicture}[scale=1]
+        \graph [layered layout, orient=north]{
+            "$u$" -- {
+                "$y$",
+                "$t$" -- {
+                    "$x$",
+                    "$z$",
+                },
+                "$z$",
+            };
+        };
+    \end{tikzpicture}
+\end{figure}
+
+\subsection{Další pojmy založené na stupních vrcholů}
+\bb{Definice.} Je dán neorientovaný prostý graf bez smyček. Pak definujme
+\begin{itemize}
+    \item $\delta(G) = \min\bc{d(v) \mid v \in V}$ je minimální stupeň grafu G.
+    \item $\Delta(G) = \max\bc{d(v) \mid v \in V}$ je maximální stupeň grafu G.
+    \item $d(G) = \frac{\sum_{v \in V} d(v)}{|V|}$ je průměrný stupeň grafu G.
+    \item $\eps(G) = \frac{|E|}{|V|} = \frac{1}{2}d(G)$ je poměr počtu hran ku počtu vrcholů.
+\end{itemize}
+Označme $n = |V|$ a $m = |E|$. Pak $d(G) = \frac{2m}{n}$ a $\eps(G) = \frac{m}{n}$. 
+
+Zřejme platí $\delta(G) \leq d(G) \leq \Delta(G)$.
