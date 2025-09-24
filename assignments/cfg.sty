@@ -1,5 +1,6 @@
 \usepackage{tikz}
-\usetikzlibrary{automata, positioning, arrows, calc, tikzmark}
+\usetikzlibrary{positioning, arrows, arrows.meta, calc, tikzmark, graphs, graphdrawing, babel}
+\usegdlibrary{layered}
 % amsmath,amsthm,
 \usepackage{amssymb} %mathbb
 \usepackage{mathtools} % rcases
@@ -14,34 +15,34 @@
 \usepackage{forest} %derivation trees
 % \usepackage{soul}
 \usepackage{float} %figure
+\usepackage[autostyle]{csquotes} %smart quote handling
+
 
 \usepackage{hyperref}
-
 \hypersetup{
-    colorlinks=true, %set true if you want colored links
-    linktoc=all,     %set to all if you want both sections and subsections linked
-    linkcolor=black,%choose some color if you want links to stand out
-    pdfborder=0 0 0  %hide red boxes
+    colorlinks=true,
+    linktoc=all,                 % links in TOC for sections and subsections
+    linkcolor=purple,
+    pdfborder=0 0 0              % no red boxes around links
 }
 
 \tikzset{
-->, % makes the edges directed
->=stealth', % makes the arrow heads bold
-auto,
-node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
-every state/.style={thick, fill=gray!10}, % sets the properties for each 'state' node
-initial text=$ $, % sets the text that appears on the start arrow
-between/.style args={#1 and #2}{
-         at = ($(#1)!0.5!(#2)$)
-    },
+    % ->, % makes the edges directed
+    >=stealth', % makes the arrow heads bold
+    node distance=3cm, % specifies the minimum distance between two nodes
+    % dot/.style = {circle, fill, inner sep=2pt, node contents={}, label=#1},
+    % every edge/.style = {draw, postaction=decorate},
+    % every loop/.style={in=120,out=60,looseness=0},
 }
 
 \newcommand{\G}{\mathcal{G}}
+\renewcommand{\S}{\mathcal{S}} % replaces paragraph symbol
+
 \newcommand{\ii}[1]{\textit{#1}} % italic 
 \newcommand{\bb}[1]{\textbf{#1}} % bold 
 \newcommand{\m}[1]{$\mathbf{#1}$}
 \newcommand{\bc}[1]{\left\lbrace #1 \right\rbrace}  % \{\} 
-\def\eps{\varepsilon}
+\newcommand{\eps}{\varepsilon}
 
 \setlength{\parindent}{0mm} 
 \setlength{\parskip}{1.4ex}
