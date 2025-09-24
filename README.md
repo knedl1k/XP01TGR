@@ -12,7 +12,7 @@ CTU FEE Subject Graph Theory
 <br />
 
 - moodle: <https://moodle.fel.cvut.cz/course/view.php?id=9759>
-- lecture notes: <https://moodle.fel.cvut.cz/mod/url/view.php?id=372860>
+- lecture notes: <https://math.fel.cvut.cz/en/people/demlova/tgr/graf_dohromady.pdf>
 - scriptum: <https://kix.fsv.cvut.cz/~demel/grafy/gr.pdf>
 
 ## License
