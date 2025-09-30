@@ -127,7 +127,7 @@ Mějme příklad skóre (1,1,1,2,2,3). Jak by mohl vypadat graf s takovým skór
 \end{figure}
 Jak vidíme, skóre jednoznačně neurčuje graf. Můžeme ze skóre ale říct, jestli je takové skóre validním skóre nějakého 
 grafu?
-
+\newpage
 \subsection{Hledání grafu ke skóre}
 
 \bb{Tvrzení.} Máme $D = (d_1, d_2, \dots, d_n)$, $d_1 \leq d_2 \leq \dots \leq d_n$. \\
@@ -136,11 +136,11 @@ definovaná tak, že
 \[
     d_i = 
     \begin{cases}
-        d_i &\text{ pokud } i < n-d_n, \\
-        d_i-1  &\text{ pokud } i \geq n-d_n.
+        d_i &\text{ pokud } i < n-d_n \\
+        d_i-1  &\text{ pokud } i \geq n-d_n
     \end{cases}
 \]
-je skóre nějakého $G^\prime \subseteq \S$.
+je skóre nějakého $G^\prime \in \S$.
 
 \bb{Důkaz.}\\
 \enquote{$\Leftarrow$}: Existuje $G^\prime$ pro $D^\prime$. $G$ vytvoříme tak, že k $G^\prime$ přidáme vrchol $v_n$ a 
@@ -152,8 +152,8 @@ dále.
 
 Mějme $\G = \bc{G \mid G \text{ má } D} \not= \emptyset$.
 
-Cíl: Chceme dokázat, že mezi všemi grafy $\G$ existuje jeden, který má vlastnost, že poslední vrchol je spojen hranami s 
-$d_n-1$ předcházejícími vrcholy.
+\bb{Cíl}: Chceme dokázat, že mezi všemi grafy $\G$ existuje jeden, který má vlastnost, že poslední vrchol je spojen hranami s 
+$d_n$ předcházejícími vrcholy.
 
 $\forall G \in \G$ mějme $j_G$, což bude největší index vrcholu, tak že $\bc{v_{j_G}, v_n} \not\in E$, tedy není mezi 
 nimi hrana. To znamená, že pro ideální $G$ chceme docílit $j_G = n-d_n-1$.
