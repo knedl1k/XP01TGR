@@ -1,6 +1,7 @@
 \usepackage{tikz}
-\usetikzlibrary{positioning, arrows, arrows.meta, calc, tikzmark, graphs, graphdrawing, babel, decorations.shapes}
-\usegdlibrary{layered}
+\usetikzlibrary{positioning, arrows, arrows.meta, calc, tikzmark, graphs, graphdrawing, babel, decorations.shapes,
+intersections}
+\usegdlibrary{layered, force, trees}
 % amsmath,amsthm,
 \usepackage{amssymb} %mathbb
 \usepackage{mathtools} % rcases
@@ -44,6 +45,10 @@
 \newcommand{\bc}[1]{\left\lbrace #1 \right\rbrace}  % \{\} 
 \newcommand{\eps}{\varepsilon}
 \newcommand{\qed}{\blacksquare}
+
+\DeclareMathOperator*{\diam}{diam}
+\DeclareMathOperator*{\ex}{ex}
+\DeclareMathOperator*{\rad}{rad}
 
 \setlength{\parindent}{0mm} 
 \setlength{\parskip}{1.4ex}
