@@ -5,7 +5,7 @@ intersections}
 % amsmath,amsthm,
 \usepackage{amssymb} %mathbb
 \usepackage{mathtools} % rcases
-% \usepackage{tabularray}
+\usepackage{amsthm} % theoremstyle
 \usepackage{bm}
 % \usepackage{ragged2e} 
 \usepackage{tabularx}
@@ -44,7 +44,14 @@ intersections}
 \newcommand{\m}[1]{$\mathbf{#1}$}
 \newcommand{\bc}[1]{\left\lbrace #1 \right\rbrace}  % \{\} 
 \newcommand{\eps}{\varepsilon}
-\newcommand{\qed}{\blacksquare}
+\renewcommand{\qed}{\blacksquare}
+\renewcommand{\eqref}[1]{\textup{\hyperref[#1]{(\ref*{#1})}}}
+
+\theoremstyle{plain}
+\newtheorem{exercise}{Příklad}[section]
+\theoremstyle{definition}
+\newtheorem{solution}{Řešení}[section]
+\setcounter{section}{1}
 
 \DeclareMathOperator*{\diam}{diam}
 \DeclareMathOperator*{\ex}{ex}
@@ -54,5 +61,7 @@ intersections}
 \setlength{\parskip}{1.4ex}
 
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+
+\newcommand\titlebreak{~\\\vspace{-2em}}
 
 \newcommand{\xmark}{\usym{2613}}
