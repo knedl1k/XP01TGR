@@ -6,32 +6,112 @@
 
 \begin{document}
 
-\title{\textbf{Domácí úkol 1}}
+\title{\bb{Domácí úkol 1}}
 \author{Jakub Adamec\\XP01TGR}
 
 \maketitle
 
-\textbf{1.1} Dokažte, nebo vyvraťte: \textit{Je dán neorientovaný graf $G$. Pak:}
+\begin{exercise}
+Dokažte, nebo vyvraťte: Je dán neorientovaný graf $G$. Pak:
 \begin{enumerate}[noitemsep]
-    \item \textit{Každy uzavřený sled v $G$ liché délky obsahuje alespoň jednu kružnici liché délky.}
-    \item \textit{Každý uzavřený sled v $G$ sudé délky obsahuje alespoň jednu kružnici.}
+    \item Každy uzavřený sled v $G$ liché délky obsahuje alespoň jednu kružnici liché délky.
+    \item Každý uzavřený sled v $G$ sudé délky obsahuje alespoň jednu kružnici.
 \end{enumerate}
 Tj. buď jednotlivá tvrzení dokažte, nebo najděte protipříklad.
+\end{exercise}
 
-\textbf{1.2} Ukažte, že pro každá dvě kladná přirozená čísla $n, m$ splňující
-\begin{equation}
+\begin{solution}
+\titlebreak
+\begin{enumerate}
+    \item Dokažme indukcí podle délky sledu $k$, kde $k$ je liché číslo.\\
+    \ii{Základní krok:}
+    Nejkratší možný uzavřený sled liché délky je sled délky 1. To je smyčka u vrcholu $v_1$. Takový sled, 
+    $v_1, e_1, v_1$, je sám o sobě kružnicí délky 1, což je liché číslo.
+    % \vspace{-1em}
+    % \begin{itemize}
+    %     \item Nejkratší možný uzavřený sled liché délky je sled délky 1. To je smyčka u vrcholu $v_1$. Takový sled,
+    %     $v_1, e_1, v_1$, je sám o sobě kružnicí délky 1, což je liché číslo.
+    % \end{itemize}
+
+    Indukční předpoklad: Předpokládejme, že tvrzení platí pro všechny uzavřené sledy liché délky menší než $k$.\\
+    \ii{Indukční krok:} Mějme uzavřený sled $W = (v_0, e_1, v_1, \dots, e_k, v_k)$, kde $v_0 = v_k$ a jeho délka
+    $k$ je lichá.
+    \item Mějme uzavřený sled $W$ sudé délky $k \geq 2$.\\
+    Pak nám mohou nastat přesně dvě situace:
+    \begin{enumerate}[(a)]
+        \item Sled $W$ neobsahuje žádný opakující se vrchol mimo počáteční a koncový (aby byl uzavřený). Tím tedy přesně
+        splňuje definici kružnice (uzavřené cesty) a pro něj tvrzení platí.
+        \item Sled $W$ obsahuje alespoň jeden opakující se vnitřní vrchol.\\
+        Ať $v_i = v_j$ je první opakující se vrchol ve sledu $W$ pro $0 \leq i < j$. To znamená, že podposloupnost
+        $(v_i, e_{i+1}, \dots, v_{j-1})$ již žádný opakující se vrchol neobsahuje. Označme si teď podsled
+        $C=(v_i, e_{i+1}, \dots, v_j)$. Pro $C$ platí:
+        \begin{itemize}
+            \item jedná se o uzavřený sled, protože začíná a končí ve stejném vrcholu,
+            \item jeho délka je $j-i > 0$,
+            \item protože jsme zvolili $v_j$ jako první výskyt opakovaného vrcholu po $v_i$, žádný z vrcholů
+            $v_{i+1}, \dots, v_{j-1}$ se neopakuje a není roven $v_i$.
+        \end{itemize}
+        Tedy sled $C$ splňuje definici kružnice, takže jsme našli kružnici, která je obsažena v původním sledu $W$.
+    \end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\newpage
+\begin{exercise}
+Ukažte, že pro každá dvě kladná přirozená čísla $n, m$ splňující
+\begin{equation}\label{eq:1}
     m \leq \frac{n(n-1)}{2}
 \end{equation}
-existuje prostý neorientovaný graf bez smyček s $n$ vrcholy a $m$ hranami. (To znamená, že popíšete způsob, jak byste 
+existuje prostý neorientovaný graf bez smyček s $n$ vrcholy a $m$ hranami. (To znamená, že popíšete způsob, jak byste
 takový graf zkonstruovali.)
+\end{exercise}
 
-\textbf{1.3} Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček. Definujme jeho doplňovký graf $G^{dopl} = 
+\begin{solution}
+Mějme tedy $V=\bc{v_1, v_2, \dots, v_n}$. \\
+V prostém neorientovaném grafu s $n$ vrcholy je maximální možný počet hran roven počtu všech možných dvojic vrcholů.
+Taková situace odpovídá úplnému grafu a jeho počet hran je
+\begin{equation}
+    |E_{\max{}}| = \binom{n}{2} = \frac{n(n-1)}{2}
+\end{equation}
+Pro vytvoření $G \in \S$ stačí vybrat libovolných $m$ různých hran. Protože z předpokladu \eqref{eq:1} máme zaručeno, že
+$m$ není větší, než celkový počet možných hran, tento výběr je vždy proveditelný.
+
+Výsledný graf $G = (V,E)$, kde $E$ je námi vybraná množina $m$ hran, má zjevně $n$ vrcholů a přesně $m$ hran. Protože
+jsme hrany vybírali jako páry různých vrcholů z úplného grafu, je výsledný graf z definice prostý (tj. každou dvojici
+vrcholů spojuje nejvýše jedna hrana) a bez smyček (hrany spojují vždy dva různé vrcholy).
+\end{solution}
+
+\begin{exercise}
+Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček. Definujme jeho doplňovký graf $G^{dopl} =
 (V, E^{dopl})$ takto: pro $u \not= v$ je
 \[
-    \bc{U, v} \in E^{dopl} \hspace{3mm} \text{ právě tehdy, když } \hspace{3mm} \bc{u, v} \not\in E.
+    \bc{u, v} \in E^{dopl} \hspace{3mm} \text{ právě tehdy, když } \hspace{3mm} \bc{u, v} \not\in E.
 \]
-Existuje prostý neorientovaný graf $G$ bez smyček takový, že $G$ a $G^{dopl}$ jsou isomorfní (tj. liší se pouze 
+Existuje prostý neorientovaný graf $G$ bez smyček takový, že $G$ a $G^{dopl}$ jsou isomorfní (tj. liší se pouze
 pojmenováním vrcholů)? Jestliže takový graf existuje, uveďte příklad takového grafu; jestliže takový graf neexistuje,
 zdůvodněte to.
+\end{exercise}
+
+\begin{solution}
+Mějme graf $G=(V,E)$, kde $V=\bc{1,2,3,4}$ a $E=\bc{\bc{1,3}, \bc{3,2}, \bc{2,4}}$:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \graph []{
+            1 -- 3 -- 2 -- 4;
+        };
+    \end{tikzpicture}
+\end{figure}
+Když ke grafu zkonstruujme doplňkový, tj. $G^{dopl} = (V, E^{dopl})$, $E^{dopl} = \bc{\bc{2,1}, \bc{1,4}, \bc{4,3}}$:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \graph []{
+            2 -- 1 -- 4 -- 3;
+        };
+    \end{tikzpicture}
+\end{figure}
+Je očividné, že se jedná o grafy vzájemně isomorfní.
+\end{solution}
 
 \end{document}
