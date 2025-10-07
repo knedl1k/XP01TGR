@@ -13,50 +13,74 @@
 
 \begin{exercise}
 Dokažte, nebo vyvraťte: Je dán neorientovaný graf $G$. Pak:
+\vspace{-1em}
 \begin{enumerate}[noitemsep]
     \item Každy uzavřený sled v $G$ liché délky obsahuje alespoň jednu kružnici liché délky.
     \item Každý uzavřený sled v $G$ sudé délky obsahuje alespoň jednu kružnici.
 \end{enumerate}
+\vspace{-1em}
 Tj. buď jednotlivá tvrzení dokažte, nebo najděte protipříklad.
 \end{exercise}
 
 \begin{solution}
 \titlebreak
 \begin{enumerate}
-    \item Dokažme indukcí podle délky sledu $k$, kde $k$ je liché číslo.\\
-    \ii{Základní krok:}
-    Nejkratší možný uzavřený sled liché délky je sled délky 1. To je smyčka u vrcholu $v_1$. Takový sled, 
-    $v_1, e_1, v_1$, je sám o sobě kružnicí délky 1, což je liché číslo.
-    % \vspace{-1em}
-    % \begin{itemize}
-    %     \item Nejkratší možný uzavřený sled liché délky je sled délky 1. To je smyčka u vrcholu $v_1$. Takový sled,
-    %     $v_1, e_1, v_1$, je sám o sobě kružnicí délky 1, což je liché číslo.
-    % \end{itemize}
-
-    Indukční předpoklad: Předpokládejme, že tvrzení platí pro všechny uzavřené sledy liché délky menší než $k$.\\
-    \ii{Indukční krok:} Mějme uzavřený sled $W = (v_0, e_1, v_1, \dots, e_k, v_k)$, kde $v_0 = v_k$ a jeho délka
-    $k$ je lichá.
-    \item Mějme uzavřený sled $W$ sudé délky $k \geq 2$.\\
-    Pak nám mohou nastat přesně dvě situace:
-    \begin{enumerate}[(a)]
-        \item Sled $W$ neobsahuje žádný opakující se vrchol mimo počáteční a koncový (aby byl uzavřený). Tím tedy přesně
-        splňuje definici kružnice (uzavřené cesty) a pro něj tvrzení platí.
-        \item Sled $W$ obsahuje alespoň jeden opakující se vnitřní vrchol.\\
-        Ať $v_i = v_j$ je první opakující se vrchol ve sledu $W$ pro $0 \leq i < j$. To znamená, že podposloupnost
-        $(v_i, e_{i+1}, \dots, v_{j-1})$ již žádný opakující se vrchol neobsahuje. Označme si teď podsled
-        $C=(v_i, e_{i+1}, \dots, v_j)$. Pro $C$ platí:
+    \item Důkaz matematickou indukcí podle délky $k$ daného sledu $W$.
+    \begin{enumerate}
+        \item Základní krok \\
+        Nejmenší možná lichá délka uzavřeného sledu je $k=1$. Takový sled má tvar $v_0, e_1, v_0$, tedy smyčka, která je 
+        z definice kružnicí délky 1. \\
+        Pro grafy bez smyček je nejkratší uzavřený sled liché délky $k=3$ ve tvaru \\ 
+        $v_0, e_1, v_1, e_2, v_2, e_3, v_0$, ten je kružnicí délky $3$. Pro obě tyto situace tvrzení platí.
+        \item Indukční předpoklad \\
+        Předpokládejme, že tvrzení platí pro všechny uzavřené sledy liché délky menší než $k$, kde $k$ je liché.
+        \item Indukční krok \\
+        Mějme uzavřený sled $W = (v_0, e_1, v_1, \dots, e_k, v_k)$, kde $v_0 = v_k$. Musíme ukázat, že $W$ obsahuje 
+        kružnici liché délky. Rozlišme dva případy:
         \begin{itemize}
-            \item jedná se o uzavřený sled, protože začíná a končí ve stejném vrcholu,
-            \item jeho délka je $j-i > 0$,
-            \item protože jsme zvolili $v_j$ jako první výskyt opakovaného vrcholu po $v_i$, žádný z vrcholů
-            $v_{i+1}, \dots, v_{j-1}$ se neopakuje a není roven $v_i$.
+            \item Sled $W$ je kružnice. Pokud se ve sledu $W$ žádný vrchol (mimo $v_0=v_k$) neopakuje, pak je $W$ z 
+            definice kružnicí, která má lichou délku $k$.
+            \item Sled $W$ není kružnice. To tedy znamená, že se v něm nějaký vrchol musí opakovat, takže existují 
+            indexy $i$ a $j$ takové, že $0 \leq i < j < k$ a $v_i = v_j$. Rozdělme sled $W$ na dvě částí:
+            \begin{enumerate}[(1)]
+                \item Uzavřený sled $W_1 = (v_i, e_{i+1}, v_{i+1}, \dots, e_j, v_j)$. Délka tohoto sledu je $l_1 = j-i$.
+                \item Uzavřený sled $W_2 = (v_0, \dots, e_i, v_i, e_{j+1}, v_{j+1}, \dots, e_k, v_k)$. Délka tohoto 
+                sledu je $l_2 = k - (j-i) = k - l_1$.
+            \end{enumerate}
+            Součet délek těchto dvou sledu je $l_1 + l_2 = k$. Víme, že $k$ je liché. Součet dvou celých čísel je lichý
+            iff je jedno z nich liché a druhé sudé. Máme tedy dvě možnosti:
+            \begin{enumerate}[(1)]
+                \item Délka $l_1$ je lichá. Sled $W_1$ je uzavřený sled liché délky. Protože $l_1 = j-i > 0$ a zároveň 
+                $j < k$, platí $0 < l_1 < k$. Našli jsme kratší uzavřený sled liché délky. Podle \ii{indukčního 
+                předpokladu} musí sled $W_1$ obsahovat kružnici liché délky. Jelikož všechny hrany sledu $W_1$ jsou 
+                zároveň hranami původního sledu $W$, pak i $W$ obsahuje tuto lichou kružnici.
+                \item Délka $l_2$ je lichá. Sled $W_2$ je uzavřený sled liché délky. Protože $l_1 = j-i \geq 1$, platí 
+                $l_2 = k-l_1 <k$. Opět jsme našli kratší uzavřený sled liché délky. Podle \ii{indukčního předpokladu} 
+                musí sled $W_2$ obsahovat kružnici liché délky. Jelikož všechny hrany sledu $W_2$ jsou zároveň hranami
+                původního sledu $W$, pak i $W$ obsahuje tuto lichou kružnici.
+            \end{enumerate}
         \end{itemize}
-        Tedy sled $C$ splňuje definici kružnice, takže jsme našli kružnici, která je obsažena v původním sledu $W$.
+        V obou případech jsme ukázali, že pokud sled $W$ není sám o sobě lichou kružnicí, lze v něm nalézt kratší 
+        uzavřený sled liché délky, který podle indukčního předpokladu obsahuje lichou kružnici.
     \end{enumerate}
+    \hspace{\fill} \qed
+    \item Mějme graf $G = (V,E)$, $V=\bc{A,B,C}$ a $E=\bc{v_1=\bc{A,B}, v_2=\bc{B,C}}$:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \graph []{
+                A -- B -- C;
+            };
+        \end{tikzpicture}
+    \end{figure}
+    Vezměme si sled $A, v_1, B, v_2, C, v_2, B, v_1, A$. Určitě se jedná o uzavřený sled, protože začíná a končí ve 
+    stejném vrcholu, zároveň jeho počet hran je sudý, jedná se tedy i o sudý sled. Kružnice je uzavřená cesta, tedy
+    nesmí se v ní opakovat vrcholy. V našem sledu ale $2 \times$ vejdeme do vrcholu $B$. Takže se nejedná o kružnici.
+    Našli jsme protipříklad, při kterém tvrzení neplatí. 
+    \hspace{\fill}\qed
 \end{enumerate}
 \end{solution}
 
-\newpage
 \begin{exercise}
 Ukažte, že pro každá dvě kladná přirozená čísla $n, m$ splňující
 \begin{equation}\label{eq:1}
