@@ -1,0 +1,30 @@
+\section{Hranově souvislé grafy}
+\subsection{Hranový řez}
+Množině $F \subseteq E$, že $G \setminus F$ je nesouvislá, se říká hranový řez.
+
+\subsection{Hranová souvislost}
+Máme $G \in \S$, $G = (V,E)$, pak $G$ je $k$-hranově souvislý, jestliže neexistuje $F \subseteq E$, $|F| \leq k-1$, 
+taková, že $G \setminus F$ je nesouvislý.
+
+Hranová souvislost grafu $G$, značíme $\lambda(G)$, je největší $k$, že $G$ je $k$-hranově souvislý.\\
+\ii{Pozn. největší znamená, že nemá hranový řez s $\lambda(G)-1$ hranami, ale má s $\lambda(G)$ hranami.}
+
+% TODO: příklad z nahrávky
+
+\subsection{Most}
+Nazvěme most hranu $e\in E(G)$, že $\bc{e}$ je hranový řez.
+
+\subsection{Souvislost krajních vrcholů a mostů} % TODO: dodělat důkaz
+Každý most má alespoň jeden krajní vrchol, který je \hyperref[artikulace]{artikulace}.
+
+\subsection{Základní vlastnosti hranově souvislých grafů}
+\vspace{-1em}
+\begin{flalign*}
+    &G \text{ je } 0\text{-hranově souvislý pro každé } G. && \\
+    &G \text{ je } 1\text{-hranově souvislý} \iff G \text{ je souvislý.} && \\
+    &G \text{ je } 2\text{-hranově souvislý} \iff G \text{ je souvislý a nemá most.}&& \\
+\end{flalign*}
+
+\subsection{Tvrzení o hranové a vrcholové souvislosti}
+Platí, že $\lambda(G) \leq \kappa(G)$.
+% TODO: dodělat z nahrávky
