@@ -531,7 +531,7 @@ Tedy spor s (ii).
 
 \newpage
 \subsection{Artikulace}\label{artikulace}
-Vrchol v grafu $G$ se nazývá artikulace, jestliže $G \setminus v$ má více komponent souvislosti, než $G$.\\
+Vrchol $v$ grafu $G$ se nazývá artikulace, jestliže $G \setminus v$ má více komponent souvislosti, než $G$.\\
 \bb{Platí.} $G \in \S$ s alespoň 3 vrcholy je 2-souvislý $\iff$ je 1-souvislý a nemá artikulaci.
 \begin{figure}[H]
     \centering
@@ -644,12 +644,11 @@ takže $G$ je 2-souvislý.
             \end{tikzpicture}
         \end{figure}
         Přitom $G$ má alespoň 3 vrcholy, tedy v jedné komponentě leží alespoň 2 vrcholy. \ii{BÚNO} exsistuje 
-        $x \in C_1$, $x \not= u$, tj. $u$ je \hyperref[artikulace]{artikulace}. Což je spor % TODO: s čím? doplnit
+        $x \in C_1$, $x \not= u$, tj. $u$ je \hyperref[artikulace]{artikulace}. Což je spor. % TODO: s čím? doplnit
         Takže $G \setminus e$ je souvislý. Tedy existuje cesta $P$ z $u$ do $v$. Pak $P$ je kružnice obsahující $u,v$. 
     \end{enumerate}
     \item Indukční předpoklad: Pro každé $x,y$ s $d(x, y) = n \geq 1$ existuje kružnice obsahující $x,y$.
-    \item Indukční krok: Vezměme libovolné $u,v$ s $d(u,v) = n+1$. \\
-    Vyberme nejkratší cestu:
+    \item Indukční krok: Vezměme libovolné $u,v$ s $d(u,v) = n+1$. Vyberme nejkratší cestu:
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}[scale=1]
@@ -661,17 +660,18 @@ takže $G$ je 2-souvislý.
             \draw[thick] (u_node) -- (x1_node);
             \node at (0, 1) {$\dots$};
             \draw[thick] (xn_node) -- (v_node);
-            % \draw[orange, thick] (u_node.north west) .. controls (-2.5, 2.5) and (2.5, 2.5) .. (v_node.north east);
-            \draw[red, thick] (u_node.north) .. controls (-2.5, 2.0) and (2.5, 2.0) .. (v_node.north);
-            \draw[green!70!black, thick] (u_node.north east) .. controls (-2.5, 1.5) and (2.5, 1.5) .. (v_node.north west);
-            \draw[green!70!black, very thick, -] (u_node.south west) .. controls (-4.5, -0.5) and (-2.5, -2) .. (w_node.west);
-            \node[below left=0.1cm of u_node, color=red] {$P$};
-            \draw[red, very thick, -] (u_node.south) .. controls (-3, -1) and (-1.5, -2) .. (w_node.north west);
-            \draw[orange, very thick] (v_node.south) .. controls (2, 3) and (0, 3) .. (x1_node.south);
-            \draw[orange, very thick] (x1_node.south west) .. controls (-1.5, -2) and (-0.5, -1.5) .. (w_node.north);
-            \draw[red, very thick, -] (w_node.north east) .. controls (1.5, -2) and (3, -1) .. (v_node.south);
-            \node[below right=0.1cm of v_node, color=green!70!black] {$K_1$};
-            \draw[green!70!black, very thick, -] (w_node.east) .. controls (1.5, -2.5) and (3.5, -2) .. (v_node.south east);
+            \draw[red, thick] (u_node.north east) .. controls (-2.5, 1.5) and (-2.5, 1.5) .. (x1_node.north west);
+            \draw[red, thick] (v_node.north) .. controls (2, 1.5) and (1, 1.5) .. (x1_node.north);
+            \draw[red, very thick, -] (u_node.south west) .. controls (-4.5, -0.5) and (-2.5, -2) .. (w_node.west);
+            \node[below left=0.1cm of u_node, color=green!70!black] {$P$};
+            \draw[green!70!black, very thick, -] (u_node.south) .. controls (-3, -1) and (-1.5, -2) .. (w_node.north west);
+            \draw[orange, very thick] (v_node.north) .. controls (2, 2) and (0, 2) .. (x1_node.north);
+            
+            \draw[orange, very thick] (x1_node.south) -- (w_node.north);
+            \draw[green!70!black, very thick, -] (w_node.north east) .. controls (1.5, -2) and (3, -1) .. (v_node.south);
+            \draw[orange, very thick, -] (w_node.north east) .. controls (1.5, -2) and (2, -1) .. (v_node.south);
+            \node[below right=0.1cm of v_node, color=orange] {$K_1$};
+            \draw[red, thick, -] (w_node.east) .. controls (1.5, -2.5) and (3.5, -2) .. (v_node.south);
         \end{tikzpicture}
     \end{figure}
     Použijme I.P.: tj. existuje kružnice $K_1$ obsahující $x_1, v$. $x_1$ není \hyperref[artikulace]{artikulace}, tj. 
@@ -686,7 +686,7 @@ $G \in \S$ je 2-souvislý právě tehdy, když $G \% e$, $e \in E(G)$ je 2-souvi
 \bb{Důkaz.}\\
 \enquote{$\Rightarrow$}: Předpokládejme, že $G$ je 2-souvislý, tj. souvislý a nemá \hyperref[artikulace]{artikulaci}.
 
-Vrchol $w$, který vložíme do hrany $e$, není artikulace. A žádný jiný se nemohl stát artikulací, to by už museli být 
+Vrchol $w$, který vložíme do hrany $e$, není artikulace. A žádný jiný se nemohl stát artikulací, to by už musely být 
 artikulací předtím, a tedy by se v prvé řadě nejednalo o 2-souvislý.
 \hspace{\fill}\qed
 
@@ -707,9 +707,8 @@ $K^\prime$ je kružnice v $G$.
 Každý 2-souvislý graf $G \in \S$, $G = (V,E)$ je možné sestrojit postupem:
 \[ G_0 \coloneq K \text{ je nějaká kružnice}\]
 Máme-li $G_i$, že $G_i \not= G$, tak $G_{i+1}$ je $G_i$, ke kterému přidáme cestu $P$ (v $G$), která vede mezi 2 vrcholy
-z $G_i$ a zároveň všechny vcholy této cesty nejsou v $G_i$.
+z $G_i$ a zároveň všechny vrcholy této cesty nejsou v $G_i$.
 
-\newpage
 \subsection{Příklad sestrojení 2-souvislého grafu}
 Mějme 2-souvislý graf, tj. bez artikulace: 
 \begin{figure}[H]
@@ -770,7 +769,7 @@ A posledně z 3 do 5, $G_3 = G$:
     \end{tikzpicture}
 \end{figure}
 % TODO: přidat i druhý postup z fotky
-\newpage
+
 \subsection{Komponenty 2-souvislosti - blok}
 Mějme $G \in \S$, $G = (V,E)$, pak $A \subseteq V(G)$ se nazývá \bb{blok}, jestliže je maximální podmnožina taková, že 
 jí indukovaný podgraf je 2-souvislý. \\
@@ -791,13 +790,13 @@ vrchol.}
 Když nejsou jednotlivé bloky vzájemně disjunktní, tak jejich průnik je \hyperref[artikulace]{artikulace}.
 
 \subsection{Hranový řez}
-Máme $G \in \S$, $G = (V,E)$, pak $G$ je $k$-hranově souvislý, jestliže neexistuje $F \subseteq E$, $|F| = k-1$, taková,
-že $G \setminus F$ je nesouvislý.
-
 Množině $F \subseteq E$, že $G \setminus F$ je nesouvislá, se říká hranový řez.
 
 \subsection{Hranová souvislost}
-Hranová souvislost grafu $G$, značíme $\lambda(G)$, je největší $k$, že $G$ je $k$-souvislý.\\
+Máme $G \in \S$, $G = (V,E)$, pak $G$ je $k$-hranově souvislý, jestliže neexistuje $F \subseteq E$, $|F| \leq k-1$, 
+taková, že $G \setminus F$ je nesouvislý.
+
+Hranová souvislost grafu $G$, značíme $\lambda(G)$, je největší $k$, že $G$ je $k$-hranově souvislý.\\
 \ii{Pozn. největší znamená, že nemá hranový řez s $\lambda(G)-1$ hranami, ale má s $\lambda(G)$ hranami.}
 
 % TODO: příklad z nahrávky
