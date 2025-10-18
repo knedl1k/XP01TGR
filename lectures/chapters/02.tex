@@ -76,7 +76,8 @@ Pokud $k \geq 2$ a $d(G) \geq 4k$, pak
     n+1 &< 2k\\
     \frac{n+1}{2} &<k
 \end{align*}
-Teď použijme předpoklad $m \geq 2kn > (n+1)n$ % TODO: dodělat argumentaci, jaký předpoklad? nahrávka
+Teď použijme předpoklad $m \geq 2kn > (n+1)n$. A to nejde, protože úplný neorientovaný graf bez smyček má 
+$\frac{n(n-1)}{2}$ hran.
 
 (ii) Mějme
 \begin{align*}
@@ -145,7 +146,34 @@ Vezmeme $G$ splňující (i) a (ii) s $n$ vrcholy.
     $G$ není $k$-souvislý, tj. $X \subseteq V$, $|X|=k-1$ a $X$ je \hyperref[vrchRez]{vrcholový řez}.
 \end{enumerate}
 
-% TODO: dodělat diagram
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \def\radius{2.2cm}
+        \def\distance{3cm}
+
+        \coordinate (C1_center) at (0, 0);
+        \coordinate (C2_center) at (\distance, 0);
+
+        \filldraw[thick, draw=blue, fill=blue!30] (C1_center) circle (\radius);
+        \node[blue, above=5mm of C1_center] (C1_label) {\Large $C_1 \not= \emptyset$};
+
+        \draw[thick, draw=red] (C2_center) circle (\radius);
+        \node[red, above=5mm of C2_center] (C2_label) {\Large $C_2 \not= \emptyset$};
+
+        \coordinate (X_pos) at (\distance/2, 0);
+        \node at (X_pos) {\Large $X$};
+
+        \coordinate (x_pos) at (-1.2, 0);
+        \fill (x_pos) circle (2.5pt);
+        \node[right=2mm of x_pos] {$x$};
+
+        \coordinate (y_pos) at ({\distance + 1.2}, 0);
+        \fill (y_pos) circle (2.5pt);
+        \node[right=2mm of y_pos] {$y$};
+    \end{tikzpicture}
+\end{figure}
+$G \setminus X$ je nesouvislý. Všech je $(k-1) + (k-1) + 1$. $\colorbox{blue!30}{$d_G(x)$} \geq 2k - 2$.
 
 $G_1$ graf indukovaný $C_1$ v $X$ má alespoň $2k-1$ vrcholů.
 
@@ -277,7 +305,7 @@ takže $G$ je 2-souvislý.
             \end{tikzpicture}
         \end{figure}
         Přitom $G$ má alespoň 3 vrcholy, tedy v jedné komponentě leží alespoň 2 vrcholy. \ii{BÚNO} exsistuje 
-        $x \in C_1$, $x \not= u$, tj. $u$ je \hyperref[artikulace]{artikulace}. Což je spor. % TODO: s čím? doplnit
+        $x \in C_1$, $x \not= u$, tj. $u$ je \hyperref[artikulace]{artikulace}. Což je spor.
         Takže $G \setminus e$ je souvislý. Tedy existuje cesta $P$ z $u$ do $v$. Pak $P$ je kružnice obsahující $u,v$. 
     \end{enumerate}
     \item Indukční předpoklad: Pro každé $x,y$ s $d(x, y) = n \geq 1$ existuje kružnice obsahující $x,y$.
@@ -308,8 +336,10 @@ takže $G$ je 2-souvislý.
         \end{tikzpicture}
     \end{figure}
     Použijme I.P.: tj. existuje kružnice $K_1$ obsahující $x_1, v$. $x_1$ není \hyperref[artikulace]{artikulace}, tj. 
-    existuje cesta $P$ z $u$ do $v$ neobsahující $x_1$. $w$ je prvním vrcholem cesty $P$, který leží v $K_1$ 
-    % TODO: dodělat
+    existuje cesta $P$ z $u$ do $v$ neobsahující $x_1$. $w$ je prvním vrcholem cesty $P$, který leží na $K_1$. Použijeme
+    cestu $P$, abychom se dostali z $u$ do $w$, následně se přes $K_1$ dostaneme do $v$. Dále po kružnici do $x_1$, kde 
+    si musíme vybrat trasu, která nevede do $w$, tj. směrem do $u$. A tím uzavřeme \colorbox{red}{kružnici} obsahující 
+    $u$ a $v$.
 \end{enumerate}
 \hspace{\fill}\qed
 
@@ -410,7 +440,7 @@ jí indukovaný podgraf je 2-souvislý. \\
 vrchol.}
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[scale=1] % TODO: dodělat kroužky ke komponentám souvislosti
+    \begin{tikzpicture}[scale=1]
         \graph [spring layout, node distance=1cm]{ 
             1 -- {2, 3};
             2 -- 3;
@@ -418,6 +448,22 @@ vrchol.}
             4 -- {5,6};
             5 -- 6;
         };
+
+        \begin{scope}[on background layer]
+            \node [fit=(1) (2) (3),
+                   draw=red,
+                   thick,
+                   ellipse,
+                   inner sep=1pt]
+                   {};
+
+            \node [fit=(3) (4) (5) (6), 
+                   draw=blue, 
+                   thick, 
+                   ellipse, 
+                   inner sep=1pt] 
+                   {};                   
+        \end{scope}
     \end{tikzpicture}
 \end{figure}
 Když nejsou jednotlivé bloky vzájemně disjunktní, tak jejich průnik je \hyperref[artikulace]{artikulace}.
