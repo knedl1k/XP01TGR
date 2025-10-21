@@ -19,9 +19,9 @@ Odpověď pečlivě zdůvodněte.
 \end{exercise}
 \begin{solution}
 Pomocné lemma. \ii{Vrchol $u$ není artikulace $\iff$ $d(u)=1$.}\\
-Důkaz. Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý, tj. $k(G \setminus u) = 1$. Graf 
-$G \setminus u$ vytvoříme tak, že z $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu 
-$e = \bc{u,v}$). Graf $G \setminus u$ se bude skládat ze dvou (potenciálně prázdných) částí:
+Důkaz. Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že z 
+$G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf $G \setminus u$ se 
+bude skládat ze dvou (potenciálně prázdných) částí:
 \begin{enumerate}[(1), noitemsep]
     \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
     \item Celá komponenta $C_v$.
@@ -39,9 +39,8 @@ Ověřme, že tento graf má všechny námi požadované vlastnosti:
 \begin{enumerate}[(a), noitemsep]
     \item \ii{Je graf prostý, neorientovaný, souvislý?} Ano.
     \item \ii{Je $e=\bc{u,v}$ most?} Ano. $G$ je souvislý a $G \setminus e$ sestává ze dvou izolovaných vrcholů $u,v$, 
-    takže $k(G \setminus e)=2$. Počet komponent se zvýšil.
-    \item \ii{Je $u$ artikulace?} Ne. $d(u)=1$. Graf $G \setminus u$ je pouze vrchol $v$. $k(G \setminus u)=1$. Počet 
-    komponent se nezvýšil.
+    takže má 2 komponenty souvislosti. Počet komponent se zvýšil.
+    \item \ii{Je $u$ artikulace?} Ne. $d(u)=1$. Graf $G \setminus u$ je pouze vrchol $v$. Počet komponent se nezvýšil.
     \item \ii{Je $v$ artikulace?} Ne. Obdobná situace jako pro $u$.
 \end{enumerate}
 Našli jsme tedy graf $G$, která má most $e = \bc{u,v}$, ale \ii{ani jeden} z vrcholů $u,v$ není artikulace. Takže ani 
@@ -54,7 +53,18 @@ Dokažte nebo vyvraťte: Každý prostý neorientovaný graf $G$ bez smyček s a
 vrcholy, které nejsou artikulacemi.
 \end{exercise}
 \begin{solution}
-
+Musíme problém rozdělit na dva případy, když graf $G$ je (ne)souvislý.
+\begin{enumerate}[(a)]
+    \item \ii{Graf $G$ je souvislý.} Máme $|V| \geq 2$. Hledáme dva vrcholy $u,v$ takové, že $G \setminus u$ a 
+    $G \setminus v$ budou mít právě jednu komponentu souvislosti.
+    \begin{enumerate}
+        \item Protože $G$ je souvislý a má $|V| \geq 2$ vrcholů, můžeme v něm sestrojit kostru $T$. $T$ je strom a má 
+        stejný počet vrcholů jako $G$.
+        \item Každý strom s alespoň dvěma vrcholy má alespoň dva listy. Vyberme si dva různé listy kostry $T$ a nazvěme 
+        je $u$ a $v$. Teď stačí dokázat, že $u$, respektive $v$, není artikulace. Tedy, že $G \setminus u$ bude 
+        souvislý.
+    \end{enumerate}
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
