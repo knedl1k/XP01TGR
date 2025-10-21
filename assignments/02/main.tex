@@ -3,7 +3,7 @@
 \usepackage[margin=1in]{geometry}
 
 \usepackage{../cfg}
-\setcounter{section}{1}
+\setcounter{section}{2}
 
 \begin{document}
 
@@ -17,15 +17,52 @@ Je dán prostý neorientovaný souvislý graf $G = (V,E)$, který má most $e = 
 $u,v$ musí být artikulace anebo oba vrcholy $u,v$ musí být artikulace.\\
 Odpověď pečlivě zdůvodněte.
 \end{exercise}
+\begin{solution}
+Pomocné lemma. \ii{Vrchol $u$ není artikulace $\iff$ $\deg(u)=1$.}\\
+Důkaz. Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý, tj. $k(G \setminus u) = 1$. Graf 
+$G \setminus u$ vytvoříme tak, že z $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu 
+$e = \bc{u,v}$). Graf $G \setminus u$ se bude skládat ze dvou (potenciálně prázdných) částí:
+\begin{enumerate}[(1), noitemsep]
+    \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
+    \item Celá komponenta $C_v$.
+\end{enumerate}
+Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla odstraněna spolu s 
+vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí prázdná.  Část $C_v$ nemůže být 
+prázdná, protože obsahuje alespoň vrchol $v$.  Tedy část $C_u \setminus \bc{u}$ musí být nutně prázdná. A to platí právě 
+tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To znamená, že vrchol $u$ neměl v $G$ žádného jiného 
+souseda, než $v$. Tedy $u$ není artikulace $\iff$ $\deg(u)=1$. 
+\hspace{\fill}\qed 
+
+Najděme protipříklad. Hledejme souvislý graf $G$ s mostem $e = \bc{u,v}$, kde $\deg(u)=\deg(v)=1$. 
+Jediný takový graf je graf se dvěma vrcholy ($u,v$) a jedinou hranou ($e=\bc{u,v}$).
+Ověřme, že tento graf má všechny námi požadované vlastnosti:
+\begin{enumerate}[(a)]
+    \item \ii{Je graf prostý, neorientovaný, souvislý?} Ano.
+    \item \ii{Je $e=\bc{u,v}$ most?} Ano. $G$ je souvislý a $G \setminus e$ sestává ze dvou izolovaných vrcholů $u,v$, 
+    takže $k(G \setminus e)=2$. Počet komponent se zvýšil.
+    \item \ii{Je $u$ artikulace?} Ne. $\deg(u)=1$. Graf $G \setminus u$ je pouze vrchol $v$. $k(G \setminus u)=1$. Počet 
+    komponent se nezvýšil.
+    \item \ii{Je $v$ artikulace?} Ne. Obdobná situace jako pro $u$.
+\end{enumerate}
+Našli jsme tedy graf $G$, která má most $e = \bc{u,v}$, ale \ii{ani jeden} z vrcholů $u,v$ není artikulace. Takže ani 
+jeden vrchol nemusí být artikulace.
+\hspace{\fill}\qed
+\end{solution}
 
 \begin{exercise}
 Dokažte nebo vyvraťte: Každý prostý neorientovaný graf $G$ bez smyček s alespoň dvěma vrcholy obsahuje alespoň dva 
 vrcholy, které nejsou artikulacemi.
 \end{exercise}
+\begin{solution}
+
+\end{solution}
 
 \begin{exercise}
 Dokažte nebo vyvraťte: Prostý souvislý neorientovaný graf $G$ bez smyček s alespoň dvěma hranami je 2-souvislý právě 
 tehdy, když každé dvě hrany grafu $G$ leží na společné kružnici.
 \end{exercise}
+\begin{solution}
+
+\end{solution}
 
 \end{document}
