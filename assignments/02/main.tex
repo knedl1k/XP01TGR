@@ -18,25 +18,47 @@ $u,v$ musí být artikulace anebo oba vrcholy $u,v$ musí být artikulace.\\
 Odpověď pečlivě zdůvodněte.
 \end{exercise}
 \begin{solution}
-Pomocné lemma. \ii{Vrchol $u$ není artikulace $\iff$ $d(u)=1$.}\\
-Důkaz. Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že z 
-$G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf $G \setminus u$ se 
-bude skládat ze dvou (potenciálně prázdných) částí:
-\begin{enumerate}[(1), noitemsep]
-    \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
-    \item Celá komponenta $C_v$.
-\end{enumerate}
-Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla odstraněna spolu s 
-vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí prázdná.  Část $C_v$ nemůže být 
-prázdná, protože obsahuje alespoň vrchol $v$.  Tedy část $C_u \setminus \bc{u}$ musí být nutně prázdná. A to platí právě 
-tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To znamená, že vrchol $u$ neměl v $G$ žádného jiného 
-souseda, než $v$. Tedy $u$ není artikulace $\iff$ $d(u)=1$. 
-\hspace{\fill}\qed 
+    \begin{lemma}
+        Vrchol $u$ není artikulace $\iff$ $d(u)=1$.
+    \end{lemma}
+    \begin{prof}
+        Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že z 
+        $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf $G \setminus u$ se 
+        bude skládat ze dvou (potenciálně prázdných) částí:
+        \vspace{-1em}
+        \begin{enumerate}[1), noitemsep]
+            \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
+            \item Celá komponenta $C_v$.
+        \end{enumerate}
+        \vspace{-1em}
+        Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla odstraněna spolu s 
+        vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí prázdná.  Část $C_v$ nemůže být 
+        prázdná, protože obsahuje alespoň vrchol $v$. Proto část $C_u \setminus \bc{u}$ musí být nutně prázdná. A to platí právě 
+        tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To znamená, že vrchol $u$ neměl v $G$ žádného jiného 
+        souseda, než $v$. Tedy $u$ není artikulace $\iff$ $d(u)=1$. 
+        \hspace{\fill}\qed 
+    \end{prof}
+% Pomocné lemma. \ii{Vrchol $u$ není artikulace $\iff$ $d(u)=1$.}\\
+% Důkaz. Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že z 
+% $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf $G \setminus u$ se 
+% bude skládat ze dvou (potenciálně prázdných) částí:
+% \vspace{-1em}
+% \begin{enumerate}[1), noitemsep]
+%     \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
+%     \item Celá komponenta $C_v$.
+% \end{enumerate}
+% \vspace{-1em}
+% Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla odstraněna spolu s 
+% vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí prázdná.  Část $C_v$ nemůže být 
+% prázdná, protože obsahuje alespoň vrchol $v$. Proto část $C_u \setminus \bc{u}$ musí být nutně prázdná. A to platí právě 
+% tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To znamená, že vrchol $u$ neměl v $G$ žádného jiného 
+% souseda, než $v$. Tedy $u$ není artikulace $\iff$ $d(u)=1$. 
+% \hspace{\fill}\qed 
 
 Najděme protipříklad. Hledejme souvislý graf $G$ s mostem $e = \bc{u,v}$, kde $d(u)=d(v)=1$. 
 Jediný takový graf je graf se dvěma vrcholy ($u,v$) a jedinou hranou ($e=\bc{u,v}$).
 Ověřme, že tento graf má všechny námi požadované vlastnosti:
-\begin{enumerate}[(a), noitemsep]
+\begin{enumerate}[a), noitemsep]
     \item \ii{Je graf prostý, neorientovaný, souvislý?} Ano.
     \item \ii{Je $e=\bc{u,v}$ most?} Ano. $G$ je souvislý a $G \setminus e$ sestává ze dvou izolovaných vrcholů $u,v$, 
     takže má 2 komponenty souvislosti. Počet komponent se zvýšil.
@@ -48,31 +70,110 @@ jeden vrchol nemusí být artikulace.
 \hspace{\fill}\qed
 \end{solution}
 
+\newpage
+
 \begin{exercise}
 Dokažte nebo vyvraťte: Každý prostý neorientovaný graf $G$ bez smyček s alespoň dvěma vrcholy obsahuje alespoň dva 
 vrcholy, které nejsou artikulacemi.
 \end{exercise}
 \begin{solution}
-Musíme problém rozdělit na dva případy, když graf $G$ je (ne)souvislý.
-\begin{enumerate}[(a)]
-    \item \ii{Graf $G$ je souvislý.} Máme $|V| \geq 2$. Hledáme dva vrcholy $u,v$ takové, že $G \setminus u$ a 
-    $G \setminus v$ budou mít právě jednu komponentu souvislosti.
-    \begin{enumerate}
-        \item Protože $G$ je souvislý a má $|V| \geq 2$ vrcholů, můžeme v něm sestrojit kostru $T$. $T$ je strom a má 
-        stejný počet vrcholů jako $G$.
-        \item Každý strom s alespoň dvěma vrcholy má alespoň dva listy. Vyberme si dva různé listy kostry $T$ a nazvěme 
-        je $u$ a $v$. Teď stačí dokázat, že $u$, respektive $v$, není artikulace. Tedy, že $G \setminus u$ bude 
-        souvislý.
+Rozdělme problém na dva případy, dle souvislosti $G$.
+\vspace{-1em}
+\begin{enumerate}[1)]
+    \item \ii{Pokud $G$ není souvislý, pak má alespoň 2 komponenty souvislosti.} V takovém případě nám nastavají dvě situace:
+    \begin{enumerate}[a)]
+        \item $G$ se skládá pouze z izolovaných vrcholů. Protože $|V(G)| \geq 2$, $G$ má alespoň dva vrcholy, $v_1$ a 
+        $v_2$. $G$ má $n$ komponent souvislosti. Graf $G \setminus v_1$ má $n-1$ izolovaných vrcholů, tedy i komponent 
+        souvislosti. Takže $v_1$, respektive $v_2$, určitě \ii{není} artikulace. 
+        \item $G$ má alespoň jednu komponentu souvislosti $C_i$ s $|V(C_i)| \geq 2$. Nechť $v$ je vrchol v komponentě 
+        $C_i$. Odebrání $v$ může ovlivnit pouze komponentu $C_i$. Zadefinujme si $k(G)$ jako počet komponent souvislosti 
+        grafu $G$. 
+        \begin{equation}
+            k(G) = k(C_i) + \sum_{j \not= i}k(C_j) = 1 + \sum_{j \not= i}1
+        \end{equation} 
+        Počet komponent $G \setminus v$ je 
+        \begin{equation}
+            k(G \setminus v) = k(C_i \setminus v) + \sum_{j \not= i}k(C_j) = k(C_i \setminus v) + k(G) - 1 > k(G)
+        \end{equation}
+        právě tehdy, když $k(C_i \setminus v) > 1$.  
+        
+        To znamená, že $v$ je artikulací $G$ právě tehdy, když je artikulací své komponenty $C_i$. Tudíž stačí dokázat 
+        tvrzení pro souvislou komponentu $C_i$. Pokud má $C_i$ alespoň dvě \bb{ne}artikulace, pak tyto dva vrcholy 
+        nejsou ani artikulacemi vůči $G$.
     \end{enumerate}
+    \item \ii{Pokud $G$ je souvislý, pak má právě jednu komponentu souvislosti.} \\
+    Protože $G$ je souvislý a $|V(G)| \geq 2$, můžeme v něm sestrojit kostru $T$. Kostra je strom a má stejný počet
+    vrcholů jako $G$. Každý strom s alespoň dvěma vrcholy má alespoň dva listy. Vyberme si dva různé listy kostry $T$, 
+    $u$ a $v$. Teď stačí dokázat, že $u$, respektive $v$, není artikulací grafu $G$.
+
+    $G \setminus u$ musí být souvislý graf. Protože odebrání listu z netriviálního stromu zachovává souvislost, 
+    tak $T \setminus u$ je souvislý. Poznamenejme, že $T \setminus u$ je podgrafem $G \setminus u$, protože obsahuje
+    všechny vrcholy $V(G) \setminus \bc{u}$ a některé hrany z $G \setminus u$. No ale to nutně znamená, že 
+    $G \setminus u$ je také souvislý. Takže $u$ určitě není artikulací.
+    
+    Stejný argument platí i pro druhý list $v$. Tím jsme v souvislém grafu našli alespoň dva vrcholy, které nejsou 
+    artikulacemi.
+    \hspace{\fill}\qed
 \end{enumerate}
+\vspace{-1em}
 \end{solution}
+
+\newpage
 
 \begin{exercise}
 Dokažte nebo vyvraťte: Prostý souvislý neorientovaný graf $G$ bez smyček s alespoň dvěma hranami je 2-souvislý právě 
 tehdy, když každé dvě hrany grafu $G$ leží na společné kružnici.
 \end{exercise}
 \begin{solution}
+\titlebreak
 
+\enquote{$\Rightarrow$}: Graf je 2-souvislý. \\
+Nechť $e_1 = \bc{u,v}$ a $e_2 = \bc{x,y}$ jsou dvě libovolné různé hrany v $G$. Vytvořme nový graf $G^\prime$ z $G$ tak, 
+že rozpůlíme obě hrany:
+\vspace{-1em}
+\begin{itemize}[noitemsep]
+    \item Hranu $e_1$ nahradíme cestou $u \rightarrow w_1 \rightarrow v$.
+    \item Hranu $e_2$ nahradíme cestou $x \rightarrow w_2 \rightarrow y$.
+\end{itemize}
+\vspace{-1em}
+Přidali jsme vrcholy $w_1, w_2$. Tímto zachováváme souvislost, tedy i $G^\prime$ je 2-souvislý. Víme, že v 2-souvislém 
+grafu každé dva vrcholy leží na společné kružnici. Využijme toho: Existuje kružnice $C^\prime$ v $G^\prime$, která 
+obsahuje $w_1$ i $w_2$.
+
+Protože vrcholy $w_1$ a $w_2$ mají v $G^\prime$ stupeň 2, každá kružnice $C^\prime$, která jimi prochází, \ii{musí} 
+obsahovat obě hrany s nimi incidentní.
+\vspace{-1em}
+\begin{itemize}[noitemsep]
+    \item Kružnice $C^\prime$ musí obsahovat sled $u \rightarrow w_1 \rightarrow v$ (případně v opačném pořadí).
+    \item Kružnice $C^\prime$ musí obsahovat sled $x \rightarrow w_2 \rightarrow y$ (případně v opačném pořadí).
+\end{itemize}
+\vspace{-1em}
+A tedy kružnice $C^\prime$ obsahuje původní hrany $e_1$ a $e_2$.
+\hspace{\fill}\qed
+
+\enquote{$\Leftarrow$}: $G$ je prostý graf s $|E| \geq 2$, ve kterém každé dvě hrany leží na společné kružnici.\\
+Aby graf byl 2-souvislý, musí být souvislý a nemít artikulaci. Ukažme, že $G$ nemá artikulaci. \\ 
+\bb{Sporem.} Ať $G$ \ii{není} 2-souvislý, tedy že má artikulaci $v$.
+
+Pokud $v$ je artikulace, pak graf $G \setminus v$ je nesouvislý. Nechť $C_1$ a $C_2$ jsou dvě z jeho komponent 
+souvislosti. Protože $G$ je souvislý, vrchol $v$ musí mít sousedy v obou těchto komponentách:
+\vspace{-1em}
+\begin{itemize}[noitemsep]
+    \item Existuje vrchol $u \in V(C_1)$ takový, že $e_1 = \bc{u,v} \in E(G)$.
+    \item Existuje vrchol $w \in V(C_2)$ takový, že $e_2 = \bc{w,v} \in E(G)$.
+\end{itemize}
+\vspace{-1em}
+Jelikož $u \in C_1$ a $w \in C_2$, je $u \not= w$, tak $e_1$ a $e_2$ jsou dvě různé hrany. Použijme předpoklad: hrany 
+$e_1$ a $e_2$ musí ležet na společné kružnici $K$. Tato kružnice musí nutně obsahovat sled 
+$u \rightarrow v \rightarrow w$. Aby byla kružnice uzavřena, musí existovat cesta $P$ z $w$ zpět do $u$, která již 
+\ii{neobsahuje} vrchol $v$, protože $G$ je prostý a kružnice nemůže vrchol opakovat mimo počátku.
+
+To znamená, že cesta $P$ musí celá ležet v grafu $G \setminus v$. Existence cesty $P$ z $w$ do $u$ v $G \setminus v$ ale 
+znamená, že $u$ a $w$ leží ve stejné komponentě souvislosti $G \setminus v$. Což je \bb{spor} s tím, jak jsme definovali 
+$u$ a $w$.
+
+Graf $G$ je souvislý a \ii{nemá} artikulaci, takže je 2-souvislý.
+\hspace{\fill}\qed
 \end{solution}
 
 \end{document}

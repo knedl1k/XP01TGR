@@ -17,6 +17,7 @@ intersections, quotes, fit, backgrounds}
 % \usepackage{soul}
 \usepackage{float} %figure
 \usepackage[autostyle]{csquotes} %smart quote handling
+\usepackage[nopatch=item]{microtype}
 
 
 \usepackage{hyperref}
@@ -49,9 +50,10 @@ intersections, quotes, fit, backgrounds}
 
 \theoremstyle{plain}
 \newtheorem{exercise}{Příklad}[section]
+\newtheorem*{lemma}{\small Lemma}
 \theoremstyle{definition}
 \newtheorem{solution}{Řešení}[section]
-% \setcounter{section}{1}
+\newtheorem*{prof}{\small Důkaz}
 
 \DeclareMathOperator*{\diam}{diam}
 \DeclareMathOperator*{\ex}{ex}
