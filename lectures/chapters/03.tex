@@ -9,7 +9,30 @@ taková, že $G \setminus F$ je nesouvislý.
 Hranová souvislost grafu $G$, značíme $\lambda(G)$, je největší $k$, že $G$ je $k$-hranově souvislý.\\
 \ii{Pozn. největší znamená, že nemá hranový řez s $\lambda(G)-1$ hranami, ale má s $\lambda(G)$ hranami.}
 
-% TODO: příklad z nahrávky
+Mějme 2-hranově souvislý graf:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        vertex/.style={fill=black, circle, inner sep=0pt, outer sep=0pt}
+    ]
+
+        \graph [nodes={vertex}] {
+            1 [at={(0, 0)}];
+            2 [at={(1, 2)}];
+            3 [at={(2, 2)}];
+            4 [at={(3, 3)}];
+            5 [at={(2, 3)}];
+            6 [at={(3, 4)}];
+
+            1 -- {2,3};
+            2 -- 3;
+            3 -- {4, 5, 6};
+            4 -- 6;
+            5 -- 6;
+        };
+    \end{tikzpicture}
+\end{figure}
+
 
 \subsection{Most}
 Nazvěme most hranu $e\in E(G)$, že $\bc{e}$ je hranový řez.
@@ -26,5 +49,5 @@ Každý most má alespoň jeden krajní vrchol, který je \hyperref[artikulace]{
 \end{flalign*}
 
 \subsection{Tvrzení o hranové a vrcholové souvislosti}
-Platí, že $\lambda(G) \leq \kappa(G)$.
-% TODO: dodělat z nahrávky
+Platí, že $\kappa(G) \leq \lambda(G)$.
+% TODO: přepsat ze skript

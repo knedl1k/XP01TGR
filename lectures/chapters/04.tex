@@ -1,0 +1,49 @@
+\section{Extremální teorie}
+\subsection{Věta o souvislosti vrcholů a hran (Mantel)}
+Máme $G \in \S$ s $n$ vrcholy, $m$ hranami, který nemá $K_3$. Pak $m \leq \frac{n^2}{4}$.
+
+\bb{Důkaz}.\\
+\bb{Definice}. Množina $A$ je nezávislá $A \subseteq V(G)$ pokud pro každou $e = \bc{u, v}$, jestliže $u \in A$, platí 
+$v \not\in e$. \ii{Množina $A$ je nezávislá právě tehdy, když v ní žádné dva vrcholy nejsou spojené hranou.}
+
+Ať $A$ je nejpočetnější nezávislá množina a $B = V \setminus A$. $G$ nemá $K_3$: každá množina sousedů vrcholů $v \in V$
+je nezávislá množina.
+\begin{equation}
+    m \leq \sum_{N \in B}d(v) \leq \underbrace{(n-k)}_{|B|} \cdot \underbrace{k}_{|A|}
+\end{equation}
+Každá hrana má alespoň 1 krajní vrchol v $B$. Pro které $k$ je $(n-k)k$ největší?
+\begin{align*}
+    f(x) &= (n-x)x\\
+    f^\prime(x) &= n-2x \implies f^\prime(x) = 0 \iff x = \frac{n}{2}\\
+    f^{\prime \prime}(x) &= -2\\
+\end{align*}
+Protože jsme v $\N$, tak $\ceil*{\frac{n}{2}} \cdot \floor*{\frac{n}{2}} = \frac{n+1}{2} \frac{n-1}{2} = \frac{n^2-1}{4} 
+\leq \frac{n^2}{4}$.
+\hspace{\fill}\qed
+
+\subsection{Věta o souvislosti hran a úplném grafu}
+Máme $G \in \S$, který neobsahuje $K_{r+1}$ (úplný graf na $r+1$ vrcholech), $r \geq 2$. Pak
+\begin{equation}
+    m \leq \frac{r-1}{r} \frac{n^2}{2}.
+\end{equation}
+\bb{Důkaz}. Vezměme graf $G$ bez $K_{r+1}$ s nejméně hranami (přidáním hrany by vznikl $K_{r+1}$). Tedy $G$ má $K_r$.
+Ať $A$ je množina vrcholů $K_r$ a $B$ je $V(G) \setminus A$, $|B| = n -r$. Každý vrchol $v \in B$ má max $r-1$ sousedů v
+$A$ (jinak by $A \cup \bc{u}$ tvořil $K_{r+1}$).
+
+$m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \colorbox{black!30}{hrany mezi $A$ a $B$} a 
+\colorbox{black!20!yellow}{hrany v $B$}.
+\begin{equation}
+    m = m_A + m_{A-B} + m_B \leq \frac{r(r-1)}{2} + (n-r)(r-1) + m_B
+\end{equation}
+a graf indukovaný $B$ neobsahuje $K_{r+1}$ a má maximální počet hran.
+\begin{align*}
+    m_B &< m \\
+    n-r = |B| &< n
+\end{align*}
+Když budeme mít indukční předpoklad pro $G_B$, pak:
+\begin{align}
+    m &\leq \frac{r(r-1)}{2} + (n-r)(r-1) + \frac{r-1}{n}\frac{(n-r)^2}{2} \\
+    &= \frac{r-1}{r}\left(\frac{r^2}{2} + r(n-r) + \frac{(n-r)^2}{2}\right) \\
+    &= \frac{r-1}{r}\left(\frac{r^2 + 2rn + n^2 -2nr + r^2}{2}\right) = \frac{r-1}{r} \frac{n^2}{2}
+\end{align}
+\hspace{\fill}\qed
