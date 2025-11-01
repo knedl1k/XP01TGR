@@ -1,0 +1,74 @@
+\section{Orientované grafy}
+\subsection{Minimálně silně souvislý graf}
+Silně souvislý graf se nazývá minimálně silně souvislý, jestliže $G \setminus \bc{e}$ není silně souvislý pro každou 
+hranu $e \in E(G)$.
+% TODO: obrázek s příkladem
+
+\subsection{Věta o minimálně silně souvislém grafu a jeho vrcholech}
+Každý minimálně silně souvislý graf $G$ s alespoň 2 vrcholy má 2 vrcholy stupně 2.\\
+Důkaz. Indukcí podle rozdílu $k = m -n$, kde $m$ je počet hran a $n$ počet vrcholů.
+\begin{itemize}
+    \item Základní krok. $k=0$, tj. $m=n$. Takže se jedná o cyklus. Všechny vrcholy cyklu mají stupeň 2.
+    \item Indukční krok. Každý graf $G$ (minimálně silně souvislý s $m(G) - n(G) < k$) má 2 vrcholy stupně 2. \\
+    Uvažujme $G$ minimálně silně souvislý s $m-n = k >0$. V $G$ si vybereme cyklus $C$ s největším počtem hran (tedy 
+    vrcholů). $C$ má $l$ vrcholů:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+        >=Stealth, % Styl šipek
+        thick,     % Tloušťka čar
+        ]
+        
+        \graph [
+            % Všechny uzly budou ve výchozím stavu bez okraje
+            nodes={draw=none, fill=none} 
+        ] {
+            v   [at={(-2, 1)}, as={$v$}];
+            x1  [at={(0, 2)}, as={$x_1$}];
+            x2  [at={(2.5, 3.5)}, as={$x_2$}];
+            xl  [at={(0, 2)}, as={$x_l$}];
+            x3  [at={(4.5, 4.5)}, as={$x_3$}];
+            x4  [at={(4.5, 4)}, as={$x_4$}];
+            dots [at={(2.25, 5)}, as={$\dots$}];
+            w  [at={(7, 6)}, as={$w$}];
+            
+            xl ->[black, solid, ->] x1;
+            x1 ->[black, solid, ->, bend right=20] x2;
+            x3 ->[black, solid, ->] x4;
+            x4 ->[orange, solid, ->] w;
+            v  ->[green!50!black, solid, ->] x1; 
+            v  ->[green!50!black, dashed, ->, bend left=20] x2;
+            x2 ->[black, solid, ->, bend right=20] x3;
+        };
+        \end{tikzpicture}
+    \end{figure}
+    \textcolor{green!50!black}{$\forall v \not\in C$ existuje maximálně 1 hrana $(v, x_i), x_i \in C$.} \\
+    \textcolor{orange}{$\forall w \not\in C$ existuje maximálně 1 hrana $(x_j, w), x_j \in C$.}
+
+    Vytvořme $G^\prime$, což bude $G$, ve kterém nahradíme cyklus $C$ vrcholem $v_C$.
+    \begin{equation*}
+        m(G^\prime) - n(G^\prime) = m - l - (n-l+1) = m-n-1 = k-1
+    \end{equation*}
+    \hspace{\fill}\qed\\
+    $G^\prime$ má alespoň 2 vrcholy stupně 2, není-li ani jeden z nich $v_C$, jsou to vrcholy $G$ stupně 2. Když 
+    $G\prime$ bude mít pouze 2 vrcholy, $v_C$ a $x$, stupně 2, tak musíme řešit 2 případy:
+    \begin{enumerate}[1)]
+        \item Když má cyklus alespoň 3 vrcholy ($l \geq 3$), pak v $C$ existuje vrchol stupně 2.
+        \item Když $C$ má jen 2 vrcholy, když se zkombinují orientované hrany do neorientovaných, tak se jedná o strom. 
+        A každý strom s alespoň 2 vrcholy má 2 listy, tj. vrcholy stupně 1. A to jsou přesně ty 2 vrcholy stupně 2, 
+        které hledáme.
+    \end{enumerate}
+    \vspace{-1em}
+    \hspace{\fill}\qed
+\end{itemize}
+
+\subsection{Algoritmus pro nalezení topologického očíslování}
+Algoritmus pro nalezení topologického očíslování v acyklickém grafu. \\
+\ii{Pozn.: Každý acyklický graf má alespoň 1 vrchol se stupněm 0.}
+\begin{enumerate}[1)]
+    \item Spočítáme vstupní stupně vrcholů. Do množiny $M$ vložíme všechny $v$ s $d^{-}(v)=0$, $i=1$.
+    \item Vybereme $v_i \in M$ a odstraníme. Pro každé $(v_i,w) \in E$: $d^-(w) \coloneq d^-(w)-1$, if $d^-(w)=0$, pak 
+    $M \coloneq M \cup \bc{w}$. $i++$.
+    \item Algoritmus končí pokud $M = \emptyset$ a zároveň existuje alespoň jeden vrchol $u$ s $d^-(u) > 0$, pak 
+    topologické očíslování neexistuje, nebo jsou všechny vrcholy topologicky očíslované. 
+\end{enumerate}

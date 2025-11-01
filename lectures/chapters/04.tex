@@ -31,7 +31,7 @@ Ať $A$ je množina vrcholů $K_r$ a $B$ je $V(G) \setminus A$, $|B| = n -r$. Ka
 $A$ (jinak by $A \cup \bc{u}$ tvořil $K_{r+1}$).
 
 $m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \colorbox{black!30}{hrany mezi $A$ a $B$} a 
-\colorbox{black!20!yellow}{hrany v $B$}.
+\colorbox{black!20!yellow}{hrany v $B$}. % TODO: dodělat nákres
 \begin{equation}
     m = m_A + m_{A-B} + m_B \leq \frac{r(r-1)}{2} + (n-r)(r-1) + m_B
 \end{equation}
@@ -40,10 +40,106 @@ a graf indukovaný $B$ neobsahuje $K_{r+1}$ a má maximální počet hran.
     m_B &< m \\
     n-r = |B| &< n
 \end{align*}
-Když budeme mít indukční předpoklad pro $G_B$, pak:
-\begin{align}
-    m &\leq \frac{r(r-1)}{2} + (n-r)(r-1) + \frac{r-1}{n}\frac{(n-r)^2}{2} \\
-    &= \frac{r-1}{r}\left(\frac{r^2}{2} + r(n-r) + \frac{(n-r)^2}{2}\right) \\
-    &= \frac{r-1}{r}\left(\frac{r^2 + 2rn + n^2 -2nr + r^2}{2}\right) = \frac{r-1}{r} \frac{n^2}{2}
-\end{align}
+Použijme tedy silnou indukci, dle počtu vrcholů $n = |V(G)|$.
+\begin{itemize}
+    \item Základní krok. $n=1, 2,  \dots, r$. 
+        \begin{align*}
+            m &\leq \frac{n(n-1)}{2} \\
+            \frac{n(n-1)}{2}&\overset{?}{\leq}\frac{r-1}{r}\frac{n^2}{2} \\
+            \frac{r-1}{r}\frac{n^2}{2} - \frac{n(n-1)}{2} &= \frac{n}{2}\left(n \frac{r-1}{r}-(n-1)\right) \\
+            &= \frac{n}{2}\frac{nr -n -nr +r}{r} = \frac{n}{2}\frac{\overbrace{r-n}^{\geq 0}}{\underbrace{r}_{\geq 0}}
+            \geq 0.
+        \end{align*}
+    \item Když budeme mít indukční předpoklad pro $G_B$, pak:
+        \begin{align}
+            m &\leq \frac{r(r-1)}{2} + (n-r)(r-1) + \frac{r-1}{n}\frac{(n-r)^2}{2} \\
+            &= \frac{r-1}{r}\left(\frac{r^2}{2} + r(n-r) + \frac{(n-r)^2}{2}\right) \\
+            &= \frac{r-1}{r}\left(\frac{r^2 + 2rn + n^2 -2nr + r^2}{2}\right) = \frac{r-1}{r} \frac{n^2}{2}.
+        \end{align}
+\end{itemize}
+\hspace{\fill}\qed
+
+\subsection{Turánovy grafy}\label{turan}
+Pro $n$, $r < n$. $T(n,r)$ je $r$-partitní úplný graf. Označíme-li strany $S_1, \dots, S_r$, pak $|S_i - S_j| \leq 1$,
+$|S_i| = \floor*{\frac{n}{r}}$ nebo $\ceil*{\frac{n}{r}}$. Takový graf má potom
+\[
+    \frac{r(r-1)}{2}\left(\frac{n}{r}\right)^2 = \frac{r-1}{r}\frac{n^2}{2}, \, n=k \cdot r,
+\]
+hran.
+
+\subsection{Tvrzení počtu hran a Turánově grafu}
+Každý $G = (v,E) \in \S$ bez $K_{r+1}$ s největším počtem hran je $T(n,r)$.
+
+Důkaz. Na $V$ definujme $\R$: $u\R v \iff \bc{u,v} \not\in E$.\\
+$\R$ je reflexivní, protože nemáme smyčky. $\R$ je symetrické, protože se jedná o neorientovaný graf. Teď je potřeba 
+ověřit tranzitivitu, tj. $\left(\bc{x,y} \not\in E, \bc{y,z} \not\in E\right) \implies \bc{x,z} \not\in E$. \\
+Dokažme sporem. Kdyby $\bc{x,y} \not\in E$ a $\bc{y,z} \not\in E$ a $\bc{x,z} \in E$.
+\begin{enumerate}[1)]
+    \item $d(y) \geq d(x)$ (obdobně $d(y) \geq d(z)$). Sporem. Kdyby $d(y) < d(x)$.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=1, dot/.style={circle, fill=black, inner sep=1pt, minimum size=4pt}]
+                \node[dot, label=left:$x$] (x) at (0,0) {};
+                \node[dot, label=below:$y$] (y) at (1,-1) {};
+                \node[dot, label=right:$z$] (z) at (2,0) {};
+
+                \node[dot] (a) at (-1, -0.5) {};
+                \node[dot] (b) at (-0.5, -0.9) {};
+                \node[dot] (c) at (-0.2, -1.4) {};
+                \node[dot] (d) at (0.6, -1.7) {};
+                \node[dot] (e) at (1.4, -1.7) {};
+
+                \draw [black!30!yellow] (x) to (a);
+                \draw [black!30!yellow] (x) to (b);
+                \draw [black!30!yellow] (x) to (c);
+
+                \draw [black!30!green] (y) to (b);
+                \draw [black!30!green] (y) to (c);
+                \draw [black!30!yellow] (y) to (d);
+                \draw [black!30!yellow] (y) to (e);
+
+                \draw[thick, white!50!black, decorate, decoration={crosses, segment length=4pt}] (x) to (y);
+                \draw[thick, white!50!black, decorate, decoration={crosses, segment length=4pt}] (z) to (y);
+                \draw[thick, black, bend left] (x) to (z);
+            \end{tikzpicture}
+        \end{figure}
+        \textcolor{black!30!yellow}{Neighbourhood} $N(v) = \bc{u \mid \bc{u,v} \in E}$. \\ \textcolor{black!30!green}{Z 
+        $G$ odstraníme hrany $\bc{y,t}, t \in N(y)$ a přidáme $\bc{y,u}, u \in N(x)$. Tím dostaneme $G^\prime$, to má 
+        více hran jak $G$.} \\
+        $G^\prime$ nemá $K_{r+1}$, protože ani původní graf nebyl $K_{r+1}$. Což je spor.
+        \hspace{\fill}\qed
+    \item $G^{\prime \prime} = G \setminus \bc{x,y,z}$. $m(G) \leq m(G^\prime) + d(x) + d(y) + d(z) - 1$ ($-1$ za hranu 
+        $\bc{x,z}$).
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=1, dot/.style={circle, fill=black, inner sep=1pt, minimum size=4pt}]
+                \node[dot, label=left:$x$] (x) at (0,0) {};
+                \node[dot, label=below:$y$] (y) at (1,-1) {};
+                \node[dot, label=right:$z$] (z) at (2,0) {};
+
+                \draw[thick, white!50!black, decorate, decoration={crosses, segment length=4pt}] (x) to (y);
+                \draw[thick, white!50!black, decorate, decoration={crosses, segment length=4pt}] (z) to (y);
+                \draw[thick, black, bend left] (x) to (z);
+            \end{tikzpicture}
+        \end{figure}
+        $G^{\prime \prime \prime}$ z $G$ odstraníme hrany $\bc{x,t}, t \in N(x)$ a $\bc{z,v}, v \in N(z)$ a přidáme 
+        hrany $\bc{x,u}, u \in N(y)$ a $\bc{z,u}, u \in N(y)$.
+        \begin{equation*}
+            m(G^{\prime \prime \prime}) = m(G^{\prime \prime}) + 3d(y) > m(G^{\prime \prime}) + d(x) + d(y) + d(z) - 1
+            \geq m(G)
+        \end{equation*}
+        $G^{\prime \prime}$ nemá $K_{r+1}$, což je spor.
+        \hspace{\fill}\qed
+\end{enumerate}
+$\R$ je tedy ekvivalence. Třídy ekvivalence $\R$ jsou maximální množiny, že graf jimi indukovaný nemá hranu. $G$ má 
+nejvíce hran, tj. $G$ má $K_r$, stran má $r$, je tedy úplný $r$-partitní graf.
+
+Potřebujeme $||S_i| - |S_j|| \leq 1$. Dokažme sporem. Kdyby ne, tak $|S_1| \geq |S_2| + 2$. Označme $|S_1| = n_1$ a 
+$|S_2| = n_2$.
+
+Graf měl původně $n_1 \cdot n_2$ hran. Nově má
+\begin{equation*}
+    (n_1 - 1)(n_2 + 1) = n_1n_2 \underbrace{\underbrace{- n_2 + n_1}_{\geq 2} - 1}_{\geq 1}.
+\end{equation*}
+A to je \hyperref[turan]{Turánův} graf.
 \hspace{\fill}\qed
