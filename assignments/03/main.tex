@@ -24,7 +24,47 @@
     Jestliže ano, pro každé $n$ takový graf zkonstruujte; jestliže ne, zdůvodněte, proč takový graf nemůže existovat.
 \end{exercise}
 \begin{solution}
+    Nejdříve ověřme, že tvrzení platí pro $n=5$. Zvolme $C_5$ jako kružnici na 5 vrcholech. Protože je kružnicí, tak je 
+    určitě 2-souvislá, protože nemá artikulaci a je souvislá. Má 5 vrcholů a 5 hran, což odpovídá $2 \cdot 5 - 5 = 5$ 
+    počtu hran. Průměr $\diam(C_5) = \floor*{\frac{5}{2}} = 2$ také sedí zadání.
 
+    Pro $n \geq 6$ zkonstruujme graf $G_n$ tak, že vezmeme 5 vrcholů $v_1, v_2, \dots, v_5$ a spojíme je do kružnice 
+    $C_5$. Máme tedy 5 vrcholů a 5 hran. Označme si zbývající počet vrcholů jako $k = n - 5$. Přidejme zbývající vrcholy
+    $u_1, u_2, \dots, u_k$. Každý z těchto $k$ vrcholů připojíme dvěma hranami k jedné konkrétní dvojici vrcholů, na 
+    $C_5$. Tato dvojice vrcholů nesmí být vzájemně sousední. Vyberme například dvojici $v_1$ a $v_3$. Pak pro 
+    $i=1, 2, \dots, k$ přidáme hrany $(u_i, v_1)$ a $(u_i, v_3)$. Teď máme $n$ vrcholů a $5+2k$ hran.
+
+    Ověřme, zda takto zkonstruovaný graf splňuje požadavky.
+    \vspace{-1em}
+    \begin{enumerate}[1)]
+        \item \bb{Počet hran}. Máme $5+2k$ hran, tedy $5 + 2(n-5) = 2n-5$ hran, to jsme přesně chtěli.
+        \item \bb{2-souvislost}. Tzn. musíme ukázat, že graf nemá artikulaci. Ověřme tedy indukcí: Odeberme $u_i$; graf 
+        $G_{n-1}$, který zbyde, má stejnou strukturu, jen o jeden připojený vrchol méně. Postupujme dále až k $n=6$, to
+        nám zbyde původní $C_5$ s jedním $u_1$, který je očividně souvislý. Odebrání $u_i$ tedy graf nerozpojí.
+
+        Zkusme odebrat $v_1$: Zbytek $C_5$ je cesta $v_2, v_3, v_4, v_5$. Všechny vrcholy $u_i$ jsou stále připojeny k
+        $v_3$. Celý zbytek grafu $G_n \setminus v_1$ je tedy souvislý. Analogicky se ukáže pro $v_3$.
+        
+        Anebo odeberme $v_2$, $v_4$, nebo $v_5$. BÚNO vyberme $v_2$. Graf $G_n \setminus v_2$ je cesta 
+        $v_1, v_5, v_4, v_3$. Všechny vrcholy $u_i$ jsou připojeny k $v_1$ i $v_3$. Tedy $G_n \setminus v_2$ je 
+        souvislý.
+
+        Graf je tedy určitě 2-souvislý, protože je souvislý a nemá artikulaci.
+        \item \bb{Průměr $\diam(G)=2$}. Dva vrcholy jsou buď vzájemní sousedé, anebo mají společného souseda. 
+        
+        Jestliže oba vrcholy leží na $C_5$, tak jsme již v případě $n=5$ dokázali, že $\diam(C_5) = 2$. 
+        Jestliže oba vrcholy jsou z připojených vrcholů $u_i$, pak mají zaručeně společné sousedy $v_1$ a $v_3$, tedy
+        $d(u_i, u_j)=2$, pro $i \not= j$. Pokud je jeden z $C_5$ a druhý z $u_i$, pak:
+        \vspace{-0.8em}
+        \begin{itemize}
+            \item je jeden z vrcholů $v_1$, respektive $v_3$, pak jsou sousedé, $d=1$.
+            \item je jeden z vrcholů $v_2$, pak mají společné sousedy $v_1$ a $v_3$, $d(v_2, u_i) = 2$.
+            \item je jeden z vrcholů $v_4$, pak mají společného souseda $v_3$, $d(v_4, u_i) = 2$. Obdobně pro $v_5$.
+        \end{itemize}
+        Takže průměr grafu je 2.
+    \end{enumerate}
+    Ano, pro každé $n \geq 5$ je možné takový graf zkonstruovat.
+    \hspace{\fill}\qed
 \end{solution}
 
 \begin{exercise}
@@ -49,7 +89,12 @@
     Buď tvrzení dokažte, nebo najděte protipříklad.
 \end{exercise}
 \begin{solution}
-    
+    \titlebreak
+    \begin{enumerate}[1)]
+        \item $m \geq n-1$. Protože $G$ je souvislý, znamená to, že v něm ignorujeme orientaci hran. Z definice víme, že
+        jakýkoli souvislý neorientovaný graf s $n$ vrcholy musí mít alespoň $n-1$ hran. Tedy nutně platí $m \geq n-1$.
+        \item $m \leq (n-1)^2$.
+    \end{enumerate}
 \end{solution}
 
 \end{document}
