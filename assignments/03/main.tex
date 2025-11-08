@@ -14,13 +14,8 @@
 
 \begin{exercise}
     Je dáno číslo $n \geq 5$. Je možné pro každé takové $n$ zkonstruovat 2-souvislý prostý neorientovaný graf $G$ bez 
-    smyček, který má
-    \vspace{-1em}
-    \begin{itemize}[noitemsep]
-        \item průměr $\diam(G)$ roven 2,
-        \item a má $2n-5$ hran?
-    \end{itemize}
-    \vspace{-1em}
+    smyček, který má průměr $\diam(G)$ roven 2  a má $2n-5$ hran?
+
     Jestliže ano, pro každé $n$ takový graf zkonstruujte; jestliže ne, zdůvodněte, proč takový graf nemůže existovat.
 \end{exercise}
 \begin{solution}
@@ -32,7 +27,7 @@
     $C_5$. Máme tedy 5 vrcholů a 5 hran. Označme si zbývající počet vrcholů jako $k = n - 5$. Přidejme zbývající vrcholy
     $u_1, u_2, \dots, u_k$. Každý z těchto $k$ vrcholů připojíme dvěma hranami k jedné konkrétní dvojici vrcholů, na 
     $C_5$. Tato dvojice vrcholů nesmí být vzájemně sousední. Vyberme například dvojici $v_1$ a $v_3$. Pak pro 
-    $i=1, 2, \dots, k$ přidáme hrany $(u_i, v_1)$ a $(u_i, v_3)$. Teď máme $n$ vrcholů a $5+2k$ hran.
+    $i=1, 2, \dots, k$ přidáme hrany $(u_i, v_1)$ a $(u_i, v_3)$. % Teď máme $n$ vrcholů a $5+2k$ hran.
 
     Ověřme, zda takto zkonstruovaný graf splňuje požadavky.
     \vspace{-1em}
@@ -50,7 +45,7 @@
         souvislý.
 
         Graf je tedy určitě 2-souvislý, protože je souvislý a nemá artikulaci.
-        \item \bb{Průměr $\diam(G)=2$}. Dva vrcholy jsou buď vzájemní sousedé, anebo mají společného souseda. 
+        \item \bb{Průměr $\diam(G)=2$}. Vrcholy jsou buď vzájemní sousedé, anebo mají společného souseda. 
         
         Jestliže oba vrcholy leží na $C_5$, tak jsme již v případě $n=5$ dokázali, že $\diam(C_5) = 2$. 
         Jestliže oba vrcholy jsou z připojených vrcholů $u_i$, pak mají zaručeně společné sousedy $v_1$ a $v_3$, tedy
@@ -61,8 +56,10 @@
             \item je jeden z vrcholů $v_2$, pak mají společné sousedy $v_1$ a $v_3$, $d(v_2, u_i) = 2$.
             \item je jeden z vrcholů $v_4$, pak mají společného souseda $v_3$, $d(v_4, u_i) = 2$. Obdobně pro $v_5$.
         \end{itemize}
+        \vspace{-0.8em}
         Takže průměr grafu je 2.
     \end{enumerate}
+    \vspace{-1em}
     Ano, pro každé $n \geq 5$ je možné takový graf zkonstruovat.
     \hspace{\fill}\qed
 \end{solution}
@@ -109,10 +106,11 @@
         $G \setminus \bc{y,z}$, hrana $(x,w)$ je tedy hrana v $G \setminus \bc{y,z}$, a to je spor s tím, že 
         $G \setminus \bc{y,z}$ \ii{musí} být nezávislá množina.
     \end{enumerate}
+    \vspace{-1em}
     Ve všech případech jsme došli ke sporu. Náš původní předpoklad, že tvrzení neplatí, musí být nepravdivý.
     \hspace{\fill}\qed
 \end{solution}
-
+\newpage
 \begin{exercise}
     Je dán prostý orientovaný graf $G$ bez smyček s $n$ vrcholy a $m$ hranami.\\
     Dokažte nebo vyvraťte: Je-li $G$ souvislý, ale ne silně souvislý, pak platí
@@ -122,7 +120,54 @@
     Buď tvrzení dokažte, nebo najděte protipříklad.
 \end{exercise}
 \begin{solution}
+    Dokažme jednotlivé meze.
+    \begin{enumerate}[1)]
+        \item \ii{Dolní mez $m \geq n-1$}. To již plyne z toho, že $G$ je souvislý, respektive, že $G^\prime$, který 
+        vznikl tím, že jsme odstranili orientaci z hran $G$, je souvislý. Graf $G^\prime$ má stejný počet vrcholů a hran 
+        jako graf $G$. A z definice víme, že jakýkoliv neorientovaný souvislý graf s $n$ vrcholy musí mít alespoň $n-1$ 
+        hran.
+        \item \ii{Horní mez $m \geq (n-1)^2$}. Využijme toho, že $G$ není silně souvislý. To totiž znamená, že jeho 
+        vrcholy $V$ lze rozdělit na dvě neprázdné, disjuktní podmnožiny, nazvěme je $A$ a $B$, takové, že \ii{neexistuje 
+        žádná hrana vedoucí z $B$ do $A$}. Chceme najít maximální možný počet hran $m$ takového grafu. Počet hran 
+        maximalizujeme, pokud přidáme všechny hrany, které nejsou zakázané, tj. hrany z $B$ do $A$. Nechť $|A| = p$ a 
+        $|B| = q$, kde $p+q = n$ a $p,q \geq 1$.
 
+        Maximální počet hran je součtem:
+        \begin{itemize}
+            \item \ii{Hran uvnitř $A$}: V $G$ nejsou smyčky, maximální počet hran v $A$ je $p(p-1)$.
+            \item \ii{Hran uvnitř $B$}: Obdobně jako pro $A$ $\rightarrow$ $q(q-1)$.
+            \item \ii{Hran z $A$ do $B$}: Maximální počet hran je $p \cdot q$.
+            \item \ii{Hran z $B$ do $A$}: Podle našeho předpokladu $0$.
+        \end{itemize}
+        Celkový maximální počet hran $m_{\max}$ pro graf, který není silně souvislý, je tedy:
+        \begin{equation}
+            m \leq p(p-1) + q(q-1) + pq
+        \end{equation}
+        Upravme dosazením $q = n-p$:
+        \begin{align}
+            m &\leq p(p-1) + (n-p)(n-p-1) + p(n-p) \\
+            m &\leq p^2 - p + (n^2 -np -n -np + p^2 + p) + (np - p^2) \\
+            m &\leq (p^2 + p^2 - p^2) + (-p + p) + (-np -np + np) + n^2 - n \\
+            m &\leq p^2 -np + n^2 -n
+        \end{align}
+        Protože maximalizujeme funkci $f(p) = p^2 -np + n^2 -n$ pro $p \in \bc{1, 2, \dots, n-1}$, která je konvexní 
+        kvadratickou funkcí, svého maxima nabývá v krajních bodech.
+        \begin{itemize}
+            \item \ii{Pro $p=1$}: 
+            \begin{equation}
+                m \leq 1^2 - n(1) + n^2 -n = 1 -n+ n^2 -n = n^2 -2n + 1 = (n-1)^2
+            \end{equation}
+            \item \ii{Pro $p=n-1$}:
+            \begin{align}
+                m &\leq (n-1)^2 - n(n-1) + (n^2 - n)m \\
+                &\leq (n^2 -2n + 1) - (n^2 - n) + (n^2 -n)m \\
+                &\leq n^2 -2n + 1 = (n-1)^2
+            \end{align}
+            Takže maximální možný počet hran v grafu, který není silně souvislý, je $(n-1)^2$. Z toho plyne, že 
+            $m \geq (n-1)^2$.
+        \end{itemize}
+    \end{enumerate}
+    \hspace{\fill}\qed
 \end{solution}
 
 \end{document}
