@@ -1,0 +1,69 @@
+\section{Hamiltonovské grafy}
+\subsection{Cesta, kružnice, cyklus}\label{hamKru}
+Cesta (kružnice, cyklus) je hamiltonovská(ský), jestliže prochází všemi vrcholy.
+
+\subsection{(Ne)orientovaný graf}
+(Ne)orientovaný graf je Hamiltonovský, jestliže obsahuje hamiltonovský(skou) cyklus (kružnici).
+
+\subsection{Chvátalova věta o Hamiltonovském grafu}\label{chvatal}
+Máme $G \in \S$, $n \geq 3$, se skóre $d_1 \leq d_2 \leq \dots \leq d_n$, $n = |V|$. Jestliže pro nějaké $k < 
+\frac{n}{2}$ platí $d_k \leq k$, a pak $d_{n-k} \geq n-k$, tak $G$ je Hamiltonovský.
+
+Důkaz. Sporem. Předpokládejme, že existuje $G \in \S$, $n \geq 3$, $G$ splňuje $k < \frac{n}{2}$ platí $d_k \leq k$, a 
+pak $d_{n-k} \geq n-k$ a $G$ není Hamiltonovský.
+
+Když ke $G$ splňující Chvátalovu podmínku přidáme hranu, která v $G$ není, tak nový graf stále splňuje Chvátalovu 
+podmínku.
+
+Zvolíme $G$ s Chvátalovou podmínkou maximální bez Hamiltonovské kružnice. Zvolme $x,y: \, \bc{x,y} \not\in E$, $d(x) + 
+d(y)$ je největší mezi $\bc{u,v} \not\in E$, $d(x) \leq d(y)$. V $G$ existuje Hamiltonovská cesta z $x$ do $y$.
+% TODO: nákres
+Označme
+\begin{align*}
+    S &\coloneq \bc{ i \mid \bc{x, v_{i+1}} \in E} \in 1, \\
+    T &\coloneq \bc{ j \mid \bc{v_j, y} \in E} \ni n-1,
+\end{align*}
+kde $n \not\in S$, $n \not\in T$.
+\begin{align*}
+    S \cup T \subset \bc{1, \dots, n-1} \\
+    |S| = d(x) \\
+    |T| = d(y)
+\end{align*}
+\bb{Pomocný důkaz}. Platí $S \cap T = \emptyset$.\\
+Důkaz. Kdyby $i \in S \cap T$, tak se jedná o hamiltonovskou kružnici. Spor s velkým předpokladem.
+\hspace{\fill}\qed \\
+Takže
+\begin{equation*}
+    |S \cup T| = |S| + |T| = d(x) + d(y) \leq n-1.
+\end{equation*}
+Položme
+\begin{alignat*}{2}
+   k &\coloneq d(x) &\qquad\qquad d(x) &\leq d(y) \\
+   k &< \frac{n}{2} &             2d(x) &\leq d(x) + d(y) \leq n-1
+\end{alignat*}
+A tedy $d(x) \leq \frac{n-1}{2} < \frac{n}{2}$.
+
+Máme $d(x)$ vrcholů $u$, že $\bc{x,y} \in E$.
+\begin{align*}
+    u &= v_l \\
+    \bc{v_{l-1}, y} &\not\in E \\
+    d(v_{l-1}) + d(y) &\leq d(x) + d(y) \\
+    d(v_{l-1}) &\leq d(x) = k
+\end{align*}
+Tj. máme $k$ vrcholů $v_{l-1}$ s $d(v_{l-1}) \leq k$. Platí $d_k \leq k$, protože máme alespoň $k$ vrcholů stupně 
+$\leq k$. Z Chvátalovy podmínky víme, že $d_{n-k} \geq n-k$, tj. existuje $k+1$ vrcholů $w$ s $d(w) \geq n-k$. Ale $x$ 
+má $d(x) = k$. Tedy existuje $w$ s $d(w) = n-k$, že $\bc{x,w} \not\in E$.
+
+$d(x) + d(w) = k+n-k = n$, což je spor s volbou $x$ a $y$, protože $d(x) + d(y) \leq n-1$.
+\hspace{\fill}\qed
+
+\subsection{Věta o skóre grafu a hamiltonovské kružnici}
+Jestliže posloupnost čísel
+\[ 
+    a_1 \leq a_2 \leq \dots \leq a_n \, \text{ nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}},
+\]
+tak existuje
+\[
+    d_1 \leq d_2 \leq \dots \leq d_n, \, a_i \leq d_i,
+\]
+tak, že je skóre grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.

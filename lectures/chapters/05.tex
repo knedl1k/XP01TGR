@@ -15,12 +15,11 @@ Důkaz. Indukcí podle rozdílu $k = m -n$, kde $m$ je počet hran a $n$ počet 
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}[
-        >=Stealth, % Styl šipek
-        thick,     % Tloušťka čar
+        >=Stealth,
+        thick,
         ]
         
         \graph [
-            % Všechny uzly budou ve výchozím stavu bez okraje
             nodes={draw=none, fill=none} 
         ] {
             v   [at={(-2, 1)}, as={$v$}];
@@ -62,7 +61,7 @@ Důkaz. Indukcí podle rozdílu $k = m -n$, kde $m$ je počet hran a $n$ počet 
     \hspace{\fill}\qed
 \end{itemize}
 
-\subsection{Algoritmus pro nalezení topologického očíslování}
+\subsection{Algoritmus pro nalezení topologického očíslování}\label{topo}
 Algoritmus pro nalezení topologického očíslování v acyklickém grafu. \\
 \ii{Pozn.: Každý acyklický graf má alespoň 1 vrchol se stupněm 0.}
 \begin{enumerate}[1)]
@@ -72,3 +71,43 @@ Algoritmus pro nalezení topologického očíslování v acyklickém grafu. \\
     \item Algoritmus končí pokud $M = \emptyset$ a zároveň existuje alespoň jeden vrchol $u$ s $d^-(u) > 0$, pak 
     topologické očíslování neexistuje, nebo jsou všechny vrcholy topologicky očíslované. 
 \end{enumerate}
+
+\subsection{Tranzitivní uzávěr}
+Mějme orientovaný graf $G$. $G^t$ je tranzitivní uzávěr, když $G = (V, E)$, tak $G^t = (V,E^t)$, kde $(u,v) \in E^t$, 
+právě tehdy, když existuje netriviální orientovaná cesta z $u$ do $v$.
+
+Platí, že $G$ je silně souvislý $\iff$ $G^t$ je úplný orientovaný graf se všemi smyčkami.
+
+\subsection{Reflexivní a tranzitivní uzávěr}
+$G^\star$ je reflexivní a tranzitivní uzávěr $G^\star = (V, E^\star)$, $E^\star = E^t \cup \bc{(u,v) \mid u \in V}$.
+
+\ii{Lze také říct, že platí to samé, jako pro tranzitivní uzávěr, jen vyškrtneme \bb{netriviální}.}
+
+\subsection{Tranzitivní redukce}
+$G = (V,E)$ je orientovaný graf. Jeho podgaf $G^\prime = (V, E^\prime)$ je transitivní redukce $G$ pokud $G^t = 
+\left(G^\prime\right)^t$, a žádný vlastní podgraf této redukce $G^{\prime \prime}$ již nemá tuto vlastnost.
+
+% TODO: příklad redukce
+
+\subsection{Souvislost acyklických grafů a trazitivní redukce}
+Je-li $G \in \S$ acyklický, pak má jedinou tranzitivní redukci.\\
+Důkaz. Sporem. Mějme $G$ acyklický, tedy má \hyperref[topo]{topologické očíslování} vrcholů $v_1, v_2, \dots, v_{n-1}, 
+v_n$.
+
+Kdyby $G_1 = (V, E_1), G_2 = (V, E_2)$ byly 2 různé tranzitivní redukce, tak
+\begin{equation*}
+    (E_1 \setminus E_2) \cup (E_2 \setminus E_1) \not= \emptyset.
+\end{equation*}
+Vyberme z $(E_1 \setminus E_2) \cup (E_2 \setminus E_1)$ hranu $e = (v_i, v_j)$, $i < j$, která má nejmenší rozdíl 
+$j - i$. \\ BÚNO: $e \in (E_1 \setminus E_2)$, tedy $e \not\in E_2$, ale $e \in E_2^t$. Tj. musí existovat v $G_2$ cesta 
+z $v_i$ do $v_j$, která má alespoň 2 hrany.
+\[
+    v_i, e_1, e_2, \dots, e_k, v_j, \, k \geq 2.
+\]
+$G_1$ tam je z redukce, tak alespoň $e_a$, $a=1, \dots, k$ není v $E_1$.
+\begin{align*}
+    e_a &= (v_a, v_b), \, a < b. \\
+    i &\leq a < b \leq j
+\end{align*}
+Alespoň jedna z $\leq$ je ve skutečnosti $<$, tedy $b-a < j-i$. Což je spor.
+\hspace{\fill}\qed
