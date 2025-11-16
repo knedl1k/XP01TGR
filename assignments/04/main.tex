@@ -13,151 +13,149 @@
 \maketitle
 
 \begin{exercise}
-    Najděte příklad orientovaného grafu \bb{se dvěma tranzitivními redukcemi o různém počtu hran}, který má nejmenší 
-    počet vrcholů.
+Najděte příklad orientovaného grafu \bb{se dvěma tranzitivními redukcemi o různém počtu hran}, který má nejmenší počet 
+vrcholů.
 \end{exercise}
 \begin{solution}
-    % Již víme, že graf $G$ se dvěma tranzitivními redukcemi o různém počtu hran musí obsahovat cyklus, protože acyklické 
-    % grafy mají tranzitivní redukce vždy unikátní.
-    Ať graf $G$ má $n$ vrcholů, pak
+Ať graf $G$ má $n$ vrcholů, pak
+\vspace{-1em}
+\begin{itemize}
+    \item \ii{pro $n=1$ nebo $n=2$} platí, že jediný netriviální případ je graf $a \leftrightarrow b$, jehož unikátní 
+    redukce je on sám.
+    \item \ii{pro $n=3$} platí, že aby redukce nebyla unikátní, musí graf mít silně souvislou komponentu. Uvažme tedy 
+    úplný graf $K_3$. Jeho tranzitivní redukce jsou minimální grafy, jejichž uzávěr je $K_3$. Takové redukce existují 
+    přesně dvě:
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}[c]{0.1\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \graph [layered layout]{
+                    a -> b -> c -> a;
+                };
+            \end{tikzpicture}
+        \end{minipage}%
+        \hspace{0.05\textwidth}
+        \begin{minipage}[c]{0.1\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \graph [layered layout]{
+                    a -> c -> b -> a;
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{figure}
     \vspace{-1em}
-    \begin{itemize}
-        \item \ii{pro $n=1$ nebo $n=2$} platí, že jediný netriviální případ je graf $a \leftrightarrow b$, jehož 
-        unikátní redukce je on sám.
-        \item \ii{pro $n=3$} platí, že aby redukce nebyla unikátní, musí graf mít silně souvislou komponentu. Uvažme 
-        tedy úplný graf $K_3$. Jeho tranzitivní redukce jsou minimální grafy, jejichž uzávěr je $K_3$. Takové redukce 
-        existují přesně dvě:
+    Obě tyto redukce ale mají stejný počet hran, tedy nesplňují podmínku různého počtu hran.
+    \item \ii{pro $n=4$} zkusme vzít úplný graf $K_4$. Tento graf má 12 hran. Tranzitivní uzávěr $K_4$ je $K_4$ sám.
+    Hledáme tedy minimální silně souvislé grafy na 4 vrcholech, jejižch uzávěr je $K_4$.
+    \begin{enumerate}[1)]
+        \item \ii{Tranzitivní redukce $\R_1$} je cyklus délky 4.
         \begin{figure}[H]
             \centering
-            \begin{minipage}[c]{0.1\textwidth}
-                \begin{tikzpicture}[scale=1]
-                    \graph [layered layout]{
-                        a -> b -> c -> a;
-                    };
-                \end{tikzpicture}
-            \end{minipage}%
-            \hspace{0.05\textwidth}
-            \begin{minipage}[c]{0.1\textwidth}
-                \begin{tikzpicture}[scale=1]
-                    \graph [layered layout]{
-                        a -> c -> b -> a;
-                    };
-                \end{tikzpicture}
-            \end{minipage}
+            \begin{tikzpicture}[scale=1]
+                \graph [spring layout, node distance=1cm]{
+                    a -> b;
+                    b -> c;
+                    c -> d;
+                    d -> a;
+                };
+            \end{tikzpicture}
         \end{figure}
         \vspace{-1em}
-        Obě tyto redukce ale mají stejný počet hran, tedy nesplňují podmínku různého počtu hran.
-        \item \ii{pro $n=4$} zkusme vzít úplný graf $K_4$. Tento graf má 12 hran. Tranzitivní uzávěr $K_4$ je $K_4$ sám.
-        Hledáme tedy minimální silně souvislé grafy na 4 vrcholech, jejižch uzávěr je $K_4$.
-        \begin{enumerate}[1)]
-            \item \ii{Tranzitivní redukce $\R_1$} je cyklus délky 4.
-            \begin{figure}[H]
-                \centering
-                \begin{tikzpicture}[scale=1]
-                    \graph [spring layout, node distance=1cm]{
-                        a -> b;
-                        b -> c;
-                        c -> d;
-                        d -> a;
-                    };
-                \end{tikzpicture}
-            \end{figure}
-            \vspace{-1em}
-            Tento graf je očividně minimální a jeho tranzitivním uzávěrem je $K_4$.
-            \item \ii{Tranzitivní redukce $\R_2$} je graf tvořený cyklem délky 3 a cyklem délky 2, které sdílejí jeden 
-            vrchol.
-            \vspace{-1em}
-            \begin{figure}[H]
-                \centering
-                \begin{tikzpicture}[scale=1]
-                    \graph [spring layout, node distance=1cm]{
-                        a -> {b, d};
-                        c -> a;
-                        d -> a;
-                        b -> c;
-                    };
-                \end{tikzpicture}
-            \end{figure}
-            \vspace{-1em}
-            Tento graf je také silně souvislý a jeho uzávěrem je $K_4$. Je také minimální.
-        \end{enumerate}
-        Zjistili jsme tedy, že jakýkoliv graf $G$, jehož uzávěr je $K_4$ má dvě tranzitivní redukce $\R_1$ a $\R_2$ s 
-        počty hran $|E_1| = 4$ a $|E_2| = 5$. A protože jsme ukázali, že pro $n < 4$ takový graf neexistuje, a zároveň 
-        $4 \not= 5$, pak nejmenší možný počet vrcholů je 4.
-    \end{itemize}
+        Tento graf je očividně minimální a jeho tranzitivním uzávěrem je $K_4$.
+        \item \ii{Tranzitivní redukce $\R_2$} je graf tvořený cyklem délky 3 a cyklem délky 2, které sdílejí jeden 
+        vrchol.
+        \vspace{-1em}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \graph [spring layout, node distance=1cm]{
+                    a -> {b, d};
+                    c -> a;
+                    d -> a;
+                    b -> c;
+                };
+            \end{tikzpicture}
+        \end{figure}
+        \vspace{-1em}
+        Tento graf je také silně souvislý a jeho uzávěrem je $K_4$. Je také minimální.
+    \end{enumerate}
+    Zjistili jsme tedy, že jakýkoliv graf $G$, jehož uzávěr je $K_4$ má dvě tranzitivní redukce $\R_1$ a $\R_2$ s počty 
+    hran $|E_1| = 4$ a $|E_2| = 5$. A protože jsme ukázali, že pro $n < 4$ takový graf neexistuje, a zároveň 
+    $4 \not= 5$, pak nejmenší možný počet vrcholů je 4.
+\end{itemize}
 \end{solution}
 
 \begin{exercise}
-    Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček s $n$ vrcholy, kde $n$ je sudé. Dokažte, nebo vyvraťte:
+Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček s $n$ vrcholy, kde $n$ je sudé. Dokažte, nebo vyvraťte:
 
-    Jestliže každý vrchol grafu $G$ má stupeň $d = \frac{n}{2}$, pak $G$ je úplný bipartitní graf se stranami o 
-    $\frac{n}{2}$ vrcholech.
+Jestliže každý vrchol grafu $G$ má stupeň $d = \frac{n}{2}$, pak $G$ je úplný bipartitní graf se stranami o 
+$\frac{n}{2}$ vrcholech.
 \end{exercise}
 \begin{solution}
-    Ověřme situaci pro $n=6$. Počet vrcholů je sudý. Požadovaný stupeň každého vrcholu $d = 3$, tedy hledáme 3-regulární
-    graf na 6 vrcholech.
+Ověřme situaci pro $n=6$. Počet vrcholů je sudý. Požadovaný stupeň každého vrcholu $d = 3$, tedy hledáme 3-regulární 
+graf na 6 vrcholech.
 
-    Tvrzení říká, že každo takový graf musí být $K_{\frac{n}{2}, \frac{n}{2}}$, takže v tomto případě $K_{3,3}$. Zkusme
-    najít 3-regulární graf na 6 vrcholech, který \ii{není} $K_{3,3}$.
+Tvrzení říká, že každo takový graf musí být $K_{\frac{n}{2}, \frac{n}{2}}$, takže v tomto případě $K_{3,3}$. Zkusme 
+najít 3-regulární graf na 6 vrcholech, který \ii{není} $K_{3,3}$.
 
-    Ať $G = (V,E)$, kde $V = \bc{a,b, \dots, f}$ a $E = \{\bc{a,b}, \bc{a,d}, \bc{b,c}, \bc{b,e}, \bc{c,a}, \bc{c,f}, 
-    \bc{d,e}, $ \\ $ \bc{e,f}, \bc{f,d}\}$.
-    \vspace{-1em}
-    \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}[scale=1]
-            \graph [spring layout, node distance=2cm]{
-                a -- {b, d};
-                b -- {c, e};
-                c -- {a, f};
-                d -- e;
-                e -- f;
-                f -- d;
-            };
-        \end{tikzpicture}
-    \end{figure}
-    \vspace{-1em}
-    Ověřme, že graf $G$ splňuje podmínky.
-    \vspace{-1em}
-    \begin{enumerate}[1)]
-        \item Nemá smyčky ani paralelní hrany.
-        \item Má sudý počet vrcholů, $n = 6$.
-        \item Ověřme stupně jednotlivých vrcholů:
-        \vspace{-0.5em}
-        \begin{itemize}
-            \item $d(a) = 3$
-            \item $d(b) = 3$
-            \item $d(c) = 3$
-            \item $d(d) = 3$
-            \item $d(e) = 3$
-            \item $d(f) = 3$
-        \end{itemize}
-        \vspace{-0.5em}
-        Každý vrchol má stupeň $d = 3 = \frac{6}{2}$.
-    \end{enumerate}
-    \vspace{-1em}
-    Pak by $G$ měl být $K_{3,3}$, ověřme. Z definice bipartitního grafu víme, že \ii{nesmí} obsahovat kružnici liché 
-    délky. Náš graf $G$ obsahuje dokonce dvě kružnice délky tři, například
-    \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}[scale=1]
-            \graph [spring layout, node distance=1cm]{
-                d -- e;
-                e -- f;
-                f -- d;
-            };
-        \end{tikzpicture}
-    \end{figure}
-    Takže $G$ není bipartitní, tudíž nemůže být ani úplným bipartitním grafem $K_{3,3}$.
-    \hspace{\fill}\qed
+Ať $G = (V,E)$, kde $V = \bc{a,b, \dots, f}$ a $E = \{\bc{a,b}, \bc{a,d}, \bc{b,c}, \bc{b,e}, \bc{c,a}, \bc{c,f}, 
+\bc{d,e}, $ \\ $ \bc{e,f}, \bc{f,d}\}$.
+\vspace{-1em}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \graph [spring layout, node distance=2cm]{
+            a -- {b, d};
+            b -- {c, e};
+            c -- {a, f};
+            d -- e;
+            e -- f;
+            f -- d;
+        };
+    \end{tikzpicture}
+\end{figure}
+\vspace{-1em}
+Ověřme, že graf $G$ splňuje podmínky.
+\vspace{-1em}
+\begin{enumerate}[1)]
+    \item Nemá smyčky ani paralelní hrany.
+    \item Má sudý počet vrcholů, $n = 6$.
+    \item Ověřme stupně jednotlivých vrcholů:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item $d(a) = 3$
+        \item $d(b) = 3$
+        \item $d(c) = 3$
+        \item $d(d) = 3$
+        \item $d(e) = 3$
+        \item $d(f) = 3$
+    \end{itemize}
+    \vspace{-0.5em}
+    Každý vrchol má stupeň $d = 3 = \frac{6}{2}$.
+\end{enumerate}
+\vspace{-1em}
+Pak by $G$ měl být $K_{3,3}$, ověřme. Z definice bipartitního grafu víme, že \ii{nesmí} obsahovat kružnici liché délky. 
+Náš graf $G$ obsahuje dokonce dvě kružnice délky tři, například
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \graph [spring layout, node distance=1cm]{
+            d -- e;
+            e -- f;
+            f -- d;
+        };
+    \end{tikzpicture}
+\end{figure}
+Takže $G$ není bipartitní, tudíž nemůže být ani úplným bipartitním grafem $K_{3,3}$.
+\hspace{\fill}\qed
 \end{solution}
 \newpage
 \begin{exercise}
-    Je dán prostý souvislý graf $G = (V,E)$ bez smyček s $n \geq 3$ vrcholy. Nechť $x$ a $y$ jsou dva vrcholy grafu, 
-    které nejsou spojeny hranou (tj. $\bc{x,y} \not\in E$) a takové, že $d(x) + d(y) \geq n$. Dokažte, nebo vyvraťte:
+Je dán prostý souvislý graf $G = (V,E)$ bez smyček s $n \geq 3$ vrcholy. Nechť $x$ a $y$ jsou dva vrcholy grafu, které 
+nejsou spojeny hranou (tj. $\bc{x,y} \not\in E$) a takové, že $d(x) + d(y) \geq n$. Dokažte, nebo vyvraťte:
 
-    V $G$ existuje hamiltonovská kružnice právě tehdy, když v $G + \bc{x,y}$ existuje hamiltonovská kružnice. \\
-    (Graf $G + \bc{x,y}$ má stejnou množinu vrcholů jako $G$ a množinu hran rovnu $E \cup \bc{\bc{x,y}}$.)
+V $G$ existuje hamiltonovská kružnice právě tehdy, když v $G + \bc{x,y}$ existuje hamiltonovská kružnice. \\
+(Graf $G + \bc{x,y}$ má stejnou množinu vrcholů jako $G$ a množinu hran rovnu $E \cup \bc{\bc{x,y}}$.)
 \end{exercise}
 \begin{solution}
 
