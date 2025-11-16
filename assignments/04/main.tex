@@ -152,13 +152,57 @@ Takže $G$ není bipartitní, tudíž nemůže být ani úplným bipartitním gr
 \newpage
 \begin{exercise}
 Je dán prostý souvislý graf $G = (V,E)$ bez smyček s $n \geq 3$ vrcholy. Nechť $x$ a $y$ jsou dva vrcholy grafu, které 
-nejsou spojeny hranou (tj. $\bc{x,y} \not\in E$) a takové, že $d(x) + d(y) \geq n$. Dokažte, nebo vyvraťte:
+nejsou spojeny hranou (tj. $\bc{x,y} \not\in E$) a takové, že $d_G(x) + d_G(y) \geq n$. Dokažte, nebo vyvraťte:
 
 V $G$ existuje hamiltonovská kružnice právě tehdy, když v $G + \bc{x,y}$ existuje hamiltonovská kružnice. \\
 (Graf $G + \bc{x,y}$ má stejnou množinu vrcholů jako $G$ a množinu hran rovnu $E \cup \bc{\bc{x,y}}$.)
 \end{exercise}
 \begin{solution}
+\titlebreak
 
+\enquote{$\Rightarrow$}: Předpokládejme, že $G = (V,E)$ má hamiltonovskou kružnici $H$. \\
+Hamiltonovská kružnice $H$ je podgraf $G$, který obsahuje všechny vrcholy $V$ a cyklus tvořený hranami z $E$. Graf 
+$G + \bc{x,y}$ má stejnou množinu vrcholů $V$ a množinu hran $E^\prime = E \cup \bc{\bc{x,y}}$. Takže každá hrana 
+kružnice $H$, která je v $E$, je také v $E^\prime$. A proto $H$ je také hamiltonovskou kružnicí v grafu $G + \bc{x,y}$.
+
+\enquote{$\Leftarrow$}: Předpokládejme, že $G + \bc{x,y}$ má hamiltonovskou kružnici $H^\prime$. \\
+Rozdělme na dvě situace.
+\vspace{-1em}
+\begin{enumerate}[1)]
+    \item \ii{Kružnice $H^\prime$ neobsahuje hranu $\bc{x,y}$}. Pak všechny její hrany musí pocházet z původní množiny 
+    $E$. A protože $H^\prime$ obsahuje všechny vrcholy $V$, je $H^\prime$ hamiltonovskou kružnicí i v grafu $G$.
+    \item \ii{Kružnice $H^\prime$ obsahuje hranu $\bc{x,y}$}. V takovém případě, když hranu $\bc{x,y}$ z $H^\prime$ 
+    odebereme, dostaneme hamiltonovskou cestu $P$ v grafu $G$. Tato cesta vede z $x$ do $y$, respektive naopak, a 
+    navštíví všechny vrcholy $G$. Označme vrcholy na této cestě $P = (v_1, v_2, \dots, v_n)$, kde $v_1 = x$ a $v_n = y$.
+    Všechny hrany $\bc{v_i, v_{i+1}}$, pro $i=1, \dots, n-1$, leží v $E$.
+
+    Definujme množiny indexů sousedů $x$ a $y$ v $G$:
+    \begin{align*}
+        S &= \bc{i \, \middle| \, 1 \leq i \leq n-1 \text{ a } \bc{v_1, v_{i+1} \in E}} \\
+        T &= \bc{i \, \middle| \, 1 \leq i \leq n-1 \text{ a } \bc{v_i, v_n \in E}}
+    \end{align*}
+    Takže velikost $S$ je počet sousedů $v_1$. Protože $\bc{v_1, v_n} \not\in E$, $v_n$, tak všichni sousedé $x$ musí 
+    být na cestě $P$. Počet takových sousedů je $|S| = d_G(x)$. Obdobně platí, že velikost $T$ je počet sousedů $v_n$, a 
+    protože $\bc{v_n, v_1} \not\in E$, tak $|T| = d_G(y)$.
+
+    $S$ i $T$ jsou podmnožinami množiny indexů $\bc{1, 2, \dots, n-1}$, která má $n-1$ prvků. Hledáme $i$ takové, že 
+    $i \in S$ a také $i \in T$, tj. $i \in S \cap T$. \\ Předpokládejme spor, takže $S \cap T = \emptyset$.
+    Víme, že platí
+    \begin{equation}
+        |S \cup T| = |S| + |T| - |S \cap T|.
+    \end{equation}
+    Dosazením získáme 
+    \begin{equation}
+        |S \cup T| = d_G(x) + d_G(y) - 0 = d_G(x) + d_G(y).
+    \end{equation}
+    Ze zadání víme, že $d_G(x) + d_G(y) \geq n$, z čehož plyne $|S \cup T| \geq n$. Což je nutně spor, protože 
+    $S \cup T$ je podmnožinou množiny $\bc{1, 2, \dots, n-1}$, která má $n-1$ prvků. Tudíž nutně platí 
+    $S \cap T \not= \emptyset$. Existuje tedy alespoň jeden index $i$, který je v obou množinách. Díky tomuto indexu $i$ 
+    jsme našli způsob, jak \enquote{překřížit} a spojit konce hamiltonovské cesty $P$ pomocí hran, které zaručeně leží v 
+    $G$, čímž jsme vytvořili kružnici $H$.
+\end{enumerate}
+Obě dvě strany ekvivalence jsou pravdivé, a tedy tvrzení je také pravdivé.
+\hspace{\fill}\qed
 \end{solution}
 
 \end{document}
