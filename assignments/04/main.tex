@@ -94,9 +94,64 @@
     $\frac{n}{2}$ vrcholech.
 \end{exercise}
 \begin{solution}
-    
-\end{solution}
+    Ověřme situaci pro $n=6$. Počet vrcholů je sudý. Požadovaný stupeň každého vrcholu $d = 3$, tedy hledáme 3-regulární
+    graf na 6 vrcholech.
 
+    Tvrzení říká, že každo takový graf musí být $K_{\frac{n}{2}, \frac{n}{2}}$, takže v tomto případě $K_{3,3}$. Zkusme
+    najít 3-regulární graf na 6 vrcholech, který \ii{není} $K_{3,3}$.
+
+    Ať $G = (V,E)$, kde $V = \bc{a,b, \dots, f}$ a $E = \{\bc{a,b}, \bc{a,d}, \bc{b,c}, \bc{b,e}, \bc{c,a}, \bc{c,f}, 
+    \bc{d,e}, $ \\ $ \bc{e,f}, \bc{f,d}\}$.
+    \vspace{-1em}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1]
+            \graph [spring layout, node distance=2cm]{
+                a -- {b, d};
+                b -- {c, e};
+                c -- {a, f};
+                d -- e;
+                e -- f;
+                f -- d;
+            };
+        \end{tikzpicture}
+    \end{figure}
+    \vspace{-1em}
+    Ověřme, že graf $G$ splňuje podmínky.
+    \vspace{-1em}
+    \begin{enumerate}[1)]
+        \item Nemá smyčky ani paralelní hrany.
+        \item Má sudý počet vrcholů, $n = 6$.
+        \item Ověřme stupně jednotlivých vrcholů:
+        \vspace{-0.5em}
+        \begin{itemize}
+            \item $d(a) = 3$
+            \item $d(b) = 3$
+            \item $d(c) = 3$
+            \item $d(d) = 3$
+            \item $d(e) = 3$
+            \item $d(f) = 3$
+        \end{itemize}
+        \vspace{-0.5em}
+        Každý vrchol má stupeň $d = 3 = \frac{6}{2}$.
+    \end{enumerate}
+    \vspace{-1em}
+    Pak by $G$ měl být $K_{3,3}$, ověřme. Z definice bipartitního grafu víme, že \ii{nesmí} obsahovat kružnici liché 
+    délky. Náš graf $G$ obsahuje dokonce dvě kružnice délky tři, například
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1]
+            \graph [spring layout, node distance=1cm]{
+                d -- e;
+                e -- f;
+                f -- d;
+            };
+        \end{tikzpicture}
+    \end{figure}
+    Takže $G$ není bipartitní, tudíž nemůže být ani úplným bipartitním grafem $K_{3,3}$.
+    \hspace{\fill}\qed
+\end{solution}
+\newpage
 \begin{exercise}
     Je dán prostý souvislý graf $G = (V,E)$ bez smyček s $n \geq 3$ vrcholy. Nechť $x$ a $y$ jsou dva vrcholy grafu, 
     které nejsou spojeny hranou (tj. $\bc{x,y} \not\in E$) a takové, že $d(x) + d(y) \geq n$. Dokažte, nebo vyvraťte:
