@@ -67,3 +67,43 @@ tak existuje
     d_1 \leq d_2 \leq \dots \leq d_n, \, a_i \leq d_i,
 \]
 tak, že je skóre grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.
+
+Důkaz. Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}, pak existuje číslo $k$ tak, že 
+$k \leq \frac{n}{2}$, $d_k \leq k$ a přitom $d_{n-k} \leq n-k-1$.
+
+Utvořme graf s množinou vrcholů $\bc{v_1, v_2, \dots, v_n}$ takto: $\bc{v_i, v_j}$ je hrana $G$ právě tehdy, když
+\begin{itemize}
+    \item buď $1 \leq i \leq k$ a $n-k+1 \leq j \leq n$,
+    \item nebo $i \not=j$ a $k+1\leq i$, $j \leq n$.
+\end{itemize}
+Jinými slovy $G$ se skládá z úplného bipartitního grafu se stranami $X = \bc{v_1, \dots, v_k}$ a $Y = 
+\bc{v_{n-k+1}, \dots, v_n}$ a úplného grafu na množině vrcholů $\bc{v_{k+1}, v_{k+2}, \dots, v_n}$.
+
+Graf $G$ má tedy
+\begin{equation*}
+    a_1 \leq a_2 \leq \dots \leq a_k \leq a_{k+1} \leq \dots \leq a_{n-k} \leq a_{n-k+1} \leq \dots \leq a_n 
+\end{equation*}
+\begin{equation*}
+    \underbrace{d_1}_k \leq \underbrace{d_2}_k \leq \dots \leq \underbrace{d_k}_k \leq \underbrace{d_{k+1}}_{n-k+1} \leq 
+    \dots \leq \underbrace{d_{n-k}}_{n-k+1} \leq \underbrace{d_{n-k+1}}_{n-1} \leq \dots \leq \underbrace{d_n}_{n-1}
+\end{equation*}
+a tedy majorizuje $a_1, a_2, \dots, a_n$. Není těžké nahlédnout, že v $G$ neexistuje hamiltonovská kružnice.
+\hspace{\fill}\qed
+
+% TODO: dodělat příklad
+
+\subsection{Turnaj}
+Prostý orientovaný graf $G$ bez smyček nazveme \ii{turnajem}, jestliže pro každé dva různé vrcholy $u,v$ buď $(u,v)$ je
+hrana grafu $G$, nebo $(v,u)$ je hrana $G$; nikdy ale ne oboje.
+
+Jinými slovy, zapomeneme-li na orientaci hran v grafu $G$, dostaneme úplný graf.
+
+\subsection{Vztah hamiltonovských cyklů a silné souvislosti}
+Je dán turnaj $G$ s $n \geq 3$ vrcholy. Pak v $G$ existuje hamiltonovský cyklus právě tehdy, když je $G$ silně souvislý.
+
+Důkaz.
+\begin{itemize}
+    \item \enquote{\Rightarrow}: triviální. % TODO: opravdu?
+    \item \enquote{\Leftarrow}: Nechť $G = (V,E)$ je turnaj, který je silně souvislý. % TODO: dodělat
+\end{itemize}
+

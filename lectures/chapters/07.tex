@@ -1,0 +1,63 @@
+\section{Toky v sítích}
+\subsection{Síť}
+Síť je prostý orientovaný graf bez smyček $G = (V,E)$. Máme zdroj $s$ (source) a spotřebič $t$ (target).
+
+Zapisujeme síť $(G, l, c, s, t)$.
+
+\subsection{Omezení toku}
+Mějme $l, c: E \rightarrow \Z$, $l(e) \leq c(e)$; kde $l$ je dolní omezení toku a $c$ hhorní omezení (kapacita).
+
+\subsection{Tok v síti}
+Tok v síti je $f : E \rightarrow \Z$, že pro každý v $\not= s,t$ platí
+\begin{equation}
+    \sum_{e \in E^-(v)} f(e) = \sum_{e \in E^+(v)} f(e) \quad \text{(Kirchhoffův zákon)}
+\end{equation}
+
+\subsection{Různé vlastnosti sítí a toků}
+Tok $f$ je přípustný pokud pro každou hranu $e \in E$ je $l(e) \leq f(e) \leq c(e)$. 
+Přípustný tok obecně nemusí existovat; stačí například aby do některého vrcholu mohlo celkově přitéci méně, než z něho 
+musí odtéci. Jestliže ale je dolní omezení v každé hraně nulové, tak přípustný tok vždy existuje.
+
+Síť je transparentní pokud $l(e)=0 \forall e \in E$.
+
+Velikost přípustného toku od $s$ do $t$ je
+\begin{equation*}
+    \vel(f) = \sum_{e \in E^+(s)}f(e) - \sum_{e \in E^-(s)}f(e).
+\end{equation*}
+Přípustný tok $f$ se nazývá \ii{maximální tok}, jestliže má největší velikost mezi všemi přípustnými toky.
+
+\subsection{Řez oddělující zdroj od spotřebiče}
+Je dána síť $G = (V,E)$ se zdrojem $z$, spotřebičem $s$, a omezeními $l, c$. Množinu vrcholů $A \subseteq V$ takovou, že 
+$z \in A$, $s \not\in A$ nazýváme \ii{množina oddělující zdroj od spotřebiče}. Dále definujme $W^+(A)$ jako množinu hran 
+vycházejících z množiny $A$, a $W^-(A)$ jako množinu hran vcházejících do množiny $A$. Přesněji
+\begin{align*}
+    W^+(A) &= \bc{e \mid P_V(e)\in A, K_V(e) \not\in A},\\
+    W^-(A) &= \bc{e \mid P_V(e)\not\in A, K_V(e) \in A}.
+\end{align*}
+Množina 
+\begin{equation*}
+    W(A) = W^+(A) \cup W^-(A)
+\end{equation*}
+se nazývá \ii{řez určený množinou $A$}.
+
+\ii{Kapacita řezu $W(A)$} je rovna
+\begin{equation*}
+    \fcap(W(A)) = \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)} l(e).
+\end{equation*}
+\ii{Maximální řez} je řez $W(A)$ s nejmenší možnou hodnotou $\fcap(W(A))$.
+
+\subsection{Tvrzení o tocích a řezech}
+Pro každý řez $W(A)$ a každý tok $f$ platí
+\begin{equation*}
+    \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e).
+\end{equation*}
+Důkaz. % TODO: dodělat Důkaz
+
+\subsection{Tvrzení o přípustných tocích a řezech}
+Pro každý přípustný tok $f$ a řez $W(A)$ platí $\vel(f) \leq \fcap(W(A))$.
+
+Důkaz.
+\begin{equation}
+    \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^- (A)}f(e) \leq \sum_{e \in W^+(A)}c(e) - \sum_{c \in W^-(A)}l(e) = \fcap(W(A))
+\end{equation}
+\hspace{\fill}\qed
