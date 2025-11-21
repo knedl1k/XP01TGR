@@ -22,39 +22,22 @@ Odpověď pečlivě zdůvodněte.
         Vrchol $u$ není artikulace $\iff$ $d(u)=1$.
     \end{lemma}
     \begin{prof}
-        Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že z 
-        $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf $G \setminus u$ se 
-        bude skládat ze dvou (potenciálně prázdných) částí:
+        Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že 
+        z $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf 
+        $G \setminus u$ se bude skládat ze dvou (potenciálně prázdných) částí:
         \vspace{-1em}
         \begin{enumerate}[1), noitemsep]
             \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
             \item Celá komponenta $C_v$.
         \end{enumerate}
         \vspace{-1em}
-        Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla odstraněna spolu s 
-        vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí prázdná.  Část $C_v$ nemůže být 
-        prázdná, protože obsahuje alespoň vrchol $v$. Proto část $C_u \setminus \bc{u}$ musí být nutně prázdná. A to platí právě 
-        tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To znamená, že vrchol $u$ neměl v $G$ žádného jiného 
-        souseda, než $v$. Tedy $u$ není artikulace $\iff$ $d(u)=1$. 
+        Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla 
+        odstraněna spolu s vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí 
+        prázdná.  Část $C_v$ nemůže být prázdná, protože obsahuje alespoň vrchol $v$. Proto část $C_u \setminus \bc{u}$ 
+        musí být nutně prázdná. A to platí právě tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To 
+        znamená, že vrchol $u$ neměl v $G$ žádného jiného souseda, než $v$. Tedy $u$ není artikulace $\iff$ $d(u)=1$. 
         \hspace{\fill}\qed 
     \end{prof}
-% Pomocné lemma. \ii{Vrchol $u$ není artikulace $\iff$ $d(u)=1$.}\\
-% Důkaz. Vrchol $u$ není artikulace, pokud graf $G \setminus u$ zůstane souvislý. Graf $G \setminus u$ vytvoříme tak, že z 
-% $G$ odstraníme vrchol $u$ a všechny hrany, které z něj vycházejí (včetně mostu $e = \bc{u,v}$). Graf $G \setminus u$ se 
-% bude skládat ze dvou (potenciálně prázdných) částí:
-% \vspace{-1em}
-% \begin{enumerate}[1), noitemsep]
-%     \item Zbytek komponenty $C_u$ po odstranění $u$, tj. $C_u \setminus \bc{u}$.
-%     \item Celá komponenta $C_v$.
-% \end{enumerate}
-% \vspace{-1em}
-% Mezi těmito dvěma částmi nevede žádná hrana, protože jediná hrana, která je spojovala, most $e$, byla odstraněna spolu s 
-% vrcholem $u$. Aby byl graf $G \setminus u$ souvislý, musí být jedna z těchto dvou částí prázdná.  Část $C_v$ nemůže být 
-% prázdná, protože obsahuje alespoň vrchol $v$. Proto část $C_u \setminus \bc{u}$ musí být nutně prázdná. A to platí právě 
-% tehdy, když komponenta $C_u$ obsahovala \ii{pouze} vrchol $u$. To znamená, že vrchol $u$ neměl v $G$ žádného jiného 
-% souseda, než $v$. Tedy $u$ není artikulace $\iff$ $d(u)=1$. 
-% \hspace{\fill}\qed 
-
 Najděme protipříklad. Hledejme souvislý graf $G$ s mostem $e = \bc{u,v}$, kde $d(u)=d(v)=1$. 
 Jediný takový graf je graf se dvěma vrcholy ($u,v$) a jedinou hranou ($e=\bc{u,v}$).
 Ověřme, že tento graf má všechny námi požadované vlastnosti:

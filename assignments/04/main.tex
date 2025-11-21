@@ -177,10 +177,10 @@ Rozdělme na dvě situace.
     Všechny hrany $\bc{v_i, v_{i+1}}$, pro $i=1, \dots, n-1$, leží v $E$.
 
     Definujme množiny indexů sousedů $x$ a $y$ v $G$:
-    \begin{align*}
+    \begin{align}
         S &= \bc{i \, \middle| \, 1 \leq i \leq n-1 \text{ a } \bc{v_1, v_{i+1} \in E}} \\
         T &= \bc{i \, \middle| \, 1 \leq i \leq n-1 \text{ a } \bc{v_i, v_n \in E}}
-    \end{align*}
+    \end{align}
     Takže velikost $S$ je počet sousedů $v_1$. Protože $\bc{v_1, v_n} \not\in E$, $v_n$, tak všichni sousedé $x$ musí 
     být na cestě $P$. Počet takových sousedů je $|S| = d_G(x)$. Obdobně platí, že velikost $T$ je počet sousedů $v_n$, a 
     protože $\bc{v_n, v_1} \not\in E$, tak $|T| = d_G(y)$.

@@ -1,6 +1,6 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows, arrows.meta, calc, tikzmark, graphs, graphdrawing, babel, decorations.shapes,
-intersections, quotes, fit, backgrounds}
+intersections, quotes, fit, backgrounds, decorations.pathmorphing}
 \usegdlibrary{layered, force, trees}
 % amsmath,amsthm,
 \usepackage{amssymb} %mathbb
@@ -19,7 +19,7 @@ intersections, quotes, fit, backgrounds}
 \usepackage[autostyle]{csquotes} %smart quote handling
 \usepackage[nopatch=item]{microtype}
 \usepackage{fancyvrb}
-
+\numberwithin{equation}{section}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -75,3 +75,4 @@ intersections, quotes, fit, backgrounds}
 \newcommand\titlebreak{~\\\vspace{-2em}}
 
 \newcommand{\xmark}{\usym{2613}}
+\newcommand{\dukaz}{\noindent\textsc{Důkaz}. }
