@@ -8,10 +8,10 @@ $E$ množina hran a $\eps$ říká \enquote{co hrany představují}, respektive
 \end{equation}
 
 Jestliže pro dvě hrany $e_1, e_2 \in E$ platí, že $\eps(e_1) = \eps(e_2)$, pak se hrany $e_1, e_2$ nazývají 
-\bb{paralelní}. Pokud graf nemá paralelní hrany, nazýváme jej \bb{prostý}. V takovém případě také stačí chápat graf jako 
+\ii{paralelní}. Pokud graf nemá paralelní hrany, nazýváme jej \ii{prostý}. V takovém případě také stačí chápat graf jako 
 dvojici $G = (V,E)$, kde hrany jsou neprázdné maximálně dvouprvkové podmnožiny $V$.\label{prosty}
 
-\bb{Smyčkou} nazveme takovou hranu, která je $e \in E$ a pro $\eps(e) = \bc{u,v}$ platí $u=v$. \label{smycka}
+\ii{Smyčkou} nazveme takovou hranu, která je $e \in E$ a pro $\eps(e) = \bc{u,v}$ platí $u=v$. \label{smycka}
 
 $\S \dots$ je množina všech neorientovaných prostých grafů bez smyček.
 
@@ -34,7 +34,7 @@ Rozlišujeme 2 základní typy grafů, orientované a neorientované.
 \end{enumerate}
 
 \subsubsection{Kružnice a cyklus}
-\bb{Kružnice} je uzavřená \underline{ne}orientovaná cesta v grafu, \bb{cyklus} uzavřená orientovaná cesta.
+\ii{Kružnice} je uzavřená \underline{ne}orientovaná cesta v grafu, \ii{cyklus} uzavřená orientovaná cesta.
 
 Příklad kružnice:
 \begin{figure}[H]
@@ -129,8 +129,7 @@ Jak vidíme, skóre jednoznačně neurčuje graf. Můžeme ze skóre ale říct,
 grafu?
 \newpage
 \subsection{Hledání grafu ke skóre}
-
-\bb{Tvrzení.} Máme $D = (d_1, d_2, \dots, d_n)$, $d_1 \leq d_2 \leq \dots \leq d_n$. \\
+Máme $D = (d_1, d_2, \dots, d_n)$, $d_1 \leq d_2 \leq \dots \leq d_n$. \\
 Pak $D$ je skóre některého grafu $G = (V,E)$ právě tehdy, když $D^\prime = (d_1^\prime, \dots, d_{n-1}^\prime)$ 
 definovaná tak, že
 \begin{equation}
@@ -142,7 +141,7 @@ definovaná tak, že
 \end{equation}
 je skóre nějakého $G^\prime \in \S$.
 
-\bb{Důkaz.}\\
+\dukaz\\
 \enquote{$\Leftarrow$}: Existuje $G^\prime$ pro $D^\prime$. $G$ vytvoříme tak, že k $G^\prime$ přidáme vrchol $v_n$ a 
 spojíme se všemi vrcholy $v_{n-d_n}, v_{n-d_1+1}, \dots, v_{n-1}$. Pak $G$ má skóre $D$. \qed
 \vspace{1em}
@@ -152,7 +151,7 @@ dále.
 
 Mějme $\G = \bc{G \mid G \text{ má } D} \not= \emptyset$.
 
-\bb{Cíl}: Chceme dokázat, že mezi všemi grafy $\G$ existuje jeden, který má vlastnost, že poslední vrchol je spojen 
+\ii{Cíl}: Chceme dokázat, že mezi všemi grafy $\G$ existuje jeden, který má vlastnost, že poslední vrchol je spojen 
 hranami s $d_n$ předcházejícími vrcholy.
 
 $\forall G \in \G$ mějme $j_G$, což bude největší index vrcholu, tak že $\bc{v_{j_G}, v_n} \not\in E$, tedy není mezi 
@@ -260,7 +259,7 @@ A nakonec tak, aby odpovídalo $D$.
 \end{figure}
 
 \subsection{Další pojmy založené na stupních vrcholů}
-\bb{Definice.} Je dán neorientovaný prostý graf bez smyček. Pak definujme
+Je dán neorientovaný prostý graf bez smyček. Pak definujme
 \begin{itemize}
     \item $\delta(G) = \min\bc{d(v) \mid v \in V}$ je minimální stupeň grafu G.
     \item $\Delta(G) = \max\bc{d(v) \mid v \in V}$ je maximální stupeň grafu G.
@@ -272,9 +271,9 @@ Označme $n = |V|$ a $m = |E|$. Pak $d(G) = \frac{2m}{n}$ a $\eps(G) = \frac{m}{
 Zřejme platí $\delta(G) \leq d(G) \leq \Delta(G)$.
 
 \subsection{Tvrzení o podgrafech}
-\bb{Tvrzení.} Pro každý $G \in \S$ s $|E| \geq 1$ existuje podgraf $H$ takový, že $\delta(H) > \eps(H) \geq \eps(G)$.
+Pro každý $G \in \S$ s $|E| \geq 1$ existuje podgraf $H$ takový, že $\delta(H) > \eps(H) \geq \eps(G)$.
 
-\bb{Důkaz.} Máme dvě situace
+\dukaz Máme dvě situace
 \begin{enumerate}
     \item Buď $\delta(G) > \eps(G)$, pak $H=G$.
     \item Nebo $\delta(G) \leq \eps(G)$, tj. $v_1 \in V$, $d(v_1) = \delta(G) \leq \frac{m}{n}$.
@@ -355,7 +354,7 @@ Poloměr $G$ je $\rad(G) = \ex(v), v \in C(G)$.
 
 Platí $\rad(G) \leq \underbrace{\diam(G) \leq 2 \rad(G)}_{\star}$.
 
-\bb{Zdůvodnění} $\star$. Chceme $d_G(x,y) \leq 2 \rad(G) \forall x,y \in V$.
+\ii{Zdůvodnění} $\star$. Chceme $d_G(x,y) \leq 2 \rad(G) \forall x,y \in V$.
 \begin{figure}[H]
     \begin{tikzpicture}[rounded corners, scale=1]
         \graph []{

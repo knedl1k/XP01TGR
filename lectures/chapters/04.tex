@@ -2,9 +2,9 @@
 \subsection{Věta o souvislosti vrcholů a hran (Mantel)}
 Máme $G \in \S$ s $n$ vrcholy, $m$ hranami, který nemá $K_3$. Pak $m \leq \frac{n^2}{4}$.
 
-\bb{Důkaz}.\\
-\bb{Definice}. Množina $A$ je nezávislá $A \subseteq V(G)$ pokud pro každou $e = \bc{u, v}$, jestliže $u \in A$, platí 
-$v \not\in e$. \ii{Množina $A$ je nezávislá právě tehdy, když v ní žádné dva vrcholy nejsou spojené hranou.}
+\dukaz\\
+\ii{Pomocná definice}. Množina $A$ je nezávislá $A \subseteq V(G)$ pokud pro každou $e = \bc{u, v}$, jestliže $u \in A$, 
+platí $v \not\in e$. \ii{Množina $A$ je nezávislá právě tehdy, když v ní žádné dva vrcholy nejsou spojené hranou.}
 
 Ať $A$ je nejpočetnější nezávislá množina a $B = V \setminus A$. $G$ nemá $K_3$: každá množina sousedů vrcholů $v \in V$
 je nezávislá množina.
@@ -26,7 +26,7 @@ Máme $G \in \S$, který neobsahuje $K_{r+1}$ (úplný graf na $r+1$ vrcholech),
 \begin{equation}
     m \leq \frac{r-1}{r} \frac{n^2}{2}.
 \end{equation}
-\bb{Důkaz}. Vezměme graf $G$ bez $K_{r+1}$ s nejméně hranami (přidáním hrany by vznikl $K_{r+1}$). Tedy $G$ má $K_r$.
+\dukaz Vezměme graf $G$ bez $K_{r+1}$ s nejméně hranami (přidáním hrany by vznikl $K_{r+1}$). Tedy $G$ má $K_r$.
 Ať $A$ je množina vrcholů $K_r$ a $B$ je $V(G) \setminus A$, $|B| = n -r$. Každý vrchol $v \in B$ má max $r-1$ sousedů v
 $A$ (jinak by $A \cup \bc{u}$ tvořil $K_{r+1}$).
 
@@ -70,7 +70,7 @@ hran.
 \subsection{Tvrzení počtu hran a Turánově grafu}
 Každý $G = (v,E) \in \S$ bez $K_{r+1}$ s největším počtem hran je $T(n,r)$.
 
-Důkaz. Na $V$ definujme $\R$: $u\R v \iff \bc{u,v} \not\in E$.\\
+\dukaz Na $V$ definujme $\R$: $u\R v \iff \bc{u,v} \not\in E$.\\
 $\R$ je reflexivní, protože nemáme smyčky. $\R$ je symetrické, protože se jedná o neorientovaný graf. Teď je potřeba 
 ověřit tranzitivitu, tj. $\left(\bc{x,y} \not\in E, \bc{y,z} \not\in E\right) \implies \bc{x,z} \not\in E$. \\
 Dokažme sporem. Kdyby $\bc{x,y} \not\in E$ a $\bc{y,z} \not\in E$ a $\bc{x,z} \in E$.

@@ -256,3 +256,21 @@ Jestliže $C$ je střídavá cesta vůči párování $P$, pak množina hran $P^
     \end{minipage}
 \end{figure}
 A pokud je navíc $C$ zlepšující cesta, tj. cesta mezi volnými vrcholy v $P$, pak $|P^\prime| = |P| + 1$.
+
+\subsection{Věta o vrcholově disjunktních zlepšujících cestách}
+\ii{Berge}. Je dáno párování $P$ v grafu $G$. Označme $P_{\max}$ maximální párování v $G$ (o kterém víme, že 
+existuje). Jestliže
+\begin{equation}
+    |P_{\max}| = |P| + k,
+\end{equation}
+pak v $G$ existuje $k$ vrcholově disjunktních zlepšujících cest vůči $P$.
+
+Přitom alespoň jedna z těchto cest je kratší než $\frac{n}{k}$, kde $n$ je počet vrcholů.
+
+\subsection{Souvislost perfektního párování a počtu komponent}
+\ii{Tutte}. Je dán prostý graf $G = (V,E)$ bez smyček s alespoň třemi vrcholy. V grafu $G$ existuje perfektní párování
+právě tehdy, když pro každou podmnožinu $S \subseteq V$ platí
+\begin{equation}
+    g(G \setminus S) \leq |S|,
+\end{equation}
+kde $g(G \setminus S)$ je počet komponent souvislosti grafu $G \setminus S$, které mají lichý počet vrcholů.

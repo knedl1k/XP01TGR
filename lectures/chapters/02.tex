@@ -51,7 +51,7 @@ Je-li $G \in S$, $G$ není úplný, pak $\kappa(G)=k$ právě tehdy, když nemá
 \subsection{Věta o vztahu podgrafu a souvislosti}
 Mějme $G \in \S$, $G = (V,E)$, splňující $d(G) \geq 4k$. Pak $G$ obsahuje podgraf, který je $k$-souvislý.
 
-\bb{Důkaz}. 
+\dukaz 
 \begin{itemize}
     \item Pro $k=0$ triviální. Všechny grafy jsou $0$-souvislé.
     \item Pro $k=1$: Pokud $\frac{2m}{n} \geq 4k$, tedy $m \geq 1$ (takže má hranu), tak sama hrana je $1$-souvislý 
@@ -71,7 +71,7 @@ Pokud $k \geq 2$ a $d(G) \geq 4k$, pak
     \item $n \geq 2k-1$
     \item $m \geq (2k-3)(n-k+1)+1$
 \end{enumerate}
-\bb{Důkaz}. (i) Kdyby ne, tak $n<2k-1$.
+\dukaz (i) Kdyby ne, tak $n<2k-1$.
 \begin{align}
     n+1 &< 2k\\
     \frac{n+1}{2} &<k
@@ -119,7 +119,7 @@ Teď aplikujme již dokázané (i):
 \subsubsection{Pomocné lemma 2}
 Pokud $G$ splňuje (i) a (ii), tak $G$ má $k$-souvislý podgraf.
 
-\bb{Důkaz}. $G$ není $k$-souvislý.\\
+\dukaz $G$ není $k$-souvislý.\\
 Indukcí podle $|V| = n$.
 
 Základní krok: n $\stackrel{\text{(i)}}{=}2k-1$, $m \geq (2k-3)(n-k+1)+1$.\\
@@ -240,7 +240,7 @@ Mějme operace
 \subsection{Tvrzení o 2-souvislých grafech a kružnicích}
 Každý 2-souvislý graf obsahuje kružnici. 
 
-\bb{Důkaz.} Každý 2-souvislý graf je souvislý. Kdyby souvislý neobsahoval kružnici, jedná se o strom. A každý strom s 
+\dukaz Každý 2-souvislý graf je souvislý. Kdyby souvislý neobsahoval kružnici, jedná se o strom. A každý strom s 
 alespoň 3 vrcholy má artikulaci. Protože stromy nemohou být 2-souvislé, a zároveň všechny ostatní souvislé grafy 
 obsahují kružnici, i každý 2-souvislý graf obsahuje kružnici.
 \hspace{\fill}\qed
@@ -248,7 +248,7 @@ obsahují kružnici, i každý 2-souvislý graf obsahuje kružnici.
 \subsection{Věta o vrcholech na společné kružnici}
 $G \in \S$, $G = (V,E)$ je 2-souvislý právě tehdy, když každé 2 vrcholy $u \not= v$ leží na společné kružnici.
 
-\bb{Důkaz.}\\
+\dukaz\\
 \enquote{$\Leftarrow$}: Předpokládejme, že pro každé $u \not= v$ existuje kružnice $K$, která je obsahuje.
 
 To znamená, že graf je souvislý. Musíme ještě dokázat, že v něm neexistuje \hyperref[artikulace]{artikulace}.
@@ -346,7 +346,7 @@ takže $G$ je 2-souvislý.
 \subsection{Tvrzení o 2-souvislých grafech a \% operaci}
 $G \in \S$ je 2-souvislý právě tehdy, když $G \% e$, $e \in E(G)$ je 2-souvislý.
 
-\bb{Důkaz.}\\
+\dukaz\\
 \enquote{$\Rightarrow$}: Předpokládejme, že $G$ je 2-souvislý, tj. souvislý a nemá \hyperref[artikulace]{artikulaci}.
 
 Vrchol $w$, který vložíme do hrany $e$, není artikulace. A žádný jiný se nemohl stát artikulací, to by už musely být 
@@ -436,7 +436,7 @@ A posledně z 3 do 5, $G_3 = G$:
 % TODO: přidat i druhý postup z fotky
 
 \subsection{Komponenty 2-souvislosti - blok}
-Mějme $G \in \S$, $G = (V,E)$, pak $A \subseteq V(G)$ se nazývá \bb{blok}, jestliže je maximální podmnožina taková, že 
+Mějme $G \in \S$, $G = (V,E)$, pak $A \subseteq V(G)$ se nazývá \ii{blok}, jestliže je maximální podmnožina taková, že 
 jí indukovaný podgraf je 2-souvislý. \\
 \ii{Pozn. maximální v tomto kontextu neznamená nejpočetnější, nýbrž, že do takové podmnožiny již nelze přidat další 
 vrchol.}

@@ -9,7 +9,7 @@ Cesta (kružnice, cyklus) je hamiltonovská(ský), jestliže prochází všemi v
 Máme $G \in \S$, $n \geq 3$, se skóre $d_1 \leq d_2 \leq \dots \leq d_n$, $n = |V|$. Jestliže pro nějaké $k < 
 \frac{n}{2}$ platí $d_k \leq k$, a pak $d_{n-k} \geq n-k$, tak $G$ je Hamiltonovský.
 
-Důkaz. Sporem. Předpokládejme, že existuje $G \in \S$, $n \geq 3$, $G$ splňuje $k < \frac{n}{2}$ platí $d_k \leq k$, a 
+\dukaz Sporem. Předpokládejme, že existuje $G \in \S$, $n \geq 3$, $G$ splňuje $k < \frac{n}{2}$ platí $d_k \leq k$, a 
 pak $d_{n-k} \geq n-k$ a $G$ není Hamiltonovský.
 
 Když ke $G$ splňující Chvátalovu podmínku přidáme hranu, která v $G$ není, tak nový graf stále splňuje Chvátalovu 
@@ -29,8 +29,8 @@ kde $n \not\in S$, $n \not\in T$.
     |S| = d(x) \\
     |T| = d(y)
 \end{align}
-\bb{Pomocný důkaz}. Platí $S \cap T = \emptyset$.\\
-Důkaz. Kdyby $i \in S \cap T$, tak se jedná o hamiltonovskou kružnici. Spor s velkým předpokladem.
+\ii{Pomocný důkaz}. Platí $S \cap T = \emptyset$.\\
+\dukaz Kdyby $i \in S \cap T$, tak se jedná o hamiltonovskou kružnici. Spor s velkým předpokladem.
 \hspace{\fill}\qed \\
 Takže
 \begin{equation}
@@ -68,7 +68,7 @@ tak existuje
 \end{equation}
 tak, že je skóre grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.
 
-Důkaz. Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}, pak existuje číslo $k$ tak, že 
+\dukaz Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}, pak existuje číslo $k$ tak, že 
 $k \leq \frac{n}{2}$, $d_k \leq k$ a přitom $d_{n-k} \leq n-k-1$.
 
 Utvořme graf s množinou vrcholů $\bc{v_1, v_2, \dots, v_n}$ takto: $\bc{v_i, v_j}$ je hrana $G$ právě tehdy, když
@@ -101,7 +101,7 @@ Jinými slovy, zapomeneme-li na orientaci hran v grafu $G$, dostaneme úplný gr
 \subsection{Vztah hamiltonovských cyklů a silné souvislosti}
 Je dán turnaj $G$ s $n \geq 3$ vrcholy. Pak v $G$ existuje hamiltonovský cyklus právě tehdy, když je $G$ silně souvislý.
 
-Důkaz.
+\dukaz
 \begin{itemize}
     \item \enquote{\Rightarrow}: triviální. % TODO: opravdu?
     \item \enquote{\Leftarrow}: Nechť $G = (V,E)$ je turnaj, který je silně souvislý. % TODO: dodělat

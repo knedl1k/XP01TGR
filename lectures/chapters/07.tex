@@ -51,12 +51,12 @@ Pro každý řez $W(A)$ a každý tok $f$ platí
 \begin{equation}
     \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e).
 \end{equation}
-Důkaz. % TODO: dodělat Důkaz
+\dukaz % TODO: dodělat Důkaz
 
 \subsection{Tvrzení o přípustných tocích a řezech}
 Pro každý přípustný tok $f$ a řez $W(A)$ platí $\vel(f) \leq \fcap(W(A))$.
 
-Důkaz.
+\dukaz
 \begin{equation}
     \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^- (A)}f(e) \leq \sum_{e \in W^+(A)}c(e) - 
     \sum_{c \in W^-(A)}l(e) = \fcap(W(A))
@@ -92,7 +92,7 @@ Změna toku $f$ podél zlepšující cesty $C$ s kapacitou $d$ je tok $f^\prime$
 Je-li $C$ zlepšující cesta kapacity $d$ vzhledem k přípustnému toku $f$, pak zlepšující tok $f^\prime$ je také 
 přípustným tokem a $\vel(f^\prime) = \vel(f) + d$.
 
-Důkaz. $f^\prime$ je tok, $v \in C$, $v \not= s,t$. % TODO: dodělat důkaz podle nahrávky.
+\dukaz $f^\prime$ je tok, $v \in C$, $v \not= s,t$. % TODO: dodělat důkaz podle nahrávky.
 
 \subsection{Značkovací procedura}
 \bb{Vstup}: přípustný tok $f$.\\
@@ -117,7 +117,7 @@ Jestliže značkovací procedura skončila odpovědí \enquote{ne} a vrátila mn
 \end{equation}
 To znamená, že tok $f$ má maximální velikost a řez určený množinou $A$ má nejmenší kapacitu.
 
-Důkaz. Mějme množinu označkovaných vrcholů $A$. $s \in A$ a $t \not\in A$. % TODO: dodělat důkaz; nahrávka + nákres
+\dukaz Mějme množinu označkovaných vrcholů $A$. $s \in A$ a $t \not\in A$. % TODO: dodělat důkaz; nahrávka + nákres
 \begin{align}
     \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e) \\
     \vdots \\
@@ -168,7 +168,7 @@ V síti $G = (V,E)$ s ohodnoceními $l,c$ existuje přípustná cirkulace práv�
 ní povinně musí vtéci kvůli dolnímu omezení $l$ na hranách z $W^-(A)$, může z této množiny také odtéci díky hornímu 
 omezení $c$ na hranách z $W^+(A)$.}
 
-Důkaz. Existuje-li přípustná cirkulace $f$, pak pro každý řez platí
+\dukaz Existuje-li přípustná cirkulace $f$, pak pro každý řez platí
 \begin{equation}
     C(A) = \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)}l(e) \geq \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e) = 0.
 \end{equation}
