@@ -57,11 +57,11 @@ Mějme $G \in \S$, $G = (V,E)$, splňující $d(G) \geq 4k$. Pak $G$ obsahuje po
     \item Pro $k=1$: Pokud $\frac{2m}{n} \geq 4k$, tedy $m \geq 1$ (takže má hranu), tak sama hrana je $1$-souvislý 
     podgraf.
     \item Pro $k \geq 2$: tj. $\frac{2m}{n} \geq 4k$
-    \begin{align*}
+    \begin{align}
         2m &\geq 4kn \\
         m &\geq 2kn \\
         m &\geq 4n \, (\text{dosazeno } k \geq 2)
-    \end{align*}
+    \end{align}
 \end{itemize}
 Průběh důkazu $d(G) \geq 4k, k\geq 2$ $\xRightarrow{\text{Lemma 1}} (\text{i}), (\text{ii}) \xRightarrow{\text{Lemma 2}} 
 G \text{ má } k \text{-souislost.}$
@@ -72,22 +72,22 @@ Pokud $k \geq 2$ a $d(G) \geq 4k$, pak
     \item $m \geq (2k-3)(n-k+1)+1$
 \end{enumerate}
 \bb{Důkaz}. (i) Kdyby ne, tak $n<2k-1$.
-\begin{align*}
+\begin{align}
     n+1 &< 2k\\
     \frac{n+1}{2} &<k
-\end{align*}
+\end{align}
 Teď použijme předpoklad $m \geq 2kn > (n+1)n$. A to nejde, protože úplný neorientovaný graf bez smyček má 
 $\frac{n(n-1)}{2}$ hran.
 
 (ii) Mějme
-\begin{align*}
+\begin{align}
     m \geq 2kn - ((2k-3)(n-k+1)+1) &= 2kn - (2kn - 2k^2 + 2k - 3n+ 3k-3+1)\\
     &= 2k^2 - 5k + 3n + 2
-\end{align*}
+\end{align}
 Teď aplikujme již dokázané (i):
-\begin{align*}
+\begin{align}
     2k^2 - 5k + 3n + 2 \geq 2k^2 - 5k + 6k - 3 + 2 = 2k^2 + k - 1 
-\end{align*}
+\end{align}
 \begin{figure}[H]
     \begin{minipage}[c]{0.4\textwidth}
         Vyšetřeme průběh funkce
@@ -138,9 +138,9 @@ Vezmeme $G$ splňující (i) a (ii) s $n$ vrcholy.
 \begin{enumerate}[(a)]
     \item Kdyby $\delta(G) \leq 2k-3$, tak $v \in V$ s $d_G(v) \leq 2k-3$.\\
     $G \setminus v = G_1$, $n_1=n-1$,
-    \begin{equation*}
+    \begin{equation}
         m_1 \geq m-(2k-3) \geq (2k-3)(n-k+1)+1 - (2k-3) = (2k-3)(\underbrace{n-1}_{n_1}-k+1)+1
-    \end{equation*}
+    \end{equation}
     Tudíž $G_1$ má $k$-souvislý podgraf, tedy i ho má $G$.
     \item Ať $\delta(G) > 2k-3m$, $\delta(G) \geq 2k-2$; $\forall v \in G, d_G(v)\geq 2k-2$.\\
     $G$ není $k$-souvislý, tj. $X \subseteq V$, $|X|=k-1$ a $X$ je \hyperref[vrchRez]{vrcholový řez}.
@@ -182,11 +182,11 @@ Kdyby $G_1$ i $G_2$ nesplňovaly (ii), $G_i$ má $n_i$ vrcholů a $m_i$ hran, $i
     m_i \not\geq (2k-3)(n_i-k+1)+1, \hspace{1.5em} \text{tj. } m_i \leq (2k-3)(n_i-k+1)
 \end{equation}
 $m_1+m_2 \geq m$ víme. $n_1+n_2 = n+(k-1)$, počítali jsme vrcholy v $X$ dvakrát.
-\begin{align*}
+\begin{align}
     m \leq n_1 + n_2 \leq (2k-3)(n_1-k+1)+(2k-3)(n_2-k+1) &= (2k-3)(n_1+n_2-2k+2) \\
     &= (2k-3)(n+(k-1)-2k+2) \\
     &= (2k-3)(n-k+1)
-\end{align*}
+\end{align}
 Tedy spor s (ii). 
 \hspace{\fill} \qed
 
@@ -354,7 +354,7 @@ artikulací předtím, a tedy by se v prvé řadě nejednalo o 2-souvislý.
 \hspace{\fill}\qed
 
 \enquote{$\Leftarrow$}: Předpokládejme, že $G \% e$ je 2-souvislý, tj. každé 2 vrcholy leží na společné kružnici.
-\[
+\begin{equation}
     x, y \in V(G) \dots \text{existuje } K \text{ v } G \% e \text{ obsahující } x, y
     \begin{cases}
         K \text{ neobsahuje } e_1, e_2 & K \text{ je kružnice } G. \\
@@ -362,13 +362,15 @@ artikulací předtím, a tedy by se v prvé řadě nejednalo o 2-souvislý.
         K \text{ obsahuje } e_1, e_2 & \text{ z } K \text{ odstraníme } e_1, e_2, \\ 
         & \text{ nahradíme } e \text{ a máme } K^\prime.
     \end{cases}
-\]
+\end{equation}
 $K^\prime$ je kružnice v $G$. 
 \hspace{\fill}\qed
 
 \subsection{Algoritmus sestrojení 2-souvislého grafu}
 Každý 2-souvislý graf $G \in \S$, $G = (V,E)$ je možné sestrojit postupem:
-\[ G_0 \coloneq K \text{ je nějaká kružnice}\]
+\begin{equation}
+    G_0 \coloneq K \text{ je nějaká kružnice}
+\end{equation}
 Máme-li $G_i$, že $G_i \not= G$, tak $G_{i+1}$ je $G_i$, ke kterému přidáme cestu $P$ (v $G$), která vede mezi 2 vrcholy
 z $G_i$ a zároveň všechny vrcholy této cesty nejsou v $G_i$.
 

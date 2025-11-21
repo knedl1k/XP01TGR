@@ -21,36 +21,36 @@ musí odtéci. Jestliže ale je dolní omezení v každé hraně nulové, tak p�
 Síť je transparentní pokud $l(e)=0 \forall e \in E$.
 
 Velikost přípustného toku od $s$ do $t$ je
-\begin{equation*}
+\begin{equation}
     \vel(f) = \sum_{e \in E^+(s)}f(e) - \sum_{e \in E^-(s)}f(e).
-\end{equation*}
+\end{equation}
 Přípustný tok $f$ se nazývá \ii{maximální tok}, jestliže má největší velikost mezi všemi přípustnými toky.
 
 \subsection{Řez oddělující zdroj od spotřebiče}
 Je dána síť $G = (V,E)$ se zdrojem $z$, spotřebičem $s$, a omezeními $l, c$. Množinu vrcholů $A \subseteq V$ takovou, že 
 $z \in A$, $s \not\in A$ nazýváme \ii{množina oddělující zdroj od spotřebiče}. Dále definujme $W^+(A)$ jako množinu hran 
 vycházejících z množiny $A$, a $W^-(A)$ jako množinu hran vcházejících do množiny $A$. Přesněji
-\begin{align*}
+\begin{align}
     W^+(A) &= \bc{e \mid P_V(e)\in A, K_V(e) \not\in A},\\
     W^-(A) &= \bc{e \mid P_V(e)\not\in A, K_V(e) \in A}.
-\end{align*}
+\end{align}
 Množina 
-\begin{equation*}
+\begin{equation}
     W(A) = W^+(A) \cup W^-(A)
-\end{equation*}
+\end{equation}
 se nazývá \ii{řez určený množinou $A$}.
 
 \ii{Kapacita řezu $W(A)$} je rovna
-\begin{equation*}
+\begin{equation}
     \fcap(W(A)) = \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)} l(e).
-\end{equation*}
+\end{equation}
 \ii{Maximální řez} je řez $W(A)$ s nejmenší možnou hodnotou $\fcap(W(A))$.
 
 \subsection{Tvrzení o tocích a řezech}
 Pro každý řez $W(A)$ a každý tok $f$ platí
-\begin{equation*}
+\begin{equation}
     \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e).
-\end{equation*}
+\end{equation}
 Důkaz. % TODO: dodělat Důkaz
 
 \subsection{Tvrzení o přípustných tocích a řezech}
@@ -67,10 +67,10 @@ Navíc každý přípustný tok splňuje $l(e) \leq f(e) \leq c(e)$.
 \subsection{Zlepšující cesta vůči toku \texorpdfstring{$f$}{f}}
 Je dán přípustný tok $f$. Neorientovaná cesta v grafu $G$ od zdroje $z$ ke spotřebiči $s$ se nazývá \ii{zlepšující cesta 
 vůči $f$}, jestliže
-\begin{align*}
+\begin{align}
     f(e) < c(e) &\quad \text{pro každou hranu cesty vpřed,}\\
     l(e) < f(e) &\quad \text{pro každou hranu cesty vzad.}
-\end{align*}
+\end{align}
 \ii{Kapacita zlepšující cesty} je 
 \begin{equation}
     \fcap(C) = \min \left(\bc{c(e) - f(e) \mid e \in C \text{ vpřed}} \cup 
@@ -79,14 +79,14 @@ vůči $f$}, jestliže
 
 \subsection{Změna toku \texorpdfstring{$f$}{f}}
 Změna toku $f$ podél zlepšující cesty $C$ s kapacitou $d$ je tok $f^\prime$ definovaný
-\[
+\begin{equation}
     f^\prime(e) = 
     \begin{cases}
         f(e) + d & \text{pro hrany $e$ cesty vpřed}\\
         f(e) - d & \text{pro hrany $e$ cesty vzad}\\
         f(e) & \text{pro hrany $e$ neležící na cestě}
     \end{cases}
-\]
+\end{equation}
 
 \subsection{Změna toku podle zlepšující cesty je přípustný tok}
 Je-li $C$ zlepšující cesta kapacity $d$ vzhledem k přípustnému toku $f$, pak zlepšující tok $f^\prime$ je také 
@@ -112,17 +112,17 @@ Důkaz. $f^\prime$ je tok, $v \in C$, $v \not= s,t$. % TODO: dodělat důkaz pod
 
 \subsection{Tvrzení o výsledku značkovací procedury}
 Jestliže značkovací procedura skončila odpovědí \enquote{ne} a vrátila množinu označkovaných vrcholů $A$, pak
-\begin{equation*}
+\begin{equation}
     \vel(f) = \fcap(W(A)).
-\end{equation*}
+\end{equation}
 To znamená, že tok $f$ má maximální velikost a řez určený množinou $A$ má nejmenší kapacitu.
 
 Důkaz. Mějme množinu označkovaných vrcholů $A$. $s \in A$ a $t \not\in A$. % TODO: dodělat důkaz; nahrávka + nákres
-\begin{align*}
+\begin{align}
     \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e) \\
     \vdots \\
     \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)}l(e) = \fcap(W(A))
-\end{align*}
+\end{align}
 
 \subsection{Věta o přípustném toku a maximálním přípustném toku}
 \ii{Ford-Fulkersonova věta.} Jestliže v síti $G= (V,E)$, s omezeními $l, c$, zdrojem $s$ a spotřebičem $t$ existuje 
@@ -131,12 +131,12 @@ přípustný tok, pak existuje maximální přípustný tok $f_{\max}$ a jeho vl
 \subsection{Přírůstková síť vzhledem k toku}
 Mějme přípustný tok $f$ v $G = (V,E)$, s omezeními $l, c$, zdrojem $s$ a spotřebičem $t$. Pak síť $G = (V, E_f)$ je 
 přírůstková síť toku $f$, se zdrojem $s$, spotřebičem $t$, nulovým dolním omezením a kapacitou $c_f$, kde
-\begin{align*}
+\begin{align}
     (u,v) \in E_f \text{ a } c_f(u,v) = c(e)-f(e) \quad \text{jestliže pro } e \in E, e=(u,v) \text{ a platí } 
     f(e) < c(e).\\ 
     (u,v) \in E_f \text{ a } c_f(u,v) = f(e)-l(e) \quad \text{jestliže pro } e \in E, e=(u,v) \text{ a platí } 
     l(e) < f(e). 
-\end{align*}
+\end{align}
 Každá zlepšující cesta od zdroje $s$ ke spotřebiči $t$ je zlepšující cestou v $G_f$ s tím, že všechny hrany cesty jsou 
 hranami vpřed; tj. jedná se o orientovanou cestu v $G_f$.
 
@@ -158,9 +158,9 @@ Cirkulace se nazývá \ii{přípustná}, jestliže navíc pro každou hranu $e \
 \subsection{Řez, kapacita řezu}
 Mějme síť $G = (V,E)$ s ohodnoceními $l,c$. Uvažujme neprázdnou množinu vrcholů $A \subset V$ takovou, že $A \not= V$. 
 Pak kapacita řezu $W(A)$ je definovaná jako
-\begin{align*}
+\begin{align}
     \fcap(W(A)) = \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)}l(e). 
-\end{align*}
+\end{align}
 
 \subsection{Souvislost přípustné cirkulace a řezu}
 V síti $G = (V,E)$ s ohodnoceními $l,c$ existuje přípustná cirkulace právě tehdy, když neexistuje řez záporné kapacity.
@@ -169,8 +169,8 @@ ní povinně musí vtéci kvůli dolnímu omezení $l$ na hranách z $W^-(A)$, m
 omezení $c$ na hranách z $W^+(A)$.}
 
 Důkaz. Existuje-li přípustná cirkulace $f$, pak pro každý řez platí
-\begin{equation*}
+\begin{equation}
     C(A) = \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)}l(e) \geq \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e) = 0.
-\end{equation*}
+\end{equation}
 Jestliže naopak přípustná cirkulace neexistuje, pak existence řezu se zápornou kapacitou vyplne z algoritmu pro hledání
 přípustné cirkulace.

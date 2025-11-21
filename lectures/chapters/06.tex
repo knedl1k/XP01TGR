@@ -19,37 +19,37 @@ Zvolíme $G$ s Chvátalovou podmínkou maximální bez Hamiltonovské kružnice.
 d(y)$ je největší mezi $\bc{u,v} \not\in E$, $d(x) \leq d(y)$. V $G$ existuje Hamiltonovská cesta z $x$ do $y$.
 % TODO: nákres
 Označme
-\begin{align*}
+\begin{align}
     S &\coloneq \bc{ i \mid \bc{x, v_{i+1}} \in E} \in 1, \\
     T &\coloneq \bc{ j \mid \bc{v_j, y} \in E} \ni n-1,
-\end{align*}
+\end{align}
 kde $n \not\in S$, $n \not\in T$.
-\begin{align*}
+\begin{align}
     S \cup T \subset \bc{1, \dots, n-1} \\
     |S| = d(x) \\
     |T| = d(y)
-\end{align*}
+\end{align}
 \bb{Pomocný důkaz}. Platí $S \cap T = \emptyset$.\\
 Důkaz. Kdyby $i \in S \cap T$, tak se jedná o hamiltonovskou kružnici. Spor s velkým předpokladem.
 \hspace{\fill}\qed \\
 Takže
-\begin{equation*}
+\begin{equation}
     |S \cup T| = |S| + |T| = d(x) + d(y) \leq n-1.
-\end{equation*}
+\end{equation}
 Položme
-\begin{alignat*}{2}
+\begin{alignat}{2}
    k &\coloneq d(x) &\qquad\qquad d(x) &\leq d(y) \\
    k &< \frac{n}{2} &             2d(x) &\leq d(x) + d(y) \leq n-1
-\end{alignat*}
+\end{alignat}
 A tedy $d(x) \leq \frac{n-1}{2} < \frac{n}{2}$.
 
 Máme $d(x)$ vrcholů $u$, že $\bc{x,y} \in E$.
-\begin{align*}
+\begin{align}
     u &= v_l \\
     \bc{v_{l-1}, y} &\not\in E \\
     d(v_{l-1}) + d(y) &\leq d(x) + d(y) \\
     d(v_{l-1}) &\leq d(x) = k
-\end{align*}
+\end{align}
 Tj. máme $k$ vrcholů $v_{l-1}$ s $d(v_{l-1}) \leq k$. Platí $d_k \leq k$, protože máme alespoň $k$ vrcholů stupně 
 $\leq k$. Z Chvátalovy podmínky víme, že $d_{n-k} \geq n-k$, tj. existuje $k+1$ vrcholů $w$ s $d(w) \geq n-k$. Ale $x$ 
 má $d(x) = k$. Tedy existuje $w$ s $d(w) = n-k$, že $\bc{x,w} \not\in E$.
@@ -59,13 +59,13 @@ $d(x) + d(w) = k+n-k = n$, což je spor s volbou $x$ a $y$, protože $d(x) + d(y
 
 \subsection{Věta o skóre grafu a hamiltonovské kružnici}
 Jestliže posloupnost čísel
-\[ 
+\begin{equation} 
     a_1 \leq a_2 \leq \dots \leq a_n \, \text{ nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}},
-\]
+\end{equation}
 tak existuje
-\[
+\begin{equation} 
     d_1 \leq d_2 \leq \dots \leq d_n, \, a_i \leq d_i,
-\]
+\end{equation}
 tak, že je skóre grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.
 
 Důkaz. Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}, pak existuje číslo $k$ tak, že 
@@ -80,13 +80,13 @@ Jinými slovy $G$ se skládá z úplného bipartitního grafu se stranami $X = \
 \bc{v_{n-k+1}, \dots, v_n}$ a úplného grafu na množině vrcholů $\bc{v_{k+1}, v_{k+2}, \dots, v_n}$.
 
 Graf $G$ má tedy
-\begin{equation*}
+\begin{equation}
     a_1 \leq a_2 \leq \dots \leq a_k \leq a_{k+1} \leq \dots \leq a_{n-k} \leq a_{n-k+1} \leq \dots \leq a_n 
-\end{equation*}
-\begin{equation*}
+\end{equation}
+\begin{equation}
     \underbrace{d_1}_k \leq \underbrace{d_2}_k \leq \dots \leq \underbrace{d_k}_k \leq \underbrace{d_{k+1}}_{n-k+1} \leq 
     \dots \leq \underbrace{d_{n-k}}_{n-k+1} \leq \underbrace{d_{n-k+1}}_{n-1} \leq \dots \leq \underbrace{d_n}_{n-1}
-\end{equation*}
+\end{equation}
 a tedy majorizuje $a_1, a_2, \dots, a_n$. Není těžké nahlédnout, že v $G$ neexistuje hamiltonovská kružnice.
 \hspace{\fill}\qed
 

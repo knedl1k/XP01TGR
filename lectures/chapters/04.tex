@@ -12,11 +12,11 @@ je nezávislá množina.
     m \leq \sum_{N \in B}d(v) \leq \underbrace{(n-k)}_{|B|} \cdot \underbrace{k}_{|A|}
 \end{equation}
 Každá hrana má alespoň 1 krajní vrchol v $B$. Pro které $k$ je $(n-k)k$ největší?
-\begin{align*}
+\begin{align}
     f(x) &= (n-x)x\\
     f^\prime(x) &= n-2x \implies f^\prime(x) = 0 \iff x = \frac{n}{2}\\
-    f^{\prime \prime}(x) &= -2\\
-\end{align*}
+    f^{\prime \prime}(x) &= -2
+\end{align}
 Protože jsme v $\N$, tak $\ceil*{\frac{n}{2}} \cdot \floor*{\frac{n}{2}} = \frac{n+1}{2} \frac{n-1}{2} = \frac{n^2-1}{4} 
 \leq \frac{n^2}{4}$.
 \hspace{\fill}\qed
@@ -36,20 +36,20 @@ $m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \col
     m = m_A + m_{A-B} + m_B \leq \frac{r(r-1)}{2} + (n-r)(r-1) + m_B
 \end{equation}
 a graf indukovaný $B$ neobsahuje $K_{r+1}$ a má maximální počet hran.
-\begin{align*}
+\begin{align}
     m_B &< m \\
     n-r = |B| &< n
-\end{align*}
+\end{align}
 Použijme tedy silnou indukci, dle počtu vrcholů $n = |V(G)|$.
 \begin{itemize}
     \item Základní krok. $n=1, 2,  \dots, r$. 
-        \begin{align*}
+        \begin{align}
             m &\leq \frac{n(n-1)}{2} \\
             \frac{n(n-1)}{2}&\overset{?}{\leq}\frac{r-1}{r}\frac{n^2}{2} \\
             \frac{r-1}{r}\frac{n^2}{2} - \frac{n(n-1)}{2} &= \frac{n}{2}\left(n \frac{r-1}{r}-(n-1)\right) \\
             &= \frac{n}{2}\frac{nr -n -nr +r}{r} = \frac{n}{2}\frac{\overbrace{r-n}^{\geq 0}}{\underbrace{r}_{\geq 0}}
             \geq 0.
-        \end{align*}
+        \end{align}
     \item Když budeme mít indukční předpoklad pro $G_B$, pak:
         \begin{align}
             m &\leq \frac{r(r-1)}{2} + (n-r)(r-1) + \frac{r-1}{n}\frac{(n-r)^2}{2} \\
@@ -62,9 +62,9 @@ Použijme tedy silnou indukci, dle počtu vrcholů $n = |V(G)|$.
 \subsection{Turánovy grafy}\label{turan}
 Pro $n$, $r < n$. $T(n,r)$ je $r$-partitní úplný graf. Označíme-li strany $S_1, \dots, S_r$, pak $|S_i - S_j| \leq 1$,
 $|S_i| = \floor*{\frac{n}{r}}$ nebo $\ceil*{\frac{n}{r}}$. Takový graf má potom
-\[
+\begin{equation}
     \frac{r(r-1)}{2}\left(\frac{n}{r}\right)^2 = \frac{r-1}{r}\frac{n^2}{2}, \, n=k \cdot r,
-\]
+\end{equation}
 hran.
 
 \subsection{Tvrzení počtu hran a Turánově grafu}
@@ -124,10 +124,10 @@ Dokažme sporem. Kdyby $\bc{x,y} \not\in E$ a $\bc{y,z} \not\in E$ a $\bc{x,z} \
         \end{figure}
         $G^{\prime \prime \prime}$ z $G$ odstraníme hrany $\bc{x,t}, t \in N(x)$ a $\bc{z,v}, v \in N(z)$ a přidáme 
         hrany $\bc{x,u}, u \in N(y)$ a $\bc{z,u}, u \in N(y)$.
-        \begin{equation*}
+        \begin{equation}
             m(G^{\prime \prime \prime}) = m(G^{\prime \prime}) + 3d(y) > m(G^{\prime \prime}) + d(x) + d(y) + d(z) - 1
             \geq m(G)
-        \end{equation*}
+        \end{equation}
         $G^{\prime \prime}$ nemá $K_{r+1}$, což je spor.
         \hspace{\fill}\qed
 \end{enumerate}
@@ -138,8 +138,8 @@ Potřebujeme $||S_i| - |S_j|| \leq 1$. Dokažme sporem. Kdyby ne, tak $|S_1| \ge
 $|S_2| = n_2$.
 
 Graf měl původně $n_1 \cdot n_2$ hran. Nově má
-\begin{equation*}
+\begin{equation}
     (n_1 - 1)(n_2 + 1) = n_1n_2 \underbrace{\underbrace{- n_2 + n_1}_{\geq 2} - 1}_{\geq 1}.
-\end{equation*}
+\end{equation}
 A to je \hyperref[turan]{Turánův} graf.
 \hspace{\fill}\qed

@@ -45,9 +45,9 @@ Důkaz. Indukcí podle rozdílu $k = m -n$, kde $m$ je počet hran a $n$ počet 
     \textcolor{orange}{$\forall w \not\in C$ existuje maximálně 1 hrana $(x_j, w), x_j \in C$.}
 
     Vytvořme $G^\prime$, což bude $G$, ve kterém nahradíme cyklus $C$ vrcholem $v_C$.
-    \begin{equation*}
+    \begin{equation}
         m(G^\prime) - n(G^\prime) = m - l - (n-l+1) = m-n-1 = k-1
-    \end{equation*}
+    \end{equation}
     \hspace{\fill}\qed\\
     $G^\prime$ má alespoň 2 vrcholy stupně 2, není-li ani jeden z nich $v_C$, jsou to vrcholy $G$ stupně 2. Když 
     $G\prime$ bude mít pouze 2 vrcholy, $v_C$ a $x$, stupně 2, tak musíme řešit 2 případy:
@@ -95,19 +95,19 @@ Důkaz. Sporem. Mějme $G$ acyklický, tedy má \hyperref[topo]{topologické oč
 v_n$.
 
 Kdyby $G_1 = (V, E_1), G_2 = (V, E_2)$ byly 2 různé tranzitivní redukce, tak
-\begin{equation*}
+\begin{equation}
     (E_1 \setminus E_2) \cup (E_2 \setminus E_1) \not= \emptyset.
-\end{equation*}
+\end{equation}
 Vyberme z $(E_1 \setminus E_2) \cup (E_2 \setminus E_1)$ hranu $e = (v_i, v_j)$, $i < j$, která má nejmenší rozdíl 
 $j - i$. \\ BÚNO: $e \in (E_1 \setminus E_2)$, tedy $e \not\in E_2$, ale $e \in E_2^t$. Tj. musí existovat v $G_2$ cesta 
 z $v_i$ do $v_j$, která má alespoň 2 hrany.
-\[
+\begin{equation}
     v_i, e_1, e_2, \dots, e_k, v_j, \, k \geq 2.
-\]
+\end{equation}
 $G_1$ tam je z redukce, tak alespoň $e_a$, $a=1, \dots, k$ není v $E_1$.
-\begin{align*}
+\begin{align}
     e_a &= (v_a, v_b), \, a < b. \\
     i &\leq a < b \leq j
-\end{align*}
+\end{align}
 Alespoň jedna z $\leq$ je ve skutečnosti $<$, tedy $b-a < j-i$. Což je spor.
 \hspace{\fill}\qed
