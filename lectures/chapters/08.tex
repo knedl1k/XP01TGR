@@ -58,7 +58,9 @@ V opačném případě říkáme, že vrchol $v$ je \ii{volný} v $P$.
         ] {
             \node[red_node, scale=0.7] {}; & \node[anchor=west] {nasycený}; \\
             \node[blue_node, scale=0.7] {}; & \node[anchor=west] {volný}; \\
-            \node[purple_node, scale=0.7] {}; & \node[anchor=west] {párování $P$}; \\
+            \node[minimum width=0.6cm] (p_line) {}; 
+                \draw[purple, line width=1pt, decoration={snake, amplitude=.3mm, segment length=1.5mm}, decorate] (p_line.west) -- (p_line.east); 
+                & \node[anchor=west, font=\small] {párování $P$}; \\
         };
     \end{tikzpicture}
 \end{figure}
@@ -136,8 +138,12 @@ jestliže platí následující dvě podmínky:
         ] {
             \node[red_node, scale=0.7] {}; & \node[anchor=west] {nasycený}; \\
             \node[blue_node, scale=0.7] {}; & \node[anchor=west] {volný}; \\
-            \node[purple_node, scale=0.7] {}; & \node[anchor=west] {párování $P$}; \\
-            \node[green_node, scale=0.7] {}; & \node[anchor=west] {střídavá cesta $C$}; \\
+            \node[minimum width=0.6cm] (p_line) {}; 
+                \draw[purple, line width=1pt, decoration={snake, amplitude=.3mm, segment length=1.5mm}, decorate] (p_line.west) -- (p_line.east); 
+                & \node[anchor=west, font=\small] {párování $P$}; \\
+            \node[minimum width=0.6cm] (g_line) {}; 
+                \draw[green!70!black, line width=1pt] (g_line.west) -- (g_line.east); 
+                & \node[anchor=west, font=\small] {cesta $C$}; \\
         };
     \end{tikzpicture}
 \end{figure}
@@ -155,7 +161,6 @@ Jestliže $C$ je střídavá cesta vůči párování $P$, pak množina hran $P^
 \begin{figure}[H]
     \centering
     \begin{minipage}[c]{0.42\textwidth}
-        % \begin{figure}[H]
             \begin{tikzpicture}[
                 red_node/.style={circle, draw=red!70, line width=2pt, fill=red!70, minimum size=1mm, inner sep=0pt},
                 blue_node/.style={circle, draw=blue!60, line width=2pt, fill=blue!60, minimum size=1mm, inner sep=0pt},
@@ -194,11 +199,8 @@ Jestliže $C$ je střídavá cesta vůči párování $P$, pak množina hran $P^
                 \draw[yellow_edge] (b_left) -- (r_top_1);
                 \draw[yellow_edge] (b_right) -- (r_bot_3);
             \end{tikzpicture}
-        % \end{figure}
     \end{minipage}%
-    % \hspace{0.05\textwidth}
     \begin{minipage}[c]{0.55\textwidth}
-        % \begin{figure}[H]
             \begin{tikzpicture}[
                 red_node/.style={circle, draw=red!70, line width=2pt, fill=red!70, minimum size=1mm, inner sep=0pt},
                 blue_node/.style={circle, draw=blue!60, line width=2pt, fill=blue!60, minimum size=1mm, inner sep=0pt},
@@ -241,18 +243,23 @@ Jestliže $C$ je střídavá cesta vůči párování $P$, pak množina hran $P^
                     rounded corners=0pt,
                     inner sep=2pt,
                     row sep=1pt,
-                    column sep=5pt,
+                    column sep=6pt,
                     right=0.5cm of r_top_3,
                     anchor=north west
                 ] {
                     \node[red_node, scale=0.7] {}; & \node[anchor=west] {nasycený}; \\
                     \node[blue_node, scale=0.7] {}; & \node[anchor=west] {volný}; \\
-                    \node[purple_node, scale=0.7] {}; & \node[anchor=west] {párování $P$}; \\
-                    \node[green_node, scale=0.7] {}; & \node[anchor=west] {střídavá cesta $C$}; \\
-                    \node[cyan_node, scale=0.7] {}; & \node[anchor=west] {párování $P^\prime$}; \\
+                    \node[minimum width=0.6cm] (p_line) {}; 
+                    \draw[purple, line width=1pt, decoration={snake, amplitude=.3mm, segment length=1.5mm}, decorate] (p_line.west) -- (p_line.east); 
+                        & \node[anchor=west, font=\small] {párování $P$}; \\
+                    \node[minimum width=0.6cm] (g_line) {}; 
+                        \draw[green!70!black, line width=1pt] (g_line.west) -- (g_line.east); 
+                        & \node[anchor=west, font=\small] {cesta $C$}; \\
+                    \node[minimum width=0.6cm] (c_line) {}; 
+                        \draw[cyan!90!black, line width=1pt] (c_line.west) -- (c_line.east); 
+                        & \node[anchor=west, font=\small] {párování $P^\prime$}; \\
                 };
             \end{tikzpicture}
-        % \end{figure}
     \end{minipage}
 \end{figure}
 A pokud je navíc $C$ zlepšující cesta, tj. cesta mezi volnými vrcholy v $P$, pak $|P^\prime| = |P| + 1$.
