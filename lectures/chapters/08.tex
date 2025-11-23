@@ -274,14 +274,41 @@ pak v $G$ existuje $k$ vrcholově disjunktních zlepšujících cest vůči $P$.
 
 Přitom alespoň jedna z těchto cest je kratší než $\frac{n}{k}$, kde $n$ je počet vrcholů.
 
-\dukaz $H = P \oplus P_{\max} = (P \setminus P_{\max}) \cup (P_{\max} \setminus P)$
-% TODO: dodělat důkaz
+\dukaz Utvořme symetrickou diferenci hran obou párování, tj. $H = P \oplus P_{\max} = 
+(P \setminus P_{\max}) \cup (P_{\max} \setminus P)$.
+Uvažujme graf, který obsahuje všechny vrcholy grafu $G$ a hrany $H$. V tomto grafu má každý vrchol stupeň nejvýše 2. 
+Mějme libovolný vrchol $v$. Pak nastane některé z následujicích možností:
+\vspace{-1em}
+\begin{enumerate}[(a)]
+    \item není nasycen ani v $P$ ani v $P_{\max}$, pak $d_H(v) = 0$;
+    \item je nasycen buď v $P$, nebo v $P_{\max}$, pak $d_H(v) = 1$;
+    \item je nasycen v obou párováních, pak $d_n(v) = 0$, jestliže stejnou hranou, nebo $d_H(v) = 2$. 
+\end{enumerate}
+Komponenty souvislosti grafu $(V,H)$ jsou buď isolované vrcholy (stupeň 0), nebo kružnice, nebo cesty. Jak v křuznicích, 
+tak v cestách se střídají hrany z $P$ a $P_{\max}$. Proto jsou kružnice sudé délky, cesty pak sudé či liché délky.
+
+Mezi komponentami souvislosti nemůže existovat cesta liché délky, která by měla víc hran z $P$ než z $P_{\max}$ (byla by 
+to totiž zlepšující cesta vůči $P_{\max}$ a ta neexistuje). Každá cesta liché délky je proto zlepšující cestou vzhledem 
+k párování $P$. Víme, že každá kružnice i každá cesta sudé délky má stejný počet hran z $P$ a $P_{\max}$. Ukážeme-li 
+tedy, že $H$ obsahuje o $k$ více hran z $P_{\max}$ než z $P$, budeme mít dokázáno, že existuje $k$ komponent grafu $H$, 
+které jsou zlepšujícími cestami vůči $P$.
+
+Máme
+\begin{equation}
+    H = \left(P_{\max} \setminus P\right) \cup \left(P \setminus P_{\max}\right).
+\end{equation}
+Platí
+\begin{equation}
+    \left|P_{\max} \setminus P\right| = \left|P_{\max}\right| - \left|P \cap P_{\max}\right| = |P| + k - 
+    \left|P \cap P_{\max}\right| = \left|P \setminus P_{\max}\right| + k.
+\end{equation}
+\hspace{\fill}\qed
 
 \subsection{Souvislost perfektního párování a počtu komponent}
 \ii{Tutte}. Je dán prostý graf $G = (V,E)$ bez smyček s alespoň třemi vrcholy. V grafu $G$ existuje perfektní párování
 právě tehdy, když pro každou podmnožinu $S \subseteq V$ platí
-\begin{equation}
-    g(G \setminus S) \leq |S|,
+\begin{equation} \label{eq:tutte}
+    g(G \setminus S) \leq |S|, 
 \end{equation}
 kde $g(G \setminus S)$ je počet komponent souvislosti grafu $G \setminus S$, které mají lichý počet vrcholů.
 
@@ -292,7 +319,49 @@ $G \setminus S$ je alespoň jeden vrchol, který není spárován uvnitř kompon
 s nějakým vrcholem $S$. Proto nemůže být $|S|$ menší než počet lichých komponent.
 
 \enquote{$\Leftarrow$}: Předpokládejme, že graf $G$ splňuje $g(G \setminus S) \leq |S|$ pro každou $S \subseteq V$.
-% TODO: dodělat důkaz
+
+Nejprve si uvědomme, že pro $S = \emptyset$ podmínka zaručuje, že graf $G$ má sudý počet vrcholů.
+
+Dále si uvědomme, že splňuje-li $G$ podmínku \eqref{eq:tutte} a přidáme-li k němu hranu $e$ mezi stávajícimi vrcholy, 
+pak graf $G + e$ také splňuje podmínku \eqref{eq:tutte}. Ano, graf $(G+e) \setminus S$ má buď stejně lichých komponent 
+jako $G \setminus S$, nebo o dvě méně. 
+
+Předpokládejme, že by existoval graf $G$ splňující \eqref{eq:tutte}, který nemá perfektní párování, tak vybereme jako 
+$G$ ten z nich, který nemá perfektní párování, ale přidáním libovolné hrany už perfektní párování mít bude.
+
+Označme $T$ množinu všech vrcholů stupně $n-1$, kde $n = |V|$. Platí $T \subseteq V$ a proto pro ni musí platit podmínka 
+\eqref{eq:tutte}. Nejprve dokážeme, že každá komponenta souvislosti grafu $G \setminus T$ je úplný graf.
+
+Kdyby existovala komponenta souvislosti $C$ grafu $G \setminus T$, která není úplným grafem, pak by v $C$ existovaly 
+vrcholy $x,y,z$ takové, že $\bc{x,y}, \bc{y,z} \in E$ a $\bc{x,z} \not\in E$. Navíc vrchol $z$ neleží v $T$, proto 
+existuje vrchol $w \not\in T$ takový, že $\bc{z,w} \not\in E$.
+
+Označme $P_1$ perfektní párování v grafu $G + \bc{x,y}$ a $P_2$ perfektní párování v grafu $G + \bc{z,w}$. Dále označme 
+$H$ symetrickou diferenci párování $P_1 \oplus P_2$. Platí $\bc{x,y}, \bc{z,w} \in H$. Rozebereme nyní dva případy:
+\begin{enumerate}[(a)]
+    \item Hrany $\bc{x,y}, \bc{z,w}$ leží v různých komponentách souvislosti $A, B$ v $H$, $\bc{x,y} \in A$, $\bc{z,w} 
+    \in B$. Pak párování $P$, které obsahuje hrany $P_2$ komponenty $A$ jinak hrany $P_1$, je perfektní párování v grafu 
+    $G$. Což je spor s faktem, že $G$ nemá perfektní párování.
+    \item Hrany $\bc{x,y}, \bc{z,w}$ leží ve stejné komponentě souvislosti $A$ grafu $H$. Komponenta $A$ je kružnice 
+    sudé délky, která střídavě obsahuje hrany z $P_1$ a $P_2$. Označme $K_1$ tu část $A$, která začíná ve vrcholu $z$, 
+    pokračuje z $P_1$ a po hraně z $P_2$ poprvé navštíví jeden z vrcholů $x,y$. \ii{BÚNO} předpokládejme, že je to 
+    vrchol $y$. Dále označme $K_2$ zbylou část kružnice $A$, ze které jsme odstranili hranu $\bc{x,y}$. Definujme $P$ 
+    takto: $P$ obsahuje
+    \begin{itemize}
+        \item $K_1 \cap P_2$,
+        \item $K_2 \cap P_1$,
+        \item $\bc{x,z}$.
+    \end{itemize}
+    Tím jsme získali perfektní párování v grafu $G$; opět spor.
+\end{enumerate}
+Víme tedy, že všechny komponenty souvislosti grafu $G \setminus T$ jsou úplné grafy. Definujme párování $P$ takto:
+\ii{V každé komponentě souvislosti grafu $G \setminus T$ o sudém počtu vrcholů vybereme libovolné perfektní párování;
+v komponentě souvislosti $G \setminus T$ o lichém počtu vrcholů spárujeme libovolně všechny vrcholy až na jeden, 
+který spárujeme s některým vrcholem $T$.} Protože lichých komponent $G \setminus T$ je nejvyše tolik jako $|T|$, 
+můžeme to udělat. Navíc je počet vrcholů sudý, takže nám z množiny $T$ zbyde sudý počet nespárovaných vrcholů, jedná 
+se ovšem o vrcholy, které jsou spojeny s každým vrcholem grafu, můžeme proto zbylé vrcholy mezi sebou libovolně 
+spárovat. Zase jsme ukázali, že v $G$ existuje pefektní párování.
+\hspace{\fill}\qed
 
 \subsection{Párování v bipartitních grafech}
 Je dán bipartitní graf $G$ se stranami $X$ a $Y$. K němu je možné vytvořit síť takovou, že každému párování $P$ v grafu 
