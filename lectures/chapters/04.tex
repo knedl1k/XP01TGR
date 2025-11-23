@@ -1,6 +1,6 @@
 \section{Extremální teorie}
-\subsection{Věta o souvislosti vrcholů a hran (Mantel)}
-Máme $G \in \S$ s $n$ vrcholy, $m$ hranami, který nemá $K_3$. Pak $m \leq \frac{n^2}{4}$.
+\subsection{Věta o souvislosti vrcholů a hran}
+\ii{Mantel.} Máme $G \in \S$ s $n$ vrcholy, $m$ hranami, který nemá $K_3$. Pak $m \leq \frac{n^2}{4}$.
 
 \dukaz\\
 \ii{Pomocná definice}. Množina $A$ je nezávislá $A \subseteq V(G)$ pokud pro každou $e = \bc{u, v}$, jestliže $u \in A$, 
@@ -17,8 +17,10 @@ Každá hrana má alespoň 1 krajní vrchol v $B$. Pro které $k$ je $(n-k)k$ ne
     f^\prime(x) &= n-2x \implies f^\prime(x) = 0 \iff x = \frac{n}{2}\\
     f^{\prime \prime}(x) &= -2
 \end{align}
-Protože jsme v $\N$, tak $\ceil*{\frac{n}{2}} \cdot \floor*{\frac{n}{2}} = \frac{n+1}{2} \frac{n-1}{2} = \frac{n^2-1}{4} 
-\leq \frac{n^2}{4}$.
+Protože jsme v $\N$, tak $\ceil*{\frac{n}{2}} \cdot \floor*{\frac{n}{2}} = \frac{n+1}{2} \frac{n-1}{2} = \frac{n^2-1}{4} \leq \frac{n^2}{4}.$
+% \begin{equation}
+%     \ceil*{\frac{n}{2}} \cdot \floor*{\frac{n}{2}} = \frac{n+1}{2} \frac{n-1}{2} = \frac{n^2-1}{4} \leq \frac{n^2}{4}.
+% \end{equation}
 \hspace{\fill}\qed
 
 \subsection{Věta o souvislosti hran a úplném grafu}

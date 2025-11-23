@@ -1,6 +1,6 @@
 \section{Souvislé grafy}
 
-\subsection{\texorpdfstring{$k$}{k}-souvislost}
+\subsection{\texorpdfstring{$k$}{k}-souvislost}\label{k-souvislost}
 $G = (V,E) \in \S$. Řekněme, že $G$ je $k$-souvislý, pokud $|V| > k$ a pro každou $X \subseteq V$, $|X| = k-1$ je 
 $G \setminus X$ souvislý.\\
 Mějmě
@@ -37,7 +37,7 @@ Mějmě
 Každý graf je $0$-souvislý, i nesouvislý graf je $0$-souvislý.\\
 $1$-souvislý je každý souvislý graf.
 
-\subsection{Souvislost v grafu}
+\subsection{Souvislost v grafu}\label{souvislost}
 Souvislost v grafu $G$ je největší $k$ takové, že $G$ je $k$-souvislý. Značíme $\kappa(G)$. \\ Úplný graf má 
 $\kappa(G) = |V|-1$.
 
@@ -49,7 +49,8 @@ Je-li $G \in S$, $G$ není úplný, pak $\kappa(G)=k$ právě tehdy, když nemá
 řez o $k$ vrcholech.
 
 \subsection{Věta o vztahu podgrafu a souvislosti}
-Mějme $G \in \S$, $G = (V,E)$, splňující $d(G) \geq 4k$. Pak $G$ obsahuje podgraf, který je $k$-souvislý.
+Mějme $G \in \S$, $G = (V,E)$, splňující $d(G) \geq 4k$. Pak $G$ obsahuje podgraf, který je 
+\hyperref[k-souvislost]{$k$-souvislý}.
 
 \dukaz 
 \begin{itemize}
@@ -64,7 +65,7 @@ Mějme $G \in \S$, $G = (V,E)$, splňující $d(G) \geq 4k$. Pak $G$ obsahuje po
     \end{align}
 \end{itemize}
 Průběh důkazu $d(G) \geq 4k, k\geq 2$ $\xRightarrow{\text{Lemma 1}} (\text{i}), (\text{ii}) \xRightarrow{\text{Lemma 2}} 
-G \text{ má } k \text{-souislost.}$
+G \text{ má } \text{\hyperref[k-souvislost]{$k$-souvislost}.}$
 \subsubsection{Pomocné lemma 1}
 Pokud $k \geq 2$ a $d(G) \geq 4k$, pak
 \begin{enumerate}[(i), noitemsep]
@@ -117,9 +118,9 @@ Teď aplikujme již dokázané (i):
 \end{figure}
 
 \subsubsection{Pomocné lemma 2}
-Pokud $G$ splňuje (i) a (ii), tak $G$ má $k$-souvislý podgraf.
+Pokud $G$ splňuje (i) a (ii), tak $G$ má \hyperref[k-souvislost]{$k$-souvislý} podgraf.
 
-\dukaz $G$ není $k$-souvislý.\\
+\dukaz $G$ není \hyperref[k-souvislost]{$k$-souvislý}.\\
 Indukcí podle $|V| = n$.
 
 Základní krok: n $\stackrel{\text{(i)}}{=}2k-1$, $m \geq (2k-3)(n-k+1)+1$.\\
@@ -132,7 +133,7 @@ A tedy graf je úplný na $n$ vrcholech. Teď potřebujeme $n>k$.
     n = 2k-1 = k + \underbrace{k-1}_{\geq 1} \geq k+1
 \end{equation}
 Indukční krok: Každý graf $G^\prime$ splňující (i) a (ii) s méně než $n$ vrcholy (s alespoň $2k-1$ vrcholy) má 
-$k$-souvislý podgraf.
+\hyperref[k-souvislost]{$k$-souvislý} podgraf.
 
 Vezmeme $G$ splňující (i) a (ii) s $n$ vrcholy.
 \begin{enumerate}[(a)]
@@ -141,9 +142,10 @@ Vezmeme $G$ splňující (i) a (ii) s $n$ vrcholy.
     \begin{equation}
         m_1 \geq m-(2k-3) \geq (2k-3)(n-k+1)+1 - (2k-3) = (2k-3)(\underbrace{n-1}_{n_1}-k+1)+1
     \end{equation}
-    Tudíž $G_1$ má $k$-souvislý podgraf, tedy i ho má $G$.
+    Tudíž $G_1$ má \hyperref[k-souvislost]{$k$-souvislý} podgraf, tedy i ho má $G$.
     \item Ať $\delta(G) > 2k-3m$, $\delta(G) \geq 2k-2$; $\forall v \in G, d_G(v)\geq 2k-2$.\\
-    $G$ není $k$-souvislý, tj. $X \subseteq V$, $|X|=k-1$ a $X$ je \hyperref[vrchRez]{vrcholový řez}.
+    $G$ není \hyperref[k-souvislost]{$k$-souvislý}, tj. $X \subseteq V$, $|X|=k-1$ a $X$ je 
+    \hyperref[vrchRez]{vrcholový řez}.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -173,7 +175,8 @@ Vezmeme $G$ splňující (i) a (ii) s $n$ vrcholy.
         \node[right=2mm of y_pos] {$y$};
     \end{tikzpicture}
 \end{figure}
-$G \setminus X$ je nesouvislý. Všech je $(k-1) + (k-1) + 1$. $\colorbox{blue!30}{$d_G(x)$} \geq 2k - 2$.
+$G \setminus X$ je ne\hyperref[souvisly]{souvislý}. Všech je $(k-1) + (k-1) + 1$. $\colorbox{blue!30}{$d_G(x)$} 
+\geq 2k - 2$.
 
 $G_1$ graf indukovaný $C_1$ v $X$ má alespoň $2k-1$ vrcholů.
 
@@ -193,7 +196,7 @@ Tedy spor s (ii).
 \newpage
 \subsection{Artikulace}\label{artikulace}
 Vrchol $v$ grafu $G$ se nazývá artikulace, jestliže $G \setminus v$ má více komponent souvislosti, než $G$.\\
-\bb{Platí.} $G \in \S$ s alespoň 3 vrcholy je 2-souvislý $\iff$ je 1-souvislý a nemá artikulaci.
+\bb{Platí.} $G \in \S$ s alespoň 3 vrcholy je \hyperref[k-souvislost]{2-souvislý} $\iff$ je 1-souvislý a nemá artikulaci.
 \begin{figure}[H]
     \centering
     \begin{minipage}[c]{0.3\textwidth}
@@ -231,28 +234,30 @@ Vrchol $v$ grafu $G$ se nazývá artikulace, jestliže $G \setminus v$ má více
 Mějme operace
 \begin{enumerate}[(a)]
     \item $G \in \S$ a $e \in \bc{u,v}$; $u, v \in V(G)$, $e \not\in E(G)$, pak
-    $G + e$ je graf s $V(G)$ a $E(G) \cup \bc{e}$. \\ Je-li $G$ 2-souvislý, tak $G+e$ je 2-souvislý.
+    $G + e$ je graf s $V(G)$ a $E(G) \cup \bc{e}$. \\ Je-li $G$ \hyperref[k-souvislost]{2-souvislý}, tak $G+e$ je 
+    2-souvislý.
     \item $G \in \S$, $G = (V,E)$, $e \in E$, pak
     $G \% e = \left(V \cup \bc{w}, (E \setminus \bc{e}) \cup \bc{e_1, e_2}\right)$. \\
     \enquote{Do hrany $e$ vložíme vrchol se stupněm 2.}
 \end{enumerate}
 
 \subsection{Tvrzení o 2-souvislých grafech a kružnicích}
-Každý 2-souvislý graf obsahuje kružnici. 
+Každý\hyperref[k-souvislost]{2-souvislý} graf obsahuje \hyperref[kruznice]{kružnici}. 
 
-\dukaz Každý 2-souvislý graf je souvislý. Kdyby souvislý neobsahoval kružnici, jedná se o strom. A každý strom s 
-alespoň 3 vrcholy má artikulaci. Protože stromy nemohou být 2-souvislé, a zároveň všechny ostatní souvislé grafy 
-obsahují kružnici, i každý 2-souvislý graf obsahuje kružnici.
+\dukaz Každý 2-souvislý graf je \hyperref[souvisly]{souvislý}. Kdyby souvislý neobsahoval kružnici, jedná se o strom. A 
+každý strom s alespoň 3 vrcholy má \hyperref[artikulace]{artikulaci}. Protože stromy nemohou být 2-souvislé, a zároveň 
+všechny ostatní souvislé grafy obsahují kružnici, i každý 2-souvislý graf obsahuje kružnici.
 \hspace{\fill}\qed
 
 \subsection{Věta o vrcholech na společné kružnici}
-$G \in \S$, $G = (V,E)$ je 2-souvislý právě tehdy, když každé 2 vrcholy $u \not= v$ leží na společné kružnici.
+$G \in \S$, $G = (V,E)$ je \hyperref[k-souvislost]{2-souvislý} právě tehdy, když každé 2 vrcholy $u \not= v$ leží na 
+společné \hyperref[kruznice]{kružnici}.
 
 \dukaz\\
 \enquote{$\Leftarrow$}: Předpokládejme, že pro každé $u \not= v$ existuje kružnice $K$, která je obsahuje.
 
-To znamená, že graf je souvislý. Musíme ještě dokázat, že v něm neexistuje \hyperref[artikulace]{artikulace}.
-Kdyby graf měl artikulaci $v$: 
+To znamená, že graf je \hyperref[souvisly]{souvislý}. Musíme ještě dokázat, že v něm neexistuje 
+\hyperref[artikulace]{artikulace}. Kdyby graf měl artikulaci $v$: 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1]
@@ -279,7 +284,8 @@ Zároveň ale vrchol $x \in C_1$ a $y \in C_2$ rozhodně neleží na společné 
 takže $G$ je 2-souvislý. 
 \hspace{\fill}\qed
 
-\enquote{$\Rightarrow$}: Předpokládejme, že $G$ je 2-souvislý. Dokažme indukcí podle vzdálenosti $d(u,v)$.
+\enquote{$\Rightarrow$}: Předpokládejme, že $G$ je \hyperref[k-souvislost]{2-souvislý}. Dokažme indukcí podle 
+vzdálenosti $d(u,v)$.
 \begin{enumerate} [(a)]
     \item Základní krok: $u, v$ s $d(u,v)=1$. \\
     Budeme se snažit ukázat, že když zrušíme hranu, souvislost zůstane. 
@@ -305,8 +311,8 @@ takže $G$ je 2-souvislý.
             \end{tikzpicture}
         \end{figure}
         Přitom $G$ má alespoň 3 vrcholy, tedy v jedné komponentě leží alespoň 2 vrcholy. \ii{BÚNO} exsistuje 
-        $x \in C_1$, $x \not= u$, tj. $u$ je \hyperref[artikulace]{artikulace}. Což je spor.
-        Takže $G \setminus e$ je souvislý. Tedy existuje cesta $P$ z $u$ do $v$. Pak $P$ je kružnice obsahující $u,v$. 
+        $x \in C_1$, $x \not= u$, tj. $u$ je artikulace. Což je spor. Takže $G \setminus e$ je souvislý. Tedy existuje 
+        cesta $P$ z $u$ do $v$. Pak $P$ je kružnice obsahující $u,v$. 
     \end{enumerate}
     \item Indukční předpoklad: Pro každé $x,y$ s $d(x, y) = n \geq 1$ existuje kružnice obsahující $x,y$.
     \item Indukční krok: Vezměme libovolné $u,v$ s $d(u,v) = n+1$. Vyberme nejkratší cestu:
@@ -337,14 +343,14 @@ takže $G$ je 2-souvislý.
     \end{figure}
     Použijme I.P.: tj. existuje kružnice $K_1$ obsahující $x_1, v$. $x_1$ není \hyperref[artikulace]{artikulace}, tj. 
     existuje cesta $P$ z $u$ do $v$ neobsahující $x_1$. $w$ je prvním vrcholem cesty $P$, který leží na $K_1$. Použijeme
-    cestu $P$, abychom se dostali z $u$ do $w$, následně se přes $K_1$ dostaneme do $v$. Dále po kružnici do $x_1$, kde 
-    si musíme vybrat trasu, která nevede do $w$, tj. směrem do $u$. A tím uzavřeme \colorbox{red}{kružnici} obsahující 
-    $u$ a $v$.
+    \hyperref[stc]{cestu} $P$, abychom se dostali z $u$ do $w$, následně se přes $K_1$ dostaneme do $v$. Dále po 
+    kružnici do $x_1$, kde si musíme vybrat trasu, která nevede do $w$, tj. směrem do $u$. A tím uzavřeme 
+    \textcolor{red}{kružnici} obsahující $u$ a $v$.
 \end{enumerate}
 \hspace{\fill}\qed
 
 \subsection{Tvrzení o 2-souvislých grafech a \% operaci}
-$G \in \S$ je 2-souvislý právě tehdy, když $G \% e$, $e \in E(G)$ je 2-souvislý.
+$G \in \S$ je \hyperref[k-souvislost]{2-souvislý} právě tehdy, když $G \% e$, $e \in E(G)$ je 2-souvislý.
 
 \dukaz\\
 \enquote{$\Rightarrow$}: Předpokládejme, že $G$ je 2-souvislý, tj. souvislý a nemá \hyperref[artikulace]{artikulaci}.
@@ -353,11 +359,12 @@ Vrchol $w$, který vložíme do hrany $e$, není artikulace. A žádný jiný se
 artikulací předtím, a tedy by se v prvé řadě nejednalo o 2-souvislý.
 \hspace{\fill}\qed
 
-\enquote{$\Leftarrow$}: Předpokládejme, že $G \% e$ je 2-souvislý, tj. každé 2 vrcholy leží na společné kružnici.
+\enquote{$\Leftarrow$}: Předpokládejme, že $G \% e$ je \hyperref[k-souvislost]{2-souvislý}, tj. každé 2 vrcholy leží na 
+společné kružnici.
 \begin{equation}
     x, y \in V(G) \dots \text{existuje } K \text{ v } G \% e \text{ obsahující } x, y
     \begin{cases}
-        K \text{ neobsahuje } e_1, e_2 & K \text{ je kružnice } G. \\
+        K \text{ neobsahuje } e_1, e_2 & K \text{ je \hyperref[kruznice]{kružnice} } G. \\
         \\
         K \text{ obsahuje } e_1, e_2 & \text{ z } K \text{ odstraníme } e_1, e_2, \\ 
         & \text{ nahradíme } e \text{ a máme } K^\prime.
@@ -369,13 +376,13 @@ $K^\prime$ je kružnice v $G$.
 \subsection{Algoritmus sestrojení 2-souvislého grafu}
 Každý 2-souvislý graf $G \in \S$, $G = (V,E)$ je možné sestrojit postupem:
 \begin{equation}
-    G_0 \coloneq K \text{ je nějaká kružnice}
+    G_0 \coloneq K \text{ je nějaká \hyperref[kruznice]{kružnice}}
 \end{equation}
-Máme-li $G_i$, že $G_i \not= G$, tak $G_{i+1}$ je $G_i$, ke kterému přidáme cestu $P$ (v $G$), která vede mezi 2 vrcholy
-z $G_i$ a zároveň všechny vrcholy této cesty nejsou v $G_i$.
+Máme-li $G_i$, že $G_i \not= G$, tak $G_{i+1}$ je $G_i$, ke kterému přidáme \hyperref[stc]{cestu} $P$ (v $G$), která 
+vede mezi 2 vrcholy z $G_i$ a zároveň všechny vrcholy této cesty nejsou v $G_i$.
 
 \subsection{Příklad sestrojení 2-souvislého grafu}
-Mějme 2-souvislý graf, tj. bez artikulace: 
+Mějme \hyperref[k-souvislost]{2-souvislý} graf, tj. bez \hyperref[artikulace]{artikulace}: 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1]
@@ -433,11 +440,10 @@ A posledně z 3 do 5, $G_3 = G$:
         };
     \end{tikzpicture}
 \end{figure}
-% TODO: přidat i druhý postup z fotky
 
-\subsection{Komponenty 2-souvislosti - blok}
+\subsection{Komponenty 2-souvislosti - blok}\label{blok}
 Mějme $G \in \S$, $G = (V,E)$, pak $A \subseteq V(G)$ se nazývá \ii{blok}, jestliže je maximální podmnožina taková, že 
-jí indukovaný podgraf je 2-souvislý. \\
+jí indukovaný podgraf je \hyperref[k-souvislost]{2-souvislý}. \\
 \ii{Pozn. maximální v tomto kontextu neznamená nejpočetnější, nýbrž, že do takové podmnožiny již nelze přidat další 
 vrchol.}
 \begin{figure}[H]

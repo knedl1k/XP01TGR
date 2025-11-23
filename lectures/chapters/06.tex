@@ -2,12 +2,12 @@
 \subsection{Cesta, kružnice, cyklus}\label{hamKru}
 Cesta (kružnice, cyklus) je hamiltonovská(ský), jestliže prochází všemi vrcholy.
 
-\subsection{(Ne)orientovaný graf}
+\subsection{(Ne)orientovaný graf}\label{hamGraf}
 (Ne)orientovaný graf je Hamiltonovský, jestliže obsahuje hamiltonovský(skou) cyklus (kružnici).
 
 \subsection{Chvátalova věta o Hamiltonovském grafu}\label{chvatal}
-Máme $G \in \S$, $n \geq 3$, se skóre $d_1 \leq d_2 \leq \dots \leq d_n$, $n = |V|$. Jestliže pro nějaké $k < 
-\frac{n}{2}$ platí $d_k \leq k$, a pak $d_{n-k} \geq n-k$, tak $G$ je Hamiltonovský.
+Máme $G \in \S$, $n \geq 3$, se \hyperref[skore]{skóre} $d_1 \leq d_2 \leq \dots \leq d_n$, $n = |V|$. Jestliže pro 
+nějaké $k < \frac{n}{2}$ platí $d_k \leq k$, a pak $d_{n-k} \geq n-k$, tak $G$ je Hamiltonovský.
 
 \dukaz Sporem. Předpokládejme, že existuje $G \in \S$, $n \geq 3$, $G$ splňuje $k < \frac{n}{2}$ platí $d_k \leq k$, a 
 pak $d_{n-k} \geq n-k$ a $G$ není Hamiltonovský.
@@ -15,8 +15,9 @@ pak $d_{n-k} \geq n-k$ a $G$ není Hamiltonovský.
 Když ke $G$ splňující Chvátalovu podmínku přidáme hranu, která v $G$ není, tak nový graf stále splňuje Chvátalovu 
 podmínku.
 
-Zvolíme $G$ s Chvátalovou podmínkou maximální bez Hamiltonovské kružnice. Zvolme $x,y: \, \bc{x,y} \not\in E$, $d(x) + 
-d(y)$ je největší mezi $\bc{u,v} \not\in E$, $d(x) \leq d(y)$. V $G$ existuje Hamiltonovská cesta z $x$ do $y$.
+Zvolíme $G$ s Chvátalovou podmínkou maximální bez \hyperref[hamKru]{hamiltonovské kružnice}. Zvolme $x,y: \, \bc{x,y} 
+\not\in E$, $d(x) + d(y)$ je největší mezi $\bc{u,v} \not\in E$, $d(x) \leq d(y)$. V $G$ existuje Hamiltonovská cesta z 
+$x$ do $y$.
 % TODO: nákres
 Označme
 \begin{align}
@@ -66,7 +67,7 @@ tak existuje
 \begin{equation} 
     d_1 \leq d_2 \leq \dots \leq d_n, \, a_i \leq d_i,
 \end{equation}
-tak, že je skóre grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.
+tak, že je \hyperref[skore]{skóre} grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.
 
 \dukaz Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}, pak existuje číslo $k$ tak, že 
 $k \leq \frac{n}{2}$, $d_k \leq k$ a přitom $d_{n-k} \leq n-k-1$.
@@ -92,7 +93,7 @@ a tedy majorizuje $a_1, a_2, \dots, a_n$. Není těžké nahlédnout, že v $G$ 
 
 % TODO: dodělat příklad
 
-\subsection{Turnaj}
+\subsection{Turnaj}\label{turnaj}
 Prostý orientovaný graf $G$ bez smyček nazveme \ii{turnajem}, jestliže pro každé dva různé vrcholy $u,v$ buď $(u,v)$ je
 hrana grafu $G$, nebo $(v,u)$ je hrana $G$; nikdy ale ne oboje.
 

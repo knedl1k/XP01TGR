@@ -33,7 +33,7 @@ Rozlišujeme 2 základní typy grafů, orientované a neorientované.
     může končit.
 \end{enumerate}
 
-\subsubsection{Kružnice a cyklus}
+\subsubsection{Kružnice a cyklus}\label{kruznice}
 \ii{Kružnice} je uzavřená \underline{ne}orientovaná cesta v grafu, \ii{cyklus} uzavřená orientovaná cesta.
 
 Příklad kružnice:
@@ -87,7 +87,7 @@ Z toho máme důsledek
 \end{equation}
 Tedy každý graf má sudý počet vrcholů lichého stupně.
 
-\subsection{Skóre}
+\subsection{Skóre}\label{skore}
 Skóre grafu $\underset{\underset{\|V\|=d}{G=(V,E)}}{(G \in \S)}$ je $D = (d_1, d_2, \dots, d_n)$, kde $d_i$ je stupeň 
 vrcholu $v_i$.
 
@@ -317,13 +317,13 @@ Mějme $G \in \S$, $G = (V,E)$, $x, y \in V$.
 Vzdálenost $x,y$ je $d_G(x,y)$, což značí počet hran v nejméně početné cestě z $x$ do $y$, když existuje cesta. Jinak
 $d_G(x,y) = \infty$.
 
-\subsubsection{Průměr}
+\subsubsection{Průměr}\label{prumer}
 Ať $G$ je \hyperref[souvisly]{souvislý}. Průměr $G$ je $\diam(G) = \max\bc{d_G(x,y) \mid x, y \in V}$.
 
-\subsubsection{Excentricita}
+\subsubsection{Excentricita}\label{excentricita}
 Ať $G$ je \hyperref[souvisly]{souvislý}. Excentricita vrcholu $v \in V$ je $\ex(V) = \max\bc{d_G(v,x) \mid x \in V}$.
 
-\subsubsection{Centrum}
+\subsubsection{Centrum}\label{centrum}
 Ať $v \in V$ je centrální $\rightarrow \ex(v)$ je nejmenší mezi $\ex(x), x\in V$. Centrum (staře \ii{střed}) grafu je
 $C(G) = \bc{v \mid v \text{ je centrální}}$.
 \begin{figure}[H]
@@ -349,7 +349,7 @@ $C(G) = \bc{v \mid v \text{ je centrální}}$.
     \end{minipage}
 \end{figure}
 
-\subsubsection{Poloměr}
+\subsubsection{Poloměr}\label{polomer}
 Poloměr $G$ je $\rad(G) = \ex(v), v \in C(G)$.
 
 Platí $\rad(G) \leq \underbrace{\diam(G) \leq 2 \rad(G)}_{\star}$.
