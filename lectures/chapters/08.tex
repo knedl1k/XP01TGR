@@ -269,7 +269,7 @@ $P^\prime = C \oplus P$ je také párování v $G$.
 A pokud je navíc $C$ \hyperref[zlepsujiciCestaPar]{zlepšující cesta}, tj. cesta mezi volnými vrcholy v $P$, pak 
 $|P^\prime| = |P| + 1$.
 
-\subsection{Věta o vrcholově disjunktních zlepšujících cestách}\label{vrcholoveZlepsujiciCesty}
+\subsection{Věta o vrcholově disjunktních zlepšujících cestách}\label{berge}
 \ii{Berge}. Je dáno \hyperref[parovani]{párování} $P$ v grafu $G$. Označme $P_{\max}$ 
 \hyperref[maximalniParovani]{maximální párování} v $G$ (o kterém víme, že existuje). Jestliže
 \begin{equation}
@@ -310,7 +310,7 @@ Platí
 \end{equation}
 \hspace{\fill}\qed
 
-\subsection{Souvislost perfektního párování a počtu komponent}
+\subsection{Souvislost perfektního párování a počtu komponent}\label{tutte}
 \ii{Tutte}. Je dán prostý graf $G = (V,E)$ bez smyček s alespoň třemi vrcholy. V grafu $G$ existuje 
 \hyperref[perfektniParovani]{perfektní párování} právě tehdy, když pro každou podmnožinu $S \subseteq V$ platí
 \begin{equation} \label{eq:tutte}
@@ -452,7 +452,7 @@ Takže $|P| = \vel(f_P)$; \ii{\enquote{projde tolik jedniček, kolik je hran pá
 
 No a $\bc{x,y} \in P_f$ právě tehdy, když $f((x,y))=1$. Tedy $\vel(f) = |P_f|$.
 
-\subsection{Věta o maximálním párování}
+\subsection{Věta o maximálním párování}\label{konig} % TODO: dodělat z nahrávky, 10. týden
 \ii{König}. Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Označme $P_{\max}$ 
 \hyperref[maximalniParovani]{maximální párování} v $G$. \\ Pak platí
 \begin{equation}
@@ -559,3 +559,119 @@ Musíme ukázat, že $Z_0 \cap Y = V_G(A_0)$.
     Z_0 \cup Y \subseteq V_G(A_0) \\
     Z_0 \cup Y \supseteq V_G(A_0)
 \end{align}
+
+\subsection{Věta o nasycujícím párování}\label{hall}
+\ii{Hall}. Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak v $G$ existuje párování nasycující stranu $X$ právě 
+tehdy, když pro každou množinu $A \subseteq X$ platí
+\begin{equation}
+    |A| \leq |V_G(A)| = \bc{y \mid y \in Y \land \bc{x,y} \in E}.
+\end{equation}
+\dukaz Jestliže v grafu $G$ existuje párování nasycující stranu $X$, pak $G$ podmínku věty splňuje (párování každému 
+vrcholu z množiny $A$ \enquote{přiřazuje} vrchol z $V_G(A)$, a tudíž vrcholů v $V_G(A)$ musí být alespoň tolik, kolik je 
+vrcholů v $A$.) 
+
+\enquote{$\Leftarrow$}: Víme, že $|P_{\max}| = |X \setminus A_0| + |V_G(A)|$ pro nějakou $A_0 \subseteq X$ (z 
+\hyperref[konig]{Königovy věty}). \\ Sporem. Kdyby $P_{\max}$ nenasycovalo $X$. Tak $|P_{\max} < |X|$. Takže
+\begin{align}
+    |X \setminus A_0| + |V_G(A)| &< |X| \\
+    |X| - |A_0| + |V_G(A)| &< |X| \\
+    |V_G(A)| &< |A_0| 
+\end{align}
+Což je spor.
+\hspace{\fill}\qed
+
+\subsection{Tvrzení o vztahu stupňů vrcholů a nasycujícího párování}
+Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Jestliže pro každý vrchol $x \in X$ a každý vrchol $y \in Y$ platí
+\begin{equation}
+    d(x) \geq d(y),
+\end{equation}
+pak v $G$ existuje párování nasycující stranu $X$.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        thick,
+        vertex_hollow/.style={circle, draw, very thick, minimum size=8pt, inner sep=0pt},
+        vertex_filled/.style={circle, fill, minimum size=8pt, inner sep=0pt}
+    ]
+        \node at (0, 5.5) {$X$};
+        \node at (6, 5.5) {$Y$};
+
+        \node[vertex_hollow, draw=green!60!black, label=left:\textcolor{green!60!black}{$x$}] (x) at (0, 4.5) {};
+        \fill[green!60!black] (x) circle (2pt);
+        \node at (0, 3.5) {$\vdots$};
+        \node at (0, 1.5) {$\vdots$};
+        \node at (0, 0.5) {$\vdots$};
+
+        \node[vertex_hollow, draw=orange, label=right:\textcolor{orange}{$y$}] (y) at (6, 4.5) {};
+        \fill[orange] (y) circle (2pt); 
+
+        \node[vertex_filled, blue] (y1) at (6, 3.5) {};
+        \node[vertex_filled, blue] (y2) at (6, 2.5) {};
+        \node[vertex_filled, blue] (y3) at (6, 1.5) {};
+        \node[vertex_filled, blue] (y4) at (6, 0.5) {};
+        
+        \node at (6, -0.5) {$\vdots$};
+
+        \draw[green!60!black, thick] (x) -- (y);
+        \draw[green!60!black, thick] (x) -- (y1);
+        \draw[green!60!black, thick] (x) -- (y2);
+        \draw[orange, very thick] (0.5, 2.2) -- (y);
+        \draw[violet, thick] (0.65, 1.8) -- (y1);
+        \draw[violet, thick] (0.7, 1.2) -- (y2);
+        \draw[blue!80!black, thick] (0.7, 0.8) -- (y3);
+        \draw[blue!80!black, thick] (0.65, 0.2) -- (y4);
+        \draw[blue!80!black, thick] (0.5, -0.2) -- (5.5, -0.2);
+
+        \draw[violet, very thick] (0, 1) ellipse (0.7cm and 1.8cm);
+        \node[text=violet] at (-1.2, 1) {$A$};
+    \end{tikzpicture}
+\end{figure}
+\dukaz Označme $d_X = \min\bc{d(x) \mid x \in X}$ a $d_Y = \max\bc{d(y) \mid y \in Y}$. Z předpokladu víme 
+\begin{equation}
+    d_X \geq d_Y.    
+\end{equation}
+Použijme \hyperref[hall]{Hallovu větu}. Vezměme libovolnou množinu $A \subseteq X$.
+\begin{align}
+    W(A) &\subseteq W(V_G(A)) \\
+    \text{a } |W(A)| &\geq d_X |A|, \, |W(V_G(A))| \leq d_Y |V_G(A)|
+\end{align}
+Takže
+\begin{equation}
+    d_X |A| \leq |W(A)| \leq |W(V_G(A)) \leq d_Y |V_G(A)|
+\end{equation}
+a současně $d_X \geq d_Y$.
+
+Může být $|A| > |V_G(A)|$? Kdyby ano, tak
+\begin{equation}
+    d_X |A| > d_Y |V_G(A)|.
+\end{equation}
+Což neplatí, takže
+\begin{equation}
+    |A| \leq |V_G(A)|.
+\end{equation}
+A tedy \hyperref[hall]{Hallova věta} říká, že existuje párování nasycující $X$.
+\hspace{\fill}\qed
+
+\subsection{Tvrzení o existenci nasycujícího párování všech vrcholů}
+Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak existuje párování, které nasycuje všechny vrcholy nejvyššího 
+stupně.
+
+\dusledek Je dán bipartitní graf $G = (V,E)$ se stranami $X$ a $Y$. Označme $\Delta(G)$ nejvyšší stupeň, který některý 
+vrchol grafu má. Pak množinu hran $E$ je možno rozdělit na $\Delta(G)$ hranově disjunktních párování. 
+
+\dukaz Vytořme $G^\prime$, že k němu přidáme hrany a vrchol tak, aby
+\begin{equation}
+    \Delta(G) = d_{G^\prime}(x) = d_{G^\prime} (y) \, \forall x\in X, \, \forall y \in Y.
+\end{equation}
+V novém grafu $G^\prime$, protože
+\begin{equation}
+    d_{G^\prime}(x) \geq d_{G^\prime}(y) \, \forall x \in X, \, \forall y \in Y, 
+\end{equation}
+existuje párování nasycující $X$.
+
+Vybrali jsme maximální párování $P_{\max}$. Odstraníme všechny hrany neležící v $G$.
+
+Musí zůstat nasyceny ty vrcholy, které měly největší stupeň. Tím dostaneme párování $P$ nasycující vrcholy nejvyššího 
+stupně. 
+\hspace{\fill}\qed

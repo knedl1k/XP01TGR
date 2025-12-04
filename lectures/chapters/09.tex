@@ -1,0 +1,95 @@
+\section{Pokrývání}
+\subsection{Nezávislé množiny, nezávislost}\label{nezavislost}
+Mějme graf $G = (V,E) \in \S$. Množinu vrcholů $A \subseteq V$ nazveme \ii{nezávislou množinou}, jestliže v grafu
+neexistuje hrana s oběma krajními vrcholy v $A$. 
+
+\ii{Nezávislost graf}, značíme ji $\alpha_0(G)$, je rovna počtu vrcholů v nejpočetnější nezávislé množině v $G$.
+
+% TODO: nákres
+
+\subsection{Vrcholové pokrytí}\label{vrchPok}
+Je dán prostý neorientovaný $G = (V,E) \in \S$. Množina vrcholů $K \subseteq V$ se nazývá \ii{vrcholové pokrytí}, 
+jestliže každá hrana $e \in E$ má alespoň jeden krajní vrchol v $K$.
+
+Počet vrcholů v nejméně početném vrcholovém pokrytí v grafu $G$ značíme $\beta_0(G)$.
+
+Jestliže $K$ je vrcholové pokrytí a $K^\prime \subseteq K$, tak $K^\prime$ je také vrcholové pokrytí.
+
+% TODO: nákres
+
+\subsection{Věta o vztahu vrcholového pokrytí a nezávislosti}
+Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček s $n$ vrcholy. Platí
+\begin{equation}
+    \alpha_0(G) + \beta_0(G) = n.
+\end{equation}
+\dukaz Máme $G = (V,E) \in \S$. $|V| = n$.\\
+\enquote{$\geq$}: Uvažujme $N$ nezávislou, $|N| = \alpha_0(G)$. Pak $V \setminus N$ je \hyperref[vrchPok]{vrcholové 
+pokrytí}. Což znamená
+\begin{equation}
+    |V \setminus N| = n - \alpha_0(G) \geq \beta_0(G).
+\end{equation}
+Takže
+\begin{equation}
+    n \geq \alpha_0(G) + \beta_0(G).
+\end{equation}
+\enquote{$\leq$}: Uvažujme vrcholové pokrytí $K$ s $|K| = \beta_0(K)$. Pak $V \setminus K$ je 
+\hyperref[nezavislost]{nezávislá} množina. A
+\begin{equation}
+    |V \setminus K| = n - \beta_0(G) \leq \alpha_0(G).
+\end{equation}
+Tudíž
+\begin{equation}
+    n \leq \alpha_0(G) + \beta_0(G).
+\end{equation}
+
+Dostáváme tedy 
+\begin{equation}
+    n = \alpha_0(G) + \beta_0(G).
+\end{equation}
+\hspace{\fill}\qed
+
+\subsection{Hranové pokrytí}\label{hranPok}
+Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček a izolovaných vrcholů. Množina hran $B \subseteq E$ se nazývá 
+\ii{hranové pokrytí}, jestliže každý vrchol je krajním vrcholem alespoň jedné hrany z $B$.
+
+Definujme $\beta_1(G)$ jako počet hran v nejméně početném hranovém pokrytí.
+
+% TODO: nákres
+
+\subsection{Věta o vztahu hranového pokrytí a maximálního párování}
+Je dán prostý neorientovaný graf $G = (V,E) \in \S$ bez izolovaných vrcholů s $n$ vrcholy. Pak platí
+\begin{equation}
+    \alpha_1(G) + \beta_1(G) = n,
+\end{equation}
+kde $\alpha_1$ je počet hran v maximálním párování grafu $G$ (tj. $\alpha_1(G) = P_{\max}$).
+\dukaz\\
+\enquote{$\leq$}: Vezmeme nejméně početné \hyperref[hranPok]{hranové pokrytí} $B \subseteq E$.
+Jak vypadají komponenty souvislosti $(U,B)$?
+% TODO: nákres
+
+Takže 
+\begin{equation}
+    \beta_1 = |B| = \underbrace{n_1 + n_2 + \dots + n_k}_{n} - k = n-k.    
+\end{equation}
+Mějme párování $P$, kde z každé komponenty souvislosti vezmeme jednu libovolnou hranu, takže $|P| = k$. Tedy máme 
+$b_1(G) = n-k$ a $|P| = k \leq \alpha_1(G)$.
+\begin{align}
+    n = \beta_1(G) + k &\leq \beta_1(G) + \alpha_1(G) \\
+    n &\leq \alpha_1(G) + \beta_1(G)
+\end{align}
+
+\enquote{$\geq$}: Mějme $P_{\max}$, párování s $|P_{\max} = \alpha_1(G)$.
+% TODO: nákres
+
+$2\alpha_1(G)$ vrcholů je pokryto $P_{\max}$. Nepokryto je $n - 2\alpha_1(G)$ vrcholů. $B = P_{\max}$ v $\bc{e \mid e 
+\text{ je přidaná}}$.
+\begin{align}
+    |B| = \alpha_1(G) + n - 2\alpha_1(G) = n-\alpha_1(G) &\geq \beta_1(G) \\
+    n &\geq \alpha_1(G) + \beta_1(G)
+\end{align}
+
+Dostáváme tedy
+\begin{equation}
+    n = \alpha_1(G) + \beta_1(G).
+\end{equation}
+\hspace{\fill}\qed
