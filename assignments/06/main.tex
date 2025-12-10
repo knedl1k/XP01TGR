@@ -1,0 +1,44 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[czech]{babel}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{../cfg}
+\setcounter{section}{6}
+
+\begin{document}
+
+\title{\bb{Domácí úkol 6}}
+\author{Jakub Adamec\\XP01TGR}
+
+\maketitle
+
+\begin{exercise}
+    Je dán bipartitní graf $G$ se stranami $X$ a $Y$ a v něm maximální párování $P_{\max}$. Pro každou hranu $e \in 
+    P_{\max}$ vybereme jeden její krajní vrchol do množiny $A$ takto:
+
+    Pro hranu $e = \bc{x,y} \in P_{\max} (x \in X, \, y \in Y)$ do $A$ vybereme vrchol $y$, jestliže existuje cesta 
+    $a_1, e_1, a_2, e_2, \dots, e_{2k+1}, y$, kde
+    \vspace{-1em}
+    \begin{itemize}
+        \item $a_1 \in X$ je volný v párování $P_{\max}$,
+        \item pro $i > 0$ je $e_{2i-1} \not\in P_{\max}$, $i > 0$, $e_{2i} \in P_{\max}$.
+    \end{itemize}
+    Jestliže taková cesta neexistuje, do $A$ vybereme vrchol $x$.
+
+    Dokažte nebo vyvraťte: Množina $A$ (zkonstruovaná výše) je vrcholovým pokrytím grafu $G$.
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\begin{exercise}
+    Dokažte, že v každém bipartitním grafu $G$ platí
+    \begin{equation}
+        a_1(G) = \beta_0(G).
+    \end{equation}
+    Hint: Použijte Königovu větu pro určení počtu hran v maximálním párování v bipartitním grafu.
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+\end{document}
