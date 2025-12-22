@@ -1,0 +1,58 @@
+\section{Kružnice a řezy}
+\subsection{Řez}
+Ať $G$ je souvislý graf. Množina hran $S \subseteq E$ je \ii{řez}, jestliže existuje rozklad $V$ na dvě neprázdné množiny $V_1, V_2$ takové, že
+\begin{equation}
+	S = \bc{e \mid e = \bc{u,v}, u \in V_1, v \in V_2}.
+\end{equation}
+$S$ značíme $\langle V_1, V_2\rangle$.
+% TODO: nákres
+ 
+\subsection{Věta o dvou různých řezech}
+Jsou dány dva různé řezy $S_1 = \langle V_1, V_2 \rangle$, $S_2 = \langle W_1, W_2\rangle$ souvislého neorientovaného grafu $G$. Pak $S_1 \oplus S_2$ je také řez grafu $G$.
+
+\dukaz
+% TODO: nákres
+A víme
+\begin{align}
+A \cup B &\not= \emptyset \\
+A \cup C &\not= \emptyset \\
+B \cup D &\not= \emptyset \\
+C \cup D &\not= \emptyset
+\end{align}
+Označme: $X, Y \in \bc{A,B,C,D}$. $[X,Y] = \bc{e = \bc{u,v} \mid u \in X, v \in Y}$.
+\begin{equation}
+	\langle V_1, V_2\rangle = [A, C] \cup [A, D] \cup [B, C] \cup [B, D]
+\end{equation}
+A protože jsou disjunktní, namísto $\cup$ můžeme psát $\oplus$.
+\begin{equation}
+	\langle W_1, W_2\rangle = [A, B] \oplus [A, D] \oplus [C, B] \oplus [C, D]
+\end{equation}
+\begin{align}
+	\langle V_1, V_2\rangle \oplus \langle W_1, W_2 \rangle &= [A, B] \oplus [A, C] \oplus [B, D] \oplus [C, D] \\
+	\langle V_1, V_2\rangle \oplus \langle W_1, W_2 \rangle &= \langle A \cup D, B \cup C\rangle
+\end{align}
+Ověřme $A \cup D \not= \emptyset \not= B \cup C$. To by muselo platit $V_1 = W_2$ a $V_2 = W_1$, což neplatí.
+\hspace{\fill}\qed
+
+\subsection{Prostor řezů}
+Je dán souvislý graf $G = (V, E)$. \ii{Prostor řezů} je vektorový podprostor generovaný množinou všech řezů grafu $G$. Značíme ho $(W_R, \oplus, \emptyset, \cdot)$.
+
+\ii{Jinými slovy $W_R = \bc{S \mid S \text{ je řez}} \cup \bc{\emptyset}$}.
+
+\subsection{Cutset}
+Je dán souvislý graf $G = (V, E)$. \ii{Cutset} (min-řez) je minimální (ne nejmenší, ale minimální) množina $S \subseteq E$ taková, že $G \setminus S$ je nesouvislý graf.
+% TODO: nákresy
+
+\subsection{Tvrzení o souvislosti cutsetů}
+Je dán řez $S = \langle V_1, V_2 \rangle$ souvislého neorientovaného grafu $G$. Pak $S$ je cutsetem právě tehdy, když podgrafy indukované množinami $V_1$ a $V_2$ jsou souvislé.
+% TODO: nákres
+
+\subsection{Tvrzení o řezu a kostrách}
+Množina hran $S \subseteq E$ je řez právě tehdy, když má s každou kostrou $T$ grafu $G$ neprázdný průnik, tj. $S \cap T \not= \emptyset$.
+
+\dukaz\\
+\enquote{$\Rightarrow$}: $S \subseteq E$ je řez. Tzn. $G \setminus S$ je nesouvislý. Mějme libovolnou kostru $T$. Kdyby $T \cap S = \emptyset$, tak v $G \setminus S$ existují hrany $T$. Tj. $G \setminus S$ je souvislý. Což je spor.
+
+\enquote{$\Leftarrow$}: Předpokládejme, že $T \cap S \not= \emptyset \, \forall T$.\\
+Kdyby $G \setminus S$ bylo souvislé, tak existuje kostra $T_1$ grafu $G \setminus S$. Vrcholy jsou stejné, takže $T_1$ je kostra $G$. To ale znamená $S \cap T_1 = \emptyset$. Takže $G \setminus S$ musí být nesouvislé. Což je spor.
+\hspace{\fill}\qed

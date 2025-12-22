@@ -140,4 +140,20 @@ Iterujme:
     \chi(G) \leq \Delta(G).
 \end{equation}
 \dukaz
-% TODO: dodělat důkaz
+Omezme se na $\Delta(G) \geq 3$. Indukcí podle $|V| = n$.
+\begin{enumerate}[(a)]
+    \item \ii{Základní krok}, $n=4$.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \graph [tree layout, orient=west]{
+                    1 -- {2, 3, 4};
+                    2 -- {3, 4};
+                    
+                };
+            \end{tikzpicture}
+        \end{figure} % TODO: dodělat nákres
+    \item \ii{Indukční předpoklad}. Předpokládejme, že každý souvislý $G^\prime \in \S$, $|V^\prime| = n$, který není $K_n$ a má $\Delta(G^\prime) \geq 3$ se dá obarvit $\Delta(G^\prime)$ barvami.
+    \item \ii{Indukční krok}. $G = (V, E)$, $|V| = n + 1$. Zvolme $u_0 \in V$, pak $G \setminus u_0 = H$ je graf o $n$ vrcholech.
+    % TODO: dodělat důkaz
+\end{enumerate}
