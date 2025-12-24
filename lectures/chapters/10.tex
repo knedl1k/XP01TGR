@@ -3,7 +3,7 @@
 Je dán graf bez smyček $G = (V,E, \eps)$ a konečná množina $C$ tzv. barev. \ii{Hranové obarvení} $G$ je přiřazení 
 $c: E \rightarrow C$, že žádné dvě hrany se společným krajním vrcholem nemají stejnou barvu.
 
-Lze také říci, že se snažíme graf pokrýt vzájemně disjunktními párováními.
+Lze také říci, že se snažíme graf pokrýt vzájemně disjunktními \hyperref[parovani]{párováními}.
 
 \subsection{Hranová barevnost}\label{hranChrom}
 Hranová barevnost, též \ii{chromatický index}, grafu $G$ je nejmenší počet barev, kterými lze 
@@ -33,7 +33,7 @@ Barevnost grafu $G$, též \ii{chromatické číslo} grafu $G$, je nejmenší $k
 $\chi(G)$.
 
 \subsection{Tvrzení o dvoubarevném grafu}
-Graf $G$ je dvoubarevný právě tehdy, když $G$ neobsahuje kružnici liché délky, tedy $G$ je bipartitní.
+Graf $G$ je dvoubarevný právě tehdy, když $G$ neobsahuje \hyperref[kruznice]{kružnici} liché délky, tedy $G$ je bipartitní.
 
 \dukaz Ať $G = (V,E)$, $V = A \cup B$, tak, že:
 \begin{align*}
@@ -54,7 +54,7 @@ kterým graf rozdělíme do několika úrovní. Každé úrovni přiřadíme bar
 
 Kdyby $b$ nebylo obarvení; existuje $\bc{x, y} \in E$, kde $x \in H_i$ a $y \in H_j$ tak, že $i+j = 2k$, $k \in \N$.
 
-V našem grafu existuje cesta $P_i$ z $v$ do $x$ o $i$ hranách, a zároveň existuje cesta $P_j$ z $v$ do $y$ o $j$ 
+V našem grafu existuje \hyperref[stc]{cesta} $P_i$ z $v$ do $x$ o $i$ hranách, a zároveň existuje cesta $P_j$ z $v$ do $y$ o $j$ 
 hranách.
 
 Když vezmeme $P_i$, $\bc{x,y}$, $P_j$ (pozpátku), jedná se o \hyperref[stc]{uzavřený sled} o $i+j+1=2k+1$ hranách.
@@ -134,8 +134,8 @@ Iterujme:
 \subsection{Příklad použití algoritmu sekvenčního barvení}
 % TODO: dodělat příklady s nákresy
 
-\subsection{Věta o souvislosti největšího stupně vrcholu a barevnosti grafu}
-\ii{Brooks}. Nechť $G$ je prostý souvislý graf bez smyček, který není ani úplný ani kružnice liché délky. Pak
+\subsection{Věta o souvislosti největšího stupně vrcholu a barevnosti grafu}\label{brooks}
+\ii{Brooks}. Nechť $G$ je prostý \hyperref[souvisly]{souvislý} graf bez smyček, který není ani úplný ani \hyperref[kruznice]{kružnice} liché délky. Pak
 \begin{equation}
     \chi(G) \leq \Delta(G).
 \end{equation}

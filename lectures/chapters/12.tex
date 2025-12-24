@@ -1,6 +1,6 @@
 \section{Kružnice a řezy}
-\subsection{Řez}
-Ať $G$ je souvislý graf. Množina hran $S \subseteq E$ je \ii{řez}, jestliže existuje rozklad $V$ na dvě neprázdné množiny $V_1, V_2$ takové, že
+\subsection{Řez}\label{rez}
+Ať $G$ je \hyperref[souvisly]{souvislý} graf. Množina hran $S \subseteq E$ je \ii{řez}, jestliže existuje rozklad $V$ na dvě neprázdné množiny $V_1, V_2$ takové, že
 \begin{equation}
 	S = \bc{e \mid e = \bc{u,v}, u \in V_1, v \in V_2}.
 \end{equation}
@@ -8,7 +8,7 @@ $S$ značíme $\langle V_1, V_2\rangle$.
 % TODO: nákres
  
 \subsection{Věta o dvou různých řezech}
-Jsou dány dva různé řezy $S_1 = \langle V_1, V_2 \rangle$, $S_2 = \langle W_1, W_2\rangle$ souvislého neorientovaného grafu $G$. Pak $S_1 \oplus S_2$ je také řez grafu $G$.
+Jsou dány dva různé \hyperref[rez]{řezy} $S_1 = \langle V_1, V_2 \rangle$, $S_2 = \langle W_1, W_2\rangle$ \hyperref[souvisly]{souvislého} neorientovaného grafu $G$. Pak $S_1 \oplus S_2$ je také řez grafu $G$.
 
 \dukaz
 % TODO: nákres
@@ -34,25 +34,57 @@ A protože jsou disjunktní, namísto $\cup$ můžeme psát $\oplus$.
 Ověřme $A \cup D \not= \emptyset \not= B \cup C$. To by muselo platit $V_1 = W_2$ a $V_2 = W_1$, což neplatí.
 \hspace{\fill}\qed
 
-\subsection{Prostor řezů}
-Je dán souvislý graf $G = (V, E)$. \ii{Prostor řezů} je vektorový podprostor generovaný množinou všech řezů grafu $G$. Značíme ho $(W_R, \oplus, \emptyset, \cdot)$.
+\subsection{Prostor řezů}\label{prostorRezu}
+Je dán \hyperref[souvisly]{souvislý} graf $G = (V, E)$. \ii{Prostor řezů} je vektorový podprostor generovaný množinou všech \hyperref[rez]{řezů} grafu $G$. Značíme ho $(W_R, \oplus, \emptyset, \cdot)$.
 
 \ii{Jinými slovy $W_R = \bc{S \mid S \text{ je řez}} \cup \bc{\emptyset}$}.
 
-\subsection{Cutset}
-Je dán souvislý graf $G = (V, E)$. \ii{Cutset} (min-řez) je minimální (ne nejmenší, ale minimální) množina $S \subseteq E$ taková, že $G \setminus S$ je nesouvislý graf.
+\subsection{Cutset}\label{cutset}
+Je dán \hyperref[souvisly]{souvislý} graf $G = (V, E)$. \ii{Cutset} (min-řez) je minimální (ne nejmenší, ale minimální) množina $S \subseteq E$ taková, že $G \setminus S$ je nesouvislý graf.
 % TODO: nákresy
 
 \subsection{Tvrzení o souvislosti cutsetů}
-Je dán řez $S = \langle V_1, V_2 \rangle$ souvislého neorientovaného grafu $G$. Pak $S$ je cutsetem právě tehdy, když podgrafy indukované množinami $V_1$ a $V_2$ jsou souvislé.
+Je dán \hyperref[rez]{řez} $S = \langle V_1, V_2 \rangle$ souvislého neorientovaného grafu $G$. Pak $S$ je \hyperref[cutset]{cutsetem} právě tehdy, když podgrafy indukované množinami $V_1$ a $V_2$ jsou \hyperref[souvisly]{souvislé}.
 % TODO: nákres
 
 \subsection{Tvrzení o řezu a kostrách}
-Množina hran $S \subseteq E$ je řez právě tehdy, když má s každou kostrou $T$ grafu $G$ neprázdný průnik, tj. $S \cap T \not= \emptyset$.
+Množina hran $S \subseteq E$ je \hyperref[rez]{řez} právě tehdy, když má s každou kostrou $T$ grafu $G$ neprázdný průnik, tj. $S \cap T \not= \emptyset$.
 
 \dukaz\\
-\enquote{$\Rightarrow$}: $S \subseteq E$ je řez. Tzn. $G \setminus S$ je nesouvislý. Mějme libovolnou kostru $T$. Kdyby $T \cap S = \emptyset$, tak v $G \setminus S$ existují hrany $T$. Tj. $G \setminus S$ je souvislý. Což je spor.
+\enquote{$\Rightarrow$}: $S \subseteq E$ je řez. Tzn. $G \setminus S$ je \hyperref[souvisly]{nesouvislý}. Mějme libovolnou kostru $T$. Kdyby $T \cap S = \emptyset$, tak v $G \setminus S$ existují hrany $T$. Tj. $G \setminus S$ je souvislý. Což je spor.
 
 \enquote{$\Leftarrow$}: Předpokládejme, že $T \cap S \not= \emptyset \, \forall T$.\\
 Kdyby $G \setminus S$ bylo souvislé, tak existuje kostra $T_1$ grafu $G \setminus S$. Vrcholy jsou stejné, takže $T_1$ je kostra $G$. To ale znamená $S \cap T_1 = \emptyset$. Takže $G \setminus S$ musí být nesouvislé. Což je spor.
 \hspace{\fill}\qed
+
+\subsection{Prostor kružnic}\label{prostorKruznic}
+Je dán \hyperref[souvisly]{souvislý} graf $G=(V, E)$. \ii{Prostor kružnic} je vektorový prostor generovaný množinou všech \hyperref[kruznice]{kružnic} grafu $G$. Značíme ho $(W_K, \oplus, \emptyset, \cdot)$.
+
+\subsection{Věta o prostoru kružnic a sudých stupních}
+Podmnožina $K \subseteq E$ patří do \hyperref[prostorKruznic]{prostoru kružnic} $W_K$ právě tehdy, když v grafu $(V, K)$ má každý vrchol sudý stupeň.
+
+\dukaz\\
+\enquote{$\Rightarrow$}: Podmnožina $K \subseteq E$ patří do prostoru kružnic $W_K$. Ukažme, že pokud $A, B$ splňují podmínku sudosti stupňů, tj. každý vrchol má sudý stupeň, tak $A \oplus B$ také splňuje podmínku.
+\begin{equation}
+	A \oplus B = (A \cup B)\setminus(A \cap B)
+\end{equation}
+Vyberme libovolný vrchol $v \in V$. Spočítejme $d_{A \oplus B}(v)$. Hrany, které zbydou v $A \oplus B$ jsou hrany $(A^\prime \setminus B^\prime) \cup  B^\prime \setminus A^\prime)=K_v$.
+\begin{align}
+	|K_v^\prime| = |(A^\prime \cup B^\prime) \setminus (A^\prime \cap B^\prime)| = ((|A^\prime| +  B^\prime|) - |A^\prime \cap B^\prime| - |A^\prime \cap B^\prime|) = \underbrace{|A^\prime|}_{d_A(v)} + \underbrace{|B^\prime|}_{d_B(v)} - 2\underbrace{|A^\prime \cap B^\prime|}_{l}
+\end{align}
+Máme tedy
+\begin{equation}
+	d_{A \oplus B}(v) = d_A(v) + d_B(v) - 2,
+\end{equation}
+kde $l$ je počet hran incidentních s $v$, které leží jak v $A$, tak v $B$, tedy opět sudé číslo. Rozdíl sudých čísel je také sudé číslo.
+
+\enquote{$\Leftarrow$}: Předpokládejme, že množina hran $A$ splňuje podmínku sudosti stupňů; tj. $d_A(v)$ je sudé pro každý vrchol $v \in V$.
+
+Jestliže každý vrchol $v$ má v $A$ nulový stupeň, pak $A = \emptyset$ a $A$ leží v prostoru kružnic $W_K$; ano, $\emptyset=0 \cdot K$ pro libovolnou kružnici $K$.
+
+Předpokládejme, že některý vrchol $v$ má stupeň větší než 0. Pak $d_A(v) \geq 2$. Generujme náhodně tah z vrcholu $v$. Protože každý vrchol, do kterého se dostaneme má vždy ještě alespoň jednu nepoužitou hranu, jednou se vrátíme do vrcholu, ve kterém tah již byl. Tím jsme uzavřeli kružnici, označme ji $K_1$. Vytvoříme $A \oplus K_1 = A \setminus K_1$. Protože každý vrchol měl v kružnici $K_1$ sudý stupeň, má sudý stupeň i v $A \setminus K_1$. Nyní buď $A_1 = A \setminus K_1$ je prázdná množina, nebo postup opakujeme pro množinu $A \setminus K_1$. Po konečně mnoha krocích dostaneme kružnice $K_1, K_2, \dots, K_l$ takové, že
+\begin{equation}
+	(\dots (A \setminus K_1) \dots K_l) = \emptyset, \, \text{proto } A = K_1 \cup \dots \cup K_l = K_1 \oplus \dots \oplus K_l.
+\end{equation}
+Tedy $A \in W_K$.
+\hspace{\fill}\qed 
