@@ -1,11 +1,9 @@
 \section{Párování}
 \subsection{Definice}\label{parovani}
-Je dán neorientovaný graf $G = (V,E, \eps)$. Podmnožina hran $P \subseteq E$ se nazývá \ii{párování}, jestliže v $P$ 
-neexistují 2 různé hrany se společným krajním vrcholem (takže vrchol má stupeň max. 1).
+Je dán neorientovaný graf $G = (V,E, \eps)$. Podmnožina hran $P \subseteq E$ se nazývá \ii{párování}, jestliže v $P$ neexistují 2 různé hrany se společným krajním vrcholem (takže vrchol má stupeň max. 1).
 
 \subsection{Vrchol nasycený a volný v párování}\label{nasyceny}
-Mějme \hyperref[parovani]{párování} $P$. Vrchol $v$ grafu nazvěme \ii{nasycený} v $P$, pokud existuje hrana $e \in P$ 
-incidentní s $v$.
+Mějme \hyperref[parovani]{párování} $P$. Vrchol $v$ grafu nazvěme \ii{nasycený} v $P$, pokud existuje hrana $e \in P$ incidentní s $v$.
 
 V opačném případě říkáme, že vrchol $v$ je \ii{volný} v $P$.
 \begin{figure}[H]
@@ -67,26 +65,20 @@ V opačném případě říkáme, že vrchol $v$ je \ii{volný} v $P$.
 \end{figure}
 
 \subsection{Perfektní párování}\label{perfektniParovani}
-\hyperref[parovani]{Párování} $P$ v grafu $G$ nazveme \ii{perfektní párování}, jestliže každý vrchol grafu je 
-\hyperref[nasyceny]{nasycen} v $P$. To znamená, že $P$ má $\frac{n}{2}$ hran, kde $n$ je počet vrcholů grafu $G$.
+\hyperref[parovani]{Párování} $P$ v grafu $G$ nazveme \ii{perfektní párování}, jestliže každý vrchol grafu je \hyperref[nasyceny]{nasycen} v $P$. To znamená, že $P$ má $\frac{n}{2}$ hran, kde $n$ je počet vrcholů grafu $G$.
 
 \subsection{Maximální párování}\label{maximalniParovani}
-\hyperref[parovani]{Párování} $P$ v grafu $G$ nazveme \ii{maximální párování}, jestliže je nejpočetnější mezi všemi 
-párováními v grafu $G$.
+\hyperref[parovani]{Párování} $P$ v grafu $G$ nazveme \ii{maximální párování}, jestliže je nejpočetnější mezi všemi párováními v grafu $G$.
 
-\hyperref[perfektniParovani]{Perfektní párování} je jistě maximální. Naopak to neplatí. Existují grafy, které perfektní 
-párování nemají --- stačí uvažovat grafy s lichým počtem vrcholů. Ovšem ani grafy se sudým počtem vrcholů nemusí 
-perfektní párování obsahovat.
+\hyperref[perfektniParovani]{Perfektní párování} je jistě maximální. Naopak to neplatí. Existují grafy, které perfektní párování nemají --- stačí uvažovat grafy s lichým počtem vrcholů. Ovšem ani grafy se sudým počtem vrcholů nemusí perfektní párování obsahovat.
 
 V každém grafu existuje maximální párování. 
 
 \subsection{Střídavá cesta vůči párování \texorpdfstring{$P$}{P}}\label{stridavaCesta}
-Je dáno \hyperref[parovani]{párování} $P$ v grafu $G$. \hyperref[stc]{Cesta} $C = e_1, e_2, \dots, e_k$ v grafu $G$ se 
-nazývá \ii{střídavá cesta vůči $P$}, jestliže platí následující dvě podmínky:
+Je dáno \hyperref[parovani]{párování} $P$ v grafu $G$. \hyperref[stc]{Cesta} $C = e_1, e_2, \dots, e_k$ v grafu $G$ se nazývá \ii{střídavá cesta vůči $P$}, jestliže platí následující dvě podmínky:
 \begin{enumerate}[1)]
     \item hrany z cesty $C$ střídavě leží a neleží v párování $P$,
-    \item jestliže krajní vrchol $v$ cesty $C$ je \hyperref[nasyceny]{nasycen} v $P$, pak $C$ obsahuje i hranu párování 
-    $P$, která vrchol $v$ nasycuje.
+    \item jestliže krajní vrchol $v$ cesty $C$ je \hyperref[nasyceny]{nasycen} v $P$, pak $C$ obsahuje i hranu párování $P$, která vrchol $v$ nasycuje.
 \end{enumerate}
 \begin{figure}[H]
     \centering
@@ -155,12 +147,11 @@ nazývá \ii{střídavá cesta vůči $P$}, jestliže platí následující dvě
 \hyperref[stridavaCesta]{Střídavá cesta} mezi volnými vrcholy se nazývá \ii{zlepšující cesta vůči $P$}.
 
 \subsection{Tvrzení o střídavé cestě}
-Jestliže $C$ je \hyperref[stridavaCesta]{střídavá cesta} vůči \hyperref[parovani]{párování} $P$, pak množina hran 
-$P^\prime = C \oplus P$ je také párování v $G$.
+Jestliže $C$ je \hyperref[stridavaCesta]{střídavá cesta} vůči \hyperref[parovani]{párování} $P$, pak množina hran $P^\prime = C \oplus P$ je také párování v $G$.
 \ii{Připomeňme, že symetrická diference $A \oplus B$ dvou množin $A, B$ je množina
-\begin{equation}
-    A \oplus B = (A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A).
-\end{equation}
+    \begin{equation}
+        A \oplus B = (A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A).
+    \end{equation}
 }
 \begin{figure}[H]
     \centering
@@ -266,12 +257,10 @@ $P^\prime = C \oplus P$ je také párování v $G$.
             \end{tikzpicture}
     \end{minipage}
 \end{figure}
-A pokud je navíc $C$ \hyperref[zlepsujiciCestaPar]{zlepšující cesta}, tj. cesta mezi volnými vrcholy v $P$, pak 
-$|P^\prime| = |P| + 1$.
+A pokud je navíc $C$ \hyperref[zlepsujiciCestaPar]{zlepšující cesta}, tj. cesta mezi volnými vrcholy v $P$, pak $|P^\prime| = |P| + 1$.
 
 \subsection{Věta o vrcholově disjunktních zlepšujících cestách}\label{berge}
-\ii{Berge}. Je dáno \hyperref[parovani]{párování} $P$ v grafu $G$. Označme $P_{\max}$ 
-\hyperref[maximalniParovani]{maximální párování} v $G$ (o kterém víme, že existuje). Jestliže
+\ii{Berge}. Je dáno \hyperref[parovani]{párování} $P$ v grafu $G$. Označme $P_{\max}$  \hyperref[maximalniParovani]{maximální párování} v $G$ (o kterém víme, že existuje). Jestliže
 \begin{equation}
     |P_{\max}| = |P| + k,
 \end{equation}
@@ -279,25 +268,16 @@ pak v $G$ existuje $k$ vrcholově disjunktních \hyperref[zlepsujiciCestaPar]{zl
 
 Přitom alespoň jedna z těchto \hyperref[stc]{cest} je kratší než $\frac{n}{k}$, kde $n$ je počet vrcholů.
 
-\dukaz Utvořme symetrickou diferenci hran obou párování, tj. $H = P \oplus P_{\max} = 
-(P \setminus P_{\max}) \cup (P_{\max} \setminus P)$.
-Uvažujme graf, který obsahuje všechny vrcholy grafu $G$ a hrany $H$. V tomto grafu má každý vrchol stupeň nejvýše 2. 
-Mějme libovolný vrchol $v$. Pak nastane některé z následujicích možností:
+\dukaz Utvořme symetrickou diferenci hran obou párování, tj. $H = P \oplus P_{\max} = (P \setminus P_{\max}) \cup (P_{\max} \setminus P)$. Uvažujme graf, který obsahuje všechny vrcholy grafu $G$ a hrany $H$. V tomto grafu má každý vrchol stupeň nejvýše 2. Mějme libovolný vrchol $v$. Pak nastane některé z následujicích možností:
 \vspace{-1em}
 \begin{enumerate}[(a)]
     \item není \hyperref[nasyceny]{nasycen} ani v $P$ ani v $P_{\max}$, pak $d_H(v) = 0$;
     \item je nasycen buď v $P$, nebo v $P_{\max}$, pak $d_H(v) = 1$;
     \item je nasycen v obou párováních, pak $d_n(v) = 0$, jestliže stejnou hranou, nebo $d_H(v) = 2$. 
 \end{enumerate}
-Komponenty souvislosti grafu $(V,H)$ jsou buď isolované vrcholy (stupeň 0), nebo \hyperref[kruznice]{kružnice}, nebo 
-cesty. Jak v křuznicích, tak v cestách se střídají hrany z $P$ a $P_{\max}$. Proto jsou kružnice sudé délky, cesty pak 
-sudé či liché délky.
+Komponenty souvislosti grafu $(V,H)$ jsou buď isolované vrcholy (stupeň 0), nebo \hyperref[kruznice]{kružnice}, nebo cesty. Jak v křuznicích, tak v cestách se střídají hrany z $P$ a $P_{\max}$. Proto jsou kružnice sudé délky, cesty pak sudé či liché délky.
 
-Mezi komponentami souvislosti nemůže existovat \hyperref[stc]{cesta} liché délky, která by měla víc hran z $P$ než z 
-$P_{\max}$ (byla by to totiž \hyperref[zlepsujiciCestaPar]{zlepšující cesta} vůči $P_{\max}$ a ta neexistuje). Každá 
-cesta liché délky je proto zlepšující cestou vzhledem k párování $P$. Víme, že každá kružnice i každá cesta sudé délky 
-má stejný počet hran z $P$ a $P_{\max}$. Ukážeme-li tedy, že $H$ obsahuje o $k$ více hran z $P_{\max}$ než z $P$, budeme 
-mít dokázáno, že existuje $k$ komponent grafu $H$, které jsou zlepšujícími cestami vůči $P$.
+Mezi komponentami souvislosti nemůže existovat \hyperref[stc]{cesta} liché délky, která by měla víc hran z $P$ než z $P_{\max}$ (byla by to totiž \hyperref[zlepsujiciCestaPar]{zlepšující cesta} vůči $P_{\max}$ a ta neexistuje). Každá cesta liché délky je proto zlepšující cestou vzhledem k párování $P$. Víme, že každá kružnice i každá cesta sudé délky má stejný počet hran z $P$ a $P_{\max}$. Ukážeme-li tedy, že $H$ obsahuje o $k$ více hran z $P_{\max}$ než z $P$, budeme mít dokázáno, že existuje $k$ komponent grafu $H$, které jsou zlepšujícími cestami vůči $P$.
 
 Máme
 \begin{equation}
@@ -311,71 +291,45 @@ Platí
 \hspace{\fill}\qed
 
 \subsection{Souvislost perfektního párování a počtu komponent}\label{tutte}
-\ii{Tutte}. Je dán prostý graf $G = (V,E)$ bez smyček s alespoň třemi vrcholy. V grafu $G$ existuje 
-\hyperref[perfektniParovani]{perfektní párování} právě tehdy, když pro každou podmnožinu $S \subseteq V$ platí
+\ii{Tutte}. Je dán prostý graf $G = (V,E)$ bez smyček s alespoň třemi vrcholy. V grafu $G$ existuje \hyperref[perfektniParovani]{perfektní párování} právě tehdy, když pro každou podmnožinu $S \subseteq V$ platí
 \begin{equation} \label{eq:tutte}
     g(G \setminus S) \leq |S|, 
 \end{equation}
 kde $g(G \setminus S)$ je počet komponent souvislosti grafu $G \setminus S$, které mají lichý počet vrcholů.
 
-\dukaz\\
-\enquote{$\Rightarrow$}: Předpokládejme, že v grafu $G$ existuje perfektní párování (tj. párování 
-\hyperref[nasyceny]{nasycující} všechny vrcholy grafu $G$). Vezměme libovolnou $S \subseteq V$. Protože v každé liché 
-komponentě souvislosti grafu $G \setminus S$ je alespoň jeden vrchol, který není spárován uvnitř komponenty, musí být v 
-perfektním párování spárován s nějakým vrcholem $S$. Proto nemůže být $|S|$ menší než počet lichých komponent.
+\dukaz
+\begin{itemize}
+    \item[$\Rightarrow$:] Předpokládejme, že v grafu $G$ existuje perfektní párování (tj. párování \hyperref[nasyceny]{nasycující} všechny vrcholy grafu $G$). Vezměme libovolnou $S \subseteq V$. Protože v každé liché komponentě souvislosti grafu $G \setminus S$ je alespoň jeden vrchol, který není spárován uvnitř komponenty, musí být v perfektním párování spárován s nějakým vrcholem $S$. Proto nemůže být $|S|$ menší než počet lichých komponent.
+    
+    \item[$\Leftarrow$:] Předpokládejme, že graf $G$ splňuje $g(G \setminus S) \leq |S|$ pro každou $S \subseteq V$.
 
-\enquote{$\Leftarrow$}: Předpokládejme, že graf $G$ splňuje $g(G \setminus S) \leq |S|$ pro každou $S \subseteq V$.
+    Nejprve si uvědomme, že pro $S = \emptyset$ podmínka zaručuje, že graf $G$ má sudý počet vrcholů.
 
-Nejprve si uvědomme, že pro $S = \emptyset$ podmínka zaručuje, že graf $G$ má sudý počet vrcholů.
+    Dále si uvědomme, že splňuje-li $G$ podmínku \eqref{eq:tutte} a přidáme-li k němu hranu $e$ mezi stávajícimi vrcholy, pak graf $G + e$ také splňuje podmínku \eqref{eq:tutte}. Ano, graf $(G+e) \setminus S$ má buď stejně lichých komponent jako $G \setminus S$, nebo o dvě méně. 
 
-Dále si uvědomme, že splňuje-li $G$ podmínku \eqref{eq:tutte} a přidáme-li k němu hranu $e$ mezi stávajícimi vrcholy, 
-pak graf $G + e$ také splňuje podmínku \eqref{eq:tutte}. Ano, graf $(G+e) \setminus S$ má buď stejně lichých komponent 
-jako $G \setminus S$, nebo o dvě méně. 
+    Předpokládejme, že by existoval graf $G$ splňující \eqref{eq:tutte}, který nemá perfektní párování, tak vybereme jako $G$ ten z nich, který nemá perfektní párování, ale přidáním libovolné hrany už \hyperref[perfektniParovani]{perfektní párování} mít bude.
 
-Předpokládejme, že by existoval graf $G$ splňující \eqref{eq:tutte}, který nemá perfektní párování, tak vybereme jako 
-$G$ ten z nich, který nemá perfektní párování, ale přidáním libovolné hrany už 
-\hyperref[perfektniParovani]{perfektní párování} mít bude.
+    Označme $T$ množinu všech vrcholů stupně $n-1$, kde $n = |V|$. Platí $T \subseteq V$ a proto pro ni musí platit podmínka \eqref{eq:tutte}. Nejprve dokážeme, že každá komponenta souvislosti grafu $G \setminus T$ je úplný graf.
 
-Označme $T$ množinu všech vrcholů stupně $n-1$, kde $n = |V|$. Platí $T \subseteq V$ a proto pro ni musí platit podmínka 
-\eqref{eq:tutte}. Nejprve dokážeme, že každá komponenta souvislosti grafu $G \setminus T$ je úplný graf.
+    Kdyby existovala komponenta souvislosti $C$ grafu $G \setminus T$, která není úplným grafem, pak by v $C$ existovaly vrcholy $x,y,z$ takové, že $\bc{x,y}, \bc{y,z} \in E$ a $\bc{x,z} \not\in E$. Navíc vrchol $z$ neleží v $T$, proto existuje vrchol $w \not\in T$ takový, že $\bc{z,w} \not\in E$.
 
-Kdyby existovala komponenta souvislosti $C$ grafu $G \setminus T$, která není úplným grafem, pak by v $C$ existovaly 
-vrcholy $x,y,z$ takové, že $\bc{x,y}, \bc{y,z} \in E$ a $\bc{x,z} \not\in E$. Navíc vrchol $z$ neleží v $T$, proto 
-existuje vrchol $w \not\in T$ takový, že $\bc{z,w} \not\in E$.
-
-Označme $P_1$ perfektní párování v grafu $G + \bc{x,y}$ a $P_2$ perfektní párování v grafu $G + \bc{z,w}$. Dále označme 
-$H$ symetrickou diferenci párování $P_1 \oplus P_2$. Platí $\bc{x,y}, \bc{z,w} \in H$. Rozebereme nyní dva případy:
-\begin{enumerate}[(a)]
-    \item Hrany $\bc{x,y}, \bc{z,w}$ leží v různých komponentách souvislosti $A, B$ v $H$, $\bc{x,y} \in A$, $\bc{z,w} 
-    \in B$. Pak párování $P$, které obsahuje hrany $P_2$ komponenty $A$ jinak hrany $P_1$, je perfektní párování v grafu 
-    $G$. Což je spor s faktem, že $G$ nemá perfektní párování.
-    \item Hrany $\bc{x,y}, \bc{z,w}$ leží ve stejné komponentě souvislosti $A$ grafu $H$. Komponenta $A$ je 
-    \hyperref[kruznice]{kružnice} sudé délky, která střídavě obsahuje hrany z $P_1$ a $P_2$. Označme $K_1$ tu část $A$, 
-    která začíná ve vrcholu $z$, pokračuje z $P_1$ a po hraně z $P_2$ poprvé navštíví jeden z vrcholů $x,y$. \ii{BÚNO} 
-    předpokládejme, že je to vrchol $y$. Dále označme $K_2$ zbylou část kružnice $A$, ze které jsme odstranili hranu 
-    $\bc{x,y}$. Definujme $P$ takto: $P$ obsahuje
-    \begin{itemize}
-        \item $K_1 \cap P_2$,
-        \item $K_2 \cap P_1$,
-        \item $\bc{x,z}$.
-    \end{itemize}
-    Tím jsme získali perfektní párování v grafu $G$; opět spor.
-\end{enumerate}
-Víme tedy, že všechny komponenty souvislosti grafu $G \setminus T$ jsou úplné grafy. Definujme 
-\hyperref[parovani]{párování} $P$ takto: \ii{V každé komponentě souvislosti grafu $G \setminus T$ o sudém počtu vrcholů 
-vybereme libovolné \hyperref[perfektniParovani]{perfektní párování}; v komponentě souvislosti $G \setminus T$ o lichém 
-počtu vrcholů spárujeme libovolně všechny vrcholy až na jeden, 
-který spárujeme s některým vrcholem $T$.} Protože lichých komponent $G \setminus T$ je nejvyše tolik jako $|T|$, 
-můžeme to udělat. Navíc je počet vrcholů sudý, takže nám z množiny $T$ zbyde sudý počet nespárovaných vrcholů, jedná 
-se ovšem o vrcholy, které jsou spojeny s každým vrcholem grafu, můžeme proto zbylé vrcholy mezi sebou libovolně 
-spárovat. Zase jsme ukázali, že v $G$ existuje pefektní párování.
+    Označme $P_1$ perfektní párování v grafu $G + \bc{x,y}$ a $P_2$ perfektní párování v grafu $G + \bc{z,w}$. Dále označme $H$ symetrickou diferenci párování $P_1 \oplus P_2$. Platí $\bc{x,y}, \bc{z,w} \in H$. Rozebereme nyní dva případy:
+    \begin{enumerate}[(a)]
+        \item Hrany $\bc{x,y}, \bc{z,w}$ leží v různých komponentách souvislosti $A, B$ v $H$, $\bc{x,y} \in A$, $\bc{z,w} \in B$. Pak párování $P$, které obsahuje hrany $P_2$ komponenty $A$ jinak hrany $P_1$, je perfektní párování v grafu $G$. Což je spor s faktem, že $G$ nemá perfektní párování.
+        \item Hrany $\bc{x,y}, \bc{z,w}$ leží ve stejné komponentě souvislosti $A$ grafu $H$. Komponenta $A$ je \hyperref[kruznice]{kružnice} sudé délky, která střídavě obsahuje hrany z $P_1$ a $P_2$. Označme $K_1$ tu část $A$, která začíná ve vrcholu $z$, pokračuje z $P_1$ a po hraně z $P_2$ poprvé navštíví jeden z vrcholů $x,y$. \ii{BÚNO} předpokládejme, že je to vrchol $y$. Dále označme $K_2$ zbylou část kružnice $A$, ze které jsme odstranili hranu $\bc{x,y}$. Definujme $P$ takto: $P$ obsahuje
+        \begin{itemize}
+            \item $K_1 \cap P_2$,
+            \item $K_2 \cap P_1$,
+            \item $\bc{x,z}$.
+        \end{itemize}
+        Tím jsme získali perfektní párování v grafu $G$; opět spor.
+    \end{enumerate}
+    Víme tedy, že všechny komponenty souvislosti grafu $G \setminus T$ jsou úplné grafy. Definujme \hyperref[parovani]{párování} $P$ takto: \ii{V každé komponentě souvislosti grafu $G \setminus T$ o sudém počtu vrcholů vybereme libovolné \hyperref[perfektniParovani]{perfektní párování}; v komponentě souvislosti $G \setminus T$ o lichém počtu vrcholů spárujeme libovolně všechny vrcholy až na jeden, který spárujeme s některým vrcholem $T$.} Protože lichých komponent $G \setminus T$ je nejvyše tolik jako $|T|$, můžeme to udělat. Navíc je počet vrcholů sudý, takže nám z množiny $T$ zbyde sudý počet nespárovaných vrcholů, jedná se ovšem o vrcholy, které jsou spojeny s každým vrcholem grafu, můžeme proto zbylé vrcholy mezi sebou libovolně spárovat. Zase jsme ukázali, že v $G$ existuje pefektní párování.
+\end{itemize}
 \hspace{\fill}\qed
 
 \subsection{Párování v bipartitních grafech}
-Je dán bipartitní graf $G$ se stranami $X$ a $Y$. K němu je možné vytvořit \hyperref[sit]{síť} takovou, že každému 
-\hyperref[parovani]{párování} $P$ v grafu $G$ odpovídá \hyperref[pripustnyTok]{přípustný tok} $f$, a naopak každému 
-přípustnému toku $f$ v síti odpovídá párování $P$ v $G$; a to tak, že 
-$\vel(f) = |P|$.
+Je dán bipartitní graf $G$ se stranami $X$ a $Y$. K němu je možné vytvořit \hyperref[sit]{síť} takovou, že každému \hyperref[parovani]{párování} $P$ v grafu $G$ odpovídá \hyperref[pripustnyTok]{přípustný tok} $f$, a naopak každému přípustnému toku $f$ v síti odpovídá párování $P$ v $G$; a to tak, že $\vel(f) = |P|$.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
@@ -441,8 +395,7 @@ Vytvořme síť $G^\prime$ s \hyperref[omezeniToku]{omezeními} $l,c$, zdrojem $
     E^\prime :\quad& (s,x) \forall x \in X\\
     & (y, t) \,\forall y \in Y.
 \end{align}
-A dále zorientujme: $\forall \bc{x,y} \in E(G)$, $x \in X$, $y \in Y$ $E^\prime$ obsahuje $(x,y)$. Pak omezení takové 
-sítě $l(e) = 0$, $c(e) = 1$, $\forall e \in E^\prime$.
+A dále zorientujme: $\forall \bc{x,y} \in E(G)$, $x \in X$, $y \in Y$ $E^\prime$ obsahuje $(x,y)$. Pak omezení takové sítě $l(e) = 0$, $c(e) = 1$, $\forall e \in E^\prime$.
 
 Pro párování uděláme přípustný tok $f_p$, že 
 \begin{equation}
@@ -453,8 +406,8 @@ Takže $|P| = \vel(f_P)$; \ii{\enquote{projde tolik jedniček, kolik je hran pá
 No a $\bc{x,y} \in P_f$ právě tehdy, když $f((x,y))=1$. Tedy $\vel(f) = |P_f|$.
 
 \subsection{Věta o maximálním párování}\label{konig} % TODO: dodělat z nahrávky, 10. týden
-\ii{König}. Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Označme $P_{\max}$ 
-\hyperref[maximalniParovani]{maximální párování} v $G$. \\ Pak platí
+\ii{König}. Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Označme $P_{\max}$ \hyperref[maximalniParovani]{maximální párování} v $G$. \\
+Pak platí
 \begin{equation}
     |P_{\max}| = \min_{A \subseteq X} (|X \setminus A| + |V_G(A)|).
 \end{equation}
@@ -543,16 +496,14 @@ No a $\bc{x,y} \in P_f$ právě tehdy, když $f((x,y))=1$. Tedy $\vel(f) = |P_f|
 \end{figure}
 $Z = \bc{s} \cup A \cup V_G(A)$, $t \not\in Z$.
 \begin{equation}
-    W^+(Z) = \bc{(s,x) \mid x \not\in A} \cup \bc{(y,t) \mid y \in V_G(A)} = \left|\bc{(s,x) \mid x \not\in A}\right|
-    + \left|\bc{(y,t) \mid y \in V_G(A)}\right|
+    W^+(Z) = \bc{(s,x) \mid x \not\in A} \cup \bc{(y,t) \mid y \in V_G(A)} = \left|\bc{(s,x) \mid x \not\in A}\right| + \left|\bc{(y,t) \mid y \in V_G(A)}\right|
 \end{equation}
 \begin{equation}
     \fcap(W(Z)) = \underbrace{\sum c(e)}_{e \in W^+(Z)}
 \end{equation}
 A určuje \hyperref[rezZdroj]{řez} $W(Z)$ s $\fcap(W(Z)) = |X-A| + |V_G(A)|$.
 
-Minimální řez má tvar $Z_0 = \bc{s} \cup A_0 \cup V_G(A_0)$ pro vhodné $A_0 \subseteq X$, kde $Z_0$ je množina 
-označkovaných vrcholů a $A_0 = Z_0 \cap X$.
+Minimální řez má tvar $Z_0 = \bc{s} \cup A_0 \cup V_G(A_0)$ pro vhodné $A_0 \subseteq X$, kde $Z_0$ je množina označkovaných vrcholů a $A_0 = Z_0 \cap X$.
 
 Musíme ukázat, že $Z_0 \cap Y = V_G(A_0)$.
 \begin{align}
@@ -561,23 +512,22 @@ Musíme ukázat, že $Z_0 \cap Y = V_G(A_0)$.
 \end{align}
 
 \subsection{Věta o nasycujícím párování}\label{hall}
-\ii{Hall}. Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak v $G$ existuje párování nasycující stranu $X$ právě 
-tehdy, když pro každou množinu $A \subseteq X$ platí
+\ii{Hall}. Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak v $G$ existuje párování nasycující stranu $X$ právě tehdy, když pro každou množinu $A \subseteq X$ platí
 \begin{equation}
     |A| \leq |V_G(A)| = \bc{y \mid y \in Y \land \bc{x,y} \in E}.
 \end{equation}
-\dukaz Jestliže v grafu $G$ existuje párování nasycující stranu $X$, pak $G$ podmínku věty splňuje (párování každému 
-vrcholu z množiny $A$ \enquote{přiřazuje} vrchol z $V_G(A)$, a tudíž vrcholů v $V_G(A)$ musí být alespoň tolik, kolik je 
-vrcholů v $A$.) 
-
-\enquote{$\Leftarrow$}: Víme, že $|P_{\max}| = |X \setminus A_0| + |V_G(A)|$ pro nějakou $A_0 \subseteq X$ (z 
-\hyperref[konig]{Königovy věty}). \\ Sporem. Kdyby $P_{\max}$ nenasycovalo $X$. Tak $|P_{\max} < |X|$. Takže
-\begin{align}
-    |X \setminus A_0| + |V_G(A)| &< |X| \\
-    |X| - |A_0| + |V_G(A)| &< |X| \\
-    |V_G(A)| &< |A_0| 
-\end{align}
-Což je spor.
+\dukaz 
+\begin{itemize}
+    \item[$\Leftarrow$:] Víme, že $|P_{\max}| = |X \setminus A_0| + |V_G(A)|$ pro nějakou $A_0 \subseteq X$ (z \hyperref[konig]{Königovy věty}). \\
+    Sporem. Kdyby $P_{\max}$ nenasycovalo $X$. Tak $|P_{\max} < |X|$. Takže
+    \begin{align}
+        |X \setminus A_0| + |V_G(A)| &< |X| \\
+        |X| - |A_0| + |V_G(A)| &< |X| \\
+        |V_G(A)| &< |A_0| 
+    \end{align}
+    Což je spor.
+    \item[$\Rightarrow$:] Jestliže v grafu $G$ existuje párování nasycující stranu $X$, pak $G$ podmínku věty splňuje (párování každému vrcholu z množiny $A$ \enquote{přiřazuje} vrchol z $V_G(A)$, a tudíž vrcholů v $V_G(A)$ musí být alespoň tolik, kolik je vrcholů v $A$.)
+\end{itemize}
 \hspace{\fill}\qed
 
 \subsection{Tvrzení o vztahu stupňů vrcholů a nasycujícího párování}
@@ -654,11 +604,9 @@ A tedy \hyperref[hall]{Hallova věta} říká, že existuje párování nasycuj�
 \hspace{\fill}\qed
 
 \subsection{Tvrzení o existenci nasycujícího párování všech vrcholů}
-Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak existuje párování, které nasycuje všechny vrcholy nejvyššího 
-stupně.
+Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak existuje párování, které nasycuje všechny vrcholy nejvyššího stupně.
 
-\dusledek Je dán bipartitní graf $G = (V,E)$ se stranami $X$ a $Y$. Označme $\Delta(G)$ nejvyšší stupeň, který některý 
-vrchol grafu má. Pak množinu hran $E$ je možno rozdělit na $\Delta(G)$ hranově disjunktních párování. 
+\dusledek Je dán bipartitní graf $G = (V,E)$ se stranami $X$ a $Y$. Označme $\Delta(G)$ nejvyšší stupeň, který některý vrchol grafu má. Pak množinu hran $E$ je možno rozdělit na $\Delta(G)$ hranově disjunktních párování. 
 
 \dukaz Vytořme $G^\prime$, že k němu přidáme hrany a vrchol tak, aby
 \begin{equation}
@@ -672,6 +620,5 @@ existuje párování nasycující $X$.
 
 Vybrali jsme maximální párování $P_{\max}$. Odstraníme všechny hrany neležící v $G$.
 
-Musí zůstat nasyceny ty vrcholy, které měly největší stupeň. Tím dostaneme párování $P$ nasycující vrcholy nejvyššího 
-stupně. 
+Musí zůstat nasyceny ty vrcholy, které měly největší stupeň. Tím dostaneme párování $P$ nasycující vrcholy nejvyššího stupně. 
 \hspace{\fill}\qed
