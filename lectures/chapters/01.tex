@@ -1,15 +1,12 @@
 \section{Neorientované grafy}
 
 \subsection{Základní pojmy a definice}
-Graf je soubor vrcholů, hran a vztahů incidence. Zapíšeme jako $G = (V, E, \eps)$, kde $V$ je neprázdná množina vrcholů, 
-$E$ množina hran a $\eps$ říká \enquote{co hrany představují}, respektive
+Graf je soubor vrcholů, hran a vztahů incidence. Zapíšeme jako $G = (V, E, \eps)$, kde $V$ je neprázdná množina vrcholů, $E$ množina hran a $\eps$ říká \enquote{co hrany představují}, respektive
 \begin{equation}
     \eps: E \rightarrow \bc{\bc{u, v} \mid u, v \in V}.
 \end{equation}
 
-Jestliže pro dvě hrany $e_1, e_2 \in E$ platí, že $\eps(e_1) = \eps(e_2)$, pak se hrany $e_1, e_2$ nazývají 
-\ii{paralelní}. Pokud graf nemá paralelní hrany, nazýváme jej \ii{prostý}. V takovém případě také stačí chápat graf jako 
-dvojici $G = (V,E)$, kde hrany jsou neprázdné maximálně dvouprvkové podmnožiny $V$.\label{prosty}
+Jestliže pro dvě hrany $e_1, e_2 \in E$ platí, že $\eps(e_1) = \eps(e_2)$, pak se hrany $e_1, e_2$ nazývají \ii{paralelní}. Pokud graf nemá paralelní hrany, nazýváme jej \ii{prostý}. V takovém případě také stačí chápat graf jako dvojici $G = (V,E)$, kde hrany jsou neprázdné maximálně dvouprvkové podmnožiny $V$.\label{prosty}
 
 \ii{Smyčkou} nazveme takovou hranu, která je $e \in E$ a pro $\eps(e) = \bc{u,v}$ platí $u=v$. \label{smycka}
 
@@ -24,13 +21,10 @@ Rozlišujeme 2 základní typy grafů, orientované a neorientované.
 
 \subsubsection{Sled, tah, cesta}\label{stc}
 \begin{enumerate}[(a)]
-    \item Sled je taková posloupnost, která začíná a končí vrcholem a kde po každém vrcholu následuje 
-    hrana, tedy $v_1, e_1, v_2, e_2, \dots, v_k$.\\
-    V orientovaném případě vždy platí $P_V(e_1) = v_i$, $K_V(e_i)=v_{i+1}$. Neorientovaný pouze říká, že $v_i$ a 
-    $v_{i+1}$ jsou krajní vrcholy.
+    \item Sled je taková posloupnost, která začíná a končí vrcholem a kde po každém vrcholu následuje hrana, tedy $v_1, e_1, v_2, e_2, \dots, v_k$.\\
+    V orientovaném případě vždy platí $P_V(e_1) = v_i$, $K_V(e_i)=v_{i+1}$. Neorientovaný pouze říká, že $v_i$ a $v_{i+1}$ jsou krajní vrcholy.
     \item Tah je sled, ve kterém se nesmí opakovat hrany.
-    \item Cesta je sled, ve kterém se nesmí opakovat vrcholy, s výjimkou počátečeního, ve kterém cesta 
-    může končit.
+    \item Cesta je sled, ve kterém se nesmí opakovat vrcholy, s výjimkou počátečeního, ve kterém cesta může končit.
 \end{enumerate}
 
 \subsubsection{Kružnice a cyklus}\label{kruznice}
@@ -78,8 +72,7 @@ Pokud $G = (V, E, \eps)$, pak
         \end{align*}
     \end{minipage}
 \end{figure}
-Pro $G=(V,E)$ je pouze $d(v) = \left\|\bc{e \mid v \text{ je krajní vrchol } e, \text{ smyčku počítáme } 
-2\times}\right\|$.
+Pro $G=(V,E)$ je pouze $d(v) = \left\|\bc{e \mid v \text{ je krajní vrchol } e, \text{ smyčku počítáme } 2\times}\right\|$.
 
 Z toho máme důsledek
 \begin{equation}
@@ -88,8 +81,7 @@ Z toho máme důsledek
 Tedy každý graf má sudý počet vrcholů lichého stupně.
 
 \subsection{Skóre}\label{skore}
-Skóre grafu $\underset{\underset{\|V\|=d}{G=(V,E)}}{(G \in \S)}$ je $D = (d_1, d_2, \dots, d_n)$, kde $d_i$ je stupeň 
-vrcholu $v_i$.
+Skóre grafu $\underset{\underset{\|V\|=d}{G=(V,E)}}{(G \in \S)}$ je $D = (d_1, d_2, \dots, d_n)$, kde $d_i$ je stupeň vrcholu $v_i$.
 
 Mějme příklad skóre (1,1,1,2,2,3). Jak by mohl vypadat graf s takovým skóre?
 \begin{figure}[H]
@@ -125,13 +117,11 @@ Mějme příklad skóre (1,1,1,2,2,3). Jak by mohl vypadat graf s takovým skór
         \end{figure}
     \end{minipage}
 \end{figure}
-Jak vidíme, skóre jednoznačně neurčuje graf. Můžeme ze skóre ale říct, jestli je takové skóre validním skóre nějakého 
-grafu?
+Jak vidíme, skóre jednoznačně neurčuje graf. Můžeme ze skóre ale říct, jestli je takové skóre validním skóre nějakého grafu?
 \newpage
 \subsection{Hledání grafu ke skóre}
 Máme $D = (d_1, d_2, \dots, d_n)$, $d_1 \leq d_2 \leq \dots \leq d_n$. \\
-Pak $D$ je skóre některého grafu $G = (V,E)$ právě tehdy, když $D^\prime = (d_1^\prime, \dots, d_{n-1}^\prime)$ 
-definovaná tak, že
+Pak $D$ je skóre některého grafu $G = (V,E)$ právě tehdy, když $D^\prime = (d_1^\prime, \dots, d_{n-1}^\prime)$ definovaná tak, že
 \begin{equation}
     d_i = 
     \begin{cases}
@@ -141,76 +131,66 @@ definovaná tak, že
 \end{equation}
 je skóre nějakého $G^\prime \in \S$.
 
-\dukaz\\
-\enquote{$\Leftarrow$}: Existuje $G^\prime$ pro $D^\prime$. $G$ vytvoříme tak, že k $G^\prime$ přidáme vrchol $v_n$ a 
-spojíme se všemi vrcholy $v_{n-d_n}, v_{n-d_1+1}, \dots, v_{n-1}$. Pak $G$ má skóre $D$. \qed
-\vspace{1em}
+\dukaz
+\begin{itemize}
+    \item[$\Leftarrow$:] Existuje $G^\prime$ pro $D^\prime$. $G$ vytvoříme tak, že k $G^\prime$ přidáme vrchol $v_n$ a spojíme se všemi vrcholy $v_{n-d_n}, v_{n-d_1+1}, \dots, v_{n-1}$. Pak $G$ má skóre $D$.
+    \item[$\Rightarrow$:] Máme $G$ s $D = (d_1, d_2, \dots, d_n)$, kde $d_1$ je stupeň $v_1$, $d_2$ je stupeň $v_2$ a tak dále.
 
-\enquote{$\Rightarrow$}: Máme $G$ s $D = (d_1, d_2, \dots, d_n)$, kde $d_1$ je stupeň $v_1$, $d_2$ je stupeň $v_2$ a tak 
-dále.
+    Mějme $\G = \bc{G \mid G \text{ má } D} \not= \emptyset$.
 
-Mějme $\G = \bc{G \mid G \text{ má } D} \not= \emptyset$.
+    \ii{Cíl}: Chceme dokázat, že mezi všemi grafy $\G$ existuje jeden, který má vlastnost, že poslední vrchol je spojen hranami s $d_n$ předcházejícími vrcholy.
 
-\ii{Cíl}: Chceme dokázat, že mezi všemi grafy $\G$ existuje jeden, který má vlastnost, že poslední vrchol je spojen 
-hranami s $d_n$ předcházejícími vrcholy.
+    $\forall G \in \G$ mějme $j_G$, což bude největší index vrcholu, tak že $\bc{v_{j_G}, v_n} \not\in E$, tedy není mezi nimi hrana. To znamená, že pro ideální $G$ chceme docílit $j_G = n-d_n-1$.
 
-$\forall G \in \G$ mějme $j_G$, což bude největší index vrcholu, tak že $\bc{v_{j_G}, v_n} \not\in E$, tedy není mezi 
-nimi hrana. To znamená, že pro ideální $G$ chceme docílit $j_G = n-d_n-1$.
+    Jako $G_1$ označíme ten $G_1 \in \G$, že $j_{G_1}$ je nejmenší. (Může být $j_{G_1}$ menší jak $n-d_n-1$? Ne. $v_n$ má stupeň $d_n$, a kdyby bylo $j_{G_1}$ menší, tak by bylo vrcholů více, tzn. ne všechny by měly hranu s $v_n$.)
 
-Jako $G_1$ označíme ten $G_1 \in \G$, že $j_{G_1}$ je nejmenší. (Může být $j_{G_1}$ menší jak $n-d_n-1$? Ne. $v_n$ má 
-stupeň $d_n$, a kdyby bylo $j_{G_1}$ menší, tak by bylo vrcholů více, tzn. ne všechny by měly hranu s $v_n$.)
+    Označme $j_1 = j_{G_1}$.
 
-Označme $j_1 = j_{G_1}$.
+    Víme $j_1 \geq n-d_n-1$. Teď nás ale zajímá, jestli $j_1 = n - d_n - 1$. Dokažme sporem.\\
+    Kdyby $j_1 > n-d_n-1$, tak
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1, dot/.style={circle, fill=black, inner sep=1pt, minimum size=4pt}]
+            \node[dot, label=below:$v_1$] (v1) at (0.5,0) {};
+            \node[dot, label=below:$v_2$] (v2) at (2,0) {};
+            \node (d1) at (3.5,0) {$\dots$};
+            \node[dot, label=below:$v_k$] (vk) at (4.5,0) {};
+            \node[dot, label=below:$v_{n-d_n-1}$] (vn1) at (6,0) {};
+            \node[dot, label=below:$v_{n-d_n}$] (vn2) at (7.5,0) {};
+            \node[dot, label=below:$v_\ell$] (vl) at (9,0) {};
+            \node (d2) at (10.5,0) {$\dots$};
+            \node[dot, label=below:$v_{j_1}$] (vj1) at (12,0) {};
+            \node (d3) at (13.5,0) {$\dots$};
+            \node[dot, label=below:$v_{n-1}$] (vn3) at (15,0) {};
+            \node[dot, label=below:$v_n$] (vn)  at (16.5,0) {};
 
-Víme $j_1 \geq n-d_n-1$. Teď nás ale zajímá, jestli $j_1 = n - d_n - 1$. Dokažme sporem.\\
-Kdyby $j_1 > n-d_n-1$, tak
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[scale=1, dot/.style={circle, fill=black, inner sep=1pt, minimum size=4pt}]
-        \node[dot, label=below:$v_1$] (v1) at (0.5,0) {};
-        \node[dot, label=below:$v_2$] (v2) at (2,0) {};
-        \node (d1) at (3.5,0) {$\dots$};
-        \node[dot, label=below:$v_k$] (vk) at (4.5,0) {};
-        \node[dot, label=below:$v_{n-d_n-1}$] (vn1) at (6,0) {};
-        \node[dot, label=below:$v_{n-d_n}$] (vn2) at (7.5,0) {};
-        \node[dot, label=below:$v_\ell$] (vl) at (9,0) {};
-        \node (d2) at (10.5,0) {$\dots$};
-        \node[dot, label=below:$v_{j_1}$] (vj1) at (12,0) {};
-        \node (d3) at (13.5,0) {$\dots$};
-        \node[dot, label=below:$v_{n-1}$] (vn3) at (15,0) {};
-        \node[dot, label=below:$v_n$] (vn)  at (16.5,0) {};
+            \draw[thick, purple, bend right] (vk) to (vn);
+            \draw[thick, blue, bend left] (vl) to (vj1);
+            \draw[thick, blue, decorate, decoration={crosses, segment length=4pt}, bend left] (vk) to (vl);
+            \draw[thick, green!60!black, decorate, decoration={crosses, segment length=4pt}, bend left] (vj1) to (vn);
+        \end{tikzpicture}
+    \end{figure}
+    \vspace{-1.5cm}
+    \begin{equation}
+        d(v_n) = d_n
+    \end{equation}
+    Protože mezi $d_n$ předcházejícími vrcholy je nějaký, který není spojen hranou s $v_n$, v našem případě $v_{j_1}$, nutně to znamená, že $v_n$ musí mít hranu s nějakým vrcholem, řekněme $v_k$, který má ještě nižší index.
+    \begin{equation}
+        \textcolor{purple}{d(v_k)} \leq \textcolor{green!60!black}{d(v_{j_1})}
+    \end{equation}
+    $v_k$ je v pořadí dříve, než $v_{j_1}$, tudíž musí mít nutně menší roven stupeň. To ale nutně znamená, že $v_{j_1}$ musí být spojen s alespoň jedním vrcholem, označme si ho $v_\ell$, se kterým není spojen $v_k$, protože $v_k$ je spojen s $v_n$, zatímco $v_{j_1}$ není.
 
-        \draw[thick, purple, bend right] (vk) to (vn);
-        \draw[thick, blue, bend left] (vl) to (vj1);
-        \draw[thick, blue, decorate, decoration={crosses, segment length=4pt}, bend left] (vk) to (vl);
-        \draw[thick, green!60!black, decorate, decoration={crosses, segment length=4pt}, bend left] (vj1) to (vn);
-    \end{tikzpicture}
-\end{figure}
-\vspace{-1.5cm}
-\begin{equation}
-    d(v_n) = d_n
-\end{equation}
-Protože mezi $d_n$ předcházejícími vrcholy je nějaký, který není spojen hranou s $v_n$, v našem případě $v_{j_1}$, nutně 
-to znamená, že $v_n$ musí mít hranu s nějakým vrcholem, řekněme $v_k$, který má ještě nižší index.
-\begin{equation}
-    \textcolor{purple}{d(v_k)} \leq \textcolor{green!60!black}{d(v_{j_1})}
-\end{equation}
-$v_k$ je v pořadí dříve, než $v_{j_1}$, tudíž musí mít nutně menší roven stupeň. To ale nutně znamená, že $v_{j_1}$ musí
-být spojen s alespoň jedním vrcholem, označme si ho $v_\ell$, se kterým není spojen $v_k$, protože $v_k$ je spojen s 
-$v_n$, zatímco $v_{j_1}$ není.
+    Vytvořme
+    \vspace{-0.5cm}
+    \begin{align*}
+        G_0 &= (V_0, E_0) \\
+        V_0 &= V_1 = V \\
+        E_0 &= (E_1 \setminus \bc{\bc{v_n, v_k}, \bc{v_\ell, v_{j_1}}}) \cup \bc{\bc{v_k, v_\ell}, \bc{v_n, v_{j_1}}}
+    \end{align*}
+    $G_0$ má skóre $D$ a zároveň $j_{G_0} < j_1$. To ale znamená, že $G_1$ nebyl graf s nejmenším $j_G$, což je spor. A proto nejmenší $j_G$ je $j_{G_0} = n-d_n-1$.
 
-Vytvořme
-\vspace{-0.5cm}
-\begin{align*}
-    G_0 &= (V_0, E_0) \\
-    V_0 &= V_1 = V \\
-    E_0 &= (E_1 \setminus \bc{\bc{v_n, v_k}, \bc{v_\ell, v_{j_1}}}) \cup \bc{\bc{v_k, v_\ell}, \bc{v_n, v_{j_1}}}
-\end{align*}
-$G_0$ má skóre $D$ a zároveň $j_{G_0} < j_1$. To ale znamená, že $G_1$ nebyl graf s nejmenším $j_G$, což je spor. A 
-proto nejmenší $j_G$ je $j_{G_0} = n-d_n-1$.
-
-Ověřili jsme, že takový graf určitě existuje, takže $G^\prime$ dostaneme z $G_0$ odstraněním $v_n$. $G^\prime$ pak má 
-skóre $D^\prime$. 
+    Ověřili jsme, že takový graf určitě existuje, takže $G^\prime$ dostaneme z $G_0$ odstraněním $v_n$. $G^\prime$ pak má skóre $D^\prime$. 
+\end{itemize}
 \hspace{\fill}\qed
 
 \subsection{Příklad hledání grafu pro skóre}
@@ -304,8 +284,7 @@ Algoritmus dále pokračuje:
     \delta(G_1) \leq \eps(G_1), &\text{ tak } v_2 \in V \setminus \bc{v_1}, d_{G_1}(v_2) = \delta(G_1).
 \end{cases}
 \end{equation}
-A tedy $G_2 \coloneq G_1 \setminus v_2$, $\eps(G_2) \geq \eps(G_1)$. A takto postupně dále. Algoritmus končí a nikdy 
-nedostaneme prázdný graf, díky předpokladu, že $G$ mělo alespoň jednu hranu, tedy $\eps(G)>0$.
+A tedy $G_2 \coloneq G_1 \setminus v_2$, $\eps(G_2) \geq \eps(G_1)$. A takto postupně dále. Algoritmus končí a nikdy nedostaneme prázdný graf, díky předpokladu, že $G$ mělo alespoň jednu hranu, tedy $\eps(G)>0$.
 \hspace{\fill}\qed
 
 \subsection{Souislý graf}\label{souvisly}
@@ -313,9 +292,7 @@ Graf nazýváme souvislým, jestliže každé jeho dva vrcholy jsou spojeny neor
 
 \subsection{Pojmy založené na vzdálenosti}
 \subsubsection{Vzdálenost}
-Mějme $G \in \S$, $G = (V,E)$, $x, y \in V$.
-Vzdálenost $x,y$ je $d_G(x,y)$, což značí počet hran v nejméně početné cestě z $x$ do $y$, když existuje cesta. Jinak
-$d_G(x,y) = \infty$.
+Mějme $G \in \S$, $G = (V,E)$, $x, y \in V$. Vzdálenost $x,y$ je $d_G(x,y)$, což značí počet hran v nejméně početné cestě z $x$ do $y$, když existuje cesta. Jinak $d_G(x,y) = \infty$.
 
 \subsubsection{Průměr}\label{prumer}
 Ať $G$ je \hyperref[souvisly]{souvislý}. Průměr $G$ je $\diam(G) = \max\bc{d_G(x,y) \mid x, y \in V}$.
@@ -324,8 +301,7 @@ Ať $G$ je \hyperref[souvisly]{souvislý}. Průměr $G$ je $\diam(G) = \max\bc{d
 Ať $G$ je \hyperref[souvisly]{souvislý}. Excentricita vrcholu $v \in V$ je $\ex(V) = \max\bc{d_G(v,x) \mid x \in V}$.
 
 \subsubsection{Centrum}\label{centrum}
-Ať $v \in V$ je centrální $\rightarrow \ex(v)$ je nejmenší mezi $\ex(x), x\in V$. Centrum (staře \ii{střed}) grafu je
-$C(G) = \bc{v \mid v \text{ je centrální}}$.
+Ať $v \in V$ je centrální $\rightarrow \ex(v)$ je nejmenší mezi $\ex(x), x\in V$. Centrum (staře \ii{střed}) grafu je $C(G) = \bc{v \mid v \text{ je centrální}}$.
 \begin{figure}[H]
     \centering
     \begin{minipage}[c]{0.3\textwidth}
