@@ -3,12 +3,10 @@
 Množině $F \subseteq E$, že $G \setminus F$ je ne\hyperref[souvisly]{souvislá}, se říká hranový řez.
 
 \subsection{Hranová souvislost}\label{hran-souvislost}
-Máme $G \in \S$, $G = (V,E)$, pak $G$ je $k$-hranově souvislý, jestliže neexistuje $F \subseteq E$, $|F| \leq k-1$, 
-taková, že $G \setminus F$ je ne\hyperref[souvisly]{souvislá}.
+Máme $G \in \S$, $G = (V,E)$, pak $G$ je $k$-hranově souvislý, jestliže neexistuje $F \subseteq E$, $|F| \leq k-1$, taková, že $G \setminus F$ je ne\hyperref[souvisly]{souvislá}.
 
 Hranová souvislost grafu $G$, značíme $\lambda(G)$, je největší $k$, že $G$ je $k$-hranově souvislý.\\
-\ii{Pozn. největší znamená, že nemá \hyperref[hranRez]{hranový řez} s $\lambda(G)-1$ hranami, ale má s $\lambda(G)$ 
-hranami.}
+\ii{Pozn. největší znamená, že nemá \hyperref[hranRez]{hranový řez} s $\lambda(G)-1$ hranami, ale má s $\lambda(G)$ hranami.}
 
 Mějme 2-hranově souvislý graf:
 \begin{figure}[H]
@@ -40,19 +38,13 @@ Nazvěme most hranu $e\in E(G)$, že $\bc{e}$ je \hyperref[hranRez]{hranový ře
 \subsection{Souvislost krajních vrcholů a mostů}
 Každý most má alespoň jeden krajní vrchol, který je \hyperref[artikulace]{artikulace}. 
 
-\dukaz Nechť $e = \{u, v\}$ je most v souvislém grafu $G$, kde $|V(G)| \geq 3$. Dle definice mostu platí, že graf 
-$G \setminus e$ není \hyperref[souvisly]{souvislý} a skládá se ze dvou komponent souvislosti. Označme $K_u$ komponentu 
-obsahující vrchol $u$ a $K_v$ komponentu obsahující vrchol $v$.
+\dukaz Nechť $e = \{u, v\}$ je most v souvislém grafu $G$, kde $|V(G)| \geq 3$. Dle definice mostu platí, že graf $G \setminus e$ není \hyperref[souvisly]{souvislý} a skládá se ze dvou komponent souvislosti. Označme $K_u$ komponentu obsahující vrchol $u$ a $K_v$ komponentu obsahující vrchol $v$.
 
-Protože má graf $G$ alespoň 3 vrcholy, musí alespoň jedna z komponent $K_u$ nebo $K_v$ obsahovat více než jeden vrchol. 
-\ii{BÚNO} předpokládejme, že $|V(K_u)| \geq 2$.
+Protože má graf $G$ alespoň 3 vrcholy, musí alespoň jedna z komponent $K_u$ nebo $K_v$ obsahovat více než jeden vrchol. \ii{BÚNO} předpokládejme, že $|V(K_u)| \geq 2$.
 
-To znamená, že ve komponentě $K_u$ existuje vrchol $w$ různý od $u$ (tj. $w \in V(K_u), w \neq u$). Protože $e$ je 
-\hyperref[most]{most}, jediná \hyperref[stc]{cesta} v grafu $G$ z vrcholu $w$ do vrcholu $v$ vede přes hranu $e$, a tedy 
-nutně prochází vrcholem $u$.
+To znamená, že ve komponentě $K_u$ existuje vrchol $w$ různý od $u$ (tj. $w \in V(K_u), w \neq u$). Protože $e$ je \hyperref[most]{most}, jediná \hyperref[stc]{cesta} v grafu $G$ z vrcholu $w$ do vrcholu $v$ vede přes hranu $e$, a tedy nutně prochází vrcholem $u$.
 
-Pokud z grafu $G$ odstraníme vrchol $u$, neexistuje žádná cesta mezi $w$ a $v$, protože jediná spojnice byla přerušena. 
-Graf $G \setminus u$ tedy není souvislý (vrcholy $w$ a $v$ leží v různých komponentách).
+Pokud z grafu $G$ odstraníme vrchol $u$, neexistuje žádná cesta mezi $w$ a $v$, protože jediná spojnice byla přerušena. Graf $G \setminus u$ tedy není souvislý (vrcholy $w$ a $v$ leží v různých komponentách).
 
 Z toho plyne, že vrchol $u$ je \hyperref[artikulace]{artikulace}.
 \hspace{\fill}\qed
