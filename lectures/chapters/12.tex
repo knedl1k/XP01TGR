@@ -148,7 +148,69 @@ Je dán \hyperref[souvisly]{souvislý} graf $G = (V, E)$. \ii{Prostor řezů} je
 
 \subsection{Cutset}\label{cutset}
 Je dán \hyperref[souvisly]{souvislý} graf $G = (V, E)$. \ii{Cutset} (min-řez) je minimální (ne nejmenší, ale minimální) množina $S \subseteq E$ taková, že $G \setminus S$ je nesouvislý graf.
-% TODO: nákresy
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        scale=1,
+        vertex/.style={circle, fill=black, minimum size=4pt, inner sep=0pt, outer sep=1pt},
+        label_node/.style={font=\large},
+        edge/.style={thick, draw=black, line cap=round},
+        cut mark/.style={thick, line cap=round}
+    ]
+
+        \definecolor{mygreen}{RGB}{100, 180, 50}
+        \definecolor{mypurple}{RGB}{140, 50, 160}
+        \definecolor{myblue}{RGB}{30, 100, 220}
+
+        \node[vertex] (v1) at (0, 0) {};
+        \node[label_node, below left] at (v1) {1};
+
+        \node[vertex] (v2) at (2.5, 0) {};
+        \node[label_node, below] at (v2) {2};
+
+        \node[vertex] (v3) at (4, 1.2) {};
+        \node[label_node, below right] at (v3) {3};
+
+        \node[vertex] (v4) at (5.5, 2) {};
+        \node[label_node, right] at (v4) {4};
+
+        \node[vertex] (v5) at (2.5, 2) {};
+        \node[label_node, above] at (v5) {5};
+
+        \node[vertex] (v6) at (0, 2) {};
+        \node[label_node, left] at (v6) {6};
+
+        \draw[edge] (v6) -- (v5);
+        \draw[edge] (v1) -- (v2);
+        \draw[edge] (v2) -- (v3);
+
+		\draw[edge] (v1) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);} 
+                    (v6);
+
+        \draw[edge] (v1) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                    (v5);
+
+        \draw[edge] (v2) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                    (v5);
+
+        \draw[edge] (v3) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                    (v5);
+
+        \draw[edge] (v3) -- node[pos=0.4, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.6, sloped, allow upside down] {\tikz \draw[cut mark, myblue] (0,-4pt) -- (0,4pt);}
+                    (v4);
+
+        \node[below, align=left, font=\large] at (2.75, -0.8) {
+            \textcolor{mygreen}{cutset (separuje $\{5,6\}$)} \\
+            \textcolor{myblue}{cutset (separuje $\{4\}$)} \\
+            \textcolor{mypurple}{sjednocení dvou cutsetů}
+        };
+    \end{tikzpicture}
+\end{figure}
 
 \subsection{Tvrzení o souvislosti cutsetů}
 Je dán \hyperref[rez]{řez} $S = \langle V_1, V_2 \rangle$ souvislého neorientovaného grafu $G$. Pak $S$ je \hyperref[cutset]{cutsetem} právě tehdy, když podgrafy indukované množinami $V_1$ a $V_2$ jsou \hyperref[souvisly]{souvislé}.
@@ -171,7 +233,8 @@ Je dán \hyperref[souvisly]{souvislý} graf $G=(V, E)$. \ii{Prostor kružnic} je
 Podmnožina $K \subseteq E$ patří do \hyperref[prostorKruznic]{prostoru kružnic} $W_K$ právě tehdy, když v grafu $(V, K)$ má každý vrchol sudý stupeň.
 
 \dukaz\\
-\enquote{$\Rightarrow$}: Podmnožina $K \subseteq E$ patří do prostoru kružnic $W_K$. Ukažme, že pokud $A, B$ splňují podmínku sudosti stupňů, tj. každý vrchol má sudý stupeň, tak $A \oplus B$ také splňuje podmínku.
+\enquote{$\Rightarrow$}: Podmnožina $K \subseteq E$ patří do prostoru kružnic $W_K$. Pokud $K$ je kružnice, pak v grafu $(V, K$ má každý vrchol sudý stupeň. \\
+Ukažme, že pokud $A, B$ splňují podmínku sudosti stupňů, tj. každý vrchol má sudý stupeň, tak $A \oplus B$ také splňuje podmínku.
 \begin{equation}
 	A \oplus B = (A \cup B)\setminus(A \cap B)
 \end{equation}
@@ -195,3 +258,103 @@ Předpokládejme, že některý vrchol $v$ má stupeň větší než 0. Pak $d_A
 \end{equation}
 Tedy $A \in W_K$.
 \hspace{\fill}\qed 
+					
+\subsection{Fundamentální systém kružnic}\label{fsk}
+Je dán \hyperref[souvisly]{souvislý} graf $G$ a jeho kostra $T$. Označme $T = \bc{b_1, \dots, b_{n-1}}$ a $E \setminus T = \bc{c_1, \dots, c_{m-n+1}}$ (\ii{pozn. $b$ jako branches, $c$ jako chords}).
+
+\ii{Fundamentální systém \hyperref[kruznice]{kružnic}} je $K_{c_1}, K_{c_2}, \dots, K_{c_{m-n+1}}$ vzhledem ke kostře $T$.
+
+$T \cup \bc{c_i}$ obsahuje \ii{přesně} jednu kružnici $K_{c_i}$.
+
+\subsection{Tvrzení o nezávislosti fundamentálního systému kružnic}\label{tvrzfsk}
+\hyperref[fsk]{Fundamentální systém kružnic} $K_{c_1}, K_{c_2}, \dots, K_{c_{m-n+1}}$ (vzhledem k pevně zvolené kostře) je lineárně nezávislá množina vektorového prostoru $(W_K, \oplus, \star)$.
+
+\dukaz Každá z \hyperref[kruznice]{kružnic} $K_{c_1}, K_{c_2}, \dots, K_{c_{m-n+1}}$ obsahuje vždy jednu hranu neležící v kostře (to je hrana $c_i$ pro kružnici $K_{c_i}$) a hrany z kostry $T$. Proto žádnou kružnici $K_{c_i}$ nemůžeme dostat jako lineární kombinaci ostatních.
+\hspace{\fill}\qed
+
+\subsection{Fundamentální systém řezů}\label{fsr}
+Je dán \hyperref[souvisly]{souvislý} neorientovaný graf $G$ a jeho kostra $T$. Označme opět $T = \bc{b_1, b_2, \dots, b_{n-1}}$ a množinu $E \setminus T = \bc{c_1, c_2, \dots, c_{m-n+1}}$.
+
+Odstraníme-li libovolnou hranu $b_j$ z kostry $T$, rozpadne se nám graf $(V, T)$ na dvě komponenty souvislosti. Označme je $V_1^j$ a $V_2^j$. Dále označme $S_{b_j}$ řez $\langle V_1^j, V_2^j \rangle$ grafu $G$. Řezy $S_{b_1}, S_{b_2}, \dots, S_{b_{n-1}}$ tvoří \ii{fundamentální systém \hyperref[rez]{řezů}} vzhledem ke kostře $T$.
+
+\subsection{Tvrzení o nezávislosti fundamentálního systému řezů}
+\hyperref[fsr]{Fundamentální systém řezů} $S_{b_1}, S_{b_2}, \dots, S_{b_{n-1}}$ (vzhledem k pevně zvolené kostře) je lineárně nezávislá množina vektorového prostoru $(W_R, \oplus, \star)$.
+
+\dukaz Každý z \hyperref[rez]{řezů} $S_{b_1}, S_{b_2}, \dots, S_{b_{n-1}}$ obsahuje vždy jednu hranu ležící v kostře (to je hrana $b_j$ pro řez $S_{b_j}$) a hrany neležící v kostře $T$. Proto žádný řez $S_{b_j}$ nemůžeme dostat jako lineární kombinaci ostatních řezů z fundamentálního systému řezů.
+\hspace{\fill}\qed
+
+\subsection{Tvrzení o generování fundamentálních systémů grafu}
+Je dán \hyperref[souvisly]{souvislý} neorientovaný graf $G$ a jeho kostra $T$. Pak
+\vspace{-1em}
+\begin{itemize}[noitemsep]
+	\item prostor \hyperref[kruznice]{kružnic} $(W_K, \oplus, \star)$ je generován množinou \hyperref[fsk]{fundamentálních kružnic} (vzhledem k $T$);
+	\item prostor \hyperref[rez]{řezů} $(W_R, \oplus, \star)$ je generován množinou \hyperref[fsr]{fundamentálních řezů} (vzhledem k $T$).
+\end{itemize}
+\vspace{-1em}
+\dukaz Dokažme první tvrzení, druhé se dokáže analogicky. Víme, že prostor kružnic $W_K$ je generován množinou všech kružnic grafu $G$. Stačí proto dokázat, že každá kružnice $K$ v $G$ je součtem některých fundamentálních kružnic.
+
+Uvažujme libovolnou kostru $T$ a kružnici $K$. Pak $K$ není podmnožinou kostry $T$. Označme $c_1, c_2, \dots, c_r$ všechny hrany kružnice $K$, které neleží v $T$. Označme $K_{c_1}, K_{c_2}, \dots, K_{c_r}$ fundamentální kružnice odpovídající hranám $c_1, c_2, \dots, c_r$. Utvoříme
+\begin{equation}
+	C = K_{c_1} \oplus K_{c_2} \oplus \dots \oplus K_{c_r}.
+\end{equation}
+Množina $K \oplus C$ leží v prostoru kružnic a je proto součtem hranově disjuktních kružnic. Navíc platí, že $K \oplus C \subseteq T$. To je ale možné pouze pro $K \oplus C = \emptyset$. Takže dostáváme $K = C$, tudíž $K$ je součtem fundamentálních kružnic $K_{c_1}, K_{c_2}, \dots, K_{c_r}$.
+\hspace{\fill}\qed
+
+% \subsection{Tvrzení o vztahu prostoru kružnic a kostry}
+% Je dán \hyperref[souvisly]{souvislý} neorientovaný graf $G$, s množinou hran $E$, a v něm neprázdná podmnožina hran $K$, která patří do prostoru \hyperref[kruznice]{kružnic}. Pak pro každou kostru $T$ grafu $G$ platí
+% \begin{equation}
+% 	K \cap (E \setminus T) \notag= \emptyset.
+% \end{equation}
+% \dukaz Postupujme sporem. Předpokládejme, že pro nějakou kostru $T$ je $K \cap (E \setminus T) = \emptyset$. Pak $K \subseteq T$, což je možné pouze pro $K = \emptyset$, což je spor s tím, že $K$ je neprázdná.
+% \hspace{\fill}\qed
+
+% \subsection{Tvrzení o vztahu řezu a kostry}
+% Je dán \hyperref[souvisly]{souvislý} neorientovaný graf $G$, s množinou hran $E$, a v něm \hyperref[rez]{řez} $S$. Pak pro každou kostru $T$ grafu $G$ platí
+% \begin{equation}
+% 	S \cap T \not= \emptyset
+% \end{equation}
+% \dukaz Postupujme sporem. Předpokládejme, že pro nějakou kostru $T$ je $S \cap T = \emptyset$. Pak ale graf $G \setminus S$ obsahuje kostru $T$ a je souvislý. Což je spor s tím, že $S$ je řez.
+% \hspace{\fill}\qed
+
+% \subsection{Tvrzení o sudosti společných hran kružnic a řezů}
+% Je dán \hyperref[souvisly]{souvislý} neorientovaný graf $G$. Pak každá \hyperref[kruznice]{kružnice} $C$ a každý \hyperref[rez]{řez} $S$ má sudý počet společných hran.
+
+% \dukaz Předpokládejme, že $S = \langle V_1, V_2 \rangle$. Jestliže kružnice má vrcholy pouze z jedné z množin $V_1$ nebo $V_2$, pak $C \cap S = \emptyset$ a to je sudý počet společných hran.
+
+% Předpokládejme, že kružnice $C$ obsahuje jak vrcholy z $V_1$, tak z $V_2$. Označme vrcholy ležící na $C$ po řadě $u_1, u_2, \dots, u_k, u_1$. Předpokládejme, že vrchol $u_1$ leží v množině $V_1$. Vezměme první vrchol na kružnici, který leží v množině $V_2$, nechť to je $u_i$. Pak hrana $\bc{u_{i-1}, u_i}$ je hrana \hyperref[rez]{řezu} $S$. Protože \hyperref[kruznice]{kružnice} končí v množině $V_1$, musí se kružnice zase \enquote{vrátit} do množiny $V_1$. To se stane na základě hrany, která je také hranou řezu $S$. Můžeme proto \enquote{spárovat} hrany kružnice $C$ a řezu $S$, a tedy jich je sudý počet. 
+% \hspace{\fill}\qed
+
+\subsection{Věta o sudém počtu společných hran a prostorech kružnic nebo řezů}
+Je dán souvislý neorientovaný graf $G$ s množinou hran $E$. Pak platí
+\vspace{-1em}
+\begin{enumerate}[1)]
+	\item $A \subseteq E$ je prvek prostoru \hyperref[kruznice]{kružnic} grafu $G$ právě tehdy, když má sudý počet společných hran s libovolným \hyperref[rez]{řezem} $S$ grafu $G$.
+	\item $B \subseteq E$ je prvek prostoru řezů grafu $G$ právě tehdy, když má sudý poečet společných hran s libovolným prvkem prostoru kružnic $W_K$ grafu $G$.
+\end{enumerate}
+\dukaz Dokažme pouze pro 1). Pro 2) je důkaz analogický.
+\begin{enumerate}
+	\item[\enquote{$\Rightarrow$}:] Ať $K$ je kružnice. $S = \langle V_1, V_2 \rangle$. Pak mohou nastat tři možnosti
+	\begin{enumerate}[(a)]
+		\item $K \subsetneq E$ (tj. graf indukovaný $V_1$). To znamená $S \cap K = \emptyset$
+		\item $K \subseteq E$ (tj. graf indukovaný $V_2$). To znamená $S \cap K = \emptyset$
+		\item $e \in K$, $e = \bc{x,y}$, $x \in V_1$, $y \in V_2$. Pak musí $|S \cap K|$ být sudý.
+	\end{enumerate}
+	Označme $K_1, K_2$ a máme pro všechna $S$ řez $|K_1 \cap S| = 2a$, $|K_2 \cap S| = 2b$, $a, b \in \N_0$. Rozepišme
+	\begin{align}
+		|(K_1 \oplus K_2) \cap S| &= |(K_1 \cap S) \oplus (K_2 \cap S)| \\
+		&= |(K_1 \cap S) \cup (K_2 \cap S)| - |(K_1 \cap S) \cap (K_2 \cap S)| \\
+		&= \underbrace{|K_1 \cap S|}_{2a} + \underbrace{|K_2 \cap S|}_{2b} - \underbrace{2|(K_1 \cap S) \cap (K_2 \cap S)|}_{2 \dots}
+	\end{align}
+	Výsledek musí být očividně sudý.
+	\item[\enquote{$\Leftarrow$}:] Mějme množinu hran $A \subseteq E$, která má s každým řezem sudý počet společných hran. Je-li $A$ prázdná množina, tak $A$ patří do prostoru kružnic. Předpokládejme, že $A \not=\emptyset$. Ukážeme, že v tomto případě je množina $A$ součtem \hyperref[fsr]{fundamentálních kružnic}, a proto prvkem prostoru kružnic $W_K$, dle \ref{tvrzfsk}.
+
+	Nechť $T$ je některá kostra grafu $G$, označme $T = \bc{b_1, b_2, \dots, b_{n-1}}$, $E \setminus T = \bc{c_1, c_2, \dots, c_{m-n+1}}$. Dále nechť $K_{c_1}, K_{c_2}, \dots, K_{c_{m-n+1}}$ je \hyperref[fsk]{systém fundamentálních kružnic} vzhledem ke kostře $T$. Uvažujeme všechny hrany množiny $A \cap (E \setminus T)$. \ii{BÚNO} můžeme předpokládat, že to jsou hrany $c_1, \dots, c_r$. Množina
+	\[
+		C = K_{c_1} \oplus K_{c_2} \oplus \dots \oplus K_{c_r}	
+	\]
+	je prvek prostoru \hyperref[kruznice]{kružnic} a má proto s každým \hyperref[rez]{řezem} sudý počet společných hran. Utvořme množinu $A \oplus C$. Protože $A$ i $C$ měly sudý počet hran s libovolným řezem, má tuto vlastnosti i množina hran $A \oplus C$. Navíc, množina $A \oplus C$ neobsahuje hrany mimo kostru, proto $A \oplus C \subseteq T$.
+
+	Sporem ukážeme, že $A \oplus C = \emptyset$. Kdyby pro nějaké $b_i \in T$ platilo $b_i \in A \oplus C$, pak by průnik množiny $A \oplus C$ s \hyperref[fsr]{fundamentálním řezem} $S_b$ byl tvořen jedinou hranou, a to $b_i$, což je ve sporu s faktem, že průnik $A \oplus C$ s libovolným řezem má sudý počet hran.
+	\hspace{\fill}\qed
+\end{enumerate}
+
