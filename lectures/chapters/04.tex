@@ -3,11 +3,9 @@
 \ii{Mantel.} Máme $G \in \S$ s $n$ vrcholy, $m$ hranami, který nemá $K_3$. Pak $m \leq \frac{n^2}{4}$.
 
 \dukaz\\
-\ii{Pomocná definice}. Množina $A$ je nezávislá $A \subseteq V(G)$ pokud pro každou $e = \bc{u, v}$, jestliže $u \in A$, 
-platí $v \not\in e$. \ii{Množina $A$ je nezávislá právě tehdy, když v ní žádné dva vrcholy nejsou spojené hranou.}
+\ii{Pomocná definice}. Množina $A$ je nezávislá $A \subseteq V(G)$ pokud pro každou $e = \bc{u, v}$, jestliže $u \in A$, platí $v \not\in e$. \ii{Množina $A$ je nezávislá právě tehdy, když v ní žádné dva vrcholy nejsou spojené hranou.}
 
-Ať $A$ je nejpočetnější nezávislá množina a $B = V \setminus A$. $G$ nemá $K_3$: každá množina sousedů vrcholů $v \in V$
-je nezávislá množina.
+Ať $A$ je nejpočetnější nezávislá množina a $B = V \setminus A$. $G$ nemá $K_3$: každá množina sousedů vrcholů $v \in V$ je nezávislá množina.
 \begin{equation}
     m \leq \sum_{N \in B}d(v) \leq \underbrace{(n-k)}_{|B|} \cdot \underbrace{k}_{|A|}
 \end{equation}
@@ -28,12 +26,9 @@ Máme $G \in \S$, který neobsahuje $K_{r+1}$ (úplný graf na $r+1$ vrcholech),
 \begin{equation}
     m \leq \frac{r-1}{r} \frac{n^2}{2}.
 \end{equation}
-\dukaz Vezměme graf $G$ bez $K_{r+1}$ s nejméně hranami (přidáním hrany by vznikl $K_{r+1}$). Tedy $G$ má $K_r$.
-Ať $A$ je množina vrcholů $K_r$ a $B$ je $V(G) \setminus A$, $|B| = n -r$. Každý vrchol $v \in B$ má max $r-1$ sousedů v
-$A$ (jinak by $A \cup \bc{u}$ tvořil $K_{r+1}$).
+\dukaz Vezměme graf $G$ bez $K_{r+1}$ s nejméně hranami (přidáním hrany by vznikl $K_{r+1}$). Tedy $G$ má $K_r$. Ať $A$ je množina vrcholů $K_r$ a $B$ je $V(G) \setminus A$, $|B| = n -r$. Každý vrchol $v \in B$ má max $r-1$ sousedů v $A$ (jinak by $A \cup \bc{u}$ tvořil $K_{r+1}$).
 
-$m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \colorbox{black!30}{hrany mezi $A$ a $B$} a 
-\colorbox{black!20!yellow}{hrany v $B$}. % TODO: dodělat nákres
+$m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \colorbox{black!30}{hrany mezi $A$ a $B$} a \colorbox{black!20!yellow}{hrany v $B$}. % TODO: dodělat nákres
 \begin{equation}
     m = m_A + m_{A-B} + m_B \leq \frac{r(r-1)}{2} + (n-r)(r-1) + m_B
 \end{equation}
@@ -49,8 +44,7 @@ Použijme tedy silnou indukci, dle počtu vrcholů $n = |V(G)|$.
             m &\leq \frac{n(n-1)}{2} \\
             \frac{n(n-1)}{2}&\overset{?}{\leq}\frac{r-1}{r}\frac{n^2}{2} \\
             \frac{r-1}{r}\frac{n^2}{2} - \frac{n(n-1)}{2} &= \frac{n}{2}\left(n \frac{r-1}{r}-(n-1)\right) \\
-            &= \frac{n}{2}\frac{nr -n -nr +r}{r} = \frac{n}{2}\frac{\overbrace{r-n}^{\geq 0}}{\underbrace{r}_{\geq 0}}
-            \geq 0.
+            &= \frac{n}{2}\frac{nr -n -nr +r}{r} = \frac{n}{2}\frac{\overbrace{r-n}^{\geq 0}}{\underbrace{r}_{\geq 0}} \geq 0.
         \end{align}
     \item Když budeme mít indukční předpoklad pro $G_B$, pak:
         \begin{align}
@@ -62,8 +56,7 @@ Použijme tedy silnou indukci, dle počtu vrcholů $n = |V(G)|$.
 \hspace{\fill}\qed
 
 \subsection{Turánovy grafy}\label{turan}
-Pro $n$, $r < n$. $T(n,r)$ je $r$-partitní úplný graf. Označíme-li strany $S_1, \dots, S_r$, pak $|S_i - S_j| \leq 1$,
-$|S_i| = \floor*{\frac{n}{r}}$ nebo $\ceil*{\frac{n}{r}}$. Takový graf má potom
+Pro $n$, $r < n$. $T(n,r)$ je $r$-partitní úplný graf. Označíme-li strany $S_1, \dots, S_r$, pak $|S_i - S_j| \leq 1$, $|S_i| = \floor*{\frac{n}{r}}$ nebo $\ceil*{\frac{n}{r}}$. Takový graf má potom
 \begin{equation}
     \frac{r(r-1)}{2}\left(\frac{n}{r}\right)^2 = \frac{r-1}{r}\frac{n^2}{2}, \, n=k \cdot r,
 \end{equation}
@@ -73,8 +66,7 @@ hran.
 Každý $G = (v,E) \in \S$ bez $K_{r+1}$ s největším počtem hran je $T(n,r)$.
 
 \dukaz Na $V$ definujme $\R$: $u\R v \iff \bc{u,v} \not\in E$.\\
-$\R$ je reflexivní, protože nemáme smyčky. $\R$ je symetrické, protože se jedná o neorientovaný graf. Teď je potřeba 
-ověřit tranzitivitu, tj. $\left(\bc{x,y} \not\in E, \bc{y,z} \not\in E\right) \implies \bc{x,z} \not\in E$. \\
+$\R$ je reflexivní, protože nemáme smyčky. $\R$ je symetrické, protože se jedná o neorientovaný graf. Teď je potřeba ověřit tranzitivitu, tj. $\left(\bc{x,y} \not\in E, \bc{y,z} \not\in E\right) \implies \bc{x,z} \not\in E$. \\
 Dokažme sporem. Kdyby $\bc{x,y} \not\in E$ a $\bc{y,z} \not\in E$ a $\bc{x,z} \in E$.
 \begin{enumerate}[1)]
     \item $d(y) \geq d(x)$ (obdobně $d(y) \geq d(z)$). Sporem. Kdyby $d(y) < d(x)$.
@@ -105,13 +97,10 @@ Dokažme sporem. Kdyby $\bc{x,y} \not\in E$ a $\bc{y,z} \not\in E$ a $\bc{x,z} \
                 \draw[thick, black, bend left] (x) to (z);
             \end{tikzpicture}
         \end{figure}
-        \textcolor{black!30!yellow}{Neighbourhood} $N(v) = \bc{u \mid \bc{u,v} \in E}$. \\ \textcolor{black!30!green}{Z 
-        $G$ odstraníme hrany $\bc{y,t}, t \in N(y)$ a přidáme $\bc{y,u}, u \in N(x)$. Tím dostaneme $G^\prime$, to má 
-        více hran jak $G$.} \\
+        \textcolor{black!30!yellow}{Neighbourhood} $N(v) = \bc{u \mid \bc{u,v} \in E}$. \\ \textcolor{black!30!green}{Z $G$ odstraníme hrany $\bc{y,t}, t \in N(y)$ a přidáme $\bc{y,u}, u \in N(x)$. Tím dostaneme $G^\prime$, to má více hran jak $G$.} \\
         $G^\prime$ nemá $K_{r+1}$, protože ani původní graf nebyl $K_{r+1}$. Což je spor.
         \hspace{\fill}\qed
-    \item $G^{\prime \prime} = G \setminus \bc{x,y,z}$. $m(G) \leq m(G^\prime) + d(x) + d(y) + d(z) - 1$ ($-1$ za hranu 
-        $\bc{x,z}$).
+    \item $G^{\prime \prime} = G \setminus \bc{x,y,z}$. $m(G) \leq m(G^\prime) + d(x) + d(y) + d(z) - 1$ ($-1$ za hranu $\bc{x,z}$).
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}[scale=1, dot/.style={circle, fill=black, inner sep=1pt, minimum size=4pt}]
@@ -124,20 +113,16 @@ Dokažme sporem. Kdyby $\bc{x,y} \not\in E$ a $\bc{y,z} \not\in E$ a $\bc{x,z} \
                 \draw[thick, black, bend left] (x) to (z);
             \end{tikzpicture}
         \end{figure}
-        $G^{\prime \prime \prime}$ z $G$ odstraníme hrany $\bc{x,t}, t \in N(x)$ a $\bc{z,v}, v \in N(z)$ a přidáme 
-        hrany $\bc{x,u}, u \in N(y)$ a $\bc{z,u}, u \in N(y)$.
+        $G^{\prime \prime \prime}$ z $G$ odstraníme hrany $\bc{x,t}, t \in N(x)$ a $\bc{z,v}, v \in N(z)$ a přidáme hrany $\bc{x,u}, u \in N(y)$ a $\bc{z,u}, u \in N(y)$.
         \begin{equation}
-            m(G^{\prime \prime \prime}) = m(G^{\prime \prime}) + 3d(y) > m(G^{\prime \prime}) + d(x) + d(y) + d(z) - 1
-            \geq m(G)
+            m(G^{\prime \prime \prime}) = m(G^{\prime \prime}) + 3d(y) > m(G^{\prime \prime}) + d(x) + d(y) + d(z) - 1 \geq m(G)
         \end{equation}
         $G^{\prime \prime}$ nemá $K_{r+1}$, což je spor.
         \hspace{\fill}\qed
 \end{enumerate}
-$\R$ je tedy ekvivalence. Třídy ekvivalence $\R$ jsou maximální množiny, že graf jimi indukovaný nemá hranu. $G$ má 
-nejvíce hran, tj. $G$ má $K_r$, stran má $r$, je tedy úplný $r$-partitní graf.
+$\R$ je tedy ekvivalence. Třídy ekvivalence $\R$ jsou maximální množiny, že graf jimi indukovaný nemá hranu. $G$ má nejvíce hran, tj. $G$ má $K_r$, stran má $r$, je tedy úplný $r$-partitní graf.
 
-Potřebujeme $||S_i| - |S_j|| \leq 1$. Dokažme sporem. Kdyby ne, tak $|S_1| \geq |S_2| + 2$. Označme $|S_1| = n_1$ a 
-$|S_2| = n_2$.
+Potřebujeme $||S_i| - |S_j|| \leq 1$. Dokažme sporem. Kdyby ne, tak $|S_1| \geq |S_2| + 2$. Označme $|S_1| = n_1$ a $|S_2| = n_2$.
 
 Graf měl původně $n_1 \cdot n_2$ hran. Nově má
 \begin{equation}
