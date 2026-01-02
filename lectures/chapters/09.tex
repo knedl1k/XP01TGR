@@ -1,7 +1,6 @@
 \section{Pokrývání}
 \subsection{Nezávislé množiny, nezávislost}\label{nezavislost}
-Mějme graf $G = (V,E) \in \S$. Množinu vrcholů $A \subseteq V$ nazveme \ii{nezávislou množinou}, jestliže v grafu
-neexistuje hrana s oběma krajními vrcholy v $A$. 
+Mějme graf $G = (V,E) \in \S$. Množinu vrcholů $A \subseteq V$ nazveme \ii{nezávislou množinou}, jestliže v grafu neexistuje hrana s oběma krajními vrcholy v $A$. 
 
 \ii{Nezávislost grafu}, značíme ji $\alpha_0(G)$, je rovna počtu vrcholů v nejpočetnější nezávislé množině v $G$.
 \begin{figure}[H]
@@ -61,8 +60,7 @@ neexistuje hrana s oběma krajními vrcholy v $A$.
 \end{figure}
 
 \subsection{Vrcholové pokrytí}\label{vrchPok}
-Je dán prostý neorientovaný $G = (V,E) \in \S$. Množina vrcholů $K \subseteq V$ se nazývá \ii{vrcholové pokrytí}, 
-jestliže každá hrana $e \in E$ má alespoň jeden krajní vrchol v $K$.
+Je dán prostý neorientovaný $G = (V,E) \in \S$. Množina vrcholů $K \subseteq V$ se nazývá \ii{vrcholové pokrytí}, jestliže každá hrana $e \in E$ má alespoň jeden krajní vrchol v $K$.
 
 Počet vrcholů v nejméně početném vrcholovém pokrytí v grafu $G$ značíme $\beta_0(G)$.
 
@@ -113,8 +111,7 @@ Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček s $n$ vrcholy. Plat�
     \alpha_0(G) + \beta_0(G) = n.
 \end{equation}
 \dukaz Máme $G = (V,E) \in \S$. $|V| = n$.\\
-\enquote{$\geq$}: Uvažujme $N$ nezávislou, $|N| = \alpha_0(G)$. Pak $V \setminus N$ je \hyperref[vrchPok]{vrcholové 
-pokrytí}. Což znamená
+\enquote{$\geq$}: Uvažujme $N$ nezávislou, $|N| = \alpha_0(G)$. Pak $V \setminus N$ je \hyperref[vrchPok]{vrcholové pokrytí}. Což znamená
 \begin{equation}
     |V \setminus N| = n - \alpha_0(G) \geq \beta_0(G).
 \end{equation}
@@ -122,8 +119,7 @@ Takže
 \begin{equation}
     n \geq \alpha_0(G) + \beta_0(G).
 \end{equation}
-\enquote{$\leq$}: Uvažujme vrcholové pokrytí $K$ s $|K| = \beta_0(K)$. Pak $V \setminus K$ je 
-\hyperref[nezavislost]{nezávislá} množina. A
+\enquote{$\leq$}: Uvažujme vrcholové pokrytí $K$ s $|K| = \beta_0(K)$. Pak $V \setminus K$ je \hyperref[nezavislost]{nezávislá} množina. A
 \begin{equation}
     |V \setminus K| = n - \beta_0(G) \leq \alpha_0(G).
 \end{equation}
@@ -139,8 +135,7 @@ Dostáváme tedy
 \hspace{\fill}\qed
 
 \subsection{Hranové pokrytí}\label{hranPok}
-Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček a izolovaných vrcholů. Množina hran $B \subseteq E$ se nazývá 
-\ii{hranové pokrytí}, jestliže každý vrchol je krajním vrcholem alespoň jedné hrany z $B$.
+Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček a izolovaných vrcholů. Množina hran $B \subseteq E$ se nazývá \ii{hranové pokrytí}, jestliže každý vrchol je krajním vrcholem alespoň jedné hrany z $B$.
 
 Definujme $\beta_1(G)$ jako počet hran v nejméně početném hranovém pokrytí.
 \begin{figure}[H]
@@ -192,8 +187,7 @@ Je dán prostý neorientovaný graf $G = (V,E) \in \S$ bez izolovaných vrcholů
 \end{equation}\vspace{-0.5em}
 kde $\alpha_1$ je počet hran v maximálním párování grafu $G$ (tj. $\alpha_1(G) = P_{\max}$).\\
 \dukaz\\
-\enquote{$\leq$}: Vezmeme nejméně početné \hyperref[hranPok]{hranové pokrytí} $B \subseteq E$.
-Jak vypadají komponenty souvislosti $(U,B)$?
+\enquote{$\leq$}: Vezmeme nejméně početné \hyperref[hranPok]{hranové pokrytí} $B \subseteq E$. Jak vypadají komponenty souvislosti $(U,B)$?
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
@@ -241,8 +235,7 @@ Takže
 \begin{equation}
     \beta_1 = |B| = \underbrace{n_1 + n_2 + \dots + n_k}_{n} - k = n-k.    
 \end{equation}
-Mějme párování $P$, kde z každé komponenty souvislosti vezmeme jednu libovolnou hranu, takže $|P| = k$. Tedy máme 
-$b_1(G) = n-k$ a $|P| = k \leq \alpha_1(G)$.
+Mějme párování $P$, kde z každé komponenty souvislosti vezmeme jednu libovolnou hranu, takže $|P| = k$. Tedy máme $b_1(G) = n-k$ a $|P| = k \leq \alpha_1(G)$.
 \begin{align}
     n = \beta_1(G) + k &\leq \beta_1(G) + \alpha_1(G) \\
     n &\leq \alpha_1(G) + \beta_1(G)

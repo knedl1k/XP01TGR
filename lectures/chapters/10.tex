@@ -1,13 +1,11 @@
 \section{Barvení}
 \subsection{Hranové obarvení}\label{hranObar}
-Je dán graf bez smyček $G = (V,E, \eps)$ a konečná množina $C$ tzv. barev. \ii{Hranové obarvení} $G$ je přiřazení 
-$c: E \rightarrow C$, že žádné dvě hrany se společným krajním vrcholem nemají stejnou barvu.
+Je dán graf bez smyček $G = (V,E, \eps)$ a konečná množina $C$ tzv. barev. \ii{Hranové obarvení} $G$ je přiřazení $c: E \rightarrow C$, že žádné dvě hrany se společným krajním vrcholem nemají stejnou barvu.
 
 Lze také říci, že se snažíme graf pokrýt vzájemně disjunktními \hyperref[parovani]{párováními}.
 
 \subsection{Hranová barevnost}\label{hranChrom}
-Hranová barevnost, též \ii{chromatický index}, grafu $G$ je nejmenší počet barev, kterými lze 
-\hyperref[hranObar]{hranově obarvit} graf $G$, značíme ji $\chi^\prime(G)$.
+Hranová barevnost, též \ii{chromatický index}, grafu $G$ je nejmenší počet barev, kterými lze \hyperref[hranObar]{hranově obarvit} graf $G$, značíme ji $\chi^\prime(G)$.
 
 Nutně platí, že
 \begin{equation}
@@ -22,15 +20,12 @@ Nutně platí, že
 Bez důkazu.
 
 \subsection{Vrcholové obarevní}\label{vrchObar}
-Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček a konečná množina $B$ (nazývaná též množina barev). \ii{Obarvení 
-vrcholů} grafu (též \ii{vrcholové obarvení} grafu) je $b: V \rightarrow B$, že žádné dva vrcholy spojené hranou nemají 
-stejnou barvu.
+Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček a konečná množina $B$ (nazývaná též množina barev). \ii{Obarvení vrcholů} grafu (též \ii{vrcholové obarvení} grafu) je $b: V \rightarrow B$, že žádné dva vrcholy spojené hranou nemají stejnou barvu.
 
 $G$ nazveme $k$-barevný, jestliže se dá obarvit $k$ barvami.
 
 \subsection{Barevnost grafu}\label{vrchChrom}
-Barevnost grafu $G$, též \ii{chromatické číslo} grafu $G$, je nejmenší $k$ takové, že $G$ je $k$-barevný, značíme ji 
-$\chi(G)$.
+Barevnost grafu $G$, též \ii{chromatické číslo} grafu $G$, je nejmenší $k$ takové, že $G$ je $k$-barevný, značíme ji $\chi(G)$.
 
 \subsection{Tvrzení o dvoubarevném grafu}
 Graf $G$ je dvoubarevný právě tehdy, když $G$ neobsahuje \hyperref[kruznice]{kružnici} liché délky, tedy $G$ je bipartitní.
@@ -42,8 +37,7 @@ Graf $G$ je dvoubarevný právě tehdy, když $G$ neobsahuje \hyperref[kruznice]
 \end{align*}
 Stačí ukázat, že nemá-li $G$ kružnici liché délky, dá se obarvit 2 barvami.
 
-Dokažme algoritmem barvení. Vyberme si počáteční vrchol $v$. Následně aplikujme algoritmus BFS (breath-first-search), 
-kterým graf rozdělíme do několika úrovní. Každé úrovni přiřadíme barvu tak, že
+Dokažme algoritmem barvení. Vyberme si počáteční vrchol $v$. Následně aplikujme algoritmus BFS (breath-first-search), kterým graf rozdělíme do několika úrovní. Každé úrovni přiřadíme barvu tak, že
 \begin{equation}
     b(v) = 
     \begin{cases}
@@ -54,8 +48,7 @@ kterým graf rozdělíme do několika úrovní. Každé úrovni přiřadíme bar
 
 Kdyby $b$ nebylo obarvení; existuje $\bc{x, y} \in E$, kde $x \in H_i$ a $y \in H_j$ tak, že $i+j = 2k$, $k \in \N$.
 
-V našem grafu existuje \hyperref[stc]{cesta} $P_i$ z $v$ do $x$ o $i$ hranách, a zároveň existuje cesta $P_j$ z $v$ do $y$ o $j$ 
-hranách.
+V našem grafu existuje \hyperref[stc]{cesta} $P_i$ z $v$ do $x$ o $i$ hranách, a zároveň existuje cesta $P_j$ z $v$ do $y$ o $j$ hranách.
 
 Když vezmeme $P_i$, $\bc{x,y}$, $P_j$ (pozpátku), jedná se o \hyperref[stc]{uzavřený sled} o $i+j+1=2k+1$ hranách.
 
@@ -121,9 +114,7 @@ kde $\alpha_0(G)$ je počet $|N|$ tak, že $N$ je nejpočetnější \hyperref[ne
 
 \dukaz
 \begin{enumerate}[(a)]
-    \item Ať $b$ je optimální \hyperref[vrchChrom]{obarvení}. To rozděluje $G$ na nezávislé množiny dle barev. A všech 
-    vrcholů v množině je nejvýše $\alpha_0(G)$, protože to je ta nejpočetnější. Sjednocením těchto množin pak dostaneme
-    $\chi(G) \cdot \alpha_0(G) \leq n$. \hspace{\fill}\qed
+    \item Ať $b$ je optimální \hyperref[vrchChrom]{obarvení}. To rozděluje $G$ na nezávislé množiny dle barev. A všech vrcholů v množině je nejvýše $\alpha_0(G)$, protože to je ta nejpočetnější. Sjednocením těchto množin pak dostaneme $\chi(G) \cdot \alpha_0(G) \leq n$. \hspace{\fill}\qed
     \item Ať
     \begin{align}
         &v \in N \quad \dots \quad b(n) = 1, \\
@@ -139,8 +130,7 @@ kde $\alpha_0(G)$ je počet $|N|$ tak, že $N$ je nejpočetnější \hyperref[ne
         \alpha_0(G) + \chi(G) &\leq n+1 
     \end{align}
     \hspace{\fill}\qed
-    \item Ať $b$ je optimální obarvení. Mějme množiny $A_1, A_2, \dots, A_k$, kde $k = \chi(G)$. Mezi každými 2 
-    množinami je alepsoň jedna hrana, tj.
+    \item Ať $b$ je optimální obarvení. Mějme množiny $A_1, A_2, \dots, A_k$, kde $k = \chi(G)$. Mezi každými 2 množinami je alepsoň jedna hrana, tj.
     \begin{equation}
         m \geq \frac{k(k-1)}{2}.
     \end{equation}
@@ -171,8 +161,7 @@ Označme $B = \bc{1,2, \dots, \Delta, \Delta + 1}$.
 Iterujme:
 \begin{enumerate}[1)]
     \item Očíslujeme vrcholy grafu $G$, tj. $v_1, v_2, \dots, v_n$.
-    \item Barvíme vrcholy v tomto pořadí, že $b(v_i) = j \iff j$ je nejmenší barva, kterou nemá žádný z již obarvených 
-    sousedů. 
+    \item Barvíme vrcholy v tomto pořadí, že $b(v_i) = j \iff j$ je nejmenší barva, kterou nemá žádný z již obarvených sousedů. 
 \end{enumerate}
 \hspace{\fill}\qed
 
