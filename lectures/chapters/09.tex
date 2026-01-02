@@ -189,9 +189,8 @@ Definujme $\beta_1(G)$ jako počet hran v nejméně početném hranovém pokryt�
 Je dán prostý neorientovaný graf $G = (V,E) \in \S$ bez izolovaných vrcholů s $n$ vrcholy. Pak platí
 \begin{equation}
     \alpha_1(G) + \beta_1(G) = n,
-\end{equation}
-kde $\alpha_1$ je počet hran v maximálním párování grafu $G$ (tj. $\alpha_1(G) = P_{\max}$).
-
+\end{equation}\vspace{-0.5em}
+kde $\alpha_1$ je počet hran v maximálním párování grafu $G$ (tj. $\alpha_1(G) = P_{\max}$).\\
 \dukaz\\
 \enquote{$\leq$}: Vezmeme nejméně početné \hyperref[hranPok]{hranové pokrytí} $B \subseteq E$.
 Jak vypadají komponenty souvislosti $(U,B)$?
@@ -238,7 +237,6 @@ Jak vypadají komponenty souvislosti $(U,B)$?
         \node[right, align=left] at (8, 0.6) {mějme $k$ komponent};
     \end{tikzpicture}
 \end{figure}
-
 Takže 
 \begin{equation}
     \beta_1 = |B| = \underbrace{n_1 + n_2 + \dots + n_k}_{n} - k = n-k.    
@@ -249,12 +247,44 @@ $b_1(G) = n-k$ a $|P| = k \leq \alpha_1(G)$.
     n = \beta_1(G) + k &\leq \beta_1(G) + \alpha_1(G) \\
     n &\leq \alpha_1(G) + \beta_1(G)
 \end{align}
+\enquote{$\geq$}: Mějme $P_{\max}$, párování s $|P_{\max}| = \alpha_1(G)$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        scale=1,
+        vertex/.style={circle, fill=black, minimum size=4pt, inner sep=0pt},
+        edge/.style={thick, draw=black, line cap=round},
+        added/.style={thick, draw=orange, line cap=round}
+    ]
 
-\enquote{$\geq$}: Mějme $P_{\max}$, párování s $|P_{\max} = \alpha_1(G)$.
-% TODO: nákres
+        \node[vertex] (p1_a) at (0, 0) {};
+        \node[vertex] (p1_b) at (0.8, 0.6) {};
+        \draw[edge] (p1_a) -- (p1_b);
 
-$2\alpha_1(G)$ vrcholů je pokryto $P_{\max}$. Nepokryto je $n - 2\alpha_1(G)$ vrcholů. $B = P_{\max}$ v $\bc{e \mid e 
-\text{ je přidaná}}$.
+        \node[vertex] (p2_a) at (1.5, 0) {};
+        \node[vertex] (p2_b) at (2.3, 0.6) {};
+        \draw[edge] (p2_a) -- (p2_b);
+
+        \node at (3.2, 0.3) {\Large $\dots$};
+
+        \node[vertex] (p3_a) at (4.0, 0) {};
+        \node[vertex] (p3_b) at (4.8, 0.6) {};
+        \draw[edge] (p3_a) -- (p3_b);
+
+        \node[vertex] (u1) at (6.5, 0.2) {};
+        \node[vertex] (u2) at (7.5, 0.2) {};
+        \node at (8.2, 0.2) {\Large $\dots$};
+
+        \draw[added] (p3_b) -- (u1);
+        \draw[added] (p3_b) to[bend left=20] (u2);
+
+        \node[below, align=center, yshift=-0.3cm] at (2.4, 0) {$P_{\max}$\\(pokryto $2\alpha_1(G)$ vrcholů)};
+        \node[below, align=center, yshift=-0.3cm] at (7.2, 0) {nepokryté vrcholy\\($n - 2\alpha_1(G)$)};
+        
+        \node[text=orange, font=\small, anchor=south west] at (5.2, 0.8) {přidané hrany};
+    \end{tikzpicture}
+\end{figure}
+$B = P_{\max} \cup \textcolor{orange}{\bc{e \mid e \text{ je přidaná}}}$.
 \begin{align}
     |B| = \alpha_1(G) + n - 2\alpha_1(G) = n-\alpha_1(G) &\geq \beta_1(G) \\
     n &\geq \alpha_1(G) + \beta_1(G)

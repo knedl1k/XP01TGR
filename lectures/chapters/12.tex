@@ -5,13 +5,120 @@ Ať $G$ je \hyperref[souvisly]{souvislý} graf. Množina hran $S \subseteq E$ je
 	S = \bc{e \mid e = \bc{u,v}, u \in V_1, v \in V_2}.
 \end{equation}
 $S$ značíme $\langle V_1, V_2\rangle$.
-% TODO: nákres
+
+Příklady řezů v grafu
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        scale=1,
+        vertex/.style={circle, fill=black, minimum size=4pt, inner sep=0pt, outer sep=1pt},
+        label_node/.style={font=\large},
+        edge/.style={thick, draw=black, line cap=round},
+        cut mark/.style={thick, line cap=round}
+    ]
+
+        \definecolor{mygreen}{RGB}{100, 180, 50}
+        \definecolor{mypurple}{RGB}{140, 50, 160}
+        \definecolor{myblue}{RGB}{30, 100, 220}
+
+        \node[vertex] (v1) at (0, 0) {};
+        \node[label_node, below left] at (v1) {1};
+
+        \node[vertex] (v2) at (2.5, 0) {};
+        \node[label_node, below] at (v2) {2};
+
+        \node[vertex] (v3) at (4, 1.2) {};
+        \node[label_node, below right] at (v3) {3};
+
+        \node[vertex] (v4) at (5.5, 2) {};
+        \node[label_node, right] at (v4) {4};
+
+        \node[vertex] (v5) at (2.5, 2) {};
+        \node[label_node, above] at (v5) {5};
+
+        \node[vertex] (v6) at (0, 2) {};
+        \node[label_node, left] at (v6) {6};
+
+        \draw[edge] (v1) -- (v2);
+        \draw[edge] (v2) -- (v3);
+        \draw[edge] (v6) -- (v5);
+
+        \draw[edge] (v1) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);} 
+                    (v6);
+
+        \draw[edge] (v1) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                    (v5);
+
+        \draw[edge] (v2) -- node[pos=0.35, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.65, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                    (v5);
+
+        \draw[edge] (v3) -- node[pos=0.6, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.8, sloped, allow upside down] {\tikz \draw[cut mark, mygreen] (0,-4pt) -- (0,4pt);}
+                    (v5);
+
+        \draw[edge] (v3) -- node[pos=0.4, sloped, allow upside down] {\tikz \draw[cut mark, mypurple] (0,-4pt) -- (0,4pt);}
+                            node[pos=0.6, sloped, allow upside down] {\tikz \draw[cut mark, myblue] (0,-4pt) -- (0,4pt);}
+                    (v4);
+
+
+        \node[below, align=left, font=\large] at (2.75, -0.8) {
+            \textcolor{mygreen}{$\langle \{1,2,3,4\}, \{5,6\} \rangle$} \\
+            \textcolor{mypurple}{$\langle \{1,2,3\}, \{4,5,6\} \rangle$} \\
+            \textcolor{myblue}{$\langle \{1,2,3,5,6\}, \{4\} \rangle$}
+        };
+    \end{tikzpicture}
+\end{figure}
  
 \subsection{Věta o dvou různých řezech}
 Jsou dány dva různé \hyperref[rez]{řezy} $S_1 = \langle V_1, V_2 \rangle$, $S_2 = \langle W_1, W_2\rangle$ \hyperref[souvisly]{souvislého} neorientovaného grafu $G$. Pak $S_1 \oplus S_2$ je také řez grafu $G$.
 
 \dukaz
-% TODO: nákres
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \tikzset{
+            part/.style={font=\Large},
+            label_text/.style={font=\large}
+        }
+        \draw[thick] (0,0) rectangle (4,4);
+        
+        \draw[thick] (0,2) -- (4,2);
+		\draw[thick] (2,0) -- (2,4);
+        
+        \node[part] at (1,3) {$A$};
+        \node[part] at (3,3) {$B$};
+        \node[part] at (1,1) {$C$};
+        \node[part] at (3,1) {$D$};
+
+        \node[label_text, left] at (-0.2, 3) {$V_1$};
+        \node[label_text, left] at (-0.2, 1) {$V_2$};
+
+        \node[label_text, above] at (1, 4.2) {$W_1$};
+        \node[label_text, above] at (3, 4.2) {$W_2$};
+
+        \foreach \x in {0,4} \foreach \y in {0,4}
+            \fill (\x,\y) circle (1.5pt);
+		\fill (0, 2) circle (1.5pt);
+        \fill (2, 2) circle (1.5pt);
+		\fill (4, 2) circle (1.5pt);
+		
+        \begin{scope}[xshift=5cm, yshift=2.5cm]
+            \node[right, align=left] at (0, 1) {
+                $S_1 = \langle V_1, V_2 \rangle$ \\[0.5em]
+                $S_2 = \langle W_1, W_2 \rangle$
+            };
+            \node[right, align=left] at (0, -1.5) {
+                $A = V_1 \cap W_1$ \\
+                $B = V_1 \cap W_2$ \\
+                $C = V_2 \cap W_1$ \\
+                $D = V_2 \cap W_2$
+            };
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
 A víme
 \begin{align}
 A \cup B &\not= \emptyset \\
