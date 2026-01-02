@@ -1,23 +1,20 @@
 \section{Orientované grafy}
 \subsection{Minimálně silně souvislý graf}\label{minSilSou}
-Silně souvislý graf se nazývá minimálně silně souvislý, jestliže $G \setminus \bc{e}$ není silně souvislý pro každou 
-hranu $e \in E(G)$.
+Silně souvislý graf se nazývá minimálně silně souvislý, jestliže $G \setminus \bc{e}$ není silně souvislý pro každou hranu $e \in E(G)$.
 % TODO: obrázek s příkladem
 
 \subsection{Věta o minimálně silně souvislém grafu a jeho vrcholech}
 Každý minimálně silně souvislý graf $G$ s alespoň 2 vrcholy má 2 vrcholy stupně 2.\\
 \dukaz Indukcí podle rozdílu $k = m -n$, kde $m$ je počet hran a $n$ počet vrcholů.
 \begin{itemize}
-    \item Základní krok. $k=0$, tj. $m=n$. Takže se jedná o \hyperref[kruznice]{cyklus}. Všechny vrcholy cyklu mají 
-    stupeň 2.
+    \item Základní krok. $k=0$, tj. $m=n$. Takže se jedná o \hyperref[kruznice]{cyklus}. Všechny vrcholy cyklu mají stupeň 2.
     \item Indukční krok. Každý graf $G$ (minimálně silně souvislý s $m(G) - n(G) < k$) má 2 vrcholy stupně 2. \\
-    Uvažujme $G$ minimálně silně souvislý s $m-n = k >0$. V $G$ si vybereme cyklus $C$ s největším počtem hran (tedy 
-    vrcholů). $C$ má $l$ vrcholů:
+    Uvažujme $G$ minimálně silně souvislý s $m-n = k >0$. V $G$ si vybereme cyklus $C$ s největším počtem hran (tedy vrcholů). $C$ má $l$ vrcholů:
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}[
-        >=Stealth,
-        thick,
+            >=Stealth,
+            thick,
         ]
         
         \graph [
@@ -50,13 +47,10 @@ Každý minimálně silně souvislý graf $G$ s alespoň 2 vrcholy má 2 vrcholy
         m(G^\prime) - n(G^\prime) = m - l - (n-l+1) = m-n-1 = k-1
     \end{equation}
     \hspace{\fill}\qed\\
-    $G^\prime$ má alespoň 2 vrcholy stupně 2, není-li ani jeden z nich $v_C$, jsou to vrcholy $G$ stupně 2. Když 
-    $G\prime$ bude mít pouze 2 vrcholy, $v_C$ a $x$, stupně 2, tak musíme řešit 2 případy:
+    $G^\prime$ má alespoň 2 vrcholy stupně 2, není-li ani jeden z nich $v_C$, jsou to vrcholy $G$ stupně 2. Když $G\prime$ bude mít pouze 2 vrcholy, $v_C$ a $x$, stupně 2, tak musíme řešit 2 případy:
     \begin{enumerate}[1)]
         \item Když má cyklus alespoň 3 vrcholy ($l \geq 3$), pak v $C$ existuje vrchol stupně 2.
-        \item Když $C$ má jen 2 vrcholy, když se zkombinují orientované hrany do neorientovaných, tak se jedná o strom. 
-        A každý strom s alespoň 2 vrcholy má 2 listy, tj. vrcholy stupně 1. A to jsou přesně ty 2 vrcholy stupně 2, 
-        které hledáme.
+        \item Když $C$ má jen 2 vrcholy, když se zkombinují orientované hrany do neorientovaných, tak se jedná o strom. A každý strom s alespoň 2 vrcholy má 2 listy, tj. vrcholy stupně 1. A to jsou přesně ty 2 vrcholy stupně 2, které hledáme.
     \end{enumerate}
     \vspace{-1em}
     \hspace{\fill}\qed
@@ -67,15 +61,12 @@ Algoritmus pro nalezení topologického očíslování v acyklickém grafu. \\
 \ii{Pozn.: Každý acyklický graf má alespoň 1 vrchol se stupněm 0.}
 \begin{enumerate}[1)]
     \item Spočítáme vstupní stupně vrcholů. Do množiny $M$ vložíme všechny $v$ s $d^{-}(v)=0$, $i=1$.
-    \item Vybereme $v_i \in M$ a odstraníme. Pro každé $(v_i,w) \in E$: $d^-(w) \coloneq d^-(w)-1$, if $d^-(w)=0$, pak 
-    $M \coloneq M \cup \bc{w}$. $i++$.
-    \item Algoritmus končí pokud $M = \emptyset$ a zároveň existuje alespoň jeden vrchol $u$ s $d^-(u) > 0$, pak 
-    topologické očíslování neexistuje, nebo jsou všechny vrcholy topologicky očíslované. 
+    \item Vybereme $v_i \in M$ a odstraníme. Pro každé $(v_i,w) \in E$: $d^-(w) \coloneq d^-(w)-1$, if $d^-(w)=0$, pak $M \coloneq M \cup \bc{w}$. $i++$.
+    \item Algoritmus končí pokud $M = \emptyset$ a zároveň existuje alespoň jeden vrchol $u$ s $d^-(u) > 0$, pak topologické očíslování neexistuje, nebo jsou všechny vrcholy topologicky očíslované. 
 \end{enumerate}
 
 \subsection{Tranzitivní uzávěr}\label{tranzitivniUz}
-Mějme orientovaný graf $G$. $G^t$ je tranzitivní uzávěr, když $G = (V, E)$, tak $G^t = (V,E^t)$, kde $(u,v) \in E^t$, 
-právě tehdy, když existuje netriviální orientovaná \hyperref[stc]{cesta} z $u$ do $v$.
+Mějme orientovaný graf $G$. $G^t$ je tranzitivní uzávěr, když $G = (V, E)$, tak $G^t = (V,E^t)$, kde $(u,v) \in E^t$, právě tehdy, když existuje netriviální orientovaná \hyperref[stc]{cesta} z $u$ do $v$.
 
 Platí, že $G$ je silně souvislý $\iff$ $G^t$ je úplný orientovaný graf se všemi smyčkami.
 
@@ -85,23 +76,19 @@ $G^\star$ je reflexivní a tranzitivní uzávěr $G^\star = (V, E^\star)$, $E^\s
 \ii{Lze také říct, že platí to samé, jako pro tranzitivní uzávěr, jen vyškrtneme \bb{netriviální}.}
 
 \subsection{Tranzitivní redukce}\label{tranzitivniRe}
-$G = (V,E)$ je orientovaný graf. Jeho podgaf $G^\prime = (V, E^\prime)$ je transitivní redukce $G$ pokud $G^t = 
-\left(G^\prime\right)^t$, a žádný vlastní podgraf této redukce $G^{\prime \prime}$ již nemá tuto vlastnost.
+$G = (V,E)$ je orientovaný graf. Jeho podgaf $G^\prime = (V, E^\prime)$ je transitivní redukce $G$ pokud $G^t = \left(G^\prime\right)^t$, a žádný vlastní podgraf této redukce $G^{\prime \prime}$ již nemá tuto vlastnost.
 
 % TODO: příklad redukce
 
 \subsection{Souvislost acyklických grafů a trazitivní redukce}
 Je-li $G \in \S$ acyklický, pak má jedinou tranzitivní redukci.\\
-\dukaz Sporem. Mějme $G$ acyklický, tedy má \hyperref[topo]{topologické očíslování} vrcholů $v_1, v_2, \dots, v_{n-1}, 
-v_n$.
+\dukaz Sporem. Mějme $G$ acyklický, tedy má \hyperref[topo]{topologické očíslování} vrcholů $v_1, v_2, \dots, v_{n-1}, v_n$.
 
 Kdyby $G_1 = (V, E_1), G_2 = (V, E_2)$ byly 2 různé tranzitivní redukce, tak
 \begin{equation}
     (E_1 \setminus E_2) \cup (E_2 \setminus E_1) \not= \emptyset.
 \end{equation}
-Vyberme z $(E_1 \setminus E_2) \cup (E_2 \setminus E_1)$ hranu $e = (v_i, v_j)$, $i < j$, která má nejmenší rozdíl 
-$j - i$. \\ \ii{BÚNO}: $e \in (E_1 \setminus E_2)$, tedy $e \not\in E_2$, ale $e \in E_2^t$. Tj. musí existovat v $G_2$ 
-\hyperref[stc]{cesta} z $v_i$ do $v_j$, která má alespoň 2 hrany.
+Vyberme z $(E_1 \setminus E_2) \cup (E_2 \setminus E_1)$ hranu $e = (v_i, v_j)$, $i < j$, která má nejmenší rozdíl $j - i$. \\ \ii{BÚNO}: $e \in (E_1 \setminus E_2)$, tedy $e \not\in E_2$, ale $e \in E_2^t$. Tj. musí existovat v $G_2$ \hyperref[stc]{cesta} z $v_i$ do $v_j$, která má alespoň 2 hrany.
 \begin{equation}
     v_i, e_1, e_2, \dots, e_k, v_j, \, k \geq 2.
 \end{equation}
