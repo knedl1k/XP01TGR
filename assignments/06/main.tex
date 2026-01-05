@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[czech]{babel}
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
 \usepackage[margin=1in]{geometry}
 
 \usepackage{../cfg}
@@ -13,32 +14,93 @@
 \maketitle
 
 \begin{exercise}
-    Je dán bipartitní graf $G$ se stranami $X$ a $Y$ a v něm maximální párování $P_{\max}$. Pro každou hranu $e \in 
-    P_{\max}$ vybereme jeden její krajní vrchol do množiny $A$ takto:
+    Je dán bipartitní graf $G$ se stranami $X$ a $Y$ a v něm maximální párování $P_{\max}$. Pro každou hranu $e \in P_{\max}$ vybereme jeden její krajní vrchol do množiny $A$ takto:
 
-    Pro hranu $e = \bc{x,y} \in P_{\max} (x \in X, \, y \in Y)$ do $A$ vybereme vrchol $y$, jestliže existuje cesta 
-    $a_1, e_1, a_2, e_2, \dots, e_{2k+1}, y$, kde
+    Pro hranu $e = \bc{x,y} \in P_{\max} (x \in X, \, y \in Y)$ do $A$ vybereme vrchol $y$, jestliže existuje cesta $a_1, e_1, a_2, e_2, \dots, e_{2k+1}, y$, kde
     \vspace{-1em}
     \begin{itemize}
         \item $a_1 \in X$ je volný v párování $P_{\max}$,
         \item pro $i > 0$ je $e_{2i-1} \not\in P_{\max}$, $i > 0$, $e_{2i} \in P_{\max}$.
     \end{itemize}
-    Jestliže taková cesta neexistuje, do $A$ vybereme vrchol $x$.
-
+    \vspace{-1em}
+    Jestliže taková cesta neexistuje, do $A$ vybereme vrchol $x$.\\
     Dokažte nebo vyvraťte: Množina $A$ (zkonstruovaná výše) je vrcholovým pokrytím grafu $G$.
 \end{exercise}
 \begin{solution}
+    Definujme si \ii{dosažitelné} vrcholy jako takové, ke kterým existuje střídavá cesta (přesně ta ze zadání) z nějakého volného vrcholu $X$.
 
+    Mějme libovolnou hranu $e = \bc{u,v}$, kde $u \in X$ a $v \in Y$. Musíme dokázat, že $e$ je pokryta, tedy buď $u \in A$, nebo $v \in A$. Mohou nastat dva případy:
+    \vspace{-1em}
+    \begin{enumerate}[(a)]
+        \item Hrana $e$ \ii{leží} v párování $P_{\max}$. Konstrukce množiny $A$ vybírá z každé hrany $P_{\max}$ právě jeden vrchol. Takže hrana je určitě pokryta.
+        \item Hrana $e$ \ii{neleží} v párování $P_{\max}$. Sporem. Předpokládejme, že hrana $\bc{u, v}$ není pokryta. To by znamenalo, že $u \not\in A$ a zároveň $v \not\in A$. Takže:
+        \vspace{-0.5em}
+        \begin{itemize}
+            \item Pokud je $u$ \ii{volný}, pak je triviálně dosažitelný (je počátkem střídavé cesty délky 0). Zároveň platí $u \not\in A$, protože $A$ obsahuje pouze vrcholy z párování.
+            \item Pokud je $u$ \ii{spárovaný} s nějakým $y' \in Y$ (hrana $\bc{u, y'} \in P_{\max}$), pak z předpokladu $u \not\in A$ plyne, že do $A$ musel být vybrán vrchol $y'$. To podle definice $A$ nastane jen tehdy, je-li $y'$ dosažitelný. Pokud je $y'$ dosažitelný, pak prodloužením cesty přes hranu $\bc{y', u}$ je dosažitelný i vrchol $u$.
+        \end{itemize}
+        V obou případech jsme ukázali, že
+        \begin{equation}
+            u \not\in A \implies u \text{ je dosažitelný}.
+        \end{equation}
+        Využijeme hranu $e=\bc{u,v}$, která neleží v párování:
+        Jelikož $u$ je dosažitelný a $\bc{u,v} \notin P_{\max}$, můžeme střídavou cestu končící v $u$ prodloužit o hranu $\bc{u,v}$ do vrcholu $v$. Tedy i $v$ je dosažitelný. Kdyby byl $v$ volný, našli bychom střídavou cestu z volného do volného vrcholu (zlepšující cestu), což je spor s maximalitou $P_{\max}$. Vrchol $v$ je tedy \ii{nutně} spárovaný s nějakým $x'$. Protože je $v$ dosažitelný a spárovaný, podmínka konstrukce $A$ říká, že pro hranu $\bc{x', v}$ vybereme do $A$ vrchol $v$.
+        
+        A to je spor s předpokladem $v \not\in A$. Tedy alespoň jeden z vrcholů $u,v$ musí ležet v $A$.
+    \end{enumerate}
+    \vspace{-1em}
+    Množina $A$ je vrcholovým pokrytím.
+    \hspace{\fill}\qed
 \end{solution}
 
 \begin{exercise}
     Dokažte, že v každém bipartitním grafu $G$ platí
     \begin{equation}
-        a_1(G) = \beta_0(G).
+        \alpha_1(G) = \beta_0(G).
     \end{equation}
     Hint: Použijte Königovu větu pro určení počtu hran v maximálním párování v bipartitním grafu.
 \end{exercise}
 \begin{solution}
+    $\alpha_1(G)$ je počet hran v maximálním párování, tj. $\alpha_1(G) = |P_{\max}|$ a $\beta_0(G)$ je počet vrcholů v minimálním vrcholovém pokrytí. Abychom mohli použit \ii{Königovu} větu, musíme ukázat
+    \begin{equation}
+        \beta_0(G) = \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|).
+    \end{equation}
+    Vezměme libovolnou podmnožinu $A \subseteq X$. Sestavme množinu vrcholů $K$, která se skládá ze dvou částí:
+    \vspace{-1em}
+    \begin{enumerate}[(a)]
+        \item vrcholy z $X$, které \ii{nejsou} v $A$ (tj. $X \setminus A$),
+        \item sousedé vrcholů z $A$ v množině $Y$ (tj. $V_G(A)$).
+    \end{enumerate}
+    \vspace{-1em}
+    Takže
+    \begin{equation}
+        K = (X \setminus A) \cup V_G(A).
+    \end{equation}
+    Velikost této množiny je pak $|K| = |X \setminus A| + |V_G(A)|$.
 
+    Musíme ověřit, že $K$ pokrývá každou hranu v grafu. Mějme libovolnou hranu $e = \bc{x,y}$, kde $x \in X$ a $y \in Y$. Mohou nastat pouze tyto situace:
+    \vspace{-1em}
+    \begin{enumerate}[(a)]
+        \item Vrchol $x$ \ii{nepatří} do $A$. Pak nutně $x \in (X \setminus A)$. Tím pádem je $x$ v naší množině $K$. Hrana je pokryta.
+        \item Vrchol $x$ \ii{patří} do $A$. Protože $x \in A$ a $y$ je jeho soused, musí dle definice platit, že $y \in V_G(A)$. Tím pádem je $y$ v naší množině $K$. Hrana je pokryta.
+    \end{enumerate}
+    \vspace{-1em}
+    V obou případech je alespoň jeden vrchol hrany v množině $K$. Takže $K$ je vrcholové pokrytí.
+
+    Teď stačí ukázat
+    \begin{equation}
+        |P_{\max}| = |K|.
+    \end{equation}
+    Protože $K$ je vrcholové pokrytí, pak nejmenší takové $K$ odpovídá velikosti minimálního vrcholového pokrytí, tedy $\beta_0(G)$.
+    Takže platí
+    \begin{equation}
+        \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|) = \beta_0(G).
+    \end{equation}
+    Což odpovídá přesnému znění \ii{Königovy} věty:
+    \begin{equation}
+        \alpha_1(G) = |P_{\max}| = \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|) = \beta_0(G)
+    \end{equation}
+    \hspace{\fill}\qed
 \end{solution}
-\end{document}
+
+\end{document}        
