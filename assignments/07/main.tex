@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[czech]{babel}
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
 \usepackage[margin=1in]{geometry}
 
 \usepackage{../cfg}
@@ -16,26 +17,42 @@
     Dokažte:
 
     Každý řez souvislého neorientovaného grafu je disjuktiním sjednocením cutsetů.
-    % \vspace{-1em}
-    % \begin{center}
-    %     Každý řez souvislého neorientovaného grafu je disjuktiním sjednocením cutsetů.
-    % \end{center}
 \end{exercise}
 \begin{solution}
+    Nechť $G = (V,E)$ je souvislý neorientovaný graf. Víme, že symetrická diference dvou řezů je opět řez. Důkaz provedeme indukcí dle velikosti řezu $|K|$. Nechť $K$ je libovolný řez.
+    \begin{enumerate}[1)]
+        \item \ii{Základní krok}. Je-li $K$ minimální (vzhledem k inkluzi), pak je $K$ z definice cutset a tvrzení triviálně platí (sjednocení jedné množiny).
+        \item \ii{Indukční předpoklad}. Předpokládejme, že $K$ není minimální. Pak existuje vlastní podmnožina $C \subset K$, která je cutsetem.
+        \item \ii{Indukční krok}. Protože $C \subset K$, platí $K \setminus C = K \oplus C$. Jelikož symetrická diference dvou řezů je řez, je i $K'$ řezem.
 
+        Uvažujme množinu $K' = K \setminus C$. Protože $C \subset K$, platí $K \setminus C = K \oplus C$. Jelikož $K$ i $C$ jsou řezy a symetrická diference řezů je řez, je i $K'$ řezem.
+        
+        Získali jsme rozklad $K = C \cup K'$, kde $C$ a $K'$ jsou disjunktní. Protože $|K'| < |K|$, můžeme na $K'$ aplikovat indukční předpoklad. Tedy $K'$ lze rozložit na sjednocení cutsetů $C_2 \cup \dots \cup C_k$.
+    \end{enumerate}
+    Celkově pak $K = C \cup C_2 \cup \dots \cup C_k$, což je disjunktní sjednocení cutsetů.
+    \hspace{\fill}\qed
 \end{solution}
-
 
 \begin{exercise}
     Dokažte, nebo vyvraťte:
 
-    Množina $K \subseteq E$ souvislého grafu $G$ s množinou hran $E$ je kružnice právě tehdy, když je to minimální množina hran, pro kteoru platí
+    Množina $K \subseteq E$ souvislého grafu $G$ s množinou hran $E$ je kružnice právě tehdy, když je to minimální množina hran, pro kterou platí
     \begin{equation}
         K \cap (E \setminus T) \not= \emptyset
     \end{equation}
     pro každou kostu $T$ grafu $G$.
 \end{exercise}
 \begin{solution}
+    \titlebreak
+    \begin{itemize}
+        \item[$\Rightarrow$:] Předpokládejme, že množina $K \subseteq E$ souvislého grafu $G$ s množinou hran $E$ je kružnice.
 
+        Kostra $T$ je z definice strom, což znamená, že je acyklickým grafem. Protože $K$ je kružnice, nemůže být podmnožinou žádné kostry. Tím pádem musí platit, že $K$ má s doplňkem kostry $(E \setminus T)$ neprázdný průnik. Dále víme, že kružnice bez jedné hrany tvoří cestu (případně les), což je acyklický graf. Každý acyklický podgraf v souvislém grafu lze doplnit na kostru. Existuje tedy kostra $T^\prime$, která obsahuje celou množinu $K^\prime = K \setminus \bc{e}$, kde $e$ je libovolná hrana (tj. $K^\prime \subseteq T^\prime$). To znamená, že $K^\prime \cap (E \setminus T^\prime) = \emptyset$. Takže množina $K^\prime$ podmínku nesplňuje, $K$ je proto minimální.
+        \item[$\Leftarrow$:] Předpokládejme, že $K$ je minimální a splňuje podmínku $K \not\subseteq T$ pro každou kostru $T$.
+
+        Víme, že množina hran $E$ je podmnožinou nějaké kostry právě tehdy, když $E$ neobsahuje kružnici (tj. je acyklická). Jelikož $K$ není podmnožinou žádné kostry, musí $K$ obsahovat alespoň jednu kružnici $C$. Jinak by totiž šla doplnit na kostru, což by byl spor s podmínkou. Takže $C \subseteq K$. A protože $C$ je kružnice, podle první části důkazu víme, že $C$ sama o sobě splňuje podmínku (průnik s doplňkem každé kostry je neprázdný). Kdyby $K$ obsahovala kromě kružnice $C$ ještě nějaké další hrany, nebyla by minimální, protože už její vlastní podmnožina $C$ podmínku splňuje. My ale předpokládáme minimální $K$, tudíž $K = C$.   
+    \end{itemize}
+    Množina $K$ je skutečně kružnicí právě tehdy, když je minimální množinou, která má neprázdný průnik s doplňkem každé kostry grafu $G$.
+    \hspace{\fill}\qed
 \end{solution}
 \end{document}
