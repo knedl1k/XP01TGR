@@ -61,44 +61,46 @@
     Hint: Použijte Königovu větu pro určení počtu hran v maximálním párování v bipartitním grafu.
 \end{exercise}
 \begin{solution}
-    $\alpha_1(G)$ je počet hran v maximálním párování, tj. $\alpha_1(G) = |P_{\max}|$ a $\beta_0(G)$ je počet vrcholů v minimálním vrcholovém pokrytí. Abychom mohli použit \ii{Königovu} větu, musíme ukázat
+    Označme $\alpha_1(G)$ velikost maximálního párování a $\beta_0(G)$ velikost minimálního vrcholového pokrytí.
+    
+    Nejprve si uvědomme, že pro libovolný graf platí nerovnost:
     \begin{equation}
-        \beta_0(G) = \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|).
+        \alpha_1(G) \leq \beta_0(G).
     \end{equation}
-    Vezměme libovolnou podmnožinu $A \subseteq X$. Sestavme množinu vrcholů $K$, která se skládá ze dvou částí:
-    \vspace{-1em}
-    \begin{enumerate}[(a)]
-        \item vrcholy z $X$, které \ii{nejsou} v $A$ (tj. $X \setminus A$),
-        \item sousedé vrcholů z $A$ v množině $Y$ (tj. $V_G(A)$).
-    \end{enumerate}
-    \vspace{-1em}
-    Takže
+    Je to proto, že každá hrana z maximálního párování musí být pokryta alespoň jedním vrcholem a tyto hrany jsou disjunktní.
+
+    Nyní musíme dokázat opačnou nerovnost, tedy $\alpha_1(G) \geq \beta_0(G)$. K tomu využijeme \ii{Königovu} větu v jejím alternativním tvaru, která říká:
+    \begin{equation}
+        \alpha_1(G) = \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|).
+    \end{equation}
+    
+    Uvažujme libovolnou podmnožinu $A \subseteq X$ a sestrojme množinu vrcholů $K$ takto:
     \begin{equation}
         K = (X \setminus A) \cup V_G(A).
     \end{equation}
-    Velikost této množiny je pak $|K| = |X \setminus A| + |V_G(A)|$.
+    Velikost této množiny je $|K| = |X \setminus A| + |V_G(A)|$.
 
-    Musíme ověřit, že $K$ pokrývá každou hranu v grafu. Mějme libovolnou hranu $e = \bc{x,y}$, kde $x \in X$ a $y \in Y$. Mohou nastat pouze tyto situace:
+    Ověříme, že $K$ je vrcholové pokrytí. Mějme libovolnou hranu $e = \bc{x,y}$, kde $x \in X$ a $y \in Y$.
     \vspace{-1em}
     \begin{enumerate}[(a)]
-        \item Vrchol $x$ \ii{nepatří} do $A$. Pak nutně $x \in (X \setminus A)$. Tím pádem je $x$ v naší množině $K$. Hrana je pokryta.
-        \item Vrchol $x$ \ii{patří} do $A$. Protože $x \in A$ a $y$ je jeho soused, musí dle definice platit, že $y \in V_G(A)$. Tím pádem je $y$ v naší množině $K$. Hrana je pokryta.
+        \item Pokud $x \notin A$, pak $x \in (X \setminus A) \subseteq K$. Hrana je pokryta.
+        \item Pokud $x \in A$, pak z definice sousedství $y \in V_G(A) \subseteq K$. Hrana je pokryta.
     \end{enumerate}
     \vspace{-1em}
-    V obou případech je alespoň jeden vrchol hrany v množině $K$. Takže $K$ je vrcholové pokrytí.
-
-    Teď stačí ukázat
+    Množina $K$ je tedy vždy vrcholovým pokrytím. 
+    
+    Protože $\beta_0(G)$ je velikost \textit{minimálního} vrcholového pokrytí, musí pro každé takto sestrojené $K$ platit:
     \begin{equation}
-        |P_{\max}| = |K|.
+        |K| \geq \beta_0(G).
     \end{equation}
-    Protože $K$ je vrcholové pokrytí, pak nejmenší takové $K$ odpovídá velikosti minimálního vrcholového pokrytí, tedy $\beta_0(G)$.
-    Takže platí
+    Tato nerovnost platí pro libovolné $A$, tedy i pro to, které minimalizuje výraz z Königovy věty. Dostáváme:
     \begin{equation}
-        \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|) = \beta_0(G).
+        \alpha_1(G) = \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|) \geq \beta_0(G).
     \end{equation}
-    Což odpovídá přesnému znění \ii{Königovy} věty:
+    
+    Máme tedy $\alpha_1(G) \leq \beta_0(G)$ a zároveň $\alpha_1(G) \geq \beta_0(G)$. Z toho nutně plyne:
     \begin{equation}
-        \alpha_1(G) = |P_{\max}| = \min_{A \subseteq X}(|X \setminus A| + |V_G(A)|) = \beta_0(G)
+        \alpha_1(G) = \beta_0(G).
     \end{equation}
     \hspace{\fill}\qed
 \end{solution}
