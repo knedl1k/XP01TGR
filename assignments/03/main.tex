@@ -13,43 +13,29 @@
 \maketitle
 
 \begin{exercise}
-    Je dáno číslo $n \geq 5$. Je možné pro každé takové $n$ zkonstruovat 2-souvislý prostý neorientovaný graf $G$ bez 
-    smyček, který má průměr $\diam(G)$ roven 2  a má $2n-5$ hran?
+    Je dáno číslo $n \geq 5$. Je možné pro každé takové $n$ zkonstruovat 2-souvislý prostý neorientovaný graf $G$ bez smyček, který má průměr $\diam(G)$ roven 2  a má $2n-5$ hran?
 
     Jestliže ano, pro každé $n$ takový graf zkonstruujte; jestliže ne, zdůvodněte, proč takový graf nemůže existovat.
 \end{exercise}
 \begin{solution}
-    Nejdříve ověřme, že tvrzení platí pro $n=5$. Zvolme $C_5$ jako kružnici na 5 vrcholech. Protože je kružnicí, tak je 
-    určitě 2-souvislá, protože nemá artikulaci a je souvislá. Má 5 vrcholů a 5 hran, což odpovídá $2 \cdot 5 - 5 = 5$ 
-    počtu hran. Průměr $\diam(C_5) = \floor*{\frac{5}{2}} = 2$ také sedí zadání.
+    Nejdříve ověřme, že tvrzení platí pro $n=5$. Zvolme $C_5$ jako kružnici na 5 vrcholech. Protože je kružnicí, tak je určitě 2-souvislá, protože nemá artikulaci a je souvislá. Má 5 vrcholů a 5 hran, což odpovídá $2 \cdot 5 - 5 = 5$ počtu hran. Průměr $\diam(C_5) = \floor*{\frac{5}{2}} = 2$ také sedí zadání.
 
-    Pro $n \geq 6$ zkonstruujme graf $G_n$ tak, že vezmeme 5 vrcholů $v_1, v_2, \dots, v_5$ a spojíme je do kružnice 
-    $C_5$. Máme tedy 5 vrcholů a 5 hran. Označme si zbývající počet vrcholů jako $k = n - 5$. Přidejme zbývající vrcholy
-    $u_1, u_2, \dots, u_k$. Každý z těchto $k$ vrcholů připojíme dvěma hranami k jedné konkrétní dvojici vrcholů, na 
-    $C_5$. Tato dvojice vrcholů nesmí být vzájemně sousední. Vyberme například dvojici $v_1$ a $v_3$. Pak pro 
-    $i=1, 2, \dots, k$ přidáme hrany $(u_i, v_1)$ a $(u_i, v_3)$. % Teď máme $n$ vrcholů a $5+2k$ hran.
+    Pro $n \geq 6$ zkonstruujme graf $G_n$ tak, že vezmeme 5 vrcholů $v_1, v_2, \dots, v_5$ a spojíme je do kružnice $C_5$. Máme tedy 5 vrcholů a 5 hran. Označme si zbývající počet vrcholů jako $k = n - 5$. Přidejme zbývající vrcholy $u_1, u_2, \dots, u_k$. Každý z těchto $k$ vrcholů připojíme dvěma hranami k jedné konkrétní dvojici vrcholů, na $C_5$. Tato dvojice vrcholů nesmí být vzájemně sousední. Vyberme například dvojici $v_1$ a $v_3$. Pak pro $i=1, 2, \dots, k$ přidáme hrany $(u_i, v_1)$ a $(u_i, v_3)$. % Teď máme $n$ vrcholů a $5+2k$ hran.
 
     Ověřme, zda takto zkonstruovaný graf splňuje požadavky.
     \vspace{-1em}
     \begin{enumerate}[1)]
         \item \bb{Počet hran}. Máme $5+2k$ hran, tedy $5 + 2(n-5) = 2n-5$ hran, to jsme přesně chtěli.
-        \item \bb{2-souvislost}. Tzn. musíme ukázat, že graf nemá artikulaci. Ověřme tedy indukcí: Odeberme $u_i$; graf 
-        $G_{n-1}$, který zbyde, má stejnou strukturu, jen o jeden připojený vrchol méně. Postupujme dále až k $n=6$, to
-        nám zbyde původní $C_5$ s jedním $u_1$, který je očividně souvislý. Odebrání $u_i$ tedy graf nerozpojí.
+        \item \bb{2-souvislost}. Tzn. musíme ukázat, že graf nemá artikulaci. Ověřme tedy indukcí: Odeberme $u_i$; graf $G_{n-1}$, který zbyde, má stejnou strukturu, jen o jeden připojený vrchol méně. Postupujme dále až k $n=6$, to nám zbyde původní $C_5$ s jedním $u_1$, který je očividně souvislý. Odebrání $u_i$ tedy graf nerozpojí.
 
-        Zkusme odebrat $v_1$: Zbytek $C_5$ je cesta $v_2, v_3, v_4, v_5$. Všechny vrcholy $u_i$ jsou stále připojeny k
-        $v_3$. Celý zbytek grafu $G_n \setminus v_1$ je tedy souvislý. Analogicky se ukáže pro $v_3$.
+        Zkusme odebrat $v_1$: Zbytek $C_5$ je cesta $v_2, v_3, v_4, v_5$. Všechny vrcholy $u_i$ jsou stále připojeny k $v_3$. Celý zbytek grafu $G_n \setminus v_1$ je tedy souvislý. Analogicky se ukáže pro $v_3$.
         
-        Anebo odeberme $v_2$, $v_4$, nebo $v_5$. BÚNO vyberme $v_2$. Graf $G_n \setminus v_2$ je cesta 
-        $v_1, v_5, v_4, v_3$. Všechny vrcholy $u_i$ jsou připojeny k $v_1$ i $v_3$. Tedy $G_n \setminus v_2$ je 
-        souvislý.
+        Anebo odeberme $v_2$, $v_4$, nebo $v_5$. BÚNO vyberme $v_2$. Graf $G_n \setminus v_2$ je cesta $v_1, v_5, v_4, v_3$. Všechny vrcholy $u_i$ jsou připojeny k $v_1$ i $v_3$. Tedy $G_n \setminus v_2$ je souvislý.
 
         Graf je tedy určitě 2-souvislý, protože je souvislý a nemá artikulaci.
         \item \bb{Průměr $\diam(G)=2$}. Vrcholy jsou buď vzájemní sousedé, anebo mají společného souseda. 
         
-        Jestliže oba vrcholy leží na $C_5$, tak jsme již v případě $n=5$ dokázali, že $\diam(C_5) = 2$. 
-        Jestliže oba vrcholy jsou z připojených vrcholů $u_i$, pak mají zaručeně společné sousedy $v_1$ a $v_3$, tedy
-        $d(u_i, u_j)=2$, pro $i \not= j$. Pokud je jeden z $C_5$ a druhý z $u_i$, pak:
+        Jestliže oba vrcholy leží na $C_5$, tak jsme již v případě $n=5$ dokázali, že $\diam(C_5) = 2$. Jestliže oba vrcholy jsou z připojených vrcholů $u_i$, pak mají zaručeně společné sousedy $v_1$ a $v_3$, tedy $d(u_i, u_j)=2$, pro $i \not= j$. Pokud je jeden z $C_5$ a druhý z $u_i$, pak:
         \vspace{-0.8em}
         \begin{itemize}
             \item je jeden z vrcholů $v_1$, respektive $v_3$, pak jsou sousedé, $d=1$.
@@ -66,45 +52,20 @@
 
 \begin{exercise}
     Dokažte nebo vyvraťe:\\
-    Je dán prostý souvislý neorientovaný graf $G$ bez smyček s $n \geq 4$ vrcholy, který neobsahuje jako \bb{indukovaný 
-    podgraf} úplný bipartitní graf $K_{1,3}$. Pak v $G$ existují dva sousední vrcholy $x,y$ takové, že graf $G \setminus
-    \bc{x,y}$ je také souvislý. (Graf $G \setminus \bc{x,y}$ je podgraf $G$, ze kterého jsme odstranili vrcholy $x$ a 
-    $y$, nejen hranu s krajními vrcholy $x$ a $y$.)
+    Je dán prostý souvislý neorientovaný graf $G$ bez smyček s $n \geq 4$ vrcholy, který neobsahuje jako \bb{indukovaný podgraf} úplný bipartitní graf $K_{1,3}$. Pak v $G$ existují dva sousední vrcholy $x,y$ takové, že graf $G \setminus \bc{x,y}$ je také souvislý. (Graf $G \setminus \bc{x,y}$ je podgraf $G$, ze kterého jsme odstranili vrcholy $x$ a $y$, nejen hranu s krajními vrcholy $x$ a $y$.)
 
     ($K_{1,3}$ je úplný bipartitní graf se stranami o 1 a 3 vrcholech.)
 \end{exercise}
 \begin{solution}
-    Sporem. Ať existuje graf $G$, který je prostý, souvislý, neorientovaný, $n \geq 4$ a neobsahuje indukovaný 
-    $K_{1,3}$, pro který platí, že pro \ii{každou} dvojici sousedních vrcholů $u,v$ je graf $G \setminus \bc{u,v}$ 
-    nesouvislý. 
+    Sporem. Ať existuje graf $G$, který je prostý, souvislý, neorientovaný, $n \geq 4$ a neobsahuje indukovaný $K_{1,3}$, pro který platí, že pro \ii{každou} dvojici sousedních vrcholů $u,v$ je graf $G \setminus \bc{u,v}$ nesouvislý. 
     
-    Ať $(x,y)$ je libovolná hrana v $G$. Dle našeho předpokladu je $G \setminus \bc{x,y}$ nesouvislý. To znamená, že 
-    množinu vrcholů $V \setminus \bc{x,y}$ lze rozdělit na dvě neprázdné, disjunktní množiny $A$ a $B$ tak, že mezi $A$ 
-    a $B$ nevedou žádné hrany. Zaměřme se na situaci, kdy existuje nějaká hrana \ii{uvnitř} $A$ nebo $B$. 
-    Předpokládejme, že v $A$ existuje hrana $(a_1, a_2)$. Dle našeho hlavního předpokladu musí platit, že 
-    $G \setminus \bc{a_1, a_2}$ je také nesouvislý. Graf $G \setminus \bc{a_1, a_2}$ ale obsahuje vrcholy $x$, $y$, 
-    které jsou spojeny hranou, a celou neprázdnou množinu $B$. Protože původní graf $G$ byl souvislý, každý vrchol 
-    $b \in B$ musel být v $G$ spojen s $\bc{x,y}$, protože nemohl být spojen s $A$. Stejně tak každý vrchol 
-    $a \in A \setminus \bc{a_1, a_2}$ musí být spojen s $\bc{x,y}$. $(x,y)$ je tedy most. To znamená, že 
-    $G \setminus \bc{a_1, a_2}$ je souvislý. Což je spor s hlavním předpokladem, takže pro libovolnou hranu $(x,y) 
-    \in E(G)$ musí platit, že $G \setminus \bc{x,y}$ je nezávislá množina.
+    Ať $\bc{x,y}$ je libovolná hrana v $G$. Dle našeho předpokladu je $G \setminus \bc{x,y}$ nesouvislý. To znamená, že množinu vrcholů $V \setminus \bc{x,y}$ lze rozdělit na dvě neprázdné, disjunktní množiny $A$ a $B$ tak, že mezi $A$ a $B$ nevedou žádné hrany. Zaměřme se na situaci, kdy existuje nějaká hrana \ii{uvnitř} $A$ nebo $B$. Předpokládejme, že v $A$ existuje hrana $\bc{a_1, a_2}$. Dle našeho hlavního předpokladu musí platit, že $G \setminus \bc{a_1, a_2}$ je také nesouvislý. Graf $G \setminus \bc{a_1, a_2}$ ale obsahuje vrcholy $x$, $y$, které jsou spojeny hranou, a celou neprázdnou množinu $B$. Protože původní graf $G$ byl souvislý, každý vrchol $b \in B$ musel být v $G$ spojen s $\bc{x,y}$, protože nemohl být spojen s $A$. Stejně tak každý vrchol $a \in A \setminus \bc{a_1, a_2}$ musí být spojen s $\bc{x,y}$. $\bc{x,y}$ je tedy most. To znamená, že $G \setminus \bc{a_1, a_2}$ je souvislý. Což je spor s hlavním předpokladem, takže pro libovolnou hranu $\bc{x,y} \in E(G)$ musí platit, že $G \setminus \bc{x,y}$ je nezávislá množina.
 
-    Teď ověřme, že tento důsledek může koexistovat s našimi podmínkami $n \geq 4$ a že $G$ neobsahuje indukovaný 
-    $K_{1,3}$. Protože $G$ je souvislý a $n \geq 4$, musí nutně obsahovat alespoň jeden vrchol $x$ se stupněm 
-    $\deg(x) \geq 2$. Vyberme dva různé sousedy $x$, označme $y$ a $z$. Mějme hrany $(x,y)$ a $(x,z)$. Co když hrana 
-    $(y,z)$ (ne)existuje?
+    Teď ověřme, že tento důsledek může koexistovat s našimi podmínkami $n \geq 4$ a že $G$ neobsahuje indukovaný $K_{1,3}$. Protože $G$ je souvislý a $n \geq 4$, musí nutně obsahovat alespoň jeden vrchol $x$ se stupněm $\deg(x) \geq 2$. Vyberme dva různé sousedy $x$, označme $y$ a $z$. Mějme hrany $\bc{x,y}$ a $\bc{x,z}$. Co když hrana $\bc{y,z}$ (ne)existuje?
     \vspace{-1em}
     \begin{enumerate}[1)]
-        \item Hrana neexistuje. Protože $n \geq 4$, musí existovat alespoň jeden další vrchol $w \not= x,y,z$. Dle 
-        prvního důkazu již víme, že $(z,w) \not\in E$ a $(y,w) \not\in E$. Protože $G$ je souvislý, $w$ musí mít alespoň 
-        jednoho souseda. Jeho jediný možný soused je $x$, tedy $(x,w) \in E$. To ale znamená, že máme indukovaný 
-        $K_{1,3}$ graf s centrem $x$, což je spor s předpokladem, že $G$ je bez $K_{1,3}$. Hrana tedy musí existovat.
-        \item Hrana existuje. Již víme, že toto je pravda. Zároveň víme, že $G \setminus \bc{y,z}$ \ii{musí} být 
-        nezávislá množina. Protože $n \geq 4$, musí existovat 4. vrchol $w$. A protože $G$ je souvislý, musí $w$ být 
-        spojen s nějakým z vrcholů $x,y,z$. Pokud je $w$ spojen s $y$ nebo $z$, je $G \setminus \bc{y,z}$ stále souvislý
-        (přes $x$). Předpokládejme tedy, že $w$ je spojen \ii{pouze} s $x$. Ale vrcholy $x$ i $w$ jsou obsaženy v 
-        $G \setminus \bc{y,z}$, hrana $(x,w)$ je tedy hrana v $G \setminus \bc{y,z}$, a to je spor s tím, že 
-        $G \setminus \bc{y,z}$ \ii{musí} být nezávislá množina.
+        \item Hrana neexistuje. Protože $n \geq 4$, musí existovat alespoň jeden další vrchol $w \not= x,y,z$. Dle prvního důkazu již víme, že $\bc{z,w} \not\in E$ a $\bc{y,w} \not\in E$. Protože $G$ je souvislý, $w$ musí mít alespoň jednoho souseda. Jeho jediný možný soused je $x$, tedy $\bc{x,w} \in E$. To ale znamená, že máme indukovaný $K_{1,3}$ graf s centrem $x$, což je spor s předpokladem, že $G$ je bez $K_{1,3}$. Hrana tedy musí existovat.
+        \item Hrana existuje. Již víme, že toto je pravda. Zároveň víme, že $G \setminus \bc{y,z}$ \ii{musí} být nezávislá množina. Protože $n \geq 4$, musí existovat 4. vrchol $w$. A protože $G$ je souvislý, musí $w$ být spojen s nějakým z vrcholů $x,y,z$. Pokud je $w$ spojen s $y$ nebo $z$, je $G \setminus \bc{y,z}$ stále souvislý (přes $x$). Předpokládejme tedy, že $w$ je spojen \ii{pouze} s $x$. Ale vrcholy $x$ i $w$ jsou obsaženy v $G \setminus \bc{y,z}$, hrana $(x,w)$ je tedy hrana v $G \setminus \bc{y,z}$, a to je spor s tím, že $G \setminus \bc{y,z}$ \ii{musí} být nezávislá množina.
     \end{enumerate}
     \vspace{-1em}
     Ve všech případech jsme došli ke sporu. Náš původní předpoklad, že tvrzení neplatí, musí být nepravdivý.
@@ -122,15 +83,8 @@
 \begin{solution}
     Dokažme jednotlivé meze.
     \begin{enumerate}[1)]
-        \item \ii{Dolní mez $m \geq n-1$}. To již plyne z toho, že $G$ je souvislý, respektive, že $G^\prime$, který 
-        vznikl tím, že jsme odstranili orientaci z hran $G$, je souvislý. Graf $G^\prime$ má stejný počet vrcholů a hran 
-        jako graf $G$. A z definice víme, že jakýkoliv neorientovaný souvislý graf s $n$ vrcholy musí mít alespoň $n-1$ 
-        hran.
-        \item \ii{Horní mez $m \geq (n-1)^2$}. Využijme toho, že $G$ není silně souvislý. To totiž znamená, že jeho 
-        vrcholy $V$ lze rozdělit na dvě neprázdné, disjuktní podmnožiny, nazvěme je $A$ a $B$, takové, že \ii{neexistuje 
-        žádná hrana vedoucí z $B$ do $A$}. Chceme najít maximální možný počet hran $m$ takového grafu. Počet hran 
-        maximalizujeme, pokud přidáme všechny hrany, které nejsou zakázané, tj. hrany z $B$ do $A$. Nechť $|A| = p$ a 
-        $|B| = q$, kde $p+q = n$ a $p,q \geq 1$.
+        \item \ii{Dolní mez $m \geq n-1$}. To již plyne z toho, že $G$ je souvislý, respektive, že $G^\prime$, který vznikl tím, že jsme odstranili orientaci z hran $G$, je souvislý. Graf $G^\prime$ má stejný počet vrcholů a hran jako graf $G$. A z definice víme, že jakýkoliv neorientovaný souvislý graf s $n$ vrcholy musí mít alespoň $n-1$ hran.
+        \item \ii{Horní mez $m \geq (n-1)^2$}. Využijme toho, že $G$ není silně souvislý. To totiž znamená, že jeho vrcholy $V$ lze rozdělit na dvě neprázdné, disjuktní podmnožiny, nazvěme je $A$ a $B$, takové, že \ii{neexistuje žádná hrana vedoucí z $B$ do $A$}. Chceme najít maximální možný počet hran $m$ takového grafu. Počet hran maximalizujeme, pokud přidáme všechny hrany, které nejsou zakázané, tj. hrany z $B$ do $A$. Nechť $|A| = p$ a $|B| = q$, kde $p+q = n$ a $p,q \geq 1$.
 
         Maximální počet hran je součtem:
         \begin{itemize}
@@ -150,8 +104,7 @@
             m &\leq (p^2 + p^2 - p^2) + (-p + p) + (-np -np + np) + n^2 - n \\
             m &\leq p^2 -np + n^2 -n
         \end{align}
-        Protože maximalizujeme funkci $f(p) = p^2 -np + n^2 -n$ pro $p \in \bc{1, 2, \dots, n-1}$, která je konvexní 
-        kvadratickou funkcí, svého maxima nabývá v krajních bodech.
+        Protože maximalizujeme funkci $f(p) = p^2 -np + n^2 -n$ pro $p \in \bc{1, 2, \dots, n-1}$, která je konvexní kvadratickou funkcí, svého maxima nabývá v krajních bodech.
         \begin{itemize}
             \item \ii{Pro $p=1$}: 
             \begin{equation}
