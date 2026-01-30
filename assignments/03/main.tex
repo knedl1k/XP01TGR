@@ -24,16 +24,16 @@
 
     Ověřme, zda takto zkonstruovaný graf splňuje požadavky.
     \vspace{-1em}
-    \begin{enumerate}[1)]
-        \item \bb{Počet hran}. Máme $5+2k$ hran, tedy $5 + 2(n-5) = 2n-5$ hran, to jsme přesně chtěli.
-        \item \bb{2-souvislost}. Tzn. musíme ukázat, že graf nemá artikulaci. Ověřme tedy indukcí: Odeberme $u_i$; graf $G_{n-1}$, který zbyde, má stejnou strukturu, jen o jeden připojený vrchol méně. Postupujme dále až k $n=6$, to nám zbyde původní $C_5$ s jedním $u_1$, který je očividně souvislý. Odebrání $u_i$ tedy graf nerozpojí.
+    \begin{itemize}
+        \item \ii{Počet hran}. Máme $5+2k$ hran, tedy $5 + 2(n-5) = 2n-5$ hran, to jsme přesně chtěli.
+        \item \ii{2-souvislost}. Tzn. musíme ukázat, že graf nemá artikulaci. Ověřme tedy indukcí: Odeberme $u_i$; graf $G_{n-1}$, který zbyde, má stejnou strukturu, jen o jeden připojený vrchol méně. Postupujme dále až k $n=6$, to nám zbyde původní $C_5$ s jedním $u_1$, který je očividně souvislý. Odebrání $u_i$ tedy graf nerozpojí.
 
         Zkusme odebrat $v_1$: Zbytek $C_5$ je cesta $v_2, v_3, v_4, v_5$. Všechny vrcholy $u_i$ jsou stále připojeny k $v_3$. Celý zbytek grafu $G_n \setminus v_1$ je tedy souvislý. Analogicky se ukáže pro $v_3$.
         
-        Anebo odeberme $v_2$, $v_4$, nebo $v_5$. BÚNO vyberme $v_2$. Graf $G_n \setminus v_2$ je cesta $v_1, v_5, v_4, v_3$. Všechny vrcholy $u_i$ jsou připojeny k $v_1$ i $v_3$. Tedy $G_n \setminus v_2$ je souvislý.
+        Anebo odeberme $v_2$, $v_4$, nebo $v_5$. \ii{BÚNO} vyberme $v_2$. Graf $G_n \setminus v_2$ je cesta $v_1, v_5, v_4, v_3$. Všechny vrcholy $u_i$ jsou připojeny k $v_1$ i $v_3$. Tedy $G_n \setminus v_2$ je souvislý.
 
         Graf je tedy určitě 2-souvislý, protože je souvislý a nemá artikulaci.
-        \item \bb{Průměr $\diam(G)=2$}. Vrcholy jsou buď vzájemní sousedé, anebo mají společného souseda. 
+        \item \ii{Průměr $\diam(G)=2$}. Vrcholy jsou buď vzájemní sousedé, anebo mají společného souseda. 
         
         Jestliže oba vrcholy leží na $C_5$, tak jsme již v případě $n=5$ dokázali, že $\diam(C_5) = 2$. Jestliže oba vrcholy jsou z připojených vrcholů $u_i$, pak mají zaručeně společné sousedy $v_1$ a $v_3$, tedy $d(u_i, u_j)=2$, pro $i \not= j$. Pokud je jeden z $C_5$ a druhý z $u_i$, pak:
         \vspace{-0.8em}
@@ -44,7 +44,7 @@
         \end{itemize}
         \vspace{-0.8em}
         Takže průměr grafu je 2.
-    \end{enumerate}
+    \end{itemize}
     \vspace{-1em}
     Ano, pro každé $n \geq 5$ je možné takový graf zkonstruovat.
     \hspace{\fill}\qed
@@ -57,29 +57,63 @@
     ($K_{1,3}$ je úplný bipartitní graf se stranami o 1 a 3 vrcholech.)
 \end{exercise}
 \begin{solution}
-    Dokažme sporem. Předpokládejme, že existuje graf $G$ splňující zadání ($n \geq 4$, souvislý, bez indukovaného $K_{1,3}$), ve kterém pro \ii{každou} hranu $\bc{u, v} \in E(G)$ platí, že graf $G \setminus \bc{u, v}$ je nesouvislý.
-    
-    Mezi všemi hranami grafu vyberme takovou hranu $\{x, y\}$, pro kterou má graf $G \setminus \bc{x, y}$ komponentu souvislosti $C$ s \ii{minimálním počtem vrcholů}.
-    
-    Nechť $z$ je vrchol v komponentě $C$, který je sousedem množiny $\bc{x, y}$ (takový vrchol musí existovat, protože $G$ je souvislý). Rozlišme dvě možnosti:
-    \vspace{-1em}
+    Mějme v grafu $G$ nejdelší možnou cestu $P$. Její vrcholy označme jako $v_1, v_2, \dots, v_{k-1}, v_k$, kde $v_k$ je konec cesty. Dále uvažme hranu na samém konci cesty $\bc{v_{k-1}, v_k}$. Chceme dokázat, že po odstranění této dvojice zůstane graf souvislý.
+
+    Sporem. Předpokládejme, že po odstranění $\bc{v_{k-1}, v_k}$ se graf stane nesouvislým. To znamená, že v grafu existuje nějaký vrchol (případně skupina vrcholů) $w$, který ztratil spojení se zbytkem grafu. Vrchol $w$ tedy musel být připojen \ii{pouze} k odstraněným vrcholům $v_{k-1}$ nebo $v_k$ a k ničemu jinému ze zbytku grafu.
+
+    Vrchol $w$ nemůže být součástí původní cesty $P$, protože $v_{k-2}$ a dřívější vrcholy v grafu zůstaly, takže pokud by $w$ byl na cestě, zůstal by připojen. $w$ je tedy \enquote{nový} vrchol mimo cestu. Vyšetřeme situace, kam může být $w$ připojen:
     \begin{enumerate}[a)]
-        \item \ii{Vrchol $z$ je spojen pouze s jedním vrcholem z dvojice $\bc{x, y}$} (\ii{BÚNO} s $x$).\\
-        Pak $x$ sousedí s $y$, se $z$ a nutně i s nějakým vrcholem $w$ v jiné komponentě grafu $G \setminus \bc{x, y}$ (jinak by $y$ bylo izolované nebo by graf nebyl souvislý).
-        Protože $z$ a $w$ jsou v různých komponentách $G \setminus \bc{x, y}$, nejsou spojeny hranou. Zároveň dle předpokladu vrchol $z$ není spojen s $y$. Pokud by $y$ nebylo spojeno s $w$, pak vrcholy $\bc{x, y, z, w}$ tvoří indukovaný podgraf $K_{1,3}$, což je zakázáno. Tedy $y$ musí být spojeno s $w$.
+        \item $w$ je spojen s koncovým vrcholem $v_k$. Pokud vede hrana $\bc{v_k, w}$, můžeme nejdelší cestu $P$ jednoduše prodloužit
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[
+                node distance=1.5cm,
+            ]
+                \node (v1) {$v_1$};
+                \node (dots) [right of=v1] {$\dots$};
+                \node (vk-1) [right of=dots] {$v_{k-1}$};
+                \node (vk) [right of=vk-1] {$v_k$};
+                \node (w) [right of=vk] {$w$};
         
-        Nyní uvažujme odebrání dvojice $\bc{x, z}$. Původní komponenta $C$ byla minimální. Pokud $C = \bc{z}$, pak po odebrání $z$ zbývá $y$ a zbytek grafu. Protože jsme ukázali, že $y$ musí být spojeno s $w$ (což je zástupce ,,zbytku`` grafu), zůstal by graf souvislý, což je spor s hlavním předpokladem.
-        \item \ii{Vrchol $z$ je spojen s oběma vrcholy $x$ i $y$.}\\
-        Pak $\bc{x, y, z}$ tvoří trojúhelník. Uvažujme nyní odebrání dvojice $\bc{x, z}$. Podle předpokladu musí být $G \setminus \bc{x, z}$ nesouvislý.
-        Všimněme si, co se stane s komponentou $C$.
-        \vspace{-0.5em}
+                \draw (v1) -- (dots) -- (vk-1) -- (vk);
+                \draw(vk) -- (w);
+            \end{tikzpicture}
+        \end{figure}
+        To je ale spor s tím, že $P$ byla nejdelší cesta, takže situace nemůže nastat.
+        \item $w$ je spojen s předposledním vrcholem $v_{k-1}$. Zde využijeme vlastnost, že graf neobsahuje $K_{1,3}$. Zaměřme se na sousedy vrcholu $v_{k-1}$. Má minimálně 3 sousedy:
+        \begin{enumerate}[1)]
+            \item $v_{k-2}$, předchozí vrchol je na cestě, který v komponentě zůstal,
+            \item $v_k$,
+            \item $w$, vrchol, který se má odpojit.
+        \end{enumerate}
+        Aby tyto vrcholy netvořily zakázaný $K_{1,3}$ se středem v $v_{k-1}$, musí být některé z vrcholů $\bc{v_{k-2}, v_k, w}$ navzájem propojeny hranou. Zkoumejme, které to mohou být:
         \begin{itemize}
-            \item Pokud $C = \bc{z}$, pak v grafu $G \setminus \bc{x, z}$ zůstává vrchol $y$ a ostatní komponenty původního $G \setminus \bc{x, y}$. Aby byl $G$ souvislý, $y$ musí mít souseda v ostatních částech grafu (jinak by $x$ bylo artikulací, což u $K_{1,3}$-free grafů vede ke sporu analogicky jako v bodě 1). Tedy $y$ propojí zbytek grafu a $G \setminus \bc{x, z}$ by byl souvislý. Spor.
-            \item Pokud $|C| > 1$, pak $G \setminus \bc{x, z}$ obsahuje množinu vrcholů $C \setminus \bc{z}$. Protože $C$ byla nejmenší komponenta, množina $C \setminus \bc{z}$ nemůže tvořit samostatnou komponentu v novém rozkladu (spor s minimalitou $C$). Pomocí $y$ zůstane připojeno se zbytkem grafu. Graf tedy zůstal souvislý, což je spor.
+            \item Kdyby existovala hrana $\bc{w, v_{k-2}}$, pak by po odstranění dvojice $\bc{v_{k-1}, v_k}$ vrchol $w$ nezůstal izolovaný, protože by byl spojen s $v_{k-2}$, což je spor s naším předpokladem, že se graf rozpadl.
+            \item Jediná možnost, která nevede na $K_{1,3}$, je hrana $\bc{v_k, w}$. Ale pokud existuje hrana $\bc{v_k, w}$, jsme ve stejné situaci, jako v a). Cestu lze prodloužit o $w$. A to je opět spor s tím, že cesta $P$ je nejdelší.
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}[
+                    node distance=2cm,
+                    missing/.style={red, decorate, decoration={crosses, segment length=4pt}}
+                ]
+                    \node (vk-1) {$v_{k-1}$};
+
+                    \node (vk-2) [left of=vk-1] {$v_{k-2}$};
+                    \node (vk) [right of=vk-1] {$v_k$};
+                    \node (w) [above of=vk-1] {$w$};
+
+                    \draw (vk-2) -- (vk-1);
+                    \draw (vk) -- (vk-1);
+                    \draw (w) -- (vk-1);
+
+                    \draw[missing] (w) -- (vk-2);
+                    \draw[missing] (w) -- (vk);
+                    \draw[missing, bend right=40] (vk-2) to (vk);
+                \end{tikzpicture}
+            \end{figure}
         \end{itemize}
     \end{enumerate}
-    \vspace{-1em}
-    V obou případech vede předpoklad, že graf se vždy rozpadne, ke sporu. Tvrzení je pravdivé.
+    Takže neexistuje žádný vrchol $w$, který by se odstraněním koncové hrany $\bc{v_{k-1}, v_k}$ odpojil. Zbytek grafu tedy zůstává souvislý.
     \hspace{\fill}\qed
 \end{solution}
 
