@@ -13,7 +13,6 @@ Máme $G \in \S$, $n \geq 3$, se \hyperref[skore]{skóre} $d_1 \leq d_2 \leq \do
 Když ke $G$ splňující Chvátalovu podmínku přidáme hranu, která v $G$ není, tak nový graf stále splňuje Chvátalovu podmínku.
 
 Zvolíme $G$ s Chvátalovou podmínkou maximální bez \hyperref[hamKru]{hamiltonovské kružnice}. Zvolme $x,y: \, \bc{x,y} \not\in E$, $d(x) + d(y)$ je největší mezi $\bc{u,v} \not\in E$, $d(x) \leq d(y)$. V $G$ existuje Hamiltonovská cesta z $x$ do $y$.
-% TODO: nákres
 Označme
 \begin{align}
     S &\coloneq \bc{ i \mid \bc{x, v_{i+1}} \in E} \in 1, \\
@@ -25,6 +24,30 @@ kde $n \not\in S$, $n \not\in T$.
     |S| = d(x) \\
     |T| = d(y)
 \end{align}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1, transform shape]
+        \foreach \i in {1, ..., 8} {
+            \node[circle, fill=black, inner sep=1.5pt] (v\i) at (\i*1.5, 0) {};
+        }
+        
+        \node[below=0.1cm of v1] {$x=v_1$};
+        \node[below=0.1cm of v2] {$v_2$};
+        \node[below=0.1cm of v3] {$v_{i}$};
+        \node[below=0.1cm of v4] {$v_{i+1}$};
+        \node[below=0.1cm of v5] {$\dots$};
+        \node[below=0.1cm of v6] {$v_j$};
+        \node[below=0.1cm of v7] {$v_{n-1}$};
+        \node[below=0.1cm of v8] {$y=v_n$};
+
+        \draw[thick] (v1) -- (v8);
+        \draw[thick, blue, bend left=45] (v1) to node[midway, above] {$i \in S$} (v4);
+        \draw[thick, red, bend right=45] (v6) to node[midway, below] {$j \in T$} (v8);
+
+        \node[anchor=west, blue] at (1, 1.5) {$\exists \{x, v_{i+1}\} \in E \implies i \in S$};
+        \node[anchor=east, red] at (11, -1.5) {$\exists \{v_j, y\} \in E \implies j \in T$};
+    \end{tikzpicture}
+\end{figure}
 \ii{Pomocný důkaz}. Platí $S \cap T = \emptyset$.\\
 \dukaz Kdyby $i \in S \cap T$, tak se jedná o hamiltonovskou kružnici. Spor s velkým předpokladem.
 \hspace{\fill}\qed \\
@@ -46,7 +69,7 @@ Máme $d(x)$ vrcholů $u$, že $\bc{x,y} \in E$.
     d(v_{l-1}) + d(y) &\leq d(x) + d(y) \\
     d(v_{l-1}) &\leq d(x) = k
 \end{align}
-Tj. máme $k$ vrcholů $v_{l-1}$ s $d(v_{l-1}) \leq k$. Platí $d_k \leq k$, protože máme alespoň $k$ vrcholů stupně $\leq k$. Z Chvátalovy podmínky víme, že $d_{n-k} \geq n-k$, tj. existuje $k+1$ vrcholů $w$ s $d(w) \geq n-k$. Ale $x$ má $d(x) = k$. Tedy existuje $w$ s $d(w) = n-k$, že $\bc{x,w} \not\in E$.
+Tj. máme $k$ vrcholů $v_{l-1}$ s $d(v_{l-1}) \leq k$. Platí $d_k \leq k$, protože máme alespoň $k$ vrcholů stupně $\leq k$. Z Chvátalovy věty víme, že $d_{n-k} \geq n-k$, tj. existuje $k+1$ vrcholů $w$ s $d(w) \geq n-k$. Ale $x$ má $d(x) = k$. Tedy existuje $w$ s $d(w) = n-k$, že $\bc{x,w} \not\in E$.
 
 $d(x) + d(w) = k+n-k = n$, což je spor s volbou $x$ a $y$, protože $d(x) + d(y) \leq n-1$.
 \hspace{\fill}\qed

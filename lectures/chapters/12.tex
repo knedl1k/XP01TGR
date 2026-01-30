@@ -214,7 +214,60 @@ Je dán \hyperref[souvisly]{souvislý} graf $G = (V, E)$. \ii{Cutset} (min-řez)
 
 \subsection{Tvrzení o souvislosti cutsetů}
 Je dán \hyperref[rez]{řez} $S = \langle V_1, V_2 \rangle$ souvislého neorientovaného grafu $G$. Pak $S$ je \hyperref[cutset]{cutsetem} právě tehdy, když podgrafy indukované množinami $V_1$ a $V_2$ jsou \hyperref[souvisly]{souvislé}.
-% TODO: nákres
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[
+			scale=0.8,
+	        vertex/.style={circle, fill=black, minimum size=4pt, inner sep=0pt, outer sep=1pt},
+		]
+            \draw[fill=green!10, rounded corners] (-1.5,-1) rectangle (0.5,2);
+            \node at (-0.5, 2.3) {$V_1$ (souvislé)};
+            
+            \draw[fill=green!10, rounded corners] (2.5,-1) rectangle (4.5,2);
+            \node at (3.5, 2.3) {$V_2$ (souvislé)};
+
+            \node[vertex] (a) at (0,1) {};
+            \node[vertex] (b) at (0,0) {};
+            \node[vertex] (c) at (3,1) {};
+            \node[vertex] (d) at (3,0) {};
+
+            \draw[thick] (a) -- (b);
+            \draw[thick] (c) -- (d);
+
+            \draw[thick, red] (a) -- (c);
+            \draw[thick, red] (b) -- (d);
+            \node[red] at (1.5, 0.5) {$S$};
+        \end{tikzpicture}
+
+		Cutset \\ $V_1$ i $V_2$ jsou souvislé grafy
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[
+			scale=0.8,
+			vertex/.style={circle, fill=black, minimum size=4pt, inner sep=0pt, outer sep=1pt},
+		]
+            \draw[fill=gray!10, rounded corners] (-1.5,-1) rectangle (0.5,2);
+            \node at (-0.5, 2.3) {$V_1$ (nesouvislé)};
+            
+            \draw[fill=green!10, rounded corners] (2.5,-1) rectangle (4.5,2);
+            \node at (3.5, 2.3) {$V_2$};
+
+            \node[vertex] (a) at (0,1.5) {};
+            \node[vertex] (b) at (0,-0.5) {}; 
+            \node[vertex] (c) at (3,0.5) {};
+
+            \draw[thick, red] (a) -- (c);
+            \draw[thick, red] (b) -- (c);
+            \node[red] at (1.5, 0.5) {$S$};
+        \end{tikzpicture}
+
+		Obecný řez \\ $V_1$ se rozpadl na více komponent
+    \end{minipage}
+\end{figure}
 
 \subsection{Tvrzení o řezu a kostrách}
 Množina hran $S \subseteq E$ je \hyperref[rez]{řez} právě tehdy, když má s každou kostrou $T$ grafu $G$ neprázdný průnik, tj. $S \cap T \not= \emptyset$.

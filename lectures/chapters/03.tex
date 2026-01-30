@@ -57,6 +57,50 @@ Z toho plyne, že vrchol $u$ je \hyperref[artikulace]{artikulace}.
     &G \text{ je } 2\text{-hranově souvislý} \iff G \text{ je souvislý a nemá \hyperref[most]{most}.}&& \\
 \end{flalign*}
 
-\subsection{Tvrzení o hranové a vrcholové souvislosti}
+\subsection{Tvrzení o hranové a vrcholové souvislosti}\label{hranVrchSouv}
 Platí, že $\kappa(G) \leq \lambda(G)$.
-% TODO: přepsat ze skript
+
+\dukaz
+\subsubsection{Pomocné lemma 1}
+Pro každý \hyperref[prosty]{prostý} graf $G$ bez smyček a jeho libovolnou hranu $e$ platí
+\begin{equation}
+    \alpha(G) - 1 \leq \alpha(G \setminus e) \leq \alpha(G).
+\end{equation}
+\dukaz Jestliže hrana $e$ leží v některém neméně početném \hyperref[hranRez]{hranovém řezu} $F$, pak $F \setminus \bc{e}$ je hranový řez grafu $G \setminus e$. V opačném případě mají grafy $G$ a $G \setminus e$ stejnou \hyperref[hran-souvislost]{hranovou souvislost}.
+
+\subsubsection{Pomocné lemma 2}
+Pro každý \hyperref[prosty]{prostý} graf $G$ bez smyček a jeho libovolnou hranu $e$ platí
+\begin{equation}
+    \kappa(G) - 1 \leq \kappa(G \setminus e) \leq \kappa(G).
+\end{equation}
+\dukaz Stačí dokázat trošku jiné tvrzení: Pro každý prostý graf $H$ bez smyček platí
+\begin{equation}
+    \kappa(H + e) \leq \kappa(H) + 1.
+\end{equation}
+(Graf $H + e$ má stejnou množinou vrcholů a jednu hranu $e$ navíc)
+
+Uvažujme některý nejméně početný \hyperref[vrchrez]{vrcholový řez} $A$ grafu $H$; tj. $H \setminus A$ je ne\hyperref[souvisly]{souvislý}; označme jeho komponenty souvislosti $C_1, C_2, \dots, C_r$. Navíc $\kappa(H) = |A|$.
+
+Pak v následujících případech platí $\kappa(H + e) = \kappa(H)$:
+\begin{itemize}
+    \item hrana $e$ má alespoň jeden krajní vrchol v množině $A$;
+    \item hrana $e$ leží uvnitř některé z komponent souvislosti $C_1, C_2, \dots, C_r$;
+    \item hrana $e$ spojuje dvě komponenty souvislosti a $r > 2$.
+\end{itemize}
+Uvažujme případ $r=2$ a alespoň jedna komponenta $C_1$ a $C_2$ je alespoň dvouprvková. Označme $x$ vrchol incidentní s hranou $e$, který leží v komponentě s alespoň 2 vrcholy. Pak $A^\prime = A \cup \bc{x}$ je \hyperref[vrchRez]{vrcholový řez} grafu $H + e$ a $\kappa(H + e) \leq \kappa(H) + 1$.
+
+Zbývá případ, kdy $H \setminus A$ obsahuje dvě komponenty, obě jsou jednoprvkové a hrana $e$ je spojuje. Pak ale platí
+\begin{equation}
+    \kappa(H + e) \leq |V| - 1 = |V| - 2 + 1 = |A| + 1 = \kappa(H) + 1.
+\end{equation}
+
+
+Nyní se vraťme k důkazu \ref{hranVrchSouv}.
+
+Indukcí podle $m = |E(G)|$: Jestliže $m < |V(G)| - 1$, je $G$ nesouvislý graf a $\kappa(G) = 0 = \lambda(G)$.
+
+Předpokládejme, že $\lambda(G) > 0$ a předpokládejme, že tvrzení platí pro všechny grafy s méně než $m$ hranami. Zvolme $F$ některou nejméně početnou množinu hran takovou, že $G \setminus F$ je nesouvislý graf. Dále vyberme hranu $e$ z $F$. Pak $G \setminus e$ má méně hran, proto splňuje nerovnost $\kappa(G \setminus e) \leq \lambda(G \setminus e)$. Odtud
+\begin{equation}
+    \kappa(G) - 1 \leq \kappa(G \setminus e) \leq \lambda(G \setminus e) = \lambda(G) - 1.
+\end{equation}
+\hspace{\fill}\qed

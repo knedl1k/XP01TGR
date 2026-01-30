@@ -28,7 +28,38 @@ Máme $G \in \S$, který neobsahuje $K_{r+1}$ (úplný graf na $r+1$ vrcholech),
 \end{equation}
 \dukaz Vezměme graf $G$ bez $K_{r+1}$ s nejméně hranami (přidáním hrany by vznikl $K_{r+1}$). Tedy $G$ má $K_r$. Ať $A$ je množina vrcholů $K_r$ a $B$ je $V(G) \setminus A$, $|B| = n -r$. Každý vrchol $v \in B$ má max $r-1$ sousedů v $A$ (jinak by $A \cup \bc{u}$ tvořil $K_{r+1}$).
 
-$m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \colorbox{black!30}{hrany mezi $A$ a $B$} a \colorbox{black!20!yellow}{hrany v $B$}. % TODO: dodělat nákres
+$m$ rozdělíme na \colorbox{blue!30}{hrany v $A$ (hrany úplného grafu)}, \colorbox{black!30}{hrany mezi $A$ a $B$} a \colorbox{black!20!yellow}{hrany v $B$}:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        \draw[thick, fill=blue!5] (0,0) ellipse (1.2cm and 2cm);
+        \node[blue!50!black] at (0, 2.3) {\Large $A$ ($K_r$)};
+        
+        \draw[thick, fill=yellow!10] (4,0) ellipse (1.5cm and 2.2cm);
+        \node[black!50!yellow] at (4, 2.5) {\Large $B$};
+
+        \node[circle, fill=black, inner sep=1.5pt] (a1) at (0, 1) {};
+        \node[circle, fill=black, inner sep=1.5pt] (a2) at (-0.5, 0) {};
+        \node[circle, fill=black, inner sep=1.5pt] (a3) at (0.5, -0.5) {};
+        \node[circle, fill=black, inner sep=1.5pt] (a4) at (0, -1.2) {};
+
+        \node[circle, fill=black, inner sep=1.5pt, label=right:$v$] (b1) at (3.5, 1) {};
+        \node[circle, fill=black, inner sep=1.5pt] (b2) at (4.5, 0) {};
+        \node[circle, fill=black, inner sep=1.5pt] (b3) at (3.8, -1.5) {};
+
+        \draw[blue!30, thick] (a1) -- (a2) -- (a3) -- (a1);
+        \draw[blue!30, thick] (a1) -- (a4) -- (a2);
+        \draw[blue!30, thick] (a3) -- (a4);
+
+        \draw[black!20!yellow, thick] (b1) -- (b2);
+        \draw[black!20!yellow, thick] (b2) -- (b3);
+
+        \draw[black!30, thick] (a1) -- (b1);
+        \draw[black!30, thick] (a3) -- (b1);
+        \draw[black!30, thick] (a2) -- (b3);
+        \draw[black!30, thick] (a4) -- (b2);
+    \end{tikzpicture}
+\end{figure}
 \begin{equation}
     m = m_A + m_{A-B} + m_B \leq \frac{r(r-1)}{2} + (n-r)(r-1) + m_B
 \end{equation}

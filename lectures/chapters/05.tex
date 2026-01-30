@@ -1,7 +1,43 @@
 \section{Orientované grafy}
 \subsection{Minimálně silně souvislý graf}\label{minSilSou}
-Silně souvislý graf se nazývá minimálně silně souvislý, jestliže $G \setminus \bc{e}$ není silně souvislý pro každou hranu $e \in E(G)$.
-% TODO: obrázek s příkladem
+Silně \hyperref[souvisly]{souvislý} graf se nazývá minimálně silně souvislý, jestliže $G \setminus \bc{e}$ není silně souvislý pro každou hranu $e \in E(G)$.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Stealth, auto, node distance=2cm, thick]
+            \node (1) {1};
+            \node (2) [right of=1] {2};
+            \node (3) [below of=2] {3};
+            \node (4) [below of=1] {4};
+
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (4);
+            \draw[->] (4) -- (1);
+        \end{tikzpicture}
+
+        Minimálně silně souvislý\\(odebráním libovolné hrany se poruší)    
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Stealth, auto, node distance=2cm, thick]
+            \node (1) {1};
+            \node (2) [right of=1] {2};
+            \node (3) [below of=2] {3};
+            \node (4) [below of=1] {4};
+
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (4);
+            \draw[->] (4) -- (1);
+            \draw[->, red, dashed] (1) -- (3);
+        \end{tikzpicture}
+
+        Není minimální\\(bez červené hrany je stále silně souvislý)
+    \end{minipage}
+\end{figure}
 
 \subsection{Věta o minimálně silně souvislém grafu a jeho vrcholech}
 Každý minimálně silně souvislý graf $G$ s alespoň 2 vrcholy má 2 vrcholy stupně 2.\\
@@ -59,6 +95,7 @@ Každý minimálně silně souvislý graf $G$ s alespoň 2 vrcholy má 2 vrcholy
 \subsection{Algoritmus pro nalezení topologického očíslování}\label{topo}
 Algoritmus pro nalezení topologického očíslování v acyklickém grafu. \\
 \ii{Pozn.: Každý acyklický graf má alespoň 1 vrchol se stupněm 0.}
+\vspace{-1em}
 \begin{enumerate}[1)]
     \item Spočítáme vstupní stupně vrcholů. Do množiny $M$ vložíme všechny $v$ s $d^{-}(v)=0$, $i=1$.
     \item Vybereme $v_i \in M$ a odstraníme. Pro každé $(v_i,w) \in E$: $d^-(w) \coloneq d^-(w)-1$, if $d^-(w)=0$, pak $M \coloneq M \cup \bc{w}$. $i++$.
@@ -77,8 +114,33 @@ $G^\star$ je reflexivní a tranzitivní uzávěr $G^\star = (V, E^\star)$, $E^\s
 
 \subsection{Tranzitivní redukce}\label{tranzitivniRe}
 $G = (V,E)$ je orientovaný graf. Jeho podgaf $G^\prime = (V, E^\prime)$ je tranzitivní redukce $G$ pokud $G^t = \left(G^\prime\right)^t$, a žádný vlastní podgraf této redukce $G^{\prime \prime}$ již nemá tuto vlastnost.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Stealth, node distance=1.5cm, thick]
+            \node[circle, draw] (a) {A};
+            \node[circle, draw] (b) [right of=a] {B};
+            \node[circle, draw] (c) [below of=b] {C};
 
-% TODO: příklad redukce
+            \draw[->] (a) -- (b);
+            \draw[->] (b) -- (c);
+            \draw[->, red] (a) -- (c);
+        \end{tikzpicture}
+    \end{minipage}
+    \hspace{0.5cm} $\xrightarrow{\text{redukce}}$ \hspace{0.5cm}
+    \begin{minipage}[c]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Stealth, node distance=1.5cm, thick]
+            \node[circle, draw] (a) {A};
+            \node[circle, draw] (b) [right of=a] {B};
+            \node[circle, draw] (c) [below of=b] {C};
+
+            \draw[->] (a) -- (b);
+            \draw[->] (b) -- (c);
+        \end{tikzpicture}
+    \end{minipage}
+\end{figure}
 
 \subsection{Souvislost acyklických grafů a tranzitivní redukce}
 Je-li $G \in \S$ acyklický, pak má jedinou tranzitivní redukci.\\
@@ -88,7 +150,7 @@ Kdyby $G_1 = (V, E_1), G_2 = (V, E_2)$ byly 2 různé tranzitivní redukce, tak
 \begin{equation}
     (E_1 \setminus E_2) \cup (E_2 \setminus E_1) \not= \emptyset.
 \end{equation}
-Vyberme z $(E_1 \setminus E_2) \cup (E_2 \setminus E_1)$ hranu $e = (v_i, v_j)$, $i < j$, která má nejmenší rozdíl $j - i$. \\ \ii{BÚNO}: $e \in (E_1 \setminus E_2)$, tedy $e \not\in E_2$, ale $e \in E_2^t$. Tj. musí existovat v $G_2$ \hyperref[stc]{cesta} z $v_i$ do $v_j$, která má alespoň 2 hrany.
+Vyberme z $(E_1 \setminus E_2) \cup (E_2 \setminus E_1)$ hranu $e = (v_i, v_j)$, $i < j$, která má nejmenší rozdíl $j - i$. \ii{BÚNO}: $e \in (E_1 \setminus E_2)$, tedy $e \not\in E_2$, ale $e \in E_2^t$. Tj. musí existovat v $G_2$ \hyperref[stc]{cesta} z $v_i$ do $v_j$, která má alespoň 2 hrany.
 \begin{equation}
     v_i, e_1, e_2, \dots, e_k, v_j, \, k \geq 2.
 \end{equation}
