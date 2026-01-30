@@ -19,7 +19,7 @@ Nutně platí, že
 \end{equation}
 Bez důkazu.
 
-\subsection{Vrcholové obarevní}\label{vrchObar}
+\subsection{Vrcholové obarvení}\label{vrchObar}
 Je dán prostý neorientovaný graf $G = (V,E)$ bez smyček a konečná množina $B$ (nazývaná též množina barev). \ii{Obarvení vrcholů} grafu (též \ii{vrcholové obarvení} grafu) je $b: V \rightarrow B$, že žádné dva vrcholy spojené hranou nemají stejnou barvu.
 
 $G$ nazveme $k$-barevný, jestliže se dá obarvit $k$ barvami.
@@ -37,7 +37,7 @@ Graf $G$ je dvoubarevný právě tehdy, když $G$ neobsahuje \hyperref[kruznice]
 \end{align*}
 Stačí ukázat, že nemá-li $G$ kružnici liché délky, dá se obarvit 2 barvami.
 
-Dokažme algoritmem barvení. Vyberme si počáteční vrchol $v$. Následně aplikujme algoritmus BFS (breath-first-search), kterým graf rozdělíme do několika úrovní. Každé úrovni přiřadíme barvu tak, že
+Dokažme algoritmem barvení. Vyberme si počáteční vrchol $v$. Následně aplikujme algoritmus BFS (breadth-first-search), kterým graf rozdělíme do několika úrovní. Každé úrovni přiřadíme barvu tak, že
 \begin{equation}
     b(v) = 
     \begin{cases}
@@ -190,7 +190,7 @@ Iterujme:
         \draw (a3) -- (b2);
     \end{tikzpicture}
 \end{figure}
-Pokud zvolíme nejpříjemné uspořádání vrcholů \enquote{na střídačku} 
+Pokud zvolíme nepříjemné uspořádání vrcholů \enquote{na střídačku} 
 \[
      a_1, b_1, a_2, b_2, a_3, b_3, \dots, a_n, b_n
 \]

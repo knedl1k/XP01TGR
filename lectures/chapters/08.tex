@@ -268,7 +268,7 @@ pak v $G$ existuje $k$ vrcholově disjunktních \hyperref[zlepsujiciCestaPar]{zl
 
 Přitom alespoň jedna z těchto \hyperref[stc]{cest} je kratší než $\frac{n}{k}$, kde $n$ je počet vrcholů.
 
-\dukaz Utvořme symetrickou diferenci hran obou párování, tj. $H = P \oplus P_{\max} = (P \setminus P_{\max}) \cup (P_{\max} \setminus P)$. Uvažujme graf, který obsahuje všechny vrcholy grafu $G$ a hrany $H$. V tomto grafu má každý vrchol stupeň nejvýše 2. Mějme libovolný vrchol $v$. Pak nastane některé z následujicích možností:
+\dukaz Utvořme symetrickou diferenci hran obou párování, tj. $H = P \oplus P_{\max} = (P \setminus P_{\max}) \cup (P_{\max} \setminus P)$. Uvažujme graf, který obsahuje všechny vrcholy grafu $G$ a hrany $H$. V tomto grafu má každý vrchol stupeň nejvýše 2. Mějme libovolný vrchol $v$. Pak nastane některé z následujících možností:
 \vspace{-1em}
 \begin{enumerate}[(a)]
     \item není \hyperref[nasyceny]{nasycen} ani v $P$ ani v $P_{\max}$, pak $d_H(v) = 0$;
@@ -305,7 +305,7 @@ kde $g(G \setminus S)$ je počet komponent souvislosti grafu $G \setminus S$, kt
 
     Nejprve si uvědomme, že pro $S = \emptyset$ podmínka zaručuje, že graf $G$ má sudý počet vrcholů.
 
-    Dále si uvědomme, že splňuje-li $G$ podmínku \eqref{eq:tutte} a přidáme-li k němu hranu $e$ mezi stávajícimi vrcholy, pak graf $G + e$ také splňuje podmínku \eqref{eq:tutte}. Ano, graf $(G+e) \setminus S$ má buď stejně lichých komponent jako $G \setminus S$, nebo o dvě méně. 
+    Dále si uvědomme, že splňuje-li $G$ podmínku \eqref{eq:tutte} a přidáme-li k němu hranu $e$ mezi stávajícími vrcholy, pak graf $G + e$ také splňuje podmínku \eqref{eq:tutte}. Ano, graf $(G+e) \setminus S$ má buď stejně lichých komponent jako $G \setminus S$, nebo o dvě méně. 
 
     Předpokládejme, že by existoval graf $G$ splňující \eqref{eq:tutte}, který nemá perfektní párování, tak vybereme jako $G$ ten z nich, který nemá perfektní párování, ale přidáním libovolné hrany už \hyperref[perfektniParovani]{perfektní párování} mít bude.
 
@@ -324,7 +324,7 @@ kde $g(G \setminus S)$ je počet komponent souvislosti grafu $G \setminus S$, kt
         \end{itemize}
         Tím jsme získali perfektní párování v grafu $G$; opět spor.
     \end{enumerate}
-    Víme tedy, že všechny komponenty souvislosti grafu $G \setminus T$ jsou úplné grafy. Definujme \hyperref[parovani]{párování} $P$ takto: \ii{V každé komponentě souvislosti grafu $G \setminus T$ o sudém počtu vrcholů vybereme libovolné \hyperref[perfektniParovani]{perfektní párování}; v komponentě souvislosti $G \setminus T$ o lichém počtu vrcholů spárujeme libovolně všechny vrcholy až na jeden, který spárujeme s některým vrcholem $T$.} Protože lichých komponent $G \setminus T$ je nejvyše tolik jako $|T|$, můžeme to udělat. Navíc je počet vrcholů sudý, takže nám z množiny $T$ zbyde sudý počet nespárovaných vrcholů, jedná se ovšem o vrcholy, které jsou spojeny s každým vrcholem grafu, můžeme proto zbylé vrcholy mezi sebou libovolně spárovat. Zase jsme ukázali, že v $G$ existuje pefektní párování.
+    Víme tedy, že všechny komponenty souvislosti grafu $G \setminus T$ jsou úplné grafy. Definujme \hyperref[parovani]{párování} $P$ takto: \ii{V každé komponentě souvislosti grafu $G \setminus T$ o sudém počtu vrcholů vybereme libovolné \hyperref[perfektniParovani]{perfektní párování}; v komponentě souvislosti $G \setminus T$ o lichém počtu vrcholů spárujeme libovolně všechny vrcholy až na jeden, který spárujeme s některým vrcholem $T$.} Protože lichých komponent $G \setminus T$ je nejvýše tolik jako $|T|$, můžeme to udělat. Navíc je počet vrcholů sudý, takže nám z množiny $T$ zbyde sudý počet nespárovaných vrcholů, jedná se ovšem o vrcholy, které jsou spojeny s každým vrcholem grafu, můžeme proto zbylé vrcholy mezi sebou libovolně spárovat. Zase jsme ukázali, že v $G$ existuje perfektní párování.
 \end{itemize}
 \hspace{\fill}\qed
 
@@ -608,7 +608,7 @@ Je dán bipartitní graf $G$ se stranami $X$ a $Y$. Pak existuje párování, kt
 
 \dusledek Je dán bipartitní graf $G = (V,E)$ se stranami $X$ a $Y$. Označme $\Delta(G)$ nejvyšší stupeň, který některý vrchol grafu má. Pak množinu hran $E$ je možno rozdělit na $\Delta(G)$ hranově disjunktních párování. 
 
-\dukaz Vytořme $G^\prime$, že k němu přidáme hrany a vrchol tak, aby
+\dukaz Vytvořme $G^\prime$, že k němu přidáme hrany a vrchol tak, aby
 \begin{equation}
     \Delta(G) = d_{G^\prime}(x) = d_{G^\prime} (y) \, \forall x\in X, \, \forall y \in Y.
 \end{equation}

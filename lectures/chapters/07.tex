@@ -91,8 +91,8 @@ Je-li $C$ \hyperref[zlepsujiciCesta]{zlepšující cesta} kapacity $d$ vzhledem 
 \begin{enumerate}[1)]
     \item \ii{Inicializace}. Označkujeme zdroj $s$, ostatní vrcholy jsou bez značky.
     \item \ii{Test nalezení zlepšující cesty}. Jestliže byl označkován $t$, zpětným postupem zkonstruujeme zlepšující cestu, kterou vrátíme.
-    \item \ii{Značkování dopředu}. Jestliže existuje hrana $e$ taková, že $P_V(e)$ má značku, $K_V(e)$ nemá značku a $f(e) < c(e)$, označkujeme $K_V(e)$; pro $K_V(e)$ si zapatujeme $e$. \verb+goto 2)+
-    \item \ii{Značkování dozadu}. Jestliže existuje hrana $e$ taková, že $K_V(e)$ má značku, $P_V(e)$ nemá značku a $l(e) < f(e)$, označkujeme $P_V(e)$; pro $P_V(e)$ si zapatujeme $e$. \verb+goto 2)+
+    \item \ii{Značkování dopředu}. Jestliže existuje hrana $e$ taková, že $P_V(e)$ má značku, $K_V(e)$ nemá značku a $f(e) < c(e)$, označkujeme $K_V(e)$; pro $K_V(e)$ si zapamatujeme $e$. \verb+goto 2)+
+    \item \ii{Značkování dozadu}. Jestliže existuje hrana $e$ taková, že $K_V(e)$ má značku, $P_V(e)$ nemá značku a $l(e) < f(e)$, označkujeme $P_V(e)$; pro $P_V(e)$ si zapamatujeme $e$. \verb+goto 2)+
     \item \ii{Neexistuje zlepšující cesta}. Nemůžeme-li již značkovat a nebyl označkován $t$, vrátíme odpověď \enquote{ne} a množinu označkovaných vrcholů $A$.
 \end{enumerate}
 
@@ -121,8 +121,8 @@ Mějme \hyperref[pripustnyTok]{přípustný tok} $f$ v $G = (V,E)$, s \hyperref[
 \end{align}
 Každá \hyperref[zlepsujiciCesta]{zlepšující cesta} od zdroje $s$ ke spotřebiči $t$ je zlepšující cestou v $G_f$ s tím, že všechny hrany cesty jsou hranami vpřed; tj. jedná se o orientovanou cestu v $G_f$.
 
-\subsection{Vrstvená síť}\label{vrstvennaSit}
-Mějme \hyperref[prirustkovaSit]{přírustkovou síť} $G_f$. Pak její podgraf, který obsahuje všechny hrany některé nejkratší (na počet hran v cestě) \hyperref[zlepsujiciCesta]{zlepšující cesty} od $s$ k $t$ se nazývá \ii{vrstvená síť}.
+\subsection{Vrstvená síť}\label{vrstvenaSit}
+Mějme \hyperref[prirustkovaSit]{přírůstkovou síť} $G_f$. Pak její podgraf, který obsahuje všechny hrany některé nejkratší (na počet hran v cestě) \hyperref[zlepsujiciCesta]{zlepšující cesty} od $s$ k $t$ se nazývá \ii{vrstvená síť}.
 
 Sestrojit k dané přírůstkové síti vrstvenou síť je možné v čase úměrném počtu hran přírůstkového grafu $G_f$, a tudíž i původního grafu $G$. \\
 \ii{Uvědomme si, že $G_f$ má nejvýše dvakrát tolik hran jako $G$.}
@@ -148,4 +148,4 @@ V síti $G = (V,E)$ s ohodnoceními $l,c$ existuje \hyperref[cirkulace]{přípus
 \begin{equation}
     C(A) = \sum_{e \in W^+(A)}c(e) - \sum_{e \in W^-(A)}l(e) \geq \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e) = 0.
 \end{equation}
-Jestliže naopak přípustná cirkulace neexistuje, pak existence řezu se zápornou kapacitou vyplne z algoritmu pro hledání přípustné cirkulace.
+Jestliže naopak přípustná cirkulace neexistuje, pak existence řezu se zápornou kapacitou vyplyne z algoritmu pro hledání přípustné cirkulace.
