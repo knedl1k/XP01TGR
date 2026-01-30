@@ -17,7 +17,7 @@ Mějme $l, c: E \rightarrow \Z$, $l(e) \leq c(e)$; kde $l$ je dolní omezení to
 \hyperref[tok]{Tok} $f$ je přípustný pokud pro každou hranu $e \in E$ je $l(e) \leq f(e) \leq c(e)$. 
 Přípustný tok obecně nemusí existovat; stačí například aby do některého vrcholu mohlo celkově přitéci méně, než z něho musí odtéci. Jestliže ale je \hyperref[omezeniToku]{dolní omezení} v každé hraně nulové, tak přípustný tok vždy existuje.
 
-Síť je \ii{transparentní} pokud $l(e)=0 \forall e \in E$.
+Síť je \ii{transparentní} pokud $l(e)=0 \hspace{2mm} \forall e \in E$.
 
 \ii{Velikost} přípustného toku od $s$ do $t$ je
 \begin{equation}
@@ -92,7 +92,7 @@ Je-li $C$ \hyperref[zlepsujiciCesta]{zlepšující cesta} kapacity $d$ vzhledem 
     \item \ii{Inicializace}. Označkujeme zdroj $s$, ostatní vrcholy jsou bez značky.
     \item \ii{Test nalezení zlepšující cesty}. Jestliže byl označkován $t$, zpětným postupem zkonstruujeme zlepšující cestu, kterou vrátíme.
     \item \ii{Značkování dopředu}. Jestliže existuje hrana $e$ taková, že $P_V(e)$ má značku, $K_V(e)$ nemá značku a $f(e) < c(e)$, označkujeme $K_V(e)$; pro $K_V(e)$ si zapatujeme $e$. \verb+goto 2)+
-    \item \ii{Značkování dozadu}. Jestliže existuje hrana $e$ taokvá, že $K_V(e)$ má značku, $P_V(e)$ nemá značku a $l(e) < f(e)$, označkujeme $P_V(e)$; pro $P_V(e)$ so zapatujeme $e$. \verb+goto 2)+
+    \item \ii{Značkování dozadu}. Jestliže existuje hrana $e$ taková, že $K_V(e)$ má značku, $P_V(e)$ nemá značku a $l(e) < f(e)$, označkujeme $P_V(e)$; pro $P_V(e)$ si zapatujeme $e$. \verb+goto 2)+
     \item \ii{Neexistuje zlepšující cesta}. Nemůžeme-li již značkovat a nebyl označkován $t$, vrátíme odpověď \enquote{ne} a množinu označkovaných vrcholů $A$.
 \end{enumerate}
 
@@ -111,7 +111,7 @@ To znamená, že \hyperref[tok]{tok} $f$ má maximální velikost a \hyperref[re
 \end{align}
 
 \subsection{Věta o přípustném toku a maximálním přípustném toku}
-\ii{Ford-Fulkersonova věta.} Jestliže v \hyperref[sit]{síti} $G= (V,E)$, s \hyperref[omezeniToku]{omezeními} $l, c$, zdrojem $s$ a spotřebičem $t$ existuje \hyperref[pripustnyTok]{přípustný tok}, pak existuje maximální přípustný tok $f_{\max}$ a jeho vleikost je rovna kapacitě minimálního řezu.
+\ii{Ford-Fulkersonova věta.} Jestliže v \hyperref[sit]{síti} $G= (V,E)$, s \hyperref[omezeniToku]{omezeními} $l, c$, zdrojem $s$ a spotřebičem $t$ existuje \hyperref[pripustnyTok]{přípustný tok}, pak existuje maximální přípustný tok $f_{\max}$ a jeho velikost je rovna kapacitě minimálního řezu.
 
 \subsection{Přírůstková síť vzhledem k toku}\label{prirustkovaSit}
 Mějme \hyperref[pripustnyTok]{přípustný tok} $f$ v $G = (V,E)$, s \hyperref[omezeniToku]{omezeními} $l, c$, zdrojem $s$ a spotřebičem $t$. Pak síť $G = (V, E_f)$ je přírůstková síť toku $f$, se zdrojem $s$, spotřebičem $t$, nulovým dolním omezením a kapacitou $c_f$, kde

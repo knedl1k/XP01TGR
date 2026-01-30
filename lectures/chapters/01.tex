@@ -57,6 +57,7 @@ Pokud $G = (V, E, \eps)$, pak
                 \graph [layered layout, orient=north]{
                     1 -> [orient=45] 2 -> 3;
                     2 -> [in=120, out=60, looseness=6] 2;
+                    2 -> [bend left] 3;
                     1 -> 3;
                 };
             \end{tikzpicture}
@@ -287,7 +288,7 @@ Algoritmus dále pokračuje:
 A tedy $G_2 \coloneq G_1 \setminus v_2$, $\eps(G_2) \geq \eps(G_1)$. A takto postupně dále. Algoritmus končí a nikdy nedostaneme prázdný graf, díky předpokladu, že $G$ mělo alespoň jednu hranu, tedy $\eps(G)>0$.
 \hspace{\fill}\qed
 
-\subsection{Souislý graf}\label{souvisly}
+\subsection{Souvislý graf}\label{souvisly}
 Graf nazýváme souvislým, jestliže každé jeho dva vrcholy jsou spojeny neorientovanou cestou. 
 
 \subsection{Pojmy založené na vzdálenosti}

@@ -275,7 +275,7 @@ Přitom alespoň jedna z těchto \hyperref[stc]{cest} je kratší než $\frac{n}
     \item je nasycen buď v $P$, nebo v $P_{\max}$, pak $d_H(v) = 1$;
     \item je nasycen v obou párováních, pak $d_n(v) = 0$, jestliže stejnou hranou, nebo $d_H(v) = 2$. 
 \end{enumerate}
-Komponenty souvislosti grafu $(V,H)$ jsou buď isolované vrcholy (stupeň 0), nebo \hyperref[kruznice]{kružnice}, nebo cesty. Jak v křuznicích, tak v cestách se střídají hrany z $P$ a $P_{\max}$. Proto jsou kružnice sudé délky, cesty pak sudé či liché délky.
+Komponenty souvislosti grafu $(V,H)$ jsou buď isolované vrcholy (stupeň 0), nebo \hyperref[kruznice]{kružnice}, nebo cesty. Jak v kružnicích, tak v cestách se střídají hrany z $P$ a $P_{\max}$. Proto jsou kružnice sudé délky, cesty pak sudé či liché délky.
 
 Mezi komponentami souvislosti nemůže existovat \hyperref[stc]{cesta} liché délky, která by měla víc hran z $P$ než z $P_{\max}$ (byla by to totiž \hyperref[zlepsujiciCestaPar]{zlepšující cesta} vůči $P_{\max}$ a ta neexistuje). Každá cesta liché délky je proto zlepšující cestou vzhledem k párování $P$. Víme, že každá kružnice i každá cesta sudé délky má stejný počet hran z $P$ a $P_{\max}$. Ukážeme-li tedy, že $H$ obsahuje o $k$ více hran z $P_{\max}$ než z $P$, budeme mít dokázáno, že existuje $k$ komponent grafu $H$, které jsou zlepšujícími cestami vůči $P$.
 
@@ -490,7 +490,7 @@ Pak platí
         \draw[black_arrow] (x4) -- (y3);
         \draw[black_arrow] (x1) -- (y2);
         \draw[black_arrow] (x2) -- (y1);
-        \draw[black_arrow] (x4) -- (y2);
+        % \draw[black_arrow] (x4) -- (y2);
         \draw[black_arrow] (x1) -- (y4);
     \end{tikzpicture}
 \end{figure}
