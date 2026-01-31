@@ -297,5 +297,31 @@ Omezme se na $\Delta(G) \geq 3$. Indukcí podle $|V| = n$.
         \end{figure}
     \item \ii{Indukční předpoklad}. Předpokládejme, že každý souvislý $G^\prime \in \S$, $|V^\prime| = n$, který není $K_n$ a má $\Delta(G^\prime) \geq 3$ se dá obarvit $\Delta(G^\prime)$ barvami.
     \item \ii{Indukční krok}. $G = (V, E)$, $|V| = n + 1$. Zvolme $u_0 \in V$, pak $G \setminus u_0 = H$ je graf o $n$ vrcholech.
-    % TODO: dodělat důkaz
+
+        Protože $H$ má $n$ vrcholů a zřejmě $\Delta(H) \leq \Delta(G)$, podle indukčního předpokladu existuje obarvení $b$ grafu $H$ pomocí $\Delta(G)$ barev. Nyní se pokusíme rozšířit toto obarvení na vrchol $u_0$.
+    
+        Předpokládejme pro spor, že rozšíření obarvení není možné, tzn. že $G$ vyžaduje $\Delta(G) + 1$ barev.
+        \begin{enumerate}[1)]
+            \item Vrchol $u_0$ musí mít v grafu $G$ právě $\Delta(G)$ sousedů. Kdyby měl méně, zbylo by v sadě $\Delta(G)$ barev alespoň jedno volné místo pro $u_0$. Označme sousedy $u_0$ jako $v_1, v_2, \dots, v_\Delta$, kde $\Delta = \Delta(G)$.
+            \item Všichni sousedé $v_1, \dots, v_\Delta$ musí mít v obarvení $b$ navzájem různé barvy. Pokud by dva sousedé měli stejnou barvu, uvolnila by se jedna barva pro $u_0$. Bez újmy na obecnosti předpokládejme, že $v_i$ má barvu $i$ (pro $i = 1, \dots, \Delta$).
+            \item Označme $H_{i,j}$ podgraf grafu $H$ indukovaný vrcholy s barvami $i$ a $j$. Vrcholy $v_i$ a $v_j$ musí ležet ve stejné komponentě souvislosti grafu $H_{i,j}$. 
+            \begin{quote}
+                \textit{Důvod:} Kdyby ležely v různých komponentách, mohli bychom v komponentě obsahující $v_i$ prohodit barvy $i$ a $j$. Tím by $v_i$ získal barvu $j$, soused $v_j$ by zůstal $j$, a pro $u_0$ by se uvolnila barva $i$, což je spor.
+            \end{quote}
+            Označme tuto komponentu (cestu) spojující $v_i$ a $v_j$ jako $C_{i,j}$.
+            \item Komponenty $C_{i,j}$ jsou jednoduché cesty mezi $v_i$ a $v_j$. Vrcholy uvnitř těchto cest nemohou mít v $H_{i,j}$ stupeň větší než 2 (jinak bychom našli vrchol, který můžeme přebarvit třetí barvou a narušit souvislost nutnou pro spor).
+            \item Dvě cesty $C_{i,k}$ a $C_{k,j}$ (kde $i,j,k$ jsou různé barvy) mají společný pouze vrchol $v_k$.
+            \item \bb{Závěrečný spor:} Protože $G$ není úplný graf, existují dva sousedé vrcholu $u_0$, kteří nejsou spojeni hranou. Nechť jsou to $v_1$ a $v_2$.
+            Cesta $C_{1,2}$ (z bodu 3) tedy musí mít délku alespoň 2 (vede přes další vrcholy). Označme $y$ souseda vrcholu $v_1$ na cestě $C_{1,2}$. Vrchol $y$ má nutně barvu 2.
+            Nyní provedeme výměnu barev 1 a 3 na cestě $C_{1,3}$. Tím vznikne nové platné obarvení $b'$ grafu $H$. V tomto novém obarvení:
+            \begin{itemize}
+                \item $v_1$ má barvu 3.
+                \item $y$ má stále barvu 2 (neleží na $C_{1,3}$, viz bod 5).
+                \item $v_2$ má stále barvu 2.
+            \end{itemize}
+            Vrchol $u_0$ má nyní sousedy $v_1$ (barva 3) a $v_2$ (barva 2). Podle bodu 3 musí existovat cesta $C'_{2,3}$ spojující $v_1$ a $v_2$ tvořená pouze barvami 2 a 3. Protože $y$ je soused $v_1$ s barvou 2, musí tato cesta vést přes $y$.
+            To ale znamená, že $y$ leží na cestě $C_{1,2}$ (původní) a po přebarvení se stává součástí cesty barev 2 a 3 vycházející z $v_1$. To je ve sporu se strukturálními vlastnostmi (bod 5, Brooksův teorém detailněji rozebírá, že se $y$ stane uzlovým bodem pro cesty, což nelze).
+        \end{enumerate}
+        Tím jsme došli ke sporu s předpokladem, že $G$ nelze obarvit. Graf $G$ tedy lze obarvit $\Delta(G)$ barvami.
 \end{enumerate}
+\hspace{\fill}\qed
