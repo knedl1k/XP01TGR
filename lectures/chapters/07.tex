@@ -41,10 +41,58 @@ se nazývá \ii{řez určený množinou $A$}.
 
 \subsection{Tvrzení o tocích a řezech}
 Pro každý \hyperref[rezZdroj]{řez} $W(A)$ a každý \hyperref[tok]{tok} $f$ platí
-\begin{equation}
+\begin{equation}\label{tocRez}
     \vel(f) = \sum_{e \in W^+(A)}f(e) - \sum_{e \in W^-(A)}f(e).
 \end{equation}
-\dukaz % TODO: dodělat Důkaz
+\dukaz
+\begin{enumerate}[1)]
+        \item \ii{Základní krok}. Nechť $k=1$. Protože $s \in A$, musí platit, že $A = \bc{s}$. V tomto případě je množina $W^+(A)$ tvořena všemi hranami vycházejícimi ze zdroje $s$ a množina $W^-(A)$ všemi hranami vcházejícimido zdroje $s$. Podle definice velikosti toku $\vel(f)$ platí
+        \begin{equation}
+            \vel(f) = \sum_{v \in V} f(s,v) - \sum_{v \in V}f(v,s).
+        \end{equation}
+        Což přesně odpovídá definici:
+        \begin{equation}
+            \vel(f) = \sum_{e \in W^+(\bc{s})}f(e) - \sum_{e \in W^-(\bc{s})}f(e)
+        \end{equation}
+        Tvrzení tedy pro $k=1$ platí.
+        \item \ii{Indukční předpoklad}. Předpokládejme, že tvrzení platí pro libovolnou množinu $A$ velikosti $k$ obsahující $s$ a neobsahující $t$.
+        \item \ii{Indukční krok}. Mějme množinu $A'$ velikosti $k+1$, která obsahuje $s$ a neobsahuje $t$. Zvolme libovolný vrchol $v \in A'$ takový, že $v \neq s$. Takový vrchol jistě existuje, protože $|A'| \ge 2$. Položme $A = A' \setminus \{v\}$. Množina $A$ má velikost $k$, obsahuje $s$ a neobsahuje $t$, proto pro ni dle indukčního předpokladu platí vztah \eqref{tocRez}.
+        
+        Nyní zkoumejme rozdíl mezi toky přes řezy určené množinami $A$ a $A'$. Přidáním vrcholu $v$ do množiny $A$ se změní sumy následovně:
+        \begin{itemize}
+            \item Hrany z $A$ do $v$, které byly původně v $W^+(A)$, se stanou vnitřními hranami $A'$, tedy ze sumy zmizí (odečteme tok vtékající do $v$ z $A$).
+            \item Hrany z $v$ do $A$, které byly původně v $W^-(A)$, se stanou vnitřními, tedy ze sumy zmizí (přičteme tok vytékající z $v$ do $A$, protože v $W^-$ byl s minusem).
+            \item Hrany z $v$ do $V \setminus A'$, které dříve nebyly v řezu, se stanou součástí $W^+(A')$ (přičteme tok vytékající z $v$ ven).
+            \item Hrany z $V \setminus A'$ do $v$, které dříve nebyly v řezu, se stanou součástí $W^-(A')$ (odečteme tok vtékající do $v$ zvenčí).
+        \end{itemize}
+        
+        Matematicky vyjádřeno:
+        \begin{align}
+            \begin{split}
+            \sum_{e \in W^+(A')}f(e) - \sum_{e \in W^-(A')}f(e) &= \left( \sum_{e \in W^+(A)}f(e) - 
+            \sum_{u \in A} f(u,v) + \sum_{w \notin A'} f(v,w) \right) \\
+            &\quad - \left( \sum_{e \in W^-(A)}f(e) - \sum_{u \in A} f(v,u) + \sum_{w \notin A'} f(w,v) \right)
+            \end{split}
+        \end{align}
+        
+        Seskupíme-li členy odpovídající původnímu toku a členy týkající se vrcholu $v$, dostáváme:
+        \begin{equation}
+            \text{Tok}(A') = \vel(f) + \underbrace{\left( \sum_{u \in A} f(v,u) + 
+            \sum_{w \notin A'} f(v,w) \right)}_{\text{celkový tok z } v} - \underbrace{\left( \sum_{u \in A} f(u,v) + 
+            \sum_{w \notin A'} f(w,v) \right)}_{\text{celkový tok do } v}
+        \end{equation}
+        
+        Jelikož $v \neq s$ a $v \neq t$ (protože $t \notin A'$), platí pro vrchol $v$ Kirchhoffův zákon zachování toku:
+        \begin{equation}
+            \sum_{z \in V} f(v,z) - \sum_{z \in V} f(z,v) = 0.
+        \end{equation}
+        
+        Členy v závorkách výše pokrývají všechny hrany incidentní s $v$ (buď vedou z/do $A$, anebo z/do $V \setminus A'$). Rozdíl v závorce je tedy roven nule. Proto platí:
+        \begin{equation}
+            \sum_{e \in W^+(A')}f(e) - \sum_{e \in W^-(A')}f(e) = \vel(f).
+        \end{equation}
+    \end{enumerate}
+    \hspace{\fill}\qed
 
 \subsection{Tvrzení o přípustných tocích a řezech}
 Pro každý \hyperref[pripustnyTok]{přípustný tok} $f$ a \hyperref[rezZdroj]{řez} $W(A)$ platí $\vel(f) \leq \fcap(W(A))$.

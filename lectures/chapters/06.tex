@@ -10,7 +10,7 @@ Máme $G \in \S$, $n \geq 3$, se \hyperref[skore]{skóre} $d_1 \leq d_2 \leq \do
 
 \dukaz Sporem. Předpokládejme, že existuje $G \in \S$, $n \geq 3$, $G$ splňuje $k < \frac{n}{2}$ platí $d_k \leq k$, a pak $d_{n-k} \geq n-k$ a $G$ není Hamiltonovský.
 
-Když ke $G$ splňující Chvátalovu podmínku přidáme hranu, která v $G$ není, tak nový graf stále splňuje Chvátalovu podmínku.
+Když ke $G$ splňující Chvátalovu větu přidáme hranu, která v $G$ není, tak nový graf stále splňuje Chvátalovu větu.
 
 Zvolíme $G$ s Chvátalovou podmínkou maximální bez \hyperref[hamKru]{hamiltonovské kružnice}. Zvolme $x,y: \, \bc{x,y} \not\in E$, $d(x) + d(y)$ je největší mezi $\bc{u,v} \not\in E$, $d(x) \leq d(y)$. V $G$ existuje Hamiltonovská cesta z $x$ do $y$.
 Označme
@@ -77,7 +77,7 @@ $d(x) + d(w) = k+n-k = n$, což je spor s volbou $x$ a $y$, protože $d(x) + d(y
 \subsection{Věta o skóre grafu a hamiltonovské kružnici}
 Jestliže posloupnost čísel
 \begin{equation} 
-    a_1 \leq a_2 \leq \dots \leq a_n \, \text{ nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}},
+    a_1 \leq a_2 \leq \dots \leq a_n \, \text{ nesplňuje \hyperref[chvatal]{Chvátalovu větu}},
 \end{equation}
 tak existuje
 \begin{equation} 
@@ -85,7 +85,7 @@ tak existuje
 \end{equation}
 tak, že je \hyperref[skore]{skóre} grafu, který nemá \hyperref[hamKru]{hamiltonovskou kružnici}.
 
-\dukaz Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu podmínku}, pak existuje číslo $k$ tak, že $k \leq \frac{n}{2}$, $d_k \leq k$ a přitom $d_{n-k} \leq n-k-1$.
+\dukaz Jestliže posloupnost nesplňuje \hyperref[chvatal]{Chvátalovu větu}, pak existuje číslo $k$ tak, že $k \leq \frac{n}{2}$, $d_k \leq k$ a přitom $d_{n-k} \leq n-k-1$.
 
 Utvořme graf s množinou vrcholů $\bc{v_1, v_2, \dots, v_n}$ takto: $\bc{v_i, v_j}$ je hrana $G$ právě tehdy, když
 \begin{itemize}
@@ -112,11 +112,44 @@ Prostý orientovaný graf $G$ bez smyček nazveme \ii{turnajem}, jestliže pro k
 Jinými slovy, zapomeneme-li na orientaci hran v grafu $G$, dostaneme úplný graf.
 
 \subsection{Vztah hamiltonovských cyklů a silné souvislosti}
-Je dán turnaj $G$ s $n \geq 3$ vrcholy. Pak v $G$ existuje hamiltonovský cyklus právě tehdy, když je $G$ silně souvislý.
+Je dán \hyperref[turnaj]{turnaj} $G$ s $n \geq 3$ vrcholy. Pak v $G$ existuje \hyperref[hamKru]{hamiltonovský cyklus} právě tehdy, když je $G$ silně \hyperref[souvisly]{souvislý}.
 
 \dukaz
 \begin{itemize}
-    \item[$\Rightarrow$:] triviální. % TODO: opravdu?
-    \item[$\Leftarrow$:] Nechť $G = (V,E)$ je turnaj, který je silně souvislý. % TODO: dodělat
-\end{itemize}
+    \item[$\Rightarrow$:] Nechť v $G$ existuje hamiltonovský cyklus $C$. Pro libovolné dva vrcholy $u, v$ existuje cesta z $u$ do $v$ vedená po hranách \hyperref[kruznice]{cyklu} $C$. Graf $G$ je tedy silně souvislý.
+    
+    \item[$\Leftarrow$:] Nechť $G = (V,E)$ je turnaj, který je silně souvislý. Ukážeme, že v $G$ existuje cyklus délky $k$ pro každé $3 \leq k \leq n$. Tím bude pro $k=n$ dokázáno, že je $G$ hamiltonovský. Důkaz vedeme indukcí podle $k$.
+    \begin{enumerate}[1)]
+        \item \ii{Základní krok $k=3$}. Vezměme libovolný vrchol $v \in V$. Označme $N^+ = \bc{x \in V \mid \bc{v,x} \in E}$ a $N^- = \bc{y \in V \mid \bc{y,v} \in E}$. Protože je $G$ silně souvislý, jsou obě množiny $N^+$ a $N^-$ neprázdné. Navíc musí existovat hrana vedoucí z $N^+$ do $N^-$, tj. vrcholy $x \in N^+$ a $y \in N^-$ takové, že $\bc{x,y} \in E$. (Kdyby taková hrana neexistovala, neexistovala by žádná \hyperref[stc]{cesta} z $N^+$ do $v$, což by byl spor se silnou souvislostí). Trojice $\bc{v,x}, \bc{x,y}, \bc{y,v}$ pak tvoří hledaný cyklus délky 3.
+        \item \ii{Indukční předpoklad}. Předpokládejme, že máme zkonstruován cyklus $C$ s vrcholy $u_1, u_2, \dots, u_k$, pro $3 \leq k < n$.
+        \item \ii{Indukční krok}. Pro rozšíření cyklu definujme množiny:
+        \begin{equation}
+             S^+ = \bc{w \notin C \mid \exists i, \bc{u_i, w} \in E} \quad \text{a} \quad S^- = \bc{w \notin C \mid \exists j, \bc{w, u_j} \in E}.            
+        \end{equation}
+        Protože $G$ je silně \hyperref[souvisly]{souvislý} a $k < n$, jsou obě množiny neprázdné (vrcholy mimo cyklus nemohou být izolované od cyklu). Rozlišíme dva případy:
 
+        \ii{Případ A: $S^+ \cap S^- \not= \emptyset$.}
+        Existuje vrchol $w$ mimo cyklus, do kterého vede hrana z cyklu a z něhož vede hrana do cyklu. Tedy existují $i, j$ tak, že $\bc{u_i, w} \in E$ a $\bc{w, u_j} \in E$. 
+        \begin{itemize}
+            \item Pokud $j = i+1$ (vrcholy jsou na cyklu sousední), vložíme $w$ mezi ně a máme cyklus $u_i \to w \to u_{i+1}$, jehož délka je $k+1$.
+            \item Pokud $u_i$ a $u_j$ nejsou sousední, uvažujme vrchol $u_{i+1}$. V \hyperref[turnaj]{turnaji} musí existovat hrana mezi $w$ a $u_{i+1}$.
+            \begin{itemize}
+                \item Je-li $\bc{w, u_{i+1}} \in E$, našli jsme sousední dvojici $u_i, u_{i+1}$, mezi kterou vložíme $w$ (nahradíme hranu $\bc{u_i, u_{i+1}}$ cestou $u_i \to w \to u_{i+1}$).
+                \item Je-li $\bc{u_{i+1}, w} \in E$, pak máme novou dvojici $\bc{u_{i+1}, w}$ a $\bc{w, u_j}$, kde se vzdálenost indexů na cyklu zmenšila.
+            \end{itemize}
+            Opakováním tohoto postupu v konečně mnoha krocích nalezneme sousední vrcholy na \hyperref[kruznice]{cyklu}, mezi které lze $w$ vložit, a získáme cyklus délky $k+1$.
+        \end{itemize}
+
+        \ii{Případ B: $S^+ \cap S^- = \emptyset$.}
+        Množiny jsou disjunktní. To v turnaji znamená, že pro každé $z \in S^+$ platí $\bc{u, z} \in E$ pro \ii{všechny} $u \in C$ (jinak by existovala hrana $\bc{z, u}$, což by znamenalo $z \in S^-$). Analogicky pro $t \in S^-$ platí $\bc{t, u} \in E$ pro všechny $u \in C$.
+    
+        Protože je $G$ silně souvislý, musí existovat hrana z množiny $S^+$ do množiny $S^-$ (jinak by nebyla cesta z $S^+$ do $S^-$). Nechť tedy existují $z \in S^+$ a $t \in S^-$ takové, že $\bc{z, t} \in E$.
+    
+        Vybereme na cyklu $C$ tři po sobě jdoucí vrcholy, řekněme $u_1, u_2, u_3$ (kde $u_3$ následuje $u_2$ a $u_2$ následuje $u_1$).
+        Víme, že existují hrany $\bc{u_1, z}$ (protože $z \in S^+$) a $\bc{t, u_3}$ (protože $t \in S^-$).
+        V původním cyklu $C$ nahradíme cestu délky 2 ($u_1 \to u_2 \to u_3$) cestou délky 3 ($u_1 \to z \to t \to u_3$).
+    
+        Tím jsme do cyklu přidali dva vrcholy ($z, t$) a jeden odebrali ($u_2$). Výsledný cyklus má délku $k - 1 + 2 = k+1$.
+    \end{enumerate}
+    \hspace{\fill}\qed
+\end{itemize}
