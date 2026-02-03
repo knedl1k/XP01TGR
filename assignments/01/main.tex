@@ -2,7 +2,12 @@
 \usepackage[czech]{babel}
 \usepackage[margin=1in]{geometry}
 
-\usepackage{../cfg}
+\makeatletter
+\def\input@path{{../../configs/}{./}} 
+\makeatother
+
+\usepackage{logics}
+
 \setcounter{section}{1}
 
 \begin{document}

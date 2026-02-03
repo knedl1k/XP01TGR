@@ -2,7 +2,11 @@
 \usepackage[czech]{babel}
 \usepackage[margin=1in]{geometry}
 
-\usepackage{../cfg}
+\makeatletter
+\def\input@path{{../../configs/}{./}} 
+\makeatother
+
+\usepackage{logics}
 \setcounter{section}{2}
 
 \begin{document}
@@ -109,53 +113,53 @@ tehdy, když každé dvě hrany grafu $G$ leží na společné kružnici.
 \end{exercise}
 \begin{solution}
 \titlebreak
+\begin{itemize}
+    \item[$\Rightarrow$:] \ii{Graf je 2-souvislý.}
+        Nechť $e_1 = \bc{u,v}$ a $e_2 = \bc{x,y}$ jsou dvě libovolné různé hrany v $G$. Vytvořme nový graf $G^\prime$ z $G$ tak, 
+        že rozpůlíme obě hrany:
+        \vspace{-1em}
+        \begin{itemize}[noitemsep]
+            \item Hranu $e_1$ nahradíme cestou $u \rightarrow w_1 \rightarrow v$.
+            \item Hranu $e_2$ nahradíme cestou $x \rightarrow w_2 \rightarrow y$.
+        \end{itemize}
+        \vspace{-1em}
+        Přidali jsme vrcholy $w_1, w_2$. Tímto zachováváme souvislost, tedy i $G^\prime$ je 2-souvislý. Víme, že v 2-souvislém 
+        grafu každé dva vrcholy leží na společné kružnici. Využijme toho: Existuje kružnice $C^\prime$ v $G^\prime$, která 
+        obsahuje $w_1$ i $w_2$.
 
-\enquote{$\Rightarrow$}: Graf je 2-souvislý. \\
-Nechť $e_1 = \bc{u,v}$ a $e_2 = \bc{x,y}$ jsou dvě libovolné různé hrany v $G$. Vytvořme nový graf $G^\prime$ z $G$ tak, 
-že rozpůlíme obě hrany:
-\vspace{-1em}
-\begin{itemize}[noitemsep]
-    \item Hranu $e_1$ nahradíme cestou $u \rightarrow w_1 \rightarrow v$.
-    \item Hranu $e_2$ nahradíme cestou $x \rightarrow w_2 \rightarrow y$.
+        Protože vrcholy $w_1$ a $w_2$ mají v $G^\prime$ stupeň 2, každá kružnice $C^\prime$, která jimi prochází, \ii{musí} 
+        obsahovat obě hrany s nimi incidentní.
+        \vspace{-1em}
+        \begin{itemize}[noitemsep]
+            \item Kružnice $C^\prime$ musí obsahovat sled $u \rightarrow w_1 \rightarrow v$ (případně v opačném pořadí).
+            \item Kružnice $C^\prime$ musí obsahovat sled $x \rightarrow w_2 \rightarrow y$ (případně v opačném pořadí).
+        \end{itemize}
+        \vspace{-1em}
+        A tedy kružnice $C^\prime$ obsahuje původní hrany $e_1$ a $e_2$.
+
+    \item[$\Leftarrow$:] \ii{$G$ je prostý graf s $|E| \geq 2$, ve kterém každé dvě hrany leží na společné kružnici.}
+        Aby graf byl 2-souvislý, musí být souvislý a nemít artikulaci. Ukažme, že $G$ nemá artikulaci. \\ 
+        \bb{Sporem.} Ať $G$ \ii{není} 2-souvislý, tedy že má artikulaci $v$.
+
+        Pokud $v$ je artikulace, pak graf $G \setminus v$ je nesouvislý. Nechť $C_1$ a $C_2$ jsou dvě z jeho komponent 
+        souvislosti. Protože $G$ je souvislý, vrchol $v$ musí mít sousedy v obou těchto komponentách:
+        \vspace{-1em}
+        \begin{itemize}[noitemsep]
+            \item Existuje vrchol $u \in V(C_1)$ takový, že $e_1 = \bc{u,v} \in E(G)$.
+            \item Existuje vrchol $w \in V(C_2)$ takový, že $e_2 = \bc{w,v} \in E(G)$.
+        \end{itemize}
+        \vspace{-1em}
+        Jelikož $u \in C_1$ a $w \in C_2$, je $u \not= w$, tak $e_1$ a $e_2$ jsou dvě různé hrany. Použijme předpoklad: hrany 
+        $e_1$ a $e_2$ musí ležet na společné kružnici $K$. Tato kružnice musí nutně obsahovat sled 
+        $u \rightarrow v \rightarrow w$. Aby byla kružnice uzavřena, musí existovat cesta $P$ z $w$ zpět do $u$, která již 
+        \ii{neobsahuje} vrchol $v$, protože $G$ je prostý a kružnice nemůže vrchol opakovat mimo počátku.
+
+        To znamená, že cesta $P$ musí celá ležet v grafu $G \setminus v$. Existence cesty $P$ z $w$ do $u$ v $G \setminus v$ ale 
+        znamená, že $u$ a $w$ leží ve stejné komponentě souvislosti $G \setminus v$. Což je \bb{spor} s tím, jak jsme definovali 
+        $u$ a $w$.
+
+        Graf $G$ je souvislý a \ii{nemá} artikulaci, takže je 2-souvislý.
 \end{itemize}
-\vspace{-1em}
-Přidali jsme vrcholy $w_1, w_2$. Tímto zachováváme souvislost, tedy i $G^\prime$ je 2-souvislý. Víme, že v 2-souvislém 
-grafu každé dva vrcholy leží na společné kružnici. Využijme toho: Existuje kružnice $C^\prime$ v $G^\prime$, která 
-obsahuje $w_1$ i $w_2$.
-
-Protože vrcholy $w_1$ a $w_2$ mají v $G^\prime$ stupeň 2, každá kružnice $C^\prime$, která jimi prochází, \ii{musí} 
-obsahovat obě hrany s nimi incidentní.
-\vspace{-1em}
-\begin{itemize}[noitemsep]
-    \item Kružnice $C^\prime$ musí obsahovat sled $u \rightarrow w_1 \rightarrow v$ (případně v opačném pořadí).
-    \item Kružnice $C^\prime$ musí obsahovat sled $x \rightarrow w_2 \rightarrow y$ (případně v opačném pořadí).
-\end{itemize}
-\vspace{-1em}
-A tedy kružnice $C^\prime$ obsahuje původní hrany $e_1$ a $e_2$.
-\hspace{\fill}\qed
-
-\enquote{$\Leftarrow$}: $G$ je prostý graf s $|E| \geq 2$, ve kterém každé dvě hrany leží na společné kružnici.\\
-Aby graf byl 2-souvislý, musí být souvislý a nemít artikulaci. Ukažme, že $G$ nemá artikulaci. \\ 
-\bb{Sporem.} Ať $G$ \ii{není} 2-souvislý, tedy že má artikulaci $v$.
-
-Pokud $v$ je artikulace, pak graf $G \setminus v$ je nesouvislý. Nechť $C_1$ a $C_2$ jsou dvě z jeho komponent 
-souvislosti. Protože $G$ je souvislý, vrchol $v$ musí mít sousedy v obou těchto komponentách:
-\vspace{-1em}
-\begin{itemize}[noitemsep]
-    \item Existuje vrchol $u \in V(C_1)$ takový, že $e_1 = \bc{u,v} \in E(G)$.
-    \item Existuje vrchol $w \in V(C_2)$ takový, že $e_2 = \bc{w,v} \in E(G)$.
-\end{itemize}
-\vspace{-1em}
-Jelikož $u \in C_1$ a $w \in C_2$, je $u \not= w$, tak $e_1$ a $e_2$ jsou dvě různé hrany. Použijme předpoklad: hrany 
-$e_1$ a $e_2$ musí ležet na společné kružnici $K$. Tato kružnice musí nutně obsahovat sled 
-$u \rightarrow v \rightarrow w$. Aby byla kružnice uzavřena, musí existovat cesta $P$ z $w$ zpět do $u$, která již 
-\ii{neobsahuje} vrchol $v$, protože $G$ je prostý a kružnice nemůže vrchol opakovat mimo počátku.
-
-To znamená, že cesta $P$ musí celá ležet v grafu $G \setminus v$. Existence cesty $P$ z $w$ do $u$ v $G \setminus v$ ale 
-znamená, že $u$ a $w$ leží ve stejné komponentě souvislosti $G \setminus v$. Což je \bb{spor} s tím, jak jsme definovali 
-$u$ a $w$.
-
-Graf $G$ je souvislý a \ii{nemá} artikulaci, takže je 2-souvislý.
 \hspace{\fill}\qed
 \end{solution}
 

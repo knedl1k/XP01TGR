@@ -3,7 +3,11 @@
 \setdefaultlanguage{czech}
 \usepackage[margin=1in]{geometry}
 
-\usepackage{../cfg}
+\makeatletter
+\def\input@path{{../../configs/}{./}} 
+\makeatother
+
+\usepackage{logics}
 \setcounter{section}{6}
 
 \begin{document}
