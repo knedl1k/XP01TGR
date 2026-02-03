@@ -2,14 +2,14 @@
 \usepackage[czech]{babel}
 \usepackage[margin=0.85in]{geometry}
 
-\usepackage{cfg}
+\makeatletter
+\def\input@path{{../configs/}{./}} 
+\makeatother
+
+\usepackage{logics}
 
 \begin{document}
  
-% --------------------------------------------------------------
-%                         Start here
-% --------------------------------------------------------------
-
 \begin{titlepage}
     \centering
     \vspace*{2cm}
@@ -53,8 +53,4 @@
 
 \input{chapters.tex}
 
-% --------------------------------------------------------------
-%     You don't have to mess with anything below this line.
-% --------------------------------------------------------------
- 
 \end{document}
